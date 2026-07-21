@@ -441,7 +441,6 @@
             justify-content: center;
         }
 
-        /* Updated: The placeholder now supports both an icon fallback and real images */
         .thumbnail-placeholder {
             width: 100%;
             height: 100%;
@@ -457,7 +456,6 @@
             filter: brightness(1.1);
         }
 
-        /* Style for the text‑based icon (used when no image is present) */
         .thumbnail-icon {
             font-size: 3.5rem;
             opacity: 0.5;
@@ -471,7 +469,6 @@
             transform: scale(1.1);
         }
 
-        /* Style for actual thumbnail images */
         .thumbnail-image {
             width: 100%;
             height: 100%;
@@ -484,13 +481,11 @@
             transform: scale(1.03);
         }
 
-        /* Hide the icon if an image is present (both inside the same container) */
         .thumbnail-placeholder .thumbnail-icon:has(+ .thumbnail-image),
         .thumbnail-placeholder .thumbnail-icon:has(~ .thumbnail-image) {
             display: none;
         }
 
-        /* Play button overlay on thumbnail */
         .play-overlay {
             position: absolute;
             bottom: 14px;
@@ -528,7 +523,6 @@
 
         .play-overlay:active { transform: translateY(0) scale(0.94) !important; }
 
-        /* Card info section */
         .card-info {
             padding: 18px 20px 20px;
             display: flex;
@@ -622,18 +616,17 @@
             justify-content: center;
             font-size: 2rem;
             transition: background 0.3s ease;
-            overflow: hidden; /* ensures the image stays inside the rounded container */
+            overflow: hidden;
         }
 
         .media-card:hover .media-thumb {
             background: #1c3558;
         }
 
-        /* --- NEW: style for images inside .media-thumb --- */
         .media-thumb img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* keeps the circle logo intact without cropping */
+            object-fit: contain;
             display: block;
             border-radius: var(--radius-sm);
         }
@@ -1055,18 +1048,19 @@
                 </a>
 
                 <!-- Release Card 2 -->
-                <a href="#placeholder-link-release-1" class="release-card" data-track-index="0">
+                <a href="#placeholder-link-release-2" class="release-card" data-track-index="1">
                     <div class="thumbnail-wrapper">
                         <div class="thumbnail-placeholder">
-                            <img src="" alt="Blue Raspberry Smarties cover art" class="thumbnail-image" />
+                            <!-- Add your own cover art for Blue Raspberry Smarties here -->
+                            <img src="https://i.imgur.com/placeholder.png" alt="Blue Raspberry Smarties cover art" class="thumbnail-image" />
                         </div>
-                        <button class="play-overlay" data-track-index="0" aria-label="Play preview" title="Play">
+                        <button class="play-overlay" data-track-index="1" aria-label="Play preview" title="Play">
                             ▶
                         </button>
                     </div>
                     <div class="card-info">
                         <h3>Blue Raspberry Smarties</h3>
-                        <p class="card-desc">Emotional Guitar - Acoustic Style</p>
+                        <p class="card-desc">Chill Lo-Fi Vibes</p>
                         <span class="card-link-indicator">
                             View Release <span class="card-link-arrow">→</span>
                         </span>
@@ -1074,18 +1068,18 @@
                 </a>
 
                 <!-- Release Card 3 -->
-                <a href="#placeholder-link-release-1" class="release-card" data-track-index="0">
+                <a href="#placeholder-link-release-3" class="release-card" data-track-index="2">
                     <div class="thumbnail-wrapper">
                         <div class="thumbnail-placeholder">
                             <img src="https://i.imgur.com/Er3T28i.jpeg" alt="Blue Raspberry Lemonade cover art" class="thumbnail-image" />
                         </div>
-                        <button class="play-overlay" data-track-index="0" aria-label="Play preview" title="Play">
+                        <button class="play-overlay" data-track-index="2" aria-label="Play preview" title="Play">
                             ▶
                         </button>
                     </div>
                     <div class="card-info">
-                        <h3>Blue Raspberry Smarties</h3>
-                        <p class="card-desc">Emotional Guitar - Acoustic Style</p>
+                        <h3>Blue Raspberry Lemonade</h3>
+                        <p class="card-desc">Uplifting Electronic</p>
                         <span class="card-link-indicator">
                             View Release <span class="card-link-arrow">→</span>
                         </span>
@@ -1196,13 +1190,9 @@
         </div>
     </div>
 
-    <!-- Hidden native audio element — accepts OGG and MP3 -->
+    <!-- Hidden native audio element -->
     <audio class="hidden-audio" id="audioElement" preload="metadata">
-        <!--
-        PLACEHOLDER AUDIO SOURCES:
-        Replace the src paths below with your own .mp3 and .ogg files.
-        The browser will pick the first format it supports.
-        -->
+        <!-- These default sources are overridden dynamically in JavaScript -->
         <source src="assets/audio/track1.mp3" type="audio/mpeg" />
         <source src="assets/audio/track1.ogg" type="audio/ogg" />
         Your browser does not support the audio element.
@@ -1244,21 +1234,27 @@
             const allReleaseCards = document.querySelectorAll('.release-card');
 
             // ============================================
-            // TRACK DATA (PLACEHOLDER — EDIT THESE!)
+            // TRACK DATA — UPDATE THESE PATHS TO MATCH YOUR FILES!
             // ============================================
             const trackData = [
-                { title: 'White Raspberry Smarties',
+                { 
+                    title: 'White Raspberry Smarties',
                     artist: 'SBPebbles',
-                    src: 'assets/audio/white_raspberry_smarties.mp3',
-                    thumb: 'WRS' },
-                { title: 'Blue-Raspberry Smarties',
+                    src: 'assets/audio/white_raspberry_smarties.mp3',  // ← change to your actual file name
+                    thumb: 'WRS' 
+                },
+                { 
+                    title: 'Blue Raspberry Smarties',
                     artist: 'SBPebbles',
-                    src: 'assets/audio/blue_raz_smarties.mp3',
-                    thumb: 'BRS' },
-                { title: 'Blue-Raspberry Lemonade',
+                    src: 'assets/audio/blue_raspberry_smarties.mp3',   // ← change to your actual file name
+                    thumb: 'BRS' 
+                },
+                { 
+                    title: 'Blue Raspberry Lemonade',
                     artist: 'SBPebbles',
-                    src: 'assets/audio/track3.mp3',
-                    thumb: 'BRL' },
+                    src: 'assets/audio/blue_raspberry_lemonade.mp3',   // ← change to your actual file name
+                    thumb: 'BRL' 
+                },
             ];
 
             let currentTrackIndex = -1;
@@ -1267,7 +1263,7 @@
             let previousVolume = 0.8;
 
             // ============================================
-            // HELPER: FORMAT TIME (seconds -> "m:ss")
+            // HELPER: FORMAT TIME
             // ============================================
             function formatTime(seconds) {
                 if (isNaN(seconds) || seconds < 0) return '0:00';
@@ -1277,14 +1273,14 @@
             }
 
             // ============================================
-            // LOAD TRACK INTO PLAYER
+            // LOAD TRACK
             // ============================================
             function loadTrack(index) {
                 if (index < 0 || index >= trackData.length) return;
                 currentTrackIndex = index;
                 const track = trackData[index];
 
-                // Update player UI
+                // Update UI
                 playerTitle.textContent = track.title;
                 playerArtist.textContent = track.artist;
                 playerThumb.textContent = track.thumb;
@@ -1297,7 +1293,7 @@
                 sourceMp3.type = 'audio/mpeg';
                 audio.appendChild(sourceMp3);
 
-                // Also add OGG source (swap .mp3 extension for .ogg as convention)
+                // Also add OGG (optional – change extension if you have .ogg)
                 const oggSrc = track.src.replace(/\.mp3$/i, '.ogg');
                 const sourceOgg = document.createElement('source');
                 sourceOgg.src = oggSrc;
@@ -1309,7 +1305,7 @@
                 timeCurrent.textContent = '0:00';
                 timeDuration.textContent = '0:00';
 
-                // Auto-play when loading a new track
+                // Auto-play
                 playAudio();
             }
 
@@ -1318,7 +1314,6 @@
             // ============================================
             function playAudio() {
                 if (currentTrackIndex < 0) {
-                    // No track selected — load the first one
                     loadTrack(0);
                     return;
                 }
@@ -1328,9 +1323,10 @@
                         setPlayingState(true);
                     }).catch((err) => {
                         console.warn('Audio playback failed:', err.message);
-                        // Still toggle UI for demo purposes
+                        console.warn('Attempted to load:', trackData[currentTrackIndex].src);
+                        console.warn('Check that the file exists and the path is correct.');
+                        // Fallback to demo simulation if file missing
                         setPlayingState(true);
-                        // If no real audio file exists, simulate progress for demo
                         simulateDemoProgress();
                     });
                 }
@@ -1363,16 +1359,15 @@
             }
 
             // ============================================
-            // DEMO PROGRESS SIMULATION (when no real audio)
+            // DEMO PROGRESS (fallback if audio file missing)
             // ============================================
             let demoInterval = null;
 
             function simulateDemoProgress() {
-                // Only simulate if audio duration is not available (no real file)
                 if (audio.duration && isFinite(audio.duration)) return;
                 clearInterval(demoInterval);
                 let fakeTime = 0;
-                const fakeDuration = 180; // 3 minutes demo
+                const fakeDuration = 180;
                 timeDuration.textContent = formatTime(fakeDuration);
                 demoInterval = setInterval(() => {
                     if (!isPlaying) {
@@ -1382,7 +1377,6 @@
                     fakeTime += 0.25;
                     if (fakeTime >= fakeDuration) {
                         fakeTime = 0;
-                        // Loop back or go to next
                         clearInterval(demoInterval);
                         simulateDemoProgress();
                     }
@@ -1398,7 +1392,7 @@
             }
 
             // ============================================
-            // NEXT / PREVIOUS TRACK
+            // NEXT / PREVIOUS
             // ============================================
             function nextTrack() {
                 stopDemoSimulation();
@@ -1415,7 +1409,7 @@
             }
 
             // ============================================
-            // UPDATE PROGRESS BAR FROM REAL AUDIO
+            // PROGRESS UPDATE
             // ============================================
             function updateProgress() {
                 if (audio.duration && isFinite(audio.duration)) {
@@ -1438,7 +1432,7 @@
             }
 
             // ============================================
-            // VOLUME & MUTE
+            // VOLUME
             // ============================================
             function setVolume(val) {
                 audio.volume = val;
@@ -1479,7 +1473,6 @@
                 timeCurrent.textContent = '0:00';
             });
             audio.addEventListener('ended', () => {
-                // Auto-advance to next track when current ends
                 stopDemoSimulation();
                 nextTrack();
             });
@@ -1488,13 +1481,14 @@
                 setPlayingState(true);
             });
             audio.addEventListener('pause', () => setPlayingState(false));
-            audio.addEventListener('error', () => {
-                console.warn('Audio file could not be loaded. Add your .mp3/.ogg files to the assets/audio/ folder.');
+            audio.addEventListener('error', (e) => {
+                console.error('Audio error:', e);
+                console.warn('File not found or unsupported. Check the src path in trackData.');
                 setPlayingState(false);
                 stopDemoSimulation();
             });
 
-            // Play overlay buttons on release cards
+            // Play overlay buttons
             allPlayOverlays.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1509,12 +1503,10 @@
 
             // Keyboard shortcuts
             document.addEventListener('keydown', function(e) {
-                // Space bar to toggle play (only if not typing in an input)
                 if (e.code === 'Space' && document.activeElement === document.body) {
                     e.preventDefault();
                     togglePlay();
                 }
-                // Arrow keys for prev/next
                 if (e.code === 'ArrowRight' && e.shiftKey) {
                     e.preventDefault();
                     nextTrack();
@@ -1526,14 +1518,13 @@
             });
 
             // ============================================
-            // MOBILE MENU TOGGLE
+            // MOBILE MENU
             // ============================================
             menuToggle.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navLinks.classList.toggle('open');
             });
 
-            // Close mobile menu when a link is clicked
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     menuToggle.classList.remove('active');
@@ -1542,7 +1533,7 @@
             });
 
             // ============================================
-            // NAVBAR SCROLL EFFECT
+            // NAVBAR SCROLL
             // ============================================
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 30) {
@@ -1551,7 +1542,6 @@
                     navbar.classList.remove('scrolled');
                 }
 
-                // Update active nav link based on scroll position
                 const sections = ['home', 'releases', 'other-media', 'socials'];
                 let currentSection = 'home';
                 sections.forEach(id => {
@@ -1572,7 +1562,7 @@
             });
 
             // ============================================
-            // SET FOOTER YEAR
+            // FOOTER YEAR
             // ============================================
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -1580,17 +1570,19 @@
             // INITIAL SETUP
             // ============================================
             audio.volume = parseFloat(volumeSlider.value);
-            // Pre-load first track info (don't autoplay)
-            playerTitle.textContent = trackData[0].title;
-            playerArtist.textContent = trackData[0].artist;
-            playerThumb.textContent = trackData[0].thumb;
-            currentTrackIndex = 0;
+            // Pre-load first track info but don't autoplay
+            if (trackData.length > 0) {
+                playerTitle.textContent = trackData[0].title;
+                playerArtist.textContent = trackData[0].artist;
+                playerThumb.textContent = trackData[0].thumb;
+                currentTrackIndex = 0;
+            }
 
             console.log('🎵 DeepBlue Audio Player ready!');
-            console.log('📁 Add your .mp3 and .ogg files to: assets/audio/');
-            console.log('✏️  Edit the trackData array in the JavaScript to match your files.');
-            console.log('🖱️  Click the ▶ button on any release card to load a track, or use the bottom player controls.');
-            console.log('⌨️  Keyboard shortcuts: Space = Play/Pause | Shift+→ = Next | Shift+← = Previous');
+            console.log('📁 Make sure your audio files are in the "assets/audio/" folder.');
+            console.log('✏️  Update the "src" paths in the trackData array above.');
+            console.log('🖱️  Click the ▶ button on any release card.');
+            console.log('⌨️  Space = Play/Pause | Shift+→ = Next | Shift+← = Previous');
         })();
     </script>
 </body>
