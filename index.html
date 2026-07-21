@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DeepBlue Audio — Releases</title>
 
     <!-- Google Fonts: Inter for clean modern typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
         /* ============================================
              CSS CUSTOM PROPERTIES (VARIABLES)
-             Easy to edit theme colors here!
              ============================================ */
         :root {
             --bg-deepest: #060f1f;
@@ -47,9 +46,6 @@
             --navbar-height: 64px;
         }
 
-        /* ============================================
-             GLOBAL RESET & BASE STYLES
-             ============================================ */
         *,
         *::before,
         *::after {
@@ -70,13 +66,11 @@
             line-height: 1.6;
             min-height: 100vh;
             padding-bottom: calc(var(--player-height) + 32px);
-            /* space for sticky player */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
 
-        /* Subtle animated background gradient orbs */
         body::before {
             content: '';
             position: fixed;
@@ -111,34 +105,18 @@
 
         @keyframes floatOrb1 {
             0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(60px, -40px) scale(1.08);
-            }
-            50% {
-                transform: translate(-20px, -80px) scale(0.94);
-            }
-            75% {
-                transform: translate(-50px, -20px) scale(1.04);
-            }
+            100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(60px, -40px) scale(1.08); }
+            50% { transform: translate(-20px, -80px) scale(0.94); }
+            75% { transform: translate(-50px, -20px) scale(1.04); }
         }
 
         @keyframes floatOrb2 {
             0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-            30% {
-                transform: translate(-50px, 50px) scale(1.1);
-            }
-            60% {
-                transform: translate(30px, -30px) scale(0.92);
-            }
-            85% {
-                transform: translate(-20px, 60px) scale(1.05);
-            }
+            100% { transform: translate(0, 0) scale(1); }
+            30% { transform: translate(-50px, 50px) scale(1.1); }
+            60% { transform: translate(30px, -30px) scale(0.92); }
+            85% { transform: translate(-20px, 60px) scale(1.05); }
         }
 
         /* ============================================
@@ -157,7 +135,6 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 32px;
-            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         .navbar.scrolled {
@@ -178,9 +155,7 @@
             transition: color 0.2s ease;
         }
 
-        .navbar-logo:hover {
-            color: var(--accent-light);
-        }
+        .navbar-logo:hover { color: var(--accent-light); }
 
         .logo-dot {
             width: 10px;
@@ -194,12 +169,8 @@
 
         @keyframes pulseDot {
             0%,
-            100% {
-                box-shadow: 0 0 14px var(--accent-glow);
-            }
-            50% {
-                box-shadow: 0 0 28px var(--accent-glow), 0 0 50px rgba(59, 127, 255, 0.45);
-            }
+            100% { box-shadow: 0 0 14px var(--accent-glow); }
+            50% { box-shadow: 0 0 28px var(--accent-glow), 0 0 50px rgba(59, 127, 255, 0.45); }
         }
 
         .nav-links {
@@ -246,7 +217,6 @@
             transform: translateX(-50%) scaleX(1);
         }
 
-        /* Mobile menu toggle */
         .menu-toggle {
             display: none;
             background: none;
@@ -267,15 +237,9 @@
             transition: var(--transition-smooth);
         }
 
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         /* ============================================
              MAIN CONTENT WRAPPER
@@ -427,7 +391,6 @@
             gap: 24px;
         }
 
-        /* Release Card — entire card is a clickable link */
         .release-card {
             display: flex;
             flex-direction: column;
@@ -438,40 +401,21 @@
             color: inherit;
             border: 1px solid var(--border-card);
             transition: transform var(--transition-bounce), box-shadow var(--transition-smooth), border-color 0.3s ease;
-            position: relative;
             cursor: pointer;
             animation: fadeInUp 0.6s ease forwards;
             opacity: 0;
         }
 
-        .release-card:nth-child(1) {
-            animation-delay: 0.05s;
-        }
-        .release-card:nth-child(2) {
-            animation-delay: 0.12s;
-        }
-        .release-card:nth-child(3) {
-            animation-delay: 0.19s;
-        }
-        .release-card:nth-child(4) {
-            animation-delay: 0.26s;
-        }
-        .release-card:nth-child(5) {
-            animation-delay: 0.33s;
-        }
-        .release-card:nth-child(6) {
-            animation-delay: 0.40s;
-        }
+        .release-card:nth-child(1) { animation-delay: 0.05s; }
+        .release-card:nth-child(2) { animation-delay: 0.12s; }
+        .release-card:nth-child(3) { animation-delay: 0.19s; }
+        .release-card:nth-child(4) { animation-delay: 0.26s; }
+        .release-card:nth-child(5) { animation-delay: 0.33s; }
+        .release-card:nth-child(6) { animation-delay: 0.40s; }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .release-card:hover {
@@ -485,7 +429,7 @@
             outline-offset: 3px;
         }
 
-        /* Thumbnail area */
+        /* Thumbnail wrapper */
         .thumbnail-wrapper {
             position: relative;
             width: 100%;
@@ -497,6 +441,7 @@
             justify-content: center;
         }
 
+        /* Updated: The placeholder now supports both an icon fallback and real images */
         .thumbnail-placeholder {
             width: 100%;
             height: 100%;
@@ -512,6 +457,7 @@
             filter: brightness(1.1);
         }
 
+        /* Style for the text‑based icon (used when no image is present) */
         .thumbnail-icon {
             font-size: 3.5rem;
             opacity: 0.5;
@@ -523,6 +469,25 @@
         .release-card:hover .thumbnail-icon {
             opacity: 0.75;
             transform: scale(1.1);
+        }
+
+        /* Style for actual thumbnail images */
+        .thumbnail-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .release-card:hover .thumbnail-image {
+            transform: scale(1.03);
+        }
+
+        /* Hide the icon if an image is present (both inside the same container) */
+        .thumbnail-placeholder .thumbnail-icon:has(+ .thumbnail-image),
+        .thumbnail-placeholder .thumbnail-icon:has(~ .thumbnail-image) {
+            display: none;
         }
 
         /* Play button overlay on thumbnail */
@@ -561,9 +526,7 @@
             box-shadow: 0 6px 24px var(--accent-glow);
         }
 
-        .play-overlay:active {
-            transform: translateY(0) scale(0.94) !important;
-        }
+        .play-overlay:active { transform: translateY(0) scale(0.94) !important; }
 
         /* Card info section */
         .card-info {
@@ -604,17 +567,13 @@
             transition: gap 0.3s ease;
         }
 
-        .release-card:hover .card-link-indicator {
-            gap: 8px;
-        }
+        .release-card:hover .card-link-indicator { gap: 8px; }
 
         .card-link-arrow {
             transition: transform 0.3s ease;
             font-size: 0.9rem;
         }
-        .release-card:hover .card-link-arrow {
-            transform: translateX(3px);
-        }
+        .release-card:hover .card-link-arrow { transform: translateX(3px); }
 
         /* ============================================
              OTHER MEDIA SECTION
@@ -641,18 +600,10 @@
             opacity: 0;
         }
 
-        .media-card:nth-child(1) {
-            animation-delay: 0.15s;
-        }
-        .media-card:nth-child(2) {
-            animation-delay: 0.22s;
-        }
-        .media-card:nth-child(3) {
-            animation-delay: 0.29s;
-        }
-        .media-card:nth-child(4) {
-            animation-delay: 0.36s;
-        }
+        .media-card:nth-child(1) { animation-delay: 0.15s; }
+        .media-card:nth-child(2) { animation-delay: 0.22s; }
+        .media-card:nth-child(3) { animation-delay: 0.29s; }
+        .media-card:nth-child(4) { animation-delay: 0.36s; }
 
         .media-card:hover {
             transform: translateY(-5px);
@@ -671,10 +622,20 @@
             justify-content: center;
             font-size: 2rem;
             transition: background 0.3s ease;
+            overflow: hidden; /* ensures the image stays inside the rounded container */
         }
 
         .media-card:hover .media-thumb {
             background: #1c3558;
+        }
+
+        /* --- NEW: style for images inside .media-thumb --- */
+        .media-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* keeps the circle logo intact without cropping */
+            display: block;
+            border-radius: var(--radius-sm);
         }
 
         .media-info h3 {
@@ -742,9 +703,7 @@
             transition: background 0.3s ease;
         }
 
-        .social-link:hover .social-icon {
-            background: var(--accent-subtle);
-        }
+        .social-link:hover .social-icon { background: var(--accent-subtle); }
 
         /* ============================================
              STICKY AUDIO PLAYER (Bottom Bar)
@@ -768,11 +727,8 @@
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .audio-player-bar.player-hidden {
-            transform: translateY(100%);
-        }
+        .audio-player-bar.player-hidden { transform: translateY(100%); }
 
-        /* Progress bar thin line at top of player */
         .player-progress-container {
             position: absolute;
             top: 0;
@@ -785,9 +741,7 @@
             z-index: 2;
         }
 
-        .player-progress-container:hover {
-            height: 7px;
-        }
+        .player-progress-container:hover { height: 7px; }
 
         .player-progress-fill {
             height: 100%;
@@ -813,11 +767,8 @@
             transition: opacity 0.2s ease;
         }
 
-        .player-progress-container:hover .player-progress-fill::after {
-            opacity: 1;
-        }
+        .player-progress-container:hover .player-progress-fill::after { opacity: 1; }
 
-        /* Player inner layout */
         .player-track-info {
             display: flex;
             align-items: center;
@@ -846,19 +797,11 @@
 
         @keyframes subtlePulse {
             0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(59, 127, 255, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 0 10px rgba(59, 127, 255, 0);
-            }
+            100% { box-shadow: 0 0 0 0 rgba(59, 127, 255, 0.3); }
+            50% { box-shadow: 0 0 0 10px rgba(59, 127, 255, 0); }
         }
 
-        .player-track-text {
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
+        .player-track-text { overflow: hidden; white-space: nowrap; }
         .player-track-title {
             font-weight: 600;
             font-size: 0.9rem;
@@ -867,7 +810,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-
         .player-track-artist {
             font-size: 0.78rem;
             color: var(--text-secondary);
@@ -875,7 +817,6 @@
             text-overflow: ellipsis;
         }
 
-        /* Player controls */
         .player-controls {
             display: flex;
             align-items: center;
@@ -899,10 +840,7 @@
             flex-shrink: 0;
         }
 
-        .player-btn:hover {
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-        }
+        .player-btn:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
 
         .player-btn-play {
             width: 46px;
@@ -919,11 +857,8 @@
             transform: scale(1.06);
         }
 
-        .player-btn-play:active {
-            transform: scale(0.94);
-        }
+        .player-btn-play:active { transform: scale(0.94); }
 
-        /* Time display */
         .player-time {
             display: flex;
             align-items: center;
@@ -936,11 +871,8 @@
             letter-spacing: 0.02em;
         }
 
-        .player-time-divider {
-            color: var(--text-muted);
-        }
+        .player-time-divider { color: var(--text-muted); }
 
-        /* Volume control */
         .player-volume {
             display: flex;
             align-items: center;
@@ -958,7 +890,6 @@
             border-radius: 4px;
             outline: none;
             cursor: pointer;
-            transition: background 0.2s ease;
         }
 
         .player-volume-slider::-webkit-slider-thumb {
@@ -972,10 +903,7 @@
             transition: transform 0.2s ease;
         }
 
-        .player-volume-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-
+        .player-volume-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
         .player-volume-slider::-moz-range-thumb {
             width: 14px;
             height: 14px;
@@ -985,16 +913,8 @@
             border: none;
         }
 
-        /* ============================================
-             HIDDEN NATIVE AUDIO ELEMENT
-             ============================================ */
-        .hidden-audio {
-            display: none;
-        }
+        .hidden-audio { display: none; }
 
-        /* ============================================
-             FOOTER
-             ============================================ */
         .site-footer {
             text-align: center;
             padding: 30px 20px 20px;
@@ -1004,42 +924,22 @@
             z-index: 1;
         }
 
-        .site-footer a {
-            color: var(--accent-light);
-            text-decoration: none;
-        }
-        .site-footer a:hover {
-            text-decoration: underline;
-        }
+        .site-footer a { color: var(--accent-light); text-decoration: none; }
+        .site-footer a:hover { text-decoration: underline; }
 
         /* ============================================
              RESPONSIVE BREAKPOINTS
              ============================================ */
         @media (max-width: 1024px) {
-            .releases-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 18px;
-            }
-            .other-media-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
-            .player-volume {
-                margin-left: 8px;
-            }
-            .player-volume-slider {
-                width: 50px;
-            }
-            .player-track-info {
-                min-width: 120px;
-                max-width: 180px;
-            }
+            .releases-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+            .other-media-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .player-volume { margin-left: 8px; }
+            .player-volume-slider { width: 50px; }
+            .player-track-info { min-width: 120px; max-width: 180px; }
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0 16px;
-            }
+            .navbar { padding: 0 16px; }
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -1056,108 +956,35 @@
                 z-index: 99;
                 border-left: 1px solid var(--border-subtle);
             }
-            .nav-links.open {
-                right: 0;
-            }
-            .nav-links a {
-                display: block;
-                padding: 14px 20px;
-                font-size: 1.05rem;
-                border-radius: var(--radius-sm);
-            }
-            .menu-toggle {
-                display: flex;
-            }
-            .releases-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 14px;
-            }
-            .other-media-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero {
-                padding: 40px 16px 24px;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .audio-player-bar {
-                padding: 0 12px;
-                gap: 8px;
-                height: 70px;
-            }
-            .player-track-info {
-                min-width: 80px;
-                max-width: 130px;
-                gap: 8px;
-            }
-            .player-thumb {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
-            }
-            .player-track-title {
-                font-size: 0.78rem;
-            }
-            .player-track-artist {
-                font-size: 0.7rem;
-            }
-            .player-volume {
-                display: none;
-            }
-            .player-time {
-                font-size: 0.7rem;
-                gap: 3px;
-            }
-            .player-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 1rem;
-            }
-            .player-btn-play {
-                width: 38px;
-                height: 38px;
-                font-size: 1.1rem;
-            }
-            .player-controls {
-                gap: 6px;
-            }
+            .nav-links.open { right: 0; }
+            .nav-links a { display: block; padding: 14px 20px; font-size: 1.05rem; border-radius: var(--radius-sm); }
+            .menu-toggle { display: flex; }
+            .releases-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .other-media-grid { grid-template-columns: 1fr; }
+            .hero { padding: 40px 16px 24px; }
+            .hero h1 { font-size: 1.8rem; }
+            .audio-player-bar { padding: 0 12px; gap: 8px; height: 70px; }
+            .player-track-info { min-width: 80px; max-width: 130px; gap: 8px; }
+            .player-thumb { width: 38px; height: 38px; font-size: 1rem; }
+            .player-track-title { font-size: 0.78rem; }
+            .player-track-artist { font-size: 0.7rem; }
+            .player-volume { display: none; }
+            .player-time { font-size: 0.7rem; gap: 3px; }
+            .player-btn { width: 32px; height: 32px; font-size: 1rem; }
+            .player-btn-play { width: 38px; height: 38px; font-size: 1.1rem; }
+            .player-controls { gap: 6px; }
         }
 
         @media (max-width: 480px) {
-            .releases-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .card-info {
-                padding: 14px 16px 16px;
-            }
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-            .hero p {
-                font-size: 0.9rem;
-            }
-            .socials-row {
-                gap: 10px;
-            }
-            .social-link {
-                padding: 10px 16px;
-                font-size: 0.85rem;
-                gap: 6px;
-            }
-            .social-icon {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-            .player-track-text {
-                display: none;
-            }
-            .player-track-info {
-                min-width: auto;
-                max-width: none;
-            }
+            .releases-grid { grid-template-columns: 1fr; gap: 16px; }
+            .card-info { padding: 14px 16px 16px; }
+            .hero h1 { font-size: 1.5rem; }
+            .hero p { font-size: 0.9rem; }
+            .socials-row { gap: 10px; }
+            .social-link { padding: 10px 16px; font-size: 0.85rem; gap: 6px; }
+            .social-icon { width: 30px; height: 30px; font-size: 0.9rem; }
+            .player-track-text { display: none; }
+            .player-track-info { min-width: auto; max-width: none; }
         }
     </style>
 </head>
@@ -1190,12 +1017,12 @@
 
         <!-- HERO SECTION -->
         <section class="hero">
-            <span class="hero-badge">🎵 Audio Platform</span>
-            <h1>Discover &amp; Listen</h1>
-            <p>Your collection of releases, podcasts, and audio media — all in one place. Click any release to explore or hit play for a preview.</p>
+            <span class="hero-badge">Early Preview</span>
+            <h1>SBPebbles</h1>
+            <p>Hope you enjoy.</p>
             <div class="hero-cta">
-                <a href="#releases" class="btn btn-primary">🎧 Browse Releases</a>
-                <a href="#other-media" class="btn btn-outline">📀 Other Media</a>
+                <a href="#releases" class="btn btn-primary">Browse Releases</a>
+                <a href="#other-media" class="btn btn-outline">Other Media</a>
             </div>
         </section>
 
@@ -1212,16 +1039,15 @@
                 <a href="#placeholder-link-release-1" class="release-card" data-track-index="0">
                     <div class="thumbnail-wrapper">
                         <div class="thumbnail-placeholder">
-                            <span class="thumbnail-icon">🎵</span>
+                            <img src="https://i.imgur.com/nStjKXr.jpeg" alt="White Raspberry Smarties cover art" class="thumbnail-image" />
                         </div>
-                        <!-- Play button overlay — loads track into player without navigating -->
-                        <button class="play-overlay" data-track-index="0" aria-label="Play preview" title="Play preview">
+                        <button class="play-overlay" data-track-index="0" aria-label="Play preview" title="Play">
                             ▶
                         </button>
                     </div>
                     <div class="card-info">
-                        <h3>Midnight Waves</h3>
-                        <p class="card-desc">A deep and atmospheric journey through ambient soundscapes and gentle rhythms.</p>
+                        <h3>White Raspberry Smarties</h3>
+                        <p class="card-desc">Emotional Guitar - Acoustic Style</p>
                         <span class="card-link-indicator">
                             View Release <span class="card-link-arrow">→</span>
                         </span>
@@ -1229,18 +1055,18 @@
                 </a>
 
                 <!-- Release Card 2 -->
-                <a href="#placeholder-link-release-2" class="release-card" data-track-index="1">
+                <a href="#placeholder-link-release-1" class="release-card" data-track-index="0">
                     <div class="thumbnail-wrapper">
                         <div class="thumbnail-placeholder">
-                            <span class="thumbnail-icon">🎸</span>
+                            <img src="" alt="Blue Raspberry Smarties cover art" class="thumbnail-image" />
                         </div>
-                        <button class="play-overlay" data-track-index="1" aria-label="Play preview" title="Play preview">
+                        <button class="play-overlay" data-track-index="0" aria-label="Play preview" title="Play">
                             ▶
                         </button>
                     </div>
                     <div class="card-info">
-                        <h3>Electric Horizon</h3>
-                        <p class="card-desc">Upbeat indie rock with shimmering guitars and driving percussion.</p>
+                        <h3>Blue Raspberry Smarties</h3>
+                        <p class="card-desc">Emotional Guitar - Acoustic Style</p>
                         <span class="card-link-indicator">
                             View Release <span class="card-link-arrow">→</span>
                         </span>
@@ -1248,75 +1074,18 @@
                 </a>
 
                 <!-- Release Card 3 -->
-                <a href="#placeholder-link-release-3" class="release-card" data-track-index="2">
+                <a href="#placeholder-link-release-1" class="release-card" data-track-index="0">
                     <div class="thumbnail-wrapper">
                         <div class="thumbnail-placeholder">
-                            <span class="thumbnail-icon">🎹</span>
+                            <img src="https://i.imgur.com/Er3T28i.jpeg" alt="Blue Raspberry Lemonade cover art" class="thumbnail-image" />
                         </div>
-                        <button class="play-overlay" data-track-index="2" aria-label="Play preview" title="Play preview">
+                        <button class="play-overlay" data-track-index="0" aria-label="Play preview" title="Play">
                             ▶
                         </button>
                     </div>
                     <div class="card-info">
-                        <h3>Lo-Fi Dreams</h3>
-                        <p class="card-desc">Chill beats and warm keys — perfect for late-night study sessions.</p>
-                        <span class="card-link-indicator">
-                            View Release <span class="card-link-arrow">→</span>
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Release Card 4 -->
-                <a href="#placeholder-link-release-4" class="release-card" data-track-index="3">
-                    <div class="thumbnail-wrapper">
-                        <div class="thumbnail-placeholder">
-                            <span class="thumbnail-icon">🥁</span>
-                        </div>
-                        <button class="play-overlay" data-track-index="3" aria-label="Play preview" title="Play preview">
-                            ▶
-                        </button>
-                    </div>
-                    <div class="card-info">
-                        <h3>Pulse &amp; Rhythm</h3>
-                        <p class="card-desc">Percussive-heavy electronic EP with infectious grooves.</p>
-                        <span class="card-link-indicator">
-                            View Release <span class="card-link-arrow">→</span>
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Release Card 5 -->
-                <a href="#placeholder-link-release-5" class="release-card" data-track-index="4">
-                    <div class="thumbnail-wrapper">
-                        <div class="thumbnail-placeholder">
-                            <span class="thumbnail-icon">🎤</span>
-                        </div>
-                        <button class="play-overlay" data-track-index="4" aria-label="Play preview" title="Play preview">
-                            ▶
-                        </button>
-                    </div>
-                    <div class="card-info">
-                        <h3>Velvet Voice</h3>
-                        <p class="card-desc">Soulful vocal performances layered over lush, jazzy instrumentation.</p>
-                        <span class="card-link-indicator">
-                            View Release <span class="card-link-arrow">→</span>
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Release Card 6 -->
-                <a href="#placeholder-link-release-6" class="release-card" data-track-index="5">
-                    <div class="thumbnail-wrapper">
-                        <div class="thumbnail-placeholder">
-                            <span class="thumbnail-icon">🔊</span>
-                        </div>
-                        <button class="play-overlay" data-track-index="5" aria-label="Play preview" title="Play preview">
-                            ▶
-                        </button>
-                    </div>
-                    <div class="card-info">
-                        <h3>Bass Odyssey</h3>
-                        <p class="card-desc">Deep bass explorations and experimental electronic textures.</p>
+                        <h3>Blue Raspberry Smarties</h3>
+                        <p class="card-desc">Emotional Guitar - Acoustic Style</p>
                         <span class="card-link-indicator">
                             View Release <span class="card-link-arrow">→</span>
                         </span>
@@ -1335,43 +1104,27 @@
             </div>
             <div class="other-media-grid">
 
-                <!-- Media Card 1 -->
-                <a href="#placeholder-link-media-1" class="media-card">
-                    <div class="media-thumb">🎙️</div>
-                    <div class="media-info">
-                        <h3>Podcast: Behind the Sound</h3>
-                        <p>Interviews with producers and artists about their creative process.</p>
-                        <span class="media-link">Listen Now →</span>
+                <!-- Media Card 1: YouTube -->
+                <a href="https://www.youtube.com/ninow" class="media-card">
+                    <div class="media-thumb">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/YouTube_social_white_square_%282024%29.svg/120px-YouTube_social_white_square_%282024%29.svg.png" alt="YouTube" />
                     </div>
-                </a>
-
-                <!-- Media Card 2 -->
-                <a href="#placeholder-link-media-2" class="media-card">
-                    <div class="media-thumb">🎬</div>
                     <div class="media-info">
-                        <h3>Video: Studio Sessions</h3>
-                        <p>Exclusive live recording footage from our studio vault.</p>
+                        <h3>YouTube</h3>
+                        <p>Check out my YouTube page where I will post streams and videos of me creating my instrumentals.</p>
                         <span class="media-link">Watch Now →</span>
                     </div>
                 </a>
 
-                <!-- Media Card 3 -->
-                <a href="#placeholder-link-media-3" class="media-card">
-                    <div class="media-thumb">📻</div>
-                    <div class="media-info">
-                        <h3>Radio Mix Series</h3>
-                        <p>Curated DJ mixes spanning genres from around the world.</p>
-                        <span class="media-link">Tune In →</span>
+                <!-- Media Card 2: Bandcamp -->
+                <a href="https://kampebbles.bandcamp.com" class="media-card">
+                    <div class="media-thumb">
+                        <img src="https://s4.bcbits.com/vite/corp-pages/client/v1/en/assets/bandcamp-button-square-green-512-ChnBoAwE.png" alt="Bandcamp" />
                     </div>
-                </a>
-
-                <!-- Media Card 4 -->
-                <a href="#placeholder-link-media-4" class="media-card">
-                    <div class="media-thumb">📝</div>
                     <div class="media-info">
-                        <h3>Blog: Audio Insights</h3>
-                        <p>Articles on music production, gear reviews, and industry trends.</p>
-                        <span class="media-link">Read More →</span>
+                        <h3>BandCamp</h3>
+                        <p>Primary source to listen to my music! Tracks will get uploaded quicker to this platform. You may also purchase tracks to support me on there if you wish.</p>
+                        <span class="media-link">Listen Now →</span>
                     </div>
                 </a>
 
@@ -1388,12 +1141,6 @@
             <div class="socials-row">
                 <a href="#placeholder-link-instagram" class="social-link" target="_blank" rel="noopener">
                     <span class="social-icon">📷</span> Instagram
-                </a>
-                <a href="#placeholder-link-twitter" class="social-link" target="_blank" rel="noopener">
-                    <span class="social-icon">🐦</span> X / Twitter
-                </a>
-                <a href="#placeholder-link-youtube" class="social-link" target="_blank" rel="noopener">
-                    <span class="social-icon">▶</span> YouTube
                 </a>
                 <a href="#placeholder-link-spotify" class="social-link" target="_blank" rel="noopener">
                     <span class="social-icon">🟢</span> Spotify
@@ -1445,7 +1192,7 @@
             <button class="player-btn" id="btnMute" title="Mute / Unmute" aria-label="Toggle mute" style="font-size:1rem;width:30px;height:30px;">
                 🔊
             </button>
-            <input type="range" class="player-volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" title="Volume" aria-label="Volume">
+            <input type="range" class="player-volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" title="Volume" aria-label="Volume" />
         </div>
     </div>
 
@@ -1456,9 +1203,8 @@
         Replace the src paths below with your own .mp3 and .ogg files.
         The browser will pick the first format it supports.
         -->
-        <source src="assets/audio/track1.mp3" type="audio/mpeg">
-        <source src="assets/audio/track1.ogg" type="audio/ogg">
-        <!-- Fallback message if browser doesn't support audio -->
+        <source src="assets/audio/track1.mp3" type="audio/mpeg" />
+        <source src="assets/audio/track1.ogg" type="audio/ogg" />
         Your browser does not support the audio element.
     </audio>
 
@@ -1466,7 +1212,7 @@
     FOOTER
     ============================================ -->
     <footer class="site-footer">
-        <p>&copy; <span id="currentYear"></span> DeepBlue Audio. Built with ❤️ — <a href="#home">Back to top</a></p>
+        <p>&copy; <span id="currentYear"></span> Kam Pebbles — <a href="#home">Back to top</a></p>
     </footer>
 
     <!-- ============================================
@@ -1501,30 +1247,18 @@
             // TRACK DATA (PLACEHOLDER — EDIT THESE!)
             // ============================================
             const trackData = [
-                { title: 'Midnight Waves',
-                    artist: 'Ambient Collective',
-                    src: 'assets/audio/track1.mp3',
-                    thumb: '🌊' },
-                { title: 'Electric Horizon',
-                    artist: 'Indie Lights',
-                    src: 'assets/audio/track2.mp3',
-                    thumb: '🎸' },
-                { title: 'Lo-Fi Dreams',
-                    artist: 'Chill Beats Co.',
+                { title: 'White Raspberry Smarties',
+                    artist: 'SBPebbles',
+                    src: 'assets/audio/white_raspberry_smarties.mp3',
+                    thumb: 'WRS' },
+                { title: 'Blue-Raspberry Smarties',
+                    artist: 'SBPebbles',
+                    src: 'assets/audio/blue_raz_smarties.mp3',
+                    thumb: 'BRS' },
+                { title: 'Blue-Raspberry Lemonade',
+                    artist: 'SBPebbles',
                     src: 'assets/audio/track3.mp3',
-                    thumb: '🎹' },
-                { title: 'Pulse & Rhythm',
-                    artist: 'ElectroPulse',
-                    src: 'assets/audio/track4.mp3',
-                    thumb: '🥁' },
-                { title: 'Velvet Voice',
-                    artist: 'Soulful Sounds',
-                    src: 'assets/audio/track5.mp3',
-                    thumb: '🎤' },
-                { title: 'Bass Odyssey',
-                    artist: 'Deep Frequency',
-                    src: 'assets/audio/track6.mp3',
-                    thumb: '🔊' },
+                    thumb: 'BRL' },
             ];
 
             let currentTrackIndex = -1;
