@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Primary Meta Tags -->
-<title>SBPebbles Music Hub</title>
-<meta name="title" content="Kam Pebbles Music Hub" />
-<meta name="description" content="This is the home/hub of my released music! I will be posting as much as I can here. You can also find all of my music socials here. " />
+    <!-- Primary Meta Tags -->
+    <title>SBPebbles Music Hub</title>
+    <meta name="title" content="Kam Pebbles Music Hub" />
+    <meta name="description" content="This is the home/hub of my released music! I will be posting as much as I can here. You can also find all of my music socials here." />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://music.sbpebbles.online" />
-<meta property="og:title" content="SBPebbles Music Hub" />
-<meta property="og:description" content="This is the home/hub of my released music! I will be posting as much as I can here. You can also find all of my music socials here. " />
-<meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://music.sbpebbles.online" />
+    <meta property="og:title" content="SBPebbles Music Hub" />
+    <meta property="og:description" content="This is the home/hub of my released music! I will be posting as much as I can here. You can also find all of my music socials here." />
+    <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
 
-<!-- X (Twitter) -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://music.sbpebbles.online" />
-<meta property="twitter:title" content="SBPebbles Music Hub" />
-<meta property="twitter:description" content="This is the home/hub of my released music! I will be posting as much as I can here. You can also find all of my music socials here. " />
-<meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://music.sbpebbles.online" />
+    <meta property="twitter:title" content="SBPebbles Music Hub" />
+    <meta property="twitter:description" content="This is the home/hub of my released music! I will be posting as much as I can here. You can also find all of my music socials here." />
+    <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
 
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
@@ -47,10 +47,83 @@
             background-image: radial-gradient(circle at 20% 30%, #1e1a1f 0%, #0b0a0c 80%);
         }
 
+        /* ─── Floating Navigation ─── */
+        .floating-nav {
+            position: fixed;
+            top: 1.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem;
+            background: rgba(18, 16, 19, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 60px;
+            border: 1px solid rgba(255, 215, 175, 0.07);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 175, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #a8988a;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+
+        .floating-nav .nav-btn i {
+            font-size: 0.9rem;
+            transition: transform 0.25s ease;
+        }
+
+        .floating-nav .nav-btn:hover {
+            color: #f0ece6;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .floating-nav .nav-btn:hover i {
+            transform: scale(1.08);
+        }
+
+        .floating-nav .nav-btn.active {
+            color: #0b0a0c;
+            background: linear-gradient(135deg, #f5b58a, #e0946a);
+            box-shadow: 0 4px 16px rgba(245, 181, 138, 0.25);
+        }
+
+        .floating-nav .nav-btn.active i {
+            color: #0b0a0c;
+        }
+
+        .floating-nav .nav-btn.active:hover {
+            box-shadow: 0 6px 24px rgba(245, 181, 138, 0.35);
+            transform: scale(1.02);
+        }
+
+        .floating-nav .nav-btn:active {
+            transform: scale(0.95);
+        }
+
         /* ─── Main Card ─── */
         .hub {
             max-width: 1000px;
             width: 100%;
+            margin-top: 4.5rem;
             background: rgba(18, 16, 19, 0.85);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
@@ -60,7 +133,7 @@
             transition: all 0.2s ease;
         }
 
-        /* ─── Header ─── */
+        /* ─── Header (common) ─── */
         .hub-header {
             display: flex;
             flex-wrap: wrap;
@@ -149,7 +222,6 @@
             transform: scale(0.92);
         }
 
-        /* individual brand colours on hover (subtle) */
         .social-btn.youtube:hover {
             border-color: #ff0000;
             box-shadow: 0 0 24px rgba(255, 0, 0, 0.12);
@@ -161,10 +233,6 @@
         .social-btn.spotify:hover {
             border-color: #1db954;
             box-shadow: 0 0 24px rgba(29, 185, 84, 0.12);
-        }
-        .social-btn.tidal:hover {
-            border-color: #000000;
-            box-shadow: 0 0 24px rgba(255, 255, 255, 0.08);
         }
         .social-btn.tiktok:hover {
             border-color: #00f2ea;
@@ -191,6 +259,40 @@
         .tagline i {
             color: #f5b58a;
             font-size: 0.75rem;
+        }
+
+        /* ─── Page Sections ─── */
+        .page-section {
+            display: block;
+            opacity: 1;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            transform: translateY(0);
+        }
+
+        .page-section.hidden {
+            display: none; /* for accessibility, but we use opacity for smoothness */
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        .page-section.fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ─── Now Playing (mini) ─── */
@@ -227,14 +329,13 @@
             font-style: italic;
         }
 
-        /* ─── Player Card ─── */
+        /* ─── Player ─── */
         .player-section {
             display: flex;
             flex-direction: column;
             gap: 1.8rem;
         }
 
-        /* top row: cover + controls */
         .player-top {
             display: flex;
             flex-wrap: wrap;
@@ -584,7 +685,188 @@
             color: #f5b58a;
         }
 
-        /* ─── Footer Love ─── */
+        /* ─── Announcements ─── */
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #f0ece6;
+        }
+
+        .page-header h2 i {
+            color: #f5b58a;
+            margin-right: 0.6rem;
+        }
+
+        .page-header .count {
+            font-size: 0.75rem;
+            color: #6a5f55;
+            background: rgba(255, 215, 175, 0.06);
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+        }
+
+        .announcements-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .announcement-card {
+            background: rgba(255, 215, 175, 0.03);
+            border: 1px solid rgba(255, 215, 175, 0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .announcement-card:hover {
+            background: rgba(255, 215, 175, 0.06);
+            border-color: rgba(255, 215, 175, 0.1);
+        }
+
+        .announcement-card.expanded {
+            background: rgba(255, 215, 175, 0.07);
+            border-color: rgba(245, 181, 138, 0.2);
+        }
+
+        .card-summary {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 0.8rem 1.2rem;
+        }
+
+        .card-summary img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #1e1a1f;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-summary .info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .card-summary .info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f0ece6;
+        }
+
+        .card-summary .info p {
+            font-size: 0.85rem;
+            color: #a8988a;
+        }
+
+        .card-summary .badge {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            background: linear-gradient(135deg, #f5b58a, #e0946a);
+            color: #0b0a0c;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            flex-shrink: 0;
+        }
+
+        .card-summary .expand-icon {
+            color: #6a5f55;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 0.2rem;
+        }
+
+        .announcement-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .card-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            padding: 0 1.2rem;
+        }
+
+        .announcement-card.expanded .card-details {
+            max-height: 400px;
+            opacity: 1;
+            padding: 0 1.2rem 1.2rem 1.2rem;
+        }
+
+        .card-details .detail-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.4rem 0;
+            border-top: 1px solid rgba(255, 215, 175, 0.05);
+        }
+
+        .card-details .detail-row:first-child {
+            border-top: none;
+        }
+
+        .card-details .detail-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6a5f55;
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+
+        .card-details .detail-value {
+            font-size: 0.9rem;
+            color: #f0ece6;
+            line-height: 1.5;
+        }
+
+        .card-details .detail-value a {
+            color: #f5b58a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card-details .detail-value a:hover {
+            color: #e0946a;
+            text-decoration: underline;
+        }
+
+        .card-details .detail-value .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: rgba(245, 181, 138, 0.12);
+            color: #f5b58a;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            margin-right: 0.3rem;
+        }
+
+        /* ─── Spacer ─── */
+        .section-spacer {
+            height: 2rem;
+            width: 100%;
+        }
+
+        /* ─── Footer ─── */
         .hub-footer {
             margin-top: 2.2rem;
             text-align: center;
@@ -600,108 +882,72 @@
             gap: 0.5rem 1.2rem;
         }
 
-        .hub-footer .heart {
-            color: #f06a6a;
-            display: inline-block;
-            animation: pulse-heart 1.8s ease-in-out infinite;
-            font-size: 0.9rem;
-        }
-
-        .hub-footer .love-text {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .hub-footer .love-text i {
-            color: #f5b58a;
-            font-size: 0.75rem;
-        }
-
-        .hub-footer .distro-badge {
-            background: rgba(255, 215, 175, 0.06);
-            padding: 0.2rem 0.9rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            color: #a8988a;
-            border: 1px solid rgba(255, 215, 175, 0.05);
-        }
-
-        @keyframes pulse-heart {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-
         /* ─── Responsive ─── */
         @media (max-width: 720px) {
+            .floating-nav {
+                top: 0.8rem;
+                padding: 0.35rem;
+                gap: 0.25rem;
+                border-radius: 40px;
+            }
+            .floating-nav .nav-btn {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.75rem;
+                gap: 0.35rem;
+            }
+            .floating-nav .nav-btn i {
+                font-size: 0.75rem;
+            }
             .hub {
                 padding: 1.8rem 1.2rem;
                 border-radius: 2rem;
+                margin-top: 4rem;
             }
-
             .player-top {
                 flex-direction: column;
                 align-items: center;
                 gap: 1.2rem;
             }
-
             .cover-wrapper {
                 flex: 0 0 160px;
                 width: 160px;
                 height: 160px;
             }
-
             .controls-col {
                 width: 100%;
                 min-width: unset;
             }
-
             .track-info .track-name {
                 font-size: 1.25rem;
             }
-
             .now-playing-strip {
                 width: 100%;
                 justify-content: center;
             }
-
             .brand h1 {
                 font-size: 1.4rem;
             }
-
             .volume-wrap {
                 margin-left: 0;
             }
-
             .playback-controls {
                 flex-wrap: wrap;
                 justify-content: center;
             }
-
             .volume-slider {
                 width: 60px;
             }
-
             .playlist-item {
                 padding: 0.6rem 0.7rem;
                 gap: 0.6rem;
             }
-
             .playlist-item .pl-title {
                 font-size: 0.85rem;
             }
-
             .hub-footer {
                 flex-direction: column;
                 gap: 0.4rem;
             }
-
-            /* social buttons on mobile */
             .social-links {
                 gap: 0.3rem;
                 padding: 0;
@@ -709,64 +955,124 @@
                 order: 3;
                 margin-top: 0.25rem;
             }
-
             .social-links:hover {
                 gap: 0.5rem;
             }
-
             .social-btn {
                 width: 34px;
                 height: 34px;
                 font-size: 0.85rem;
                 margin: 0 1px;
             }
-
             .social-btn:hover {
                 margin: 0 6px;
                 transform: scale(1.12);
             }
-
             .hub-header {
                 gap: 0.5rem;
+            }
+            .card-summary img {
+                width: 48px;
+                height: 48px;
+            }
+            .card-summary {
+                padding: 0.6rem 1rem;
+                gap: 0.8rem;
+            }
+            .card-details .detail-label {
+                min-width: 60px;
+                font-size: 0.65rem;
+            }
+            .card-details .detail-value {
+                font-size: 0.8rem;
+            }
+            .page-header h2 {
+                font-size: 1.1rem;
             }
         }
 
         @media (max-width: 430px) {
+            .floating-nav {
+                top: 0.6rem;
+                padding: 0.3rem;
+                border-radius: 32px;
+            }
+            .floating-nav .nav-btn {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.65rem;
+                gap: 0.25rem;
+            }
+            .floating-nav .nav-btn i {
+                font-size: 0.65rem;
+            }
             .hub {
                 padding: 1.2rem 0.8rem;
                 border-radius: 1.5rem;
+                margin-top: 3.5rem;
             }
-
             .brand h1 {
                 font-size: 1.2rem;
             }
-
             .cover-wrapper {
                 flex: 0 0 140px;
                 width: 140px;
                 height: 140px;
                 border-radius: 20px;
             }
-
             .play-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 1.3rem;
             }
-
             .tagline {
                 font-size: 0.7rem;
                 padding: 0.3rem 0.8rem;
             }
-
             .social-btn {
                 width: 30px;
                 height: 30px;
                 font-size: 0.75rem;
             }
-
             .social-btn i {
                 font-size: 0.8rem;
+            }
+            .card-summary {
+                padding: 0.5rem 0.7rem;
+                gap: 0.6rem;
+            }
+            .card-summary img {
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+            }
+            .card-summary .info h4 {
+                font-size: 0.85rem;
+            }
+            .card-summary .info p {
+                font-size: 0.75rem;
+            }
+            .card-summary .badge {
+                font-size: 0.5rem;
+                padding: 0.15rem 0.5rem;
+            }
+            .card-details {
+                padding: 0 0.7rem;
+            }
+            .announcement-card.expanded .card-details {
+                padding: 0 0.7rem 0.8rem 0.7rem;
+            }
+            .card-details .detail-label {
+                min-width: 50px;
+                font-size: 0.6rem;
+            }
+            .card-details .detail-value {
+                font-size: 0.75rem;
+            }
+            .page-header h2 {
+                font-size: 0.95rem;
+            }
+            .page-header .count {
+                font-size: 0.65rem;
             }
         }
 
@@ -775,13 +1081,6 @@
             display: none !important;
         }
 
-        .text-ellipsis {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* scrollbar */
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -795,147 +1094,26 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #5a4f4f;
         }
-
-/* ─── Floating Navigation ─── */
-.floating-nav {
-    position: fixed;
-    top: 1.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.45rem;
-    background: rgba(18, 16, 19, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 60px;
-    border: 1px solid rgba(255, 215, 175, 0.07);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 175, 0.04);
-    transition: all 0.3s ease;
-}
-
-.floating-nav .nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1.2rem;
-    border-radius: 40px;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #a8988a;
-    text-decoration: none;
-    transition: all 0.25s ease;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
-    letter-spacing: 0.01em;
-}
-
-.floating-nav .nav-btn i {
-    font-size: 0.9rem;
-    transition: transform 0.25s ease;
-}
-
-.floating-nav .nav-btn:hover {
-    color: #f0ece6;
-    background: rgba(255, 255, 255, 0.04);
-}
-
-.floating-nav .nav-btn:hover i {
-    transform: scale(1.08);
-}
-
-.floating-nav .nav-btn.active {
-    color: #0b0a0c;
-    background: linear-gradient(135deg, #f5b58a, #e0946a);
-    box-shadow: 0 4px 16px rgba(245, 181, 138, 0.25);
-}
-
-.floating-nav .nav-btn.active i {
-    color: #0b0a0c;
-}
-
-.floating-nav .nav-btn.active:hover {
-    box-shadow: 0 6px 24px rgba(245, 181, 138, 0.35);
-    transform: scale(1.02);
-}
-
-.floating-nav .nav-btn:active {
-    transform: scale(0.95);
-}
-
-/* ─── Adjust spacing for fixed nav ─── */
-.hub {
-    margin-top: 4.5rem;
-}
-
-/* ─── Responsive ─── */
-@media (max-width: 720px) {
-    .floating-nav {
-        top: 0.8rem;
-        padding: 0.35rem;
-        gap: 0.25rem;
-        border-radius: 40px;
-    }
-
-    .floating-nav .nav-btn {
-        padding: 0.4rem 0.9rem;
-        font-size: 0.75rem;
-        gap: 0.35rem;
-    }
-
-    .floating-nav .nav-btn i {
-        font-size: 0.75rem;
-    }
-
-    .hub {
-        margin-top: 4rem;
-    }
-}
-
-@media (max-width: 430px) {
-    .floating-nav {
-        top: 0.6rem;
-        padding: 0.3rem;
-        border-radius: 32px;
-    }
-
-    .floating-nav .nav-btn {
-        padding: 0.3rem 0.7rem;
-        font-size: 0.65rem;
-        gap: 0.25rem;
-    }
-
-    .floating-nav .nav-btn i {
-        font-size: 0.65rem;
-    }
-
-    .hub {
-        margin-top: 3.5rem;
-    }
-}
     </style>
 </head>
 
 <body>
-<!-- ─── FLOATING NAVIGATION ─── -->
+
+    <!-- ─── FLOATING NAVIGATION ─── -->
     <nav class="floating-nav" aria-label="Main navigation">
-        <a href="index.html" class="nav-btn" data-page="hub">
+        <button class="nav-btn active" data-page="hub">
             <i class="fas fa-compact-disc"></i>
             <span>Hub</span>
-        </a>
-        <a href="announcements.html" class="nav-btn active" data-page="announcements">
+        </button>
+        <button class="nav-btn" data-page="announcements">
             <i class="fas fa-bullhorn"></i>
             <span>Announcements</span>
-        </a>
+        </button>
     </nav>
+
     <div class="hub" role="main">
 
-        <!-- ─── HEADER ─── -->
+        <!-- ─── HEADER (common) ─── -->
         <header class="hub-header">
             <div class="brand">
                 <span class="brand-icon"><i class="fas fa-compact-disc"></i></span>
@@ -944,515 +1122,639 @@
 
             <!-- ─── SOCIAL LINKS ─── -->
             <div class="social-links" aria-label="Social media links">
-                <a href="https://music.youtube.com/channel/UCeQVW-kjGwlDklf77UMk94g" target="_blank" rel="noopener noreferrer"
-                class="social-btn youtube" aria-label="YouTube Music">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://kampebbles.bandcamp.com/community" target="_blank" rel="noopener noreferrer"
-            class="social-btn bandcamp" aria-label="Bandcamp">
-            <i class="fab fa-bandcamp"></i>
-        </a>
-        <a href="https://open.spotify.com/artist/0IwRW7bQ8mD6riQJckWVG4" target="_blank" rel="noopener noreferrer"
-        class="social-btn spotify" aria-label="Spotify">
-        <i class="fab fa-spotify"></i>
-    </a>
-
-<a href="https://www.tiktok.com/@kampebbles" target="_blank" rel="noopener noreferrer"
-class="social-btn tiktok" aria-label="TikTok">
-<i class="fab fa-tiktok"></i>
-</a>
-</div>
-
-<div class="tagline">
-    <i class="fas fa-headphones-simple"></i>
-    <span>Better with Headphones</span>
-</div>
-</header>
-
-<!-- ─── NOW PLAYING STRIP ─── -->
-<div class="now-playing-strip" id="nowPlayingStrip">
-    <span class="np-label"><i class="fas fa-play" style="font-size:0.6rem;margin-right:4px;"></i> now</span>
-
-    <span class="np-title" id="npTitle">Select a track</span>
-</div>
-<div style="height: 2rem; width: 100%;"></div>
-<!-- ─── PLAYER ─── -->
-<section class="player-section">
-
-    <div class="player-top">
-        <!-- Cover -->
-        <div class="cover-wrapper" id="coverWrapper">
-            <div class="cover-fallback" id="coverFallback">
-                <i class="fas fa-music"></i>
-            </div>
-            <img id="coverImg" src="" alt="Album cover" style="display:none;" />
-        </div>
-
-        <!-- Controls -->
-        <div class="controls-col">
-            <div class="track-info">
-                <span class="track-name" id="trackName">—</span>
-                <span class="track-artist" id="trackArtist">SBPebbles</span>
+                <a href="https://music.youtube.com/channel/UCeQVW-kjGwlDklf77UMk94g" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube Music">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://kampebbles.bandcamp.com/community" target="_blank" rel="noopener noreferrer" class="social-btn bandcamp" aria-label="Bandcamp">
+                    <i class="fab fa-bandcamp"></i>
+                </a>
+                <a href="https://open.spotify.com/artist/0IwRW7bQ8mD6riQJckWVG4" target="_blank" rel="noopener noreferrer" class="social-btn spotify" aria-label="Spotify">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="https://www.tiktok.com/@kampebbles" target="_blank" rel="noopener noreferrer" class="social-btn tiktok" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
             </div>
 
-            <div class="playback-controls">
-                <button class="secondary-btn" id="prevBtn" aria-label="Previous track">
-                    <i class="fas fa-backward-step"></i>
-                </button>
+            <div class="tagline">
+                <i class="fas fa-headphones-simple"></i>
+                <span>Better with Headphones</span>
+            </div>
+        </header>
 
-                <button class="play-btn" id="playBtn" aria-label="Play / Pause">
-                    <i class="fas fa-play" id="playIcon"></i>
-                </button>
-
-                <button class="secondary-btn" id="nextBtn" aria-label="Next track">
-                    <i class="fas fa-forward-step"></i>
-                </button>
-
-                <div class="volume-wrap">
-                    <i class="fas fa-volume-low" id="volIcon"></i>
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
-                </div>
+        <!-- ═══ HUB SECTION ═══ -->
+        <div id="hub-section" class="page-section fade-in">
+            <!-- ─── NOW PLAYING STRIP ─── -->
+            <div class="now-playing-strip" id="nowPlayingStrip">
+                <span class="np-label"><i class="fas fa-play" style="font-size:0.6rem;margin-right:4px;"></i> now</span>
+                <span class="np-title" id="npTitle">Select a track</span>
             </div>
 
-            <!-- Progress -->
-            <div class="progress-area">
-                <span class="time-label" id="currentTime">0:00</span>
-                <div class="progress-track" id="progressTrack" role="slider" aria-label="Seek">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <span class="time-label" id="totalTime">0:00</span>
-            </div>
-        </div>
-    </div>
+            <div class="section-spacer"></div>
 
-    <!-- ─── PLAYLIST ─── -->
-    <div class="playlist-section">
-        <div class="playlist-header">
-            <h3><i class="fas fa-list-ul" style="margin-right:8px;color:#6a5f55;"></i>Playlist</h3>
-            <span class="count" id="trackCount">3 tracks</span>
-        </div>
-        <div class="playlist" id="playlistContainer">
-            <!-- dynamically populated -->
-        </div>
-    </div>
-
-</section>
-
-<!-- ─── FOOTER ─── -->
-<footer class="hub-footer">
-    <span style="color:#4a3f3f;">© 2026 SBPebbles</span>
-</footer>
-
-</div>
-
-<!-- ─── AUDIO ELEMENT ─── -->
-<audio id="audioPlayer" preload="metadata"></audio>
-
-<script>
-    (function() {
-        'use strict';
-
-        // ─── TRACK DATA ───────────────────────────────────────────────
-        const TRACKS = [{
-            id: 0,
-            title: 'Lost You',
-            artist: 'Kam Pebbles',
-            src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3',
-            cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
-            duration: '3:28'
-        }, {
-            id: 1,
-            title: 'Blue-Raz Lemonade',
-            artist: 'Kam Pebbles',
-            src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3',
-            cover: 'https://i.imgur.com/RnwJuvu.jpeg',
-            duration: '2:17'
-        }, {
-            id: 2,
-            title: 'Empty Track',
-            artist: 'Kam Pebbles',
-            src: 'https://s3.amazonaws.com',
-            cover: '',
-            duration: '0:00'
-        }, {
-            id: 3,
-            title: 'Empty Track',
-            artist: 'Kam Pebbles',
-            src: 'https://s3.amazonaws.com',
-            cover: '',
-            duration: '0:00'
-        }, {
-            id: 4,
-            title: 'Empty Track',
-            artist: 'Kam Pebbles',
-            src: 'https://s3.amazonaws.com',
-            cover: '',
-            duration: '0:00'
-
-        }];
-
-        // ─── DOM REFS ────────────────────────────────────────────────
-        const audio = document.getElementById('audioPlayer');
-        const playBtn = document.getElementById('playBtn');
-        const playIcon = document.getElementById('playIcon');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const progressFill = document.getElementById('progressFill');
-        const progressTrack = document.getElementById('progressTrack');
-        const currentTimeLabel = document.getElementById('currentTime');
-        const totalTimeLabel = document.getElementById('totalTime');
-        const volumeSlider = document.getElementById('volumeSlider');
-        const volIcon = document.getElementById('volIcon');
-
-        const trackName = document.getElementById('trackName');
-        const trackArtist = document.getElementById('trackArtist');
-        const npTitle = document.getElementById('npTitle');
-        const coverImg = document.getElementById('coverImg');
-        const coverFallback = document.getElementById('coverFallback');
-        const coverWrapper = document.getElementById('coverWrapper');
-
-        const playlistContainer = document.getElementById('playlistContainer');
-        const trackCount = document.getElementById('trackCount');
-
-        // ─── STATE ────────────────────────────────────────────────────
-        let currentIndex = 0;
-        let isPlaying = false;
-        let isDragging = false;
-        let wasPlayingBeforeDrag = false;
-
-        // ─── INIT ─────────────────────────────────────────────────────
-        function init() {
-            renderPlaylist();
-            loadTrack(currentIndex);
-            setupEventListeners();
-            updateTrackCount();
-            // set initial volume
-            audio.volume = parseFloat(volumeSlider.value);
-            updateVolumeIcon();
-        }
-
-        // ─── RENDER PLAYLIST ────────────────────────────────────────
-        function renderPlaylist() {
-            playlistContainer.innerHTML = '';
-            TRACKS.forEach((track, idx) => {
-                const item = document.createElement('div');
-                item.className = `playlist-item ${idx === currentIndex ? 'active' : ''}`;
-                item.dataset.index = idx;
-
-                const isActive = idx === currentIndex;
-
-                item.innerHTML = `
-                    <span class="idx">${String(idx + 1).padStart(2, '0')}</span>
-                    <div class="pl-info">
-                      <span class="pl-title">${track.title}</span>
-                      <span class="pl-artist">${track.artist}</span>
+            <!-- ─── PLAYER ─── -->
+            <section class="player-section">
+                <div class="player-top">
+                    <!-- Cover -->
+                    <div class="cover-wrapper" id="coverWrapper">
+                        <div class="cover-fallback" id="coverFallback">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <img id="coverImg" src="" alt="Album cover" style="display:none;" />
                     </div>
-                    <span class="pl-duration">${track.duration || '—'}</span>
-                    <span class="pl-play-icon ${isActive && isPlaying ? 'playing' : ''}">
-                      <i class="fas ${isActive && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i>
-                    </span>
-                  `;
 
-                item.addEventListener('click', () => {
-                    if (idx === currentIndex) {
-                        togglePlay();
+                    <!-- Controls -->
+                    <div class="controls-col">
+                        <div class="track-info">
+                            <span class="track-name" id="trackName">—</span>
+                            <span class="track-artist" id="trackArtist">SBPebbles</span>
+                        </div>
+
+                        <div class="playback-controls">
+                            <button class="secondary-btn" id="prevBtn" aria-label="Previous track">
+                                <i class="fas fa-backward-step"></i>
+                            </button>
+
+                            <button class="play-btn" id="playBtn" aria-label="Play / Pause">
+                                <i class="fas fa-play" id="playIcon"></i>
+                            </button>
+
+                            <button class="secondary-btn" id="nextBtn" aria-label="Next track">
+                                <i class="fas fa-forward-step"></i>
+                            </button>
+
+                            <div class="volume-wrap">
+                                <i class="fas fa-volume-low" id="volIcon"></i>
+                                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+                            </div>
+                        </div>
+
+                        <!-- Progress -->
+                        <div class="progress-area">
+                            <span class="time-label" id="currentTime">0:00</span>
+                            <div class="progress-track" id="progressTrack" role="slider" aria-label="Seek">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="time-label" id="totalTime">0:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ─── PLAYLIST ─── -->
+                <div class="playlist-section">
+                    <div class="playlist-header">
+                        <h3><i class="fas fa-list-ul" style="margin-right:8px;color:#6a5f55;"></i>Playlist</h3>
+                        <span class="count" id="trackCount">3 tracks</span>
+                    </div>
+                    <div class="playlist" id="playlistContainer">
+                        <!-- dynamically populated -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- ═══ END HUB SECTION ═══ -->
+
+        <!-- ═══ ANNOUNCEMENTS SECTION ═══ -->
+        <div id="announcements-section" class="page-section" style="display: none;">
+            <div class="page-header">
+                <h2><i class="fas fa-bullhorn"></i>Announcements</h2>
+                <span class="count" id="announcementCount">2 new</span>
+            </div>
+
+            <div class="announcements-list" id="announcementsContainer">
+                <!-- dynamically populated -->
+            </div>
+        </div>
+        <!-- ═══ END ANNOUNCEMENTS SECTION ═══ -->
+
+        <!-- ─── FOOTER ─── -->
+        <footer class="hub-footer">
+            <span style="color:#4a3f3f;">© 2026 SBPebbles</span>
+        </footer>
+
+    </div>
+
+    <!-- ─── AUDIO ELEMENT ─── -->
+    <audio id="audioPlayer" preload="metadata"></audio>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ─── TRACK DATA ───────────────────────────────────────────────
+            const TRACKS = [{
+                id: 0,
+                title: 'Lost You',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3',
+                cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
+                duration: '3:28'
+            }, {
+                id: 1,
+                title: 'Blue-Raz Lemonade',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3',
+                cover: 'https://i.imgur.com/RnwJuvu.jpeg',
+                duration: '2:17'
+            }, {
+                id: 2,
+                title: 'Empty Track',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com',
+                cover: '',
+                duration: '0:00'
+            }, {
+                id: 3,
+                title: 'Empty Track',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com',
+                cover: '',
+                duration: '0:00'
+            }, {
+                id: 4,
+                title: 'Empty Track',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com',
+                cover: '',
+                duration: '0:00'
+            }];
+
+            // ─── ANNOUNCEMENTS DATA ──────────────────────────────────────
+            const ANNOUNCEMENTS = [{
+                title: 'New Release!',
+                description: 'New release!',
+                cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
+                fullDescription: '🎵 "Lost You" is out now! This track explores themes of distance and longing with a melodic, ambient production. Stream it everywhere.',
+                releaseDate: 'January 15, 2026',
+                links: [
+                    { label: 'Stream on Spotify', url: 'https://open.spotify.com/track/example1' },
+                    { label: 'Watch on YouTube', url: 'https://music.youtube.com/watch?v=example1' }
+                ],
+                tags: ['Single', 'Alternative']
+            }, {
+                title: 'New Release!',
+                description: 'New release!',
+                cover: 'https://i.imgur.com/RnwJuvu.jpeg',
+                fullDescription: '🍋 "Blue-Raz Lemonade" brings a fresh, upbeat vibe with punchy beats and catchy hooks. Perfect for your summer playlist.',
+                releaseDate: 'February 2, 2026',
+                links: [
+                    { label: 'Stream on Spotify', url: 'https://open.spotify.com/track/example2' },
+                    { label: 'Listen on Bandcamp', url: 'https://kampebbles.bandcamp.com/track/blue-raz-lemonade' }
+                ],
+                tags: ['Single', 'Pop']
+            }];
+
+            // ─── DOM REFS ────────────────────────────────────────────────
+            const audio = document.getElementById('audioPlayer');
+            const playBtn = document.getElementById('playBtn');
+            const playIcon = document.getElementById('playIcon');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressTrack = document.getElementById('progressTrack');
+            const currentTimeLabel = document.getElementById('currentTime');
+            const totalTimeLabel = document.getElementById('totalTime');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const volIcon = document.getElementById('volIcon');
+
+            const trackName = document.getElementById('trackName');
+            const trackArtist = document.getElementById('trackArtist');
+            const npTitle = document.getElementById('npTitle');
+            const coverImg = document.getElementById('coverImg');
+            const coverFallback = document.getElementById('coverFallback');
+
+            const playlistContainer = document.getElementById('playlistContainer');
+            const trackCount = document.getElementById('trackCount');
+
+            const announcementsContainer = document.getElementById('announcementsContainer');
+            const announcementCount = document.getElementById('announcementCount');
+
+            // ─── STATE ────────────────────────────────────────────────────
+            let currentIndex = 0;
+            let isPlaying = false;
+            let isDragging = false;
+            let wasPlayingBeforeDrag = false;
+
+            // ─── RENDER ANNOUNCEMENTS ────────────────────────────────────
+            function renderAnnouncements() {
+                announcementsContainer.innerHTML = '';
+                ANNOUNCEMENTS.forEach((ann) => {
+                    const card = document.createElement('div');
+                    card.className = 'announcement-card';
+
+                    const tagsHtml = ann.tags ? ann.tags.map(t => `<span class="tag">${t}</span>`).join(' ') : '';
+                    const linksHtml = ann.links ? ann.links.map(l =>
+                        `<a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a>`
+                    ).join(' · ') : '';
+
+                    card.innerHTML = `
+                        <div class="card-summary">
+                            <img src="${ann.cover}" alt="${ann.title}" />
+                            <div class="info">
+                                <h4>${ann.title}</h4>
+                                <p>${ann.description}</p>
+                            </div>
+                            <span class="badge">New</span>
+                            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="card-details">
+                            ${ann.fullDescription ? `
+                            <div class="detail-row">
+                                <span class="detail-label">About</span>
+                                <span class="detail-value">${ann.fullDescription}</span>
+                            </div>` : ''}
+                            ${ann.releaseDate ? `
+                            <div class="detail-row">
+                                <span class="detail-label">Released</span>
+                                <span class="detail-value">${ann.releaseDate}</span>
+                            </div>` : ''}
+                            ${tagsHtml ? `
+                            <div class="detail-row">
+                                <span class="detail-label">Tags</span>
+                                <span class="detail-value">${tagsHtml}</span>
+                            </div>` : ''}
+                            ${linksHtml ? `
+                            <div class="detail-row">
+                                <span class="detail-label">Links</span>
+                                <span class="detail-value">${linksHtml}</span>
+                            </div>` : ''}
+                        </div>
+                    `;
+
+                    card.addEventListener('click', (e) => {
+                        if (e.target.closest('a')) return;
+                        card.classList.toggle('expanded');
+                    });
+
+                    announcementsContainer.appendChild(card);
+                });
+                announcementCount.textContent = `${ANNOUNCEMENTS.length} new`;
+            }
+
+            // ─── PAGE SWITCHING ──────────────────────────────────────────
+            function switchPage(pageId) {
+                const sections = {
+                    hub: document.getElementById('hub-section'),
+                    announcements: document.getElementById('announcements-section')
+                };
+
+                // Remove active class from all nav buttons
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active to the clicked one
+                const activeBtn = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+                if (activeBtn) activeBtn.classList.add('active');
+
+                // Show/hide sections with fade
+                Object.keys(sections).forEach(key => {
+                    const section = sections[key];
+                    if (key === pageId) {
+                        section.style.display = 'block';
+                        // trigger reflow for animation
+                        void section.offsetWidth;
+                        section.classList.add('fade-in');
                     } else {
-                        currentIndex = idx;
-                        loadTrack(currentIndex);
-                        if (isPlaying) {
-                            audio.play().catch(() => {});
+                        section.style.display = 'none';
+                        section.classList.remove('fade-in');
+                    }
+                });
+            }
+
+            // ─── RENDER PLAYLIST ────────────────────────────────────────
+            function renderPlaylist() {
+                playlistContainer.innerHTML = '';
+                TRACKS.forEach((track, idx) => {
+                    const item = document.createElement('div');
+                    item.className = `playlist-item ${idx === currentIndex ? 'active' : ''}`;
+                    item.dataset.index = idx;
+
+                    const isActive = idx === currentIndex;
+
+                    item.innerHTML = `
+                        <span class="idx">${String(idx + 1).padStart(2, '0')}</span>
+                        <div class="pl-info">
+                            <span class="pl-title">${track.title}</span>
+                            <span class="pl-artist">${track.artist}</span>
+                        </div>
+                        <span class="pl-duration">${track.duration || '—'}</span>
+                        <span class="pl-play-icon ${isActive && isPlaying ? 'playing' : ''}">
+                            <i class="fas ${isActive && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i>
+                        </span>
+                    `;
+
+                    item.addEventListener('click', () => {
+                        if (idx === currentIndex) {
+                            togglePlay();
                         } else {
-                            play();
+                            currentIndex = idx;
+                            loadTrack(currentIndex);
+                            if (isPlaying) {
+                                audio.play().catch(() => {});
+                            } else {
+                                play();
+                            }
                         }
+                    });
+
+                    playlistContainer.appendChild(item);
+                });
+            }
+
+            // ─── LOAD TRACK ──────────────────────────────────────────────
+            function loadTrack(index) {
+                const track = TRACKS[index];
+                if (!track) return;
+
+                trackName.textContent = track.title;
+                trackArtist.textContent = track.artist;
+                npTitle.textContent = track.title;
+
+                if (track.cover) {
+                    coverImg.src = track.cover;
+                    coverImg.style.display = 'block';
+                    coverFallback.style.display = 'none';
+                } else {
+                    coverImg.style.display = 'none';
+                    coverFallback.style.display = 'flex';
+                }
+
+                audio.src = track.src;
+                audio.load();
+
+                progressFill.style.width = '0%';
+                currentTimeLabel.textContent = '0:00';
+                totalTimeLabel.textContent = track.duration || '0:00';
+
+                document.querySelectorAll('.playlist-item').forEach((el, i) => {
+                    el.classList.toggle('active', i === index);
+                    const icon = el.querySelector('.pl-play-icon');
+                    if (icon) {
+                        icon.className = `pl-play-icon ${i === index && isPlaying ? 'playing' : ''}`;
+                        icon.innerHTML =
+                            `<i class="fas ${i === index && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i>`;
                     }
                 });
 
-                playlistContainer.appendChild(item);
-            });
-        }
-
-        // ─── LOAD TRACK ──────────────────────────────────────────────
-        function loadTrack(index) {
-            const track = TRACKS[index];
-            if (!track) return;
-
-            // Update UI
-            trackName.textContent = track.title;
-            trackArtist.textContent = track.artist;
-            npTitle.textContent = track.title;
-
-            // Cover
-            if (track.cover) {
-                coverImg.src = track.cover;
-                coverImg.style.display = 'block';
-                coverFallback.style.display = 'none';
-            } else {
-                coverImg.style.display = 'none';
-                coverFallback.style.display = 'flex';
+                document.getElementById('npTitle').textContent = track.title;
             }
 
-            // Audio
-            audio.src = track.src;
-            audio.load();
-
-            // Reset progress
-            progressFill.style.width = '0%';
-            currentTimeLabel.textContent = '0:00';
-            totalTimeLabel.textContent = track.duration || '0:00';
-
-            // Highlight playlist
-            document.querySelectorAll('.playlist-item').forEach((el, i) => {
-                el.classList.toggle('active', i === index);
-                const icon = el.querySelector('.pl-play-icon');
-                if (icon) {
-                    icon.className = `pl-play-icon ${i === index && isPlaying ? 'playing' : ''}`;
-                    icon.innerHTML =
-                    `<i class="fas ${i === index && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i>`;
+            // ─── PLAY / PAUSE ────────────────────────────────────────────
+            function togglePlay() {
+                if (audio.paused) {
+                    play();
+                } else {
+                    pause();
                 }
-            });
-
-            // Update now playing strip
-            document.getElementById('npTitle').textContent = track.title;
-        }
-
-        // ─── PLAY / PAUSE ────────────────────────────────────────────
-        function togglePlay() {
-            if (audio.paused) {
-                play();
-            } else {
-                pause();
             }
-        }
 
-        function play() {
-            audio.play().catch(err => {
-                console.warn('Playback failed:', err);
-            });
-            isPlaying = true;
-            updatePlayButton();
-            updatePlaylistIcons();
-            document.getElementById('npTitle').textContent = TRACKS[currentIndex].title;
-        }
-
-        function pause() {
-            audio.pause();
-            isPlaying = false;
-            updatePlayButton();
-            updatePlaylistIcons();
-        }
-
-        function updatePlayButton() {
-            if (isPlaying) {
-                playIcon.className = 'fas fa-pause';
-                playBtn.classList.add('is-playing');
-            } else {
-                playIcon.className = 'fas fa-play';
-                playBtn.classList.remove('is-playing');
-            }
-        }
-
-        function updatePlaylistIcons() {
-            document.querySelectorAll('.playlist-item').forEach((el, i) => {
-                const icon = el.querySelector('.pl-play-icon');
-                if (icon) {
-                    const isActive = i === currentIndex;
-                    const isNowPlaying = isActive && isPlaying;
-                    icon.className = `pl-play-icon ${isNowPlaying ? 'playing' : ''}`;
-                    icon.innerHTML = `<i class="fas ${isNowPlaying ? 'fa-volume-high' : 'fa-play'}"></i>`;
-                }
-            });
-        }
-
-        // ─── SEEK ─────────────────────────────────────────────────────
-        function updateProgress() {
-            if (isDragging) return;
-            if (audio.duration && !isNaN(audio.duration)) {
-                const percent = (audio.currentTime / audio.duration) * 100;
-                progressFill.style.width = `${Math.min(percent, 100)}%`;
-                currentTimeLabel.textContent = formatTime(audio.currentTime);
-                totalTimeLabel.textContent = formatTime(audio.duration);
-            }
-        }
-
-        function formatTime(seconds) {
-            if (!seconds || isNaN(seconds)) return '0:00';
-            const m = Math.floor(seconds / 60);
-            const s = Math.floor(seconds % 60);
-            return `${m}:${s.toString().padStart(2, '0')}`;
-        }
-
-        // ─── VOLUME ──────────────────────────────────────────────────
-        function updateVolumeIcon() {
-            const val = parseFloat(volumeSlider.value);
-            if (val === 0) {
-                volIcon.className = 'fas fa-volume-xmark';
-            } else if (val < 0.4) {
-                volIcon.className = 'fas fa-volume-low';
-            } else if (val < 0.7) {
-                volIcon.className = 'fas fa-volume-high';
-            } else {
-                volIcon.className = 'fas fa-volume-high';
-            }
-        }
-
-        // ─── TRACK COUNT ─────────────────────────────────────────────
-        function updateTrackCount() {
-            trackCount.textContent = `${TRACKS.length} tracks`;
-        }
-
-        // ─── NAVIGATION ──────────────────────────────────────────────
-        function nextTrack() {
-            const next = (currentIndex + 1) % TRACKS.length;
-            currentIndex = next;
-            loadTrack(currentIndex);
-            if (isPlaying) {
-                audio.play().catch(() => {});
-            } else {
-                play();
-            }
-        }
-
-        function prevTrack() {
-            const prev = (currentIndex - 1 + TRACKS.length) % TRACKS.length;
-            currentIndex = prev;
-            loadTrack(currentIndex);
-            if (isPlaying) {
-                audio.play().catch(() => {});
-            } else {
-                play();
-            }
-        }
-
-        // ─── EVENT LISTENERS ──────────────────────────────────────────
-        function setupEventListeners() {
-
-            // Play / Pause
-            playBtn.addEventListener('click', togglePlay);
-
-            // Prev / Next
-            prevBtn.addEventListener('click', prevTrack);
-            nextBtn.addEventListener('click', nextTrack);
-
-            // Audio events
-            audio.addEventListener('timeupdate', updateProgress);
-            audio.addEventListener('loadedmetadata', () => {
-                totalTimeLabel.textContent = formatTime(audio.duration);
-            });
-            audio.addEventListener('ended', () => {
-                nextTrack();
-            });
-            audio.addEventListener('play', () => {
+            function play() {
+                audio.play().catch(err => console.warn('Playback failed:', err));
                 isPlaying = true;
                 updatePlayButton();
                 updatePlaylistIcons();
                 document.getElementById('npTitle').textContent = TRACKS[currentIndex].title;
-            });
-            audio.addEventListener('pause', () => {
+            }
+
+            function pause() {
+                audio.pause();
                 isPlaying = false;
                 updatePlayButton();
                 updatePlaylistIcons();
-            });
+            }
 
-            // Progress bar click & drag
-            progressTrack.addEventListener('mousedown', (e) => {
-                if (!audio.duration || isNaN(audio.duration)) return;
-                isDragging = true;
-                wasPlayingBeforeDrag = !audio.paused;
-                audio.pause();
-                seekFromMouse(e);
-            });
-
-            document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                seekFromMouse(e);
-            });
-
-            document.addEventListener('mouseup', () => {
-                if (isDragging) {
-                    isDragging = false;
-                    if (wasPlayingBeforeDrag) {
-                        audio.play().catch(() => {});
-                    }
+            function updatePlayButton() {
+                if (isPlaying) {
+                    playIcon.className = 'fas fa-pause';
+                    playBtn.classList.add('is-playing');
+                } else {
+                    playIcon.className = 'fas fa-play';
+                    playBtn.classList.remove('is-playing');
                 }
-            });
+            }
 
-            // Touch support for progress
-            progressTrack.addEventListener('touchstart', (e) => {
-                if (!audio.duration || isNaN(audio.duration)) return;
-                isDragging = true;
-                wasPlayingBeforeDrag = !audio.paused;
-                audio.pause();
-                seekFromTouch(e);
-            }, { passive: true });
-
-            progressTrack.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                seekFromTouch(e);
-            }, { passive: true });
-
-            progressTrack.addEventListener('touchend', () => {
-                if (isDragging) {
-                    isDragging = false;
-                    if (wasPlayingBeforeDrag) {
-                        audio.play().catch(() => {});
+            function updatePlaylistIcons() {
+                document.querySelectorAll('.playlist-item').forEach((el, i) => {
+                    const icon = el.querySelector('.pl-play-icon');
+                    if (icon) {
+                        const isActive = i === currentIndex;
+                        const isNowPlaying = isActive && isPlaying;
+                        icon.className = `pl-play-icon ${isNowPlaying ? 'playing' : ''}`;
+                        icon.innerHTML = `<i class="fas ${isNowPlaying ? 'fa-volume-high' : 'fa-play'}"></i>`;
                     }
-                }
-            }, { passive: true });
+                });
+            }
 
-            // Volume
-            volumeSlider.addEventListener('input', () => {
+            // ─── SEEK ─────────────────────────────────────────────────────
+            function updateProgress() {
+                if (isDragging) return;
+                if (audio.duration && !isNaN(audio.duration)) {
+                    const percent = (audio.currentTime / audio.duration) * 100;
+                    progressFill.style.width = `${Math.min(percent, 100)}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime);
+                    totalTimeLabel.textContent = formatTime(audio.duration);
+                }
+            }
+
+            function formatTime(seconds) {
+                if (!seconds || isNaN(seconds)) return '0:00';
+                const m = Math.floor(seconds / 60);
+                const s = Math.floor(seconds % 60);
+                return `${m}:${s.toString().padStart(2, '0')}`;
+            }
+
+            // ─── VOLUME ──────────────────────────────────────────────────
+            function updateVolumeIcon() {
                 const val = parseFloat(volumeSlider.value);
-                audio.volume = val;
-                updateVolumeIcon();
-            });
-
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                if (e.target.tagName === 'INPUT') return;
-                if (e.code === 'Space') {
-                    e.preventDefault();
-                    togglePlay();
+                if (val === 0) {
+                    volIcon.className = 'fas fa-volume-xmark';
+                } else if (val < 0.4) {
+                    volIcon.className = 'fas fa-volume-low';
+                } else if (val < 0.7) {
+                    volIcon.className = 'fas fa-volume-high';
+                } else {
+                    volIcon.className = 'fas fa-volume-high';
                 }
-                if (e.code === 'ArrowRight') {
-                    e.preventDefault();
+            }
+
+            // ─── TRACK COUNT ─────────────────────────────────────────────
+            function updateTrackCount() {
+                trackCount.textContent = `${TRACKS.length} tracks`;
+            }
+
+            // ─── NAVIGATION ──────────────────────────────────────────────
+            function nextTrack() {
+                const next = (currentIndex + 1) % TRACKS.length;
+                currentIndex = next;
+                loadTrack(currentIndex);
+                if (isPlaying) {
+                    audio.play().catch(() => {});
+                } else {
+                    play();
+                }
+            }
+
+            function prevTrack() {
+                const prev = (currentIndex - 1 + TRACKS.length) % TRACKS.length;
+                currentIndex = prev;
+                loadTrack(currentIndex);
+                if (isPlaying) {
+                    audio.play().catch(() => {});
+                } else {
+                    play();
+                }
+            }
+
+            // ─── EVENT LISTENERS ──────────────────────────────────────────
+            function setupEventListeners() {
+
+                // Navigation buttons
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const page = btn.dataset.page;
+                        switchPage(page);
+                    });
+                });
+
+                // Play / Pause
+                playBtn.addEventListener('click', togglePlay);
+
+                // Prev / Next
+                prevBtn.addEventListener('click', prevTrack);
+                nextBtn.addEventListener('click', nextTrack);
+
+                // Audio events
+                audio.addEventListener('timeupdate', updateProgress);
+                audio.addEventListener('loadedmetadata', () => {
+                    totalTimeLabel.textContent = formatTime(audio.duration);
+                });
+                audio.addEventListener('ended', () => {
                     nextTrack();
-                }
-                if (e.code === 'ArrowLeft') {
-                    e.preventDefault();
-                    prevTrack();
-                }
-            });
-        }
+                });
+                audio.addEventListener('play', () => {
+                    isPlaying = true;
+                    updatePlayButton();
+                    updatePlaylistIcons();
+                    document.getElementById('npTitle').textContent = TRACKS[currentIndex].title;
+                });
+                audio.addEventListener('pause', () => {
+                    isPlaying = false;
+                    updatePlayButton();
+                    updatePlaylistIcons();
+                });
 
-        // ─── SEEK HELPERS ────────────────────────────────────────────
-        function seekFromMouse(e) {
-            const rect = progressTrack.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width;
-            const clamped = Math.min(Math.max(x, 0), 1);
-            if (audio.duration) {
-                audio.currentTime = clamped * audio.duration;
-                progressFill.style.width = `${clamped * 100}%`;
-                currentTimeLabel.textContent = formatTime(audio.currentTime);
+                // Progress bar click & drag
+                progressTrack.addEventListener('mousedown', (e) => {
+                    if (!audio.duration || isNaN(audio.duration)) return;
+                    isDragging = true;
+                    wasPlayingBeforeDrag = !audio.paused;
+                    audio.pause();
+                    seekFromMouse(e);
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    seekFromMouse(e);
+                });
+
+                document.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        if (wasPlayingBeforeDrag) {
+                            audio.play().catch(() => {});
+                        }
+                    }
+                });
+
+                // Touch support for progress
+                progressTrack.addEventListener('touchstart', (e) => {
+                    if (!audio.duration || isNaN(audio.duration)) return;
+                    isDragging = true;
+                    wasPlayingBeforeDrag = !audio.paused;
+                    audio.pause();
+                    seekFromTouch(e);
+                }, { passive: true });
+
+                progressTrack.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    seekFromTouch(e);
+                }, { passive: true });
+
+                progressTrack.addEventListener('touchend', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        if (wasPlayingBeforeDrag) {
+                            audio.play().catch(() => {});
+                        }
+                    }
+                }, { passive: true });
+
+                // Volume
+                volumeSlider.addEventListener('input', () => {
+                    const val = parseFloat(volumeSlider.value);
+                    audio.volume = val;
+                    updateVolumeIcon();
+                });
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.target.tagName === 'INPUT') return;
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                        togglePlay();
+                    }
+                    if (e.code === 'ArrowRight') {
+                        e.preventDefault();
+                        nextTrack();
+                    }
+                    if (e.code === 'ArrowLeft') {
+                        e.preventDefault();
+                        prevTrack();
+                    }
+                });
             }
-        }
 
-        function seekFromTouch(e) {
-            const touch = e.touches[0];
-            const rect = progressTrack.getBoundingClientRect();
-            const x = (touch.clientX - rect.left) / rect.width;
-            const clamped = Math.min(Math.max(x, 0), 1);
-            if (audio.duration) {
-                audio.currentTime = clamped * audio.duration;
-                progressFill.style.width = `${clamped * 100}%`;
-                currentTimeLabel.textContent = formatTime(audio.currentTime);
+            // ─── SEEK HELPERS ────────────────────────────────────────────
+            function seekFromMouse(e) {
+                const rect = progressTrack.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const clamped = Math.min(Math.max(x, 0), 1);
+                if (audio.duration) {
+                    audio.currentTime = clamped * audio.duration;
+                    progressFill.style.width = `${clamped * 100}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime);
+                }
             }
-        }
 
-        // ─── START ──────────────────────────────────────────────────
-        init();
+            function seekFromTouch(e) {
+                const touch = e.touches[0];
+                const rect = progressTrack.getBoundingClientRect();
+                const x = (touch.clientX - rect.left) / rect.width;
+                const clamped = Math.min(Math.max(x, 0), 1);
+                if (audio.duration) {
+                    audio.currentTime = clamped * audio.duration;
+                    progressFill.style.width = `${clamped * 100}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime);
+                }
+            }
 
-    })();
-</script>
+            // ─── INIT ──────────────────────────────────────────────────
+            function init() {
+                renderPlaylist();
+                renderAnnouncements();
+                loadTrack(currentIndex);
+                setupEventListeners();
+                updateTrackCount();
+                audio.volume = parseFloat(volumeSlider.value);
+                updateVolumeIcon();
+                // Start with hub visible
+                switchPage('hub');
+            }
+
+            init();
+
+        })();
+    </script>
 
 </body>
 </html>
