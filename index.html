@@ -28,7 +28,7 @@
 
     <style>
         /* ═══════════════════════════════════════════════════════════════════
-           DESKTOP-FIRST BASE (original styling)
+           DESKTOP-FIRST BASE
            ═══════════════════════════════════════════════════════════════════ */
 
         /* ─── Reset & Base ─── */
@@ -578,7 +578,7 @@
             touch-action: none;
         }
 
-        /* ─── Progress Bar ─── */
+        /* ─── Progress Bar (thinner track + larger centered thumb) ─── */
         .progress-area {
             display: flex;
             align-items: center;
@@ -596,8 +596,8 @@
 
         .progress-track {
             flex: 1;
-            height: 5px;
-            border-radius: 8px;
+            height: 3px;               /* thinner track */
+            border-radius: 4px;
             background: #2f282c;
             cursor: pointer;
             position: relative;
@@ -609,34 +609,37 @@
         }
 
         .progress-track:hover {
-            height: 7px;
+            height: 4px;               /* subtle increase on hover */
         }
 
         .progress-fill {
             height: 100%;
             width: 0%;
-            border-radius: 8px;
+            border-radius: 4px;
             background: linear-gradient(90deg, #f5b58a, #e0946a);
             transition: width 0.05s linear;
             position: relative;
             pointer-events: none;
         }
 
+        /* Larger, perfectly centered thumb (only visible on hover/active) */
         .progress-fill::after {
             content: "";
             position: absolute;
-            right: -5px;
-            top: -3px;
-            width: 11px;
-            height: 11px;
+            right: -10px;              /* half of thumb width */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: #f5b58a;
             opacity: 0;
-            transition: opacity 0.2s;
-            box-shadow: 0 0 12px rgba(245, 181, 138, 0.4);
+            transition: opacity 0.2s, transform 0.2s ease;
+            box-shadow: 0 0 16px rgba(245, 181, 138, 0.5);
         }
 
-        .progress-track:hover .progress-fill::after {
+        .progress-track:hover .progress-fill::after,
+        .progress-track:active .progress-fill::after {
             opacity: 1;
         }
 
@@ -1046,6 +1049,13 @@
             .volume-slider {
                 width: 60px;
             }
+
+            /* Slightly smaller thumb on tablet */
+            .progress-fill::after {
+                width: 18px;
+                height: 18px;
+                right: -9px;
+            }
         }
 
         /* ─── Mobile Landscape & Small Tablets (≤ 720px) ─── */
@@ -1244,16 +1254,23 @@
                 min-width: 36px;
             }
             .progress-track {
-                height: 4px;
+                height: 3px;
                 min-height: 18px;
             }
             .progress-track:hover {
-                height: 5px;
+                height: 4px;
             }
 
             .np-indicator .dot {
                 width: 4px;
                 height: 4px;
+            }
+
+            /* Smaller thumb on mobile */
+            .progress-fill::after {
+                width: 16px;
+                height: 16px;
+                right: -8px;
             }
         }
 
@@ -1445,8 +1462,11 @@
                 min-width: 30px;
             }
             .progress-track {
-                height: 3px;
+                height: 2px;
                 min-height: 16px;
+            }
+            .progress-track:hover {
+                height: 3px;
             }
 
             .np-indicator .dot {
@@ -1468,6 +1488,12 @@
             }
             .social-btn i {
                 font-size: 0.75rem;
+            }
+
+            .progress-fill::after {
+                width: 14px;
+                height: 14px;
+                right: -7px;
             }
         }
 
@@ -1619,8 +1645,11 @@
                 min-width: 26px;
             }
             .progress-track {
-                height: 3px;
+                height: 2px;
                 min-height: 14px;
+            }
+            .progress-track:hover {
+                height: 3px;
             }
 
             .tagline {
@@ -1649,6 +1678,12 @@
 
             .section-spacer {
                 height: 0.5rem;
+            }
+
+            .progress-fill::after {
+                width: 14px;
+                height: 14px;
+                right: -7px;
             }
         }
 
@@ -1791,7 +1826,7 @@
                 <div class="playlist-section">
                     <div class="playlist-header">
                         <h3><i class="fas fa-list-ul"></i>Playlist</h3>
-                        <span class="count" id="trackCount">3 tracks</span>
+                        <span class="count" id="trackCount">2 available tracks</span>
                     </div>
                     <div class="playlist" id="playlistContainer">
                         <!-- dynamically populated -->
@@ -1814,11 +1849,9 @@
         </div>
         <!-- ═══ END ANNOUNCEMENTS SECTION ═══ -->
 
-        <!-- ─── FOOTER ─── -->
+        <!-- ─── FOOTER (without "made with love") ─── -->
         <footer class="hub-footer">
             <span style="color:#4a3f3f;">© 2026 SBPebbles</span>
-            <span style="color:#3a3235;">·</span>
-            <span style="color:#4a3f3f;font-size:0.7rem;">made with <i class="fas fa-heart" style="color:#6a5f55;font-size:0.55rem;"></i></span>
         </footer>
 
     </div>
@@ -1830,7 +1863,7 @@
         (function() {
             'use strict';
 
-            // ─── TRACK DATA ───────────────────────────────────────────────
+            // ─── TRACK DATA (3 extra empty tracks added → total 8) ───
             const TRACKS = [{
                 id: 0,
                 title: 'Lost You',
@@ -1861,6 +1894,27 @@
                 duration: '0:00'
             }, {
                 id: 4,
+                title: 'Empty Track',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com',
+                cover: '',
+                duration: '0:00'
+            }, {
+                id: 5,
+                title: 'Empty Track',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com',
+                cover: '',
+                duration: '0:00'
+            }, {
+                id: 6,
+                title: 'Empty Track',
+                artist: 'Kam Pebbles',
+                src: 'https://s3.amazonaws.com',
+                cover: '',
+                duration: '0:00'
+            }, {
+                id: 7,
                 title: 'Empty Track',
                 artist: 'Kam Pebbles',
                 src: 'https://s3.amazonaws.com',
