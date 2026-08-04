@@ -28,7 +28,7 @@
 
     <style>
         /* ═══════════════════════════════════════════════════════════════════
-           CSS CUSTOM PROPERTIES — THEMES (9 total)
+           CSS CUSTOM PROPERTIES — THEMES (12 total)
            ═══════════════════════════════════════════════════════════════════ */
 
         :root {
@@ -92,6 +92,9 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --motion-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --motion-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+            --ripple-color: rgba(255, 255, 255, 0.12);
         }
 
         /* ── Light Theme ── */
@@ -155,6 +158,7 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.06);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.08);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.10);
+            --ripple-color: rgba(0, 0, 0, 0.08);
         }
 
         /* ── Turquoise Theme ── */
@@ -218,6 +222,7 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(95, 200, 200, 0.15);
         }
 
         /* ── Red Theme ── */
@@ -281,6 +286,7 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(212, 90, 90, 0.15);
         }
 
         /* ── Purple (Amethyst) Theme ── */
@@ -344,6 +350,7 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(139, 92, 246, 0.15);
         }
 
         /* ── Green (Emerald) Theme ── */
@@ -407,6 +414,7 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(52, 211, 153, 0.15);
         }
 
         /* ── Ocean Blue (Sapphire) Theme ── */
@@ -470,6 +478,7 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(59, 130, 246, 0.15);
         }
 
         /* ── Sunset (Amber) Theme ── */
@@ -533,6 +542,7 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(245, 158, 11, 0.15);
         }
 
         /* ── RAINBOW Theme (animated) ── */
@@ -595,36 +605,202 @@
             --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
             --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
             --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* Rainbow accent animation */
-        [data-theme="rainbow"] .accent-rainbow,
-        [data-theme="rainbow"] .brand-icon,
-        [data-theme="rainbow"] .nav-btn.active,
-        [data-theme="rainbow"] .play-btn,
-        [data-theme="rainbow"] .badge-bg,
-        [data-theme="rainbow"] .progress-fill,
-        [data-theme="rainbow"] .thumb-color,
-        [data-theme="rainbow"] .tag-text,
-        [data-theme="rainbow"] .link-color,
-        [data-theme="rainbow"] .nav-btn-active,
-        [data-theme="rainbow"] .badge-bg {
-            --accent: #f5b58a;
-            --accent-hover: #e0946a;
-            --accent-glow: rgba(245, 181, 138, 0.25);
-            --accent-glow-strong: rgba(245, 181, 138, 0.35);
-            --badge-bg: linear-gradient(135deg, #f5b58a, #e0946a);
-            --progress-fill: linear-gradient(90deg, #f5b58a, #e0946a);
-            --thumb-color: #f5b58a;
-            --thumb-glow: rgba(245, 181, 138, 0.5);
-            --nav-btn-active: linear-gradient(135deg, #f5b58a, #e0946a);
-            --tag-text: #f5b58a;
-            --link-color: #f5b58a;
-            --np-dot: #f5b58a;
-            --accent-rgb: 245, 181, 138;
+        /* ── Candy Theme ── */
+        [data-theme="candy"] {
+            --bg-primary: #1a0a14;
+            --bg-secondary: #2d1424;
+            --bg-surface: rgba(45, 20, 36, 0.88);
+            --bg-surface-solid: #2d1424;
+            --bg-elevated: rgba(255, 107, 157, 0.08);
+            --bg-input: rgba(255, 107, 157, 0.10);
+            --text-primary: #ffe6f0;
+            --text-secondary: #ffb3c6;
+            --text-muted: #b36a7a;
+            --text-inverse: #1a0a14;
+            --accent: #ff6b9d;
+            --accent-hover: #ff4d8a;
+            --accent-glow: rgba(255, 107, 157, 0.3);
+            --accent-glow-strong: rgba(255, 107, 157, 0.5);
+            --border-color: rgba(255, 107, 157, 0.12);
+            --border-strong: rgba(255, 107, 157, 0.25);
+            --shadow-color: rgba(0, 0, 0, 0.8);
+            --shadow-light: rgba(0, 0, 0, 0.4);
+            --nav-bg: rgba(45, 20, 36, 0.92);
+            --gradient-start: #2d1424;
+            --gradient-end: #1a0a14;
+            --scrollbar-track: transparent;
+            --scrollbar-thumb: #4a2a3a;
+            --scrollbar-thumb-hover: #6a3a4a;
+            --cover-shadow: rgba(0, 0, 0, 0.8);
+            --tag-bg: rgba(255, 107, 157, 0.15);
+            --tag-text: #ff6b9d;
+            --badge-bg: linear-gradient(135deg, #ff6b9d, #ff4d8a);
+            --badge-text: #1a0a14;
+            --now-playing-bg: rgba(255, 107, 157, 0.06);
+            --active-item-bg: rgba(255, 107, 157, 0.10);
+            --active-item-border: rgba(255, 107, 157, 0.20);
+            --hover-item-bg: rgba(255, 107, 157, 0.06);
+            --card-bg: rgba(255, 107, 157, 0.04);
+            --card-hover: rgba(255, 107, 157, 0.08);
+            --card-expanded: rgba(255, 107, 157, 0.10);
+            --footer-border: rgba(255, 107, 157, 0.06);
+            --progress-track: #4a2a3a;
+            --progress-fill: linear-gradient(90deg, #ff6b9d, #ff4d8a);
+            --thumb-color: #ff6b9d;
+            --thumb-glow: rgba(255, 107, 157, 0.6);
+            --social-hover-bg: rgba(255, 107, 157, 0.15);
+            --social-border: rgba(255, 107, 157, 0.10);
+            --nav-btn-active: linear-gradient(135deg, #ff6b9d, #ff4d8a);
+            --nav-btn-active-text: #1a0a14;
+            --nav-btn-hover: rgba(255, 107, 157, 0.08);
+            --np-dot: #ff6b9d;
+            --placeholder-color: #b36a7a;
+            --separator: rgba(255, 107, 157, 0.08);
+            --link-color: #ff6b9d;
+            --link-hover: #ff4d8a;
+            --glass-border: rgba(255, 107, 157, 0.10);
+            --shadow-elevation: 0 30px 70px rgba(0, 0, 0, 0.8);
+            --backdrop-blur: 14px;
+            --accent-rgb: 255, 107, 157;
+            --surface-shadow: rgba(0, 0, 0, 0.5);
+            --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
+            --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(255, 107, 157, 0.15);
         }
 
-        /* Rainbow animated gradient for accent elements */
+        /* ── Forest Theme ── */
+        [data-theme="forest"] {
+            --bg-primary: #0d1a12;
+            --bg-secondary: #1a2e1e;
+            --bg-surface: rgba(26, 46, 30, 0.88);
+            --bg-surface-solid: #1a2e1e;
+            --bg-elevated: rgba(74, 222, 128, 0.06);
+            --bg-input: rgba(74, 222, 128, 0.08);
+            --text-primary: #e6f5e6;
+            --text-secondary: #a3c9a3;
+            --text-muted: #5a8a5a;
+            --text-inverse: #0d1a12;
+            --accent: #4ade80;
+            --accent-hover: #22c55e;
+            --accent-glow: rgba(74, 222, 128, 0.25);
+            --accent-glow-strong: rgba(74, 222, 128, 0.4);
+            --border-color: rgba(74, 222, 128, 0.08);
+            --border-strong: rgba(74, 222, 128, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.8);
+            --shadow-light: rgba(0, 0, 0, 0.4);
+            --nav-bg: rgba(26, 46, 30, 0.92);
+            --gradient-start: #1a2e1e;
+            --gradient-end: #0d1a12;
+            --scrollbar-track: transparent;
+            --scrollbar-thumb: #2a4a2a;
+            --scrollbar-thumb-hover: #3a5a3a;
+            --cover-shadow: rgba(0, 0, 0, 0.8);
+            --tag-bg: rgba(74, 222, 128, 0.12);
+            --tag-text: #4ade80;
+            --badge-bg: linear-gradient(135deg, #4ade80, #22c55e);
+            --badge-text: #0d1a12;
+            --now-playing-bg: rgba(74, 222, 128, 0.05);
+            --active-item-bg: rgba(74, 222, 128, 0.08);
+            --active-item-border: rgba(74, 222, 128, 0.15);
+            --hover-item-bg: rgba(74, 222, 128, 0.05);
+            --card-bg: rgba(74, 222, 128, 0.03);
+            --card-hover: rgba(74, 222, 128, 0.06);
+            --card-expanded: rgba(74, 222, 128, 0.07);
+            --footer-border: rgba(74, 222, 128, 0.05);
+            --progress-track: #2a4a2a;
+            --progress-fill: linear-gradient(90deg, #4ade80, #22c55e);
+            --thumb-color: #4ade80;
+            --thumb-glow: rgba(74, 222, 128, 0.5);
+            --social-hover-bg: rgba(74, 222, 128, 0.12);
+            --social-border: rgba(74, 222, 128, 0.08);
+            --nav-btn-active: linear-gradient(135deg, #4ade80, #22c55e);
+            --nav-btn-active-text: #0d1a12;
+            --nav-btn-hover: rgba(74, 222, 128, 0.06);
+            --np-dot: #4ade80;
+            --placeholder-color: #5a8a5a;
+            --separator: rgba(74, 222, 128, 0.06);
+            --link-color: #4ade80;
+            --link-hover: #22c55e;
+            --glass-border: rgba(74, 222, 128, 0.08);
+            --shadow-elevation: 0 30px 70px rgba(0, 0, 0, 0.8);
+            --backdrop-blur: 14px;
+            --accent-rgb: 74, 222, 128;
+            --surface-shadow: rgba(0, 0, 0, 0.5);
+            --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
+            --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(74, 222, 128, 0.15);
+        }
+
+        /* ── Neon Theme ── */
+        [data-theme="neon"] {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #14142d;
+            --bg-surface: rgba(20, 20, 45, 0.88);
+            --bg-surface-solid: #14142d;
+            --bg-elevated: rgba(0, 245, 255, 0.06);
+            --bg-input: rgba(0, 245, 255, 0.08);
+            --text-primary: #e6f5ff;
+            --text-secondary: #99d9ff;
+            --text-muted: #5a8aaa;
+            --text-inverse: #0a0a1a;
+            --accent: #00f5ff;
+            --accent-hover: #00d4e6;
+            --accent-glow: rgba(0, 245, 255, 0.25);
+            --accent-glow-strong: rgba(0, 245, 255, 0.4);
+            --border-color: rgba(0, 245, 255, 0.08);
+            --border-strong: rgba(0, 245, 255, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.8);
+            --shadow-light: rgba(0, 0, 0, 0.4);
+            --nav-bg: rgba(20, 20, 45, 0.92);
+            --gradient-start: #14142d;
+            --gradient-end: #0a0a1a;
+            --scrollbar-track: transparent;
+            --scrollbar-thumb: #2a2a5a;
+            --scrollbar-thumb-hover: #3a3a7a;
+            --cover-shadow: rgba(0, 0, 0, 0.8);
+            --tag-bg: rgba(0, 245, 255, 0.12);
+            --tag-text: #00f5ff;
+            --badge-bg: linear-gradient(135deg, #00f5ff, #00d4e6);
+            --badge-text: #0a0a1a;
+            --now-playing-bg: rgba(0, 245, 255, 0.05);
+            --active-item-bg: rgba(0, 245, 255, 0.08);
+            --active-item-border: rgba(0, 245, 255, 0.15);
+            --hover-item-bg: rgba(0, 245, 255, 0.05);
+            --card-bg: rgba(0, 245, 255, 0.03);
+            --card-hover: rgba(0, 245, 255, 0.06);
+            --card-expanded: rgba(0, 245, 255, 0.07);
+            --footer-border: rgba(0, 245, 255, 0.05);
+            --progress-track: #2a2a5a;
+            --progress-fill: linear-gradient(90deg, #00f5ff, #00d4e6);
+            --thumb-color: #00f5ff;
+            --thumb-glow: rgba(0, 245, 255, 0.5);
+            --social-hover-bg: rgba(0, 245, 255, 0.12);
+            --social-border: rgba(0, 245, 255, 0.08);
+            --nav-btn-active: linear-gradient(135deg, #00f5ff, #00d4e6);
+            --nav-btn-active-text: #0a0a1a;
+            --nav-btn-hover: rgba(0, 245, 255, 0.06);
+            --np-dot: #00f5ff;
+            --placeholder-color: #5a8aaa;
+            --separator: rgba(0, 245, 255, 0.06);
+            --link-color: #00f5ff;
+            --link-hover: #00d4e6;
+            --glass-border: rgba(0, 245, 255, 0.08);
+            --shadow-elevation: 0 30px 70px rgba(0, 0, 0, 0.8);
+            --backdrop-blur: 14px;
+            --accent-rgb: 0, 245, 255;
+            --surface-shadow: rgba(0, 0, 0, 0.5);
+            --elevation-1: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
+            --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --ripple-color: rgba(0, 245, 255, 0.15);
+        }
+
+        /* Rainbow animated gradient overrides */
         [data-theme="rainbow"] .brand-icon {
             animation: rainbowPulse 3s ease-in-out infinite !important;
         }
@@ -722,7 +898,31 @@
             }
         }
 
-        /* ── Rainbow theme dot ── */
+        /* Theme dots for new themes */
+        .theme-dot[data-theme="candy"] {
+            background: linear-gradient(135deg, #ff6b9d, #ff4d8a);
+            border-color: rgba(255, 107, 157, 0.3);
+        }
+        .theme-dot[data-theme="candy"].active {
+            border-color: #ff6b9d;
+        }
+
+        .theme-dot[data-theme="forest"] {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+        .theme-dot[data-theme="forest"].active {
+            border-color: #4ade80;
+        }
+
+        .theme-dot[data-theme="neon"] {
+            background: linear-gradient(135deg, #00f5ff, #00d4e6);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+        .theme-dot[data-theme="neon"].active {
+            border-color: #00f5ff;
+        }
+
         .theme-dot[data-theme="rainbow"] {
             background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #9b59b6);
             background-size: 300% 300%;
@@ -732,39 +932,6 @@
         .theme-dot[data-theme="rainbow"].active {
             border-color: #fff;
             box-shadow: 0 0 24px rgba(255, 107, 107, 0.5);
-        }
-
-        /* ── New theme dots ── */
-        .theme-dot[data-theme="purple"] {
-            background: #8b5cf6;
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-        .theme-dot[data-theme="purple"].active {
-            border-color: #8b5cf6;
-        }
-
-        .theme-dot[data-theme="green"] {
-            background: #34d399;
-            border-color: rgba(52, 211, 153, 0.3);
-        }
-        .theme-dot[data-theme="green"].active {
-            border-color: #34d399;
-        }
-
-        .theme-dot[data-theme="ocean"] {
-            background: #3b82f6;
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-        .theme-dot[data-theme="ocean"].active {
-            border-color: #3b82f6;
-        }
-
-        .theme-dot[data-theme="sunset"] {
-            background: #f59e0b;
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-        .theme-dot[data-theme="sunset"].active {
-            border-color: #f59e0b;
         }
 
         /* ═══════════════════════════════════════════════════════════════════
@@ -801,7 +968,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* subtle animated gradient overlay */
         body::before {
             content: '';
             position: fixed;
@@ -841,43 +1007,22 @@
             border: 1px solid var(--glass-border);
             border-radius: 60px;
             box-shadow: 0 12px 48px var(--shadow-color), 0 0 0 1px var(--glass-border);
-            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease, background 0.6s ease, box-shadow 0.4s ease;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, background 0.6s ease, box-shadow 0.4s ease;
             opacity: 0;
             pointer-events: none;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            justify-content: center;
             gap: 0.5rem;
             max-width: 96%;
             width: auto;
-            min-width: 280px;
+            min-width: 200px;
         }
 
         .top-nav.visible {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
             pointer-events: auto;
-        }
-
-        .top-nav .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            flex-shrink: 0;
-        }
-
-        .top-nav .nav-brand i {
-            color: var(--accent);
-            font-size: 1rem;
-            transition: transform 0.4s ease;
-        }
-
-        .top-nav .nav-brand:hover i {
-            transform: rotate(-12deg) scale(1.1);
         }
 
         .top-nav .nav-links {
@@ -898,7 +1043,7 @@
             font-weight: 500;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             background: transparent;
             border: none;
             cursor: pointer;
@@ -906,11 +1051,31 @@
             letter-spacing: 0.01em;
             -webkit-tap-highlight-color: transparent;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Ripple effect for nav buttons */
+        .top-nav .nav-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 40px;
+            background: var(--ripple-color);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .top-nav .nav-btn:hover::after {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .top-nav .nav-btn i {
             font-size: 0.78rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            z-index: 1;
         }
 
         .top-nav .nav-btn:hover {
@@ -934,6 +1099,10 @@
             transform: translateY(0);
         }
 
+        .top-nav .nav-btn.active::after {
+            display: none;
+        }
+
         .top-nav .nav-btn.active i {
             color: var(--nav-btn-active-text);
         }
@@ -943,15 +1112,6 @@
             transform: scale(1.02) translateY(-1px);
         }
 
-        .top-nav .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        /* ─── theme toggle removed from nav ─── */
-
-        /* proximity trigger zone */
         .nav-trigger-zone {
             position: fixed;
             top: 0;
@@ -967,45 +1127,45 @@
             pointer-events: auto;
         }
 
+        /* ─── MOBILE: Navbar always visible ─── */
+        @media (max-width: 720px) {
+            .top-nav {
+                transform: translateX(-50%) translateY(0) !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                top: 6px;
+                padding: 0.3rem 0.8rem;
+                min-width: 160px;
+                border-radius: 40px;
+            }
+            .nav-trigger-zone {
+                display: none;
+            }
+            body {
+                padding-top: 4.5rem;
+            }
+        }
+
         /* ═══════════════════════════════════════════════════════════════════
-           PAGE SLIDE CONTAINER — scrollable
+           PAGE SLIDE CONTAINER — solid, no scroll
            ═══════════════════════════════════════════════════════════════════ */
 
         .page-slider {
             position: relative;
             width: 100%;
             max-width: 1000px;
-            max-height: calc(100vh - 6rem - 2.5rem);
-            overflow-y: auto;
-            overflow-x: hidden;
             border-radius: 3rem;
             box-shadow: var(--shadow-elevation), 0 0 0 1px var(--glass-border);
             transition: box-shadow 0.6s ease, border-radius 0.4s ease;
             margin-top: 0.5rem;
-            scroll-behavior: smooth;
-        }
-
-        .page-slider::-webkit-scrollbar {
-            width: 5px;
-        }
-        .page-slider::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
-            border-radius: 10px;
-        }
-        .page-slider::-webkit-scrollbar-thumb {
-            background: var(--scrollbar-thumb);
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-        .page-slider::-webkit-scrollbar-thumb:hover {
-            background: var(--scrollbar-thumb-hover);
+            overflow: hidden;
         }
 
         .page-slider-inner {
             display: flex;
             width: 200%;
             transform: translateX(0%);
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .page-slider-inner.slide-announcements {
@@ -1052,12 +1212,8 @@
             border-radius: 0 3rem 3rem 0;
         }
 
-        .page-slide .slide-header {
-            display: none;
-        }
-
         /* ═══════════════════════════════════════════════════════════════════
-           HUB SECTION (inside slide)
+           HUB SECTION
            ═══════════════════════════════════════════════════════════════════ */
 
         .hub-header {
@@ -1081,7 +1237,7 @@
             font-size: 2rem;
             color: var(--accent);
             filter: drop-shadow(0 0 12px var(--accent-glow));
-            transition: filter 0.4s ease, transform 0.4s ease;
+            transition: filter 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             animation: brandPulse 3s ease-in-out infinite;
         }
 
@@ -1110,8 +1266,6 @@
             background-clip: text;
             transition: background 0.6s ease;
         }
-
-        /* ─── Theme switcher moved to footer ─── */
 
         /* ─── Social Links ── */
         .social-links {
@@ -1142,15 +1296,34 @@
             font-size: 1rem;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             flex-shrink: 0;
             position: relative;
             -webkit-tap-highlight-color: transparent;
+            overflow: hidden;
+        }
+
+        .social-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--ripple-color);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-btn:hover::after {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .social-btn i {
             font-size: 1.05rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            z-index: 1;
         }
 
         .social-btn:hover {
@@ -1189,7 +1362,6 @@
             box-shadow: 0 0 30px rgba(88, 101, 242, 0.15);
         }
 
-        /* ── Tagline ── */
         .tagline {
             font-size: 0.8rem;
             font-weight: 400;
@@ -1203,7 +1375,7 @@
             align-items: center;
             gap: 0.4rem;
             flex-shrink: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .tagline i {
@@ -1229,10 +1401,7 @@
             transform: translateY(-2px);
         }
 
-        /* ═══════════════════════════════════════════════════════════════════
-           NOW PLAYING STRIP
-           ═══════════════════════════════════════════════════════════════════ */
-
+        /* ─── Now Playing ── */
         .now-playing-strip {
             display: flex;
             align-items: center;
@@ -1241,7 +1410,7 @@
             padding: 0.5rem 1.2rem 0.5rem 1rem;
             border-radius: 60px;
             border: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             cursor: default;
         }
 
@@ -1266,7 +1435,7 @@
         .now-playing-strip .np-label i {
             font-size: 0.5rem;
             color: var(--accent);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .now-playing-strip:hover .np-label i {
@@ -1349,7 +1518,6 @@
             align-items: center;
         }
 
-        /* ── Cover Art ── */
         .cover-wrapper {
             flex: 0 0 180px;
             width: 180px;
@@ -1359,7 +1527,7 @@
             box-shadow: 0 20px 48px -12px var(--cover-shadow), 0 0 0 1px var(--border-color);
             background: var(--bg-secondary);
             position: relative;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .cover-wrapper::after {
@@ -1382,7 +1550,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .cover-wrapper:hover img {
@@ -1418,7 +1586,6 @@
             }
         }
 
-        /* visualizer ring on cover */
         .cover-wrapper .visualizer-ring {
             position: absolute;
             inset: -6px;
@@ -1447,7 +1614,6 @@
             }
         }
 
-        /* ── Controls Column ── */
         .controls-col {
             flex: 1;
             min-width: 220px;
@@ -1478,7 +1644,6 @@
             transition: color 0.3s ease;
         }
 
-        /* ── Playback Controls ── */
         .playback-controls {
             display: flex;
             align-items: center;
@@ -1498,7 +1663,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             box-shadow: 0 8px 32px var(--accent-glow);
             flex-shrink: 0;
             -webkit-tap-highlight-color: transparent;
@@ -1520,6 +1685,22 @@
             opacity: 1;
         }
 
+        .play-btn::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.8);
+        }
+
+        .play-btn:hover::after {
+            opacity: 0.3;
+            transform: scale(1);
+        }
+
         .play-btn:hover {
             transform: scale(1.07) translateY(-3px);
             box-shadow: 0 14px 44px var(--accent-glow-strong);
@@ -1536,7 +1717,7 @@
             justify-content: center;
             width: 100%;
             height: 100%;
-            transition: transform 0.35s ease;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
             z-index: 1;
         }
@@ -1561,7 +1742,7 @@
             color: var(--text-secondary);
             font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             padding: 0.4rem;
             border-radius: 50%;
             width: 44px;
@@ -1571,6 +1752,23 @@
             justify-content: center;
             -webkit-tap-highlight-color: transparent;
             position: relative;
+            overflow: hidden;
+        }
+
+        .secondary-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--ripple-color);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .secondary-btn:hover::after {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .secondary-btn:hover {
@@ -1584,7 +1782,9 @@
         }
 
         .secondary-btn i {
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            z-index: 1;
         }
 
         .secondary-btn:hover i {
@@ -1611,8 +1811,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             -webkit-tap-highlight-color: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .volume-wrap .vol-icon-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--ripple-color);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .volume-wrap .vol-icon-btn:hover::after {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .volume-wrap .vol-icon-btn:hover {
@@ -1623,6 +1841,11 @@
 
         .volume-wrap .vol-icon-btn:active {
             transform: scale(0.85);
+        }
+
+        .volume-wrap .vol-icon-btn i {
+            position: relative;
+            z-index: 1;
         }
 
         .volume-slider {
@@ -1670,7 +1893,6 @@
             height: 6px;
         }
 
-        /* ── Progress Bar ── */
         .progress-area {
             display: flex;
             align-items: center;
@@ -1726,7 +1948,7 @@
             border-radius: 50%;
             background: var(--thumb-color);
             opacity: 0;
-            transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+            transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
             box-shadow: 0 0 24px var(--thumb-glow);
         }
 
@@ -1741,7 +1963,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════════
-           PLAYLIST
+           PLAYLIST — with inward-dipping animation
            ═══════════════════════════════════════════════════════════════════ */
 
         .playlist-section {
@@ -1816,12 +2038,61 @@
             padding: 0.7rem 1rem;
             border-radius: 16px;
             background: transparent;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             cursor: pointer;
             border: 1px solid transparent;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
             position: relative;
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        /* Inward-dipping effect on hover — the item dips inward (scale down + subtle translate) */
+        .playlist-item:hover {
+            transform: scale(0.96) translateY(2px);
+            border-color: var(--border-color);
+            background: var(--hover-item-bg);
+        }
+
+        .playlist-item:active {
+            transform: scale(0.93);
+        }
+
+        .playlist-item.active {
+            background: var(--active-item-bg);
+            border-color: var(--active-item-border);
+            transform: scale(1);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .playlist-item.active:hover {
+            transform: scale(0.97);
+        }
+
+        .playlist-item.active:active {
+            transform: scale(0.93);
+        }
+
+        .playlist-item:nth-child(1) { animation-delay: 0.04s; }
+        .playlist-item:nth-child(2) { animation-delay: 0.08s; }
+        .playlist-item:nth-child(3) { animation-delay: 0.12s; }
+        .playlist-item:nth-child(4) { animation-delay: 0.16s; }
+        .playlist-item:nth-child(5) { animation-delay: 0.20s; }
+        .playlist-item:nth-child(6) { animation-delay: 0.24s; }
+        .playlist-item:nth-child(7) { animation-delay: 0.28s; }
+        .playlist-item:nth-child(8) { animation-delay: 0.32s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .playlist-item::before {
@@ -1831,27 +2102,12 @@
             border-radius: 16px;
             background: var(--hover-item-bg);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         .playlist-item:hover::before {
             opacity: 1;
-        }
-
-        .playlist-item:hover {
-            transform: translateX(5px);
-            border-color: var(--border-color);
-        }
-
-        .playlist-item:active {
-            transform: scale(0.97);
-        }
-
-        .playlist-item.active {
-            background: var(--active-item-bg);
-            border-color: var(--active-item-border);
-            transform: translateX(0);
-            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .playlist-item.active::before {
@@ -1864,13 +2120,14 @@
             color: var(--text-muted);
             min-width: 24px;
             text-align: center;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease, transform 0.4s ease;
             position: relative;
             z-index: 1;
         }
 
         .playlist-item.active .idx {
             color: var(--accent);
+            transform: scale(1.1);
         }
 
         .playlist-item .pl-info {
@@ -1890,7 +2147,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease, transform 0.4s ease;
         }
 
         .playlist-item.active .pl-title {
@@ -1903,7 +2160,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease;
         }
 
         .playlist-item .pl-duration {
@@ -1912,31 +2169,38 @@
             font-variant-numeric: tabular-nums;
             min-width: 44px;
             text-align: right;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease, transform 0.4s ease;
             position: relative;
             z-index: 1;
+        }
+
+        .playlist-item.active .pl-duration {
+            color: var(--accent);
         }
 
         .playlist-item .pl-play-icon {
             color: var(--accent);
             font-size: 0.9rem;
             opacity: 0;
-            transition: all 0.35s ease;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             min-width: 20px;
             text-align: center;
             position: relative;
             z-index: 1;
+            transform: scale(0.6);
         }
 
         .playlist-item.active .pl-play-icon,
         .playlist-item:hover .pl-play-icon {
             opacity: 1;
+            transform: scale(1);
         }
 
         .playlist-item .pl-play-icon.playing {
             opacity: 1;
             color: var(--accent);
             animation: playingPulse 1.2s ease-in-out infinite;
+            transform: scale(1);
         }
 
         @keyframes playingPulse {
@@ -1950,7 +2214,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════════
-           ANNOUNCEMENTS (inside slide)
+           ANNOUNCEMENTS
            ═══════════════════════════════════════════════════════════════════ */
 
         .page-header {
@@ -1996,28 +2260,40 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+            will-change: transform, opacity;
         }
+
+        .announcement-card:nth-child(1) { animation-delay: 0.05s; }
+        .announcement-card:nth-child(2) { animation-delay: 0.10s; }
+        .announcement-card:nth-child(3) { animation-delay: 0.15s; }
+        .announcement-card:nth-child(4) { animation-delay: 0.20s; }
 
         .announcement-card:hover {
             background: var(--card-hover);
             border-color: var(--border-strong);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.01);
             box-shadow: var(--elevation-2);
         }
 
         .announcement-card:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         .announcement-card.expanded {
             background: var(--card-expanded);
             border-color: var(--border-strong);
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             box-shadow: var(--elevation-3);
+        }
+
+        .announcement-card.expanded:hover {
+            transform: translateY(-2px) scale(1);
         }
 
         .card-summary {
@@ -2035,7 +2311,7 @@
             background: var(--bg-secondary);
             flex-shrink: 0;
             box-shadow: 0 4px 14px var(--shadow-light);
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .announcement-card:hover .card-summary img {
@@ -2057,7 +2333,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease;
         }
 
         .announcement-card:hover .card-summary .info h4 {
@@ -2070,7 +2346,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: color 0.3s ease;
+            transition: color 0.4s ease;
         }
 
         .card-summary .badge {
@@ -2089,7 +2365,7 @@
         .card-summary .expand-icon {
             color: var(--text-muted);
             font-size: 0.9rem;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             flex-shrink: 0;
             margin-left: 0.2rem;
         }
@@ -2102,7 +2378,7 @@
         .card-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.4s ease, opacity 0.4s ease;
+            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease, opacity 0.4s ease;
             opacity: 0;
             padding: 0 1.2rem;
         }
@@ -2120,6 +2396,28 @@
             padding: 0.4rem 0;
             border-top: 1px solid var(--separator);
             transition: border-color 0.3s ease;
+            animation: detailFadeIn 0.4s ease forwards;
+            opacity: 0;
+        }
+
+        .announcement-card.expanded .card-details .detail-row {
+            opacity: 1;
+        }
+
+        .card-details .detail-row:nth-child(1) { animation-delay: 0.05s; }
+        .card-details .detail-row:nth-child(2) { animation-delay: 0.10s; }
+        .card-details .detail-row:nth-child(3) { animation-delay: 0.15s; }
+        .card-details .detail-row:nth-child(4) { animation-delay: 0.20s; }
+
+        @keyframes detailFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card-details .detail-row:first-child {
@@ -2150,11 +2448,26 @@
             text-decoration: none;
             transition: all 0.3s ease;
             border-bottom: 1px solid transparent;
+            position: relative;
+        }
+
+        .card-details .detail-value a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--link-color);
+            transition: width 0.3s ease;
+        }
+
+        .card-details .detail-value a:hover::after {
+            width: 100%;
         }
 
         .card-details .detail-value a:hover {
             color: var(--link-hover);
-            border-bottom-color: var(--link-hover);
         }
 
         .card-details .detail-value .tag {
@@ -2211,11 +2524,12 @@
             border-radius: 50%;
             border: 2px solid transparent;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
             flex-shrink: 0;
             -webkit-tap-highlight-color: transparent;
             outline: none;
+            overflow: hidden;
         }
 
         .hub-footer .footer-theme .theme-dot::after {
@@ -2224,7 +2538,23 @@
             inset: -4px;
             border-radius: 50%;
             border: 2px solid transparent;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+        }
+
+        .hub-footer .footer-theme .theme-dot::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--ripple-color);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .hub-footer .footer-theme .theme-dot:hover::before {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .hub-footer .footer-theme .theme-dot:hover {
@@ -2322,6 +2652,30 @@
             box-shadow: 0 0 24px rgba(255, 107, 107, 0.5);
         }
 
+        .hub-footer .footer-theme .theme-dot[data-theme="candy"] {
+            background: linear-gradient(135deg, #ff6b9d, #ff4d8a);
+            border-color: rgba(255, 107, 157, 0.3);
+        }
+        .hub-footer .footer-theme .theme-dot[data-theme="candy"].active {
+            border-color: #ff6b9d;
+        }
+
+        .hub-footer .footer-theme .theme-dot[data-theme="forest"] {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+        .hub-footer .footer-theme .theme-dot[data-theme="forest"].active {
+            border-color: #4ade80;
+        }
+
+        .hub-footer .footer-theme .theme-dot[data-theme="neon"] {
+            background: linear-gradient(135deg, #00f5ff, #00d4e6);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+        .hub-footer .footer-theme .theme-dot[data-theme="neon"].active {
+            border-color: #00f5ff;
+        }
+
         .hub-footer .footer-copy {
             display: flex;
             flex-wrap: wrap;
@@ -2336,21 +2690,16 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════════
-           UTILITY
+           UTILITY & RESPONSIVE
            ═══════════════════════════════════════════════════════════════════ */
 
         .hidden {
             display: none !important;
         }
-
         .section-spacer {
             height: 2rem;
             width: 100%;
         }
-
-        /* ═══════════════════════════════════════════════════════════════════
-           FOCUS VISIBLE
-           ═══════════════════════════════════════════════════════════════════ */
 
         .nav-btn:focus-visible,
         .social-btn:focus-visible,
@@ -2364,10 +2713,6 @@
             outline-offset: 2px;
         }
 
-        /* ═══════════════════════════════════════════════════════════════════
-           REDUCED MOTION
-           ═══════════════════════════════════════════════════════════════════ */
-
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -2376,763 +2721,207 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-            .np-indicator .dot {
-                animation: none !important;
-            }
-            .brand-icon {
-                animation: none !important;
-            }
-            .tagline i {
-                animation: none !important;
-            }
-            .cover-fallback i {
-                animation: none !important;
-            }
-            .playlist-item .pl-play-icon.playing {
-                animation: none !important;
-            }
-            body::before {
-                animation: none !important;
-            }
-            .top-nav {
-                transition: none !important;
-            }
-            .page-slider-inner {
-                transition: none !important;
-            }
+            .np-indicator .dot { animation: none !important; }
+            .brand-icon { animation: none !important; }
+            .tagline i { animation: none !important; }
+            .cover-fallback i { animation: none !important; }
+            .playlist-item .pl-play-icon.playing { animation: none !important; }
+            body::before { animation: none !important; }
+            .top-nav { transition: none !important; }
+            .page-slider-inner { transition: none !important; }
             [data-theme="rainbow"] .nav-btn.active,
             [data-theme="rainbow"] .play-btn,
             [data-theme="rainbow"] .progress-fill,
             [data-theme="rainbow"] .badge-bg,
-            [data-theme="rainbow"] .brand-icon {
-                animation: none !important;
-            }
-            .theme-dot[data-theme="rainbow"] {
-                animation: none !important;
-            }
-            .cover-wrapper .visualizer-ring {
-                animation: none !important;
-            }
-            .cover-wrapper.is-playing .visualizer-ring {
-                animation: none !important;
-            }
+            [data-theme="rainbow"] .brand-icon { animation: none !important; }
+            .theme-dot[data-theme="rainbow"] { animation: none !important; }
+            .cover-wrapper .visualizer-ring { animation: none !important; }
+            .cover-wrapper.is-playing .visualizer-ring { animation: none !important; }
+            .playlist-item { animation: none !important; opacity: 1 !important; }
+            .announcement-card { animation: none !important; opacity: 1 !important; }
+            .card-details .detail-row { animation: none !important; opacity: 1 !important; }
         }
 
-        /* ═══════════════════════════════════════════════════════════════════
-           RESPONSIVE
-           ═══════════════════════════════════════════════════════════════════ */
-
         @media (max-width: 860px) {
-            body {
-                padding-top: 5rem;
-                padding-left: 0.8rem;
-                padding-right: 0.8rem;
-            }
-            .page-slide {
-                padding: 1.75rem 1.5rem;
-                border-radius: 2.25rem;
-            }
-            .page-slider {
-                border-radius: 2.25rem;
-                max-height: calc(100vh - 5rem - 2rem);
-            }
-            .player-top {
-                gap: 1.5rem;
-            }
-            .cover-wrapper {
-                flex: 0 0 160px;
-                width: 160px;
-                height: 160px;
-                border-radius: 24px;
-            }
-            .track-info .track-name {
-                font-size: 1.35rem;
-            }
-            .play-btn {
-                width: 54px;
-                height: 54px;
-                font-size: 1.4rem;
-            }
-            .brand h1 {
-                font-size: 1.5rem;
-            }
-            .volume-slider {
-                width: 60px;
-            }
-            .progress-fill::after {
-                width: 18px;
-                height: 18px;
-                right: -9px;
-            }
-            .top-nav {
-                padding: 0.4rem 1rem;
-                min-width: 220px;
-                border-radius: 50px;
-                top: 8px;
-            }
-            .top-nav .nav-btn {
-                padding: 0.3rem 0.7rem;
-                font-size: 0.7rem;
-            }
-            .top-nav .nav-brand {
-                font-size: 0.8rem;
-            }
+            body { padding-top: 5rem; padding-left: 0.8rem; padding-right: 0.8rem; }
+            .page-slide { padding: 1.75rem 1.5rem; border-radius: 2.25rem; }
+            .page-slider { border-radius: 2.25rem; }
+            .player-top { gap: 1.5rem; }
+            .cover-wrapper { flex: 0 0 160px; width: 160px; height: 160px; border-radius: 24px; }
+            .track-info .track-name { font-size: 1.35rem; }
+            .play-btn { width: 54px; height: 54px; font-size: 1.4rem; }
+            .brand h1 { font-size: 1.5rem; }
+            .volume-slider { width: 60px; }
+            .progress-fill::after { width: 18px; height: 18px; right: -9px; }
+            .top-nav { padding: 0.4rem 1rem; min-width: 220px; border-radius: 50px; top: 8px; }
+            .top-nav .nav-btn { padding: 0.3rem 0.7rem; font-size: 0.7rem; }
         }
 
         @media (max-width: 720px) {
-            body {
-                padding-top: 4.5rem;
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
-            }
-            .page-slide {
-                padding: 1.5rem 1.2rem;
-                border-radius: 2rem;
-            }
-            .page-slider {
-                border-radius: 2rem;
-                max-height: calc(100vh - 4.5rem - 1.5rem);
-            }
-            .hub-header {
-                gap: 0.5rem;
-                margin-bottom: 1.5rem;
-            }
-            .brand h1 {
-                font-size: 1.3rem;
-            }
-            .brand-icon {
-                font-size: 1.5rem;
-            }
-
-            .social-links {
-                gap: 0.3rem;
-                padding: 0;
-                flex: 1 1 100%;
-                order: 3;
-                margin-top: 0.15rem;
-            }
-            .social-links:hover {
-                gap: 0.5rem;
-            }
-            .social-btn {
-                width: 34px;
-                height: 34px;
-                font-size: 0.85rem;
-                margin: 0 1px;
-            }
-            .social-btn:hover {
-                margin: 0 6px;
-                transform: scale(1.12);
-            }
-            .social-btn i {
-                font-size: 0.9rem;
-            }
-
-            .tagline {
-                font-size: 0.7rem;
-                padding: 0.3rem 0.8rem;
-            }
-            .tagline i {
-                font-size: 0.6rem;
-            }
-
-            .player-top {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.2rem;
-            }
-            .cover-wrapper {
-                flex: 0 0 160px;
-                width: 160px;
-                height: 160px;
-                border-radius: 22px;
-            }
-            .controls-col {
-                width: 100%;
-                min-width: unset;
-            }
-            .track-info {
-                text-align: center;
-            }
-            .track-info .track-name {
-                font-size: 1.2rem;
-            }
-            .track-info .track-artist {
-                font-size: 0.9rem;
-            }
-            .playback-controls {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.75rem;
-            }
-            .volume-wrap {
-                margin-left: 0;
-            }
-            .volume-slider {
-                width: 56px;
-            }
-
-            .now-playing-strip {
-                width: 100%;
-                justify-content: center;
-                padding: 0.4rem 0.8rem 0.4rem 0.7rem;
-                gap: 0.6rem;
-            }
-            .now-playing-strip .np-label {
-                font-size: 0.6rem;
-            }
-            .now-playing-strip .np-title {
-                font-size: 0.8rem;
-                max-width: 140px;
-            }
-
-            .playlist-item {
-                padding: 0.6rem 0.7rem;
-                gap: 0.6rem;
-            }
-            .playlist-item .pl-title {
-                font-size: 0.85rem;
-            }
-            .playlist-item .pl-artist {
-                font-size: 0.7rem;
-            }
-            .playlist-item .pl-duration {
-                font-size: 0.7rem;
-                min-width: 36px;
-            }
-            .playlist-item .idx {
-                font-size: 0.7rem;
-                min-width: 20px;
-            }
-            .playlist {
-                max-height: 200px;
-            }
-
-            .card-summary img {
-                width: 48px;
-                height: 48px;
-                border-radius: 10px;
-            }
-            .card-summary {
-                padding: 0.6rem 1rem;
-                gap: 0.8rem;
-            }
-            .card-summary .info h4 {
-                font-size: 0.9rem;
-            }
-            .card-summary .info p {
-                font-size: 0.75rem;
-            }
-            .card-summary .badge {
-                font-size: 0.5rem;
-                padding: 0.15rem 0.5rem;
-            }
-            .card-details .detail-label {
-                min-width: 60px;
-                font-size: 0.65rem;
-            }
-            .card-details .detail-value {
-                font-size: 0.8rem;
-            }
-            .page-header h2 {
-                font-size: 1.1rem;
-            }
-            .page-header .count {
-                font-size: 0.65rem;
-            }
-            .hub-footer {
-                gap: 0.6rem;
-                margin-top: 1.5rem;
-                padding-top: 1.2rem;
-            }
-            .hub-footer .footer-theme .theme-dot {
-                width: 20px;
-                height: 20px;
-            }
-            .progress-area {
-                gap: 0.6rem;
-            }
-            .time-label {
-                font-size: 0.7rem;
-                min-width: 36px;
-            }
-            .progress-track {
-                height: 3px;
-                min-height: 18px;
-            }
-            .progress-track:hover {
-                height: 4px;
-            }
-            .np-indicator .dot {
-                width: 4px;
-                height: 4px;
-            }
-            .progress-fill::after {
-                width: 16px;
-                height: 16px;
-                right: -8px;
-            }
-
-            .top-nav {
-                padding: 0.3rem 0.8rem;
-                gap: 0.3rem;
-                min-width: 180px;
-                border-radius: 40px;
-                top: 6px;
-            }
-            .top-nav .nav-btn {
-                padding: 0.25rem 0.6rem;
-                font-size: 0.65rem;
-                gap: 0.25rem;
-            }
-            .top-nav .nav-btn i {
-                font-size: 0.65rem;
-            }
-            .top-nav .nav-brand {
-                font-size: 0.7rem;
-                gap: 0.3rem;
-            }
-            .top-nav .nav-brand i {
-                font-size: 0.8rem;
-            }
-            .nav-trigger-zone {
-                height: 50px;
-            }
+            body { padding-top: 4.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+            .page-slide { padding: 1.5rem 1.2rem; border-radius: 2rem; }
+            .page-slider { border-radius: 2rem; }
+            .hub-header { gap: 0.5rem; margin-bottom: 1.5rem; }
+            .brand h1 { font-size: 1.3rem; }
+            .brand-icon { font-size: 1.5rem; }
+            .social-links { gap: 0.3rem; padding: 0; flex: 1 1 100%; order: 3; margin-top: 0.15rem; }
+            .social-links:hover { gap: 0.5rem; }
+            .social-btn { width: 34px; height: 34px; font-size: 0.85rem; margin: 0 1px; }
+            .social-btn:hover { margin: 0 6px; transform: scale(1.12); }
+            .social-btn i { font-size: 0.9rem; }
+            .tagline { font-size: 0.7rem; padding: 0.3rem 0.8rem; }
+            .tagline i { font-size: 0.6rem; }
+            .player-top { flex-direction: column; align-items: center; gap: 1.2rem; }
+            .cover-wrapper { flex: 0 0 160px; width: 160px; height: 160px; border-radius: 22px; }
+            .controls-col { width: 100%; min-width: unset; }
+            .track-info { text-align: center; }
+            .track-info .track-name { font-size: 1.2rem; }
+            .track-info .track-artist { font-size: 0.9rem; }
+            .playback-controls { flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+            .volume-wrap { margin-left: 0; }
+            .volume-slider { width: 56px; }
+            .now-playing-strip { width: 100%; justify-content: center; padding: 0.4rem 0.8rem 0.4rem 0.7rem; gap: 0.6rem; }
+            .now-playing-strip .np-label { font-size: 0.6rem; }
+            .now-playing-strip .np-title { font-size: 0.8rem; max-width: 140px; }
+            .playlist-item { padding: 0.6rem 0.7rem; gap: 0.6rem; }
+            .playlist-item .pl-title { font-size: 0.85rem; }
+            .playlist-item .pl-artist { font-size: 0.7rem; }
+            .playlist-item .pl-duration { font-size: 0.7rem; min-width: 36px; }
+            .playlist-item .idx { font-size: 0.7rem; min-width: 20px; }
+            .playlist { max-height: 200px; }
+            .card-summary img { width: 48px; height: 48px; border-radius: 10px; }
+            .card-summary { padding: 0.6rem 1rem; gap: 0.8rem; }
+            .card-summary .info h4 { font-size: 0.9rem; }
+            .card-summary .info p { font-size: 0.75rem; }
+            .card-summary .badge { font-size: 0.5rem; padding: 0.15rem 0.5rem; }
+            .card-details .detail-label { min-width: 60px; font-size: 0.65rem; }
+            .card-details .detail-value { font-size: 0.8rem; }
+            .page-header h2 { font-size: 1.1rem; }
+            .page-header .count { font-size: 0.65rem; }
+            .hub-footer { gap: 0.6rem; margin-top: 1.5rem; padding-top: 1.2rem; }
+            .hub-footer .footer-theme .theme-dot { width: 20px; height: 20px; }
+            .progress-area { gap: 0.6rem; }
+            .time-label { font-size: 0.7rem; min-width: 36px; }
+            .progress-track { height: 3px; min-height: 18px; }
+            .progress-track:hover { height: 4px; }
+            .np-indicator .dot { width: 4px; height: 4px; }
+            .progress-fill::after { width: 16px; height: 16px; right: -8px; }
+            .top-nav { padding: 0.3rem 0.8rem; gap: 0.3rem; min-width: 180px; border-radius: 40px; top: 6px; }
+            .top-nav .nav-btn { padding: 0.25rem 0.6rem; font-size: 0.65rem; gap: 0.25rem; }
+            .top-nav .nav-btn i { font-size: 0.65rem; }
+            .nav-trigger-zone { display: none; }
         }
 
         @media (max-width: 430px) {
-            body {
-                padding-top: 4rem;
-                padding-left: 0.3rem;
-                padding-right: 0.3rem;
-            }
-            .page-slide {
-                padding: 1.2rem 0.8rem;
-                border-radius: 1.5rem;
-            }
-            .page-slider {
-                border-radius: 1.5rem;
-                max-height: calc(100vh - 4rem - 1rem);
-            }
-            .brand h1 {
-                font-size: 1.1rem;
-            }
-            .brand-icon {
-                font-size: 1.2rem;
-            }
-            .cover-wrapper {
-                flex: 0 0 140px;
-                width: 140px;
-                height: 140px;
-                border-radius: 18px;
-            }
-            .cover-fallback {
-                font-size: 3rem;
-            }
-            .track-info .track-name {
-                font-size: 1rem;
-            }
-            .track-info .track-artist {
-                font-size: 0.75rem;
-            }
-            .play-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.2rem;
-            }
-            .secondary-btn {
-                font-size: 0.95rem;
-                padding: 0.3rem;
-                min-width: 34px;
-                min-height: 34px;
-            }
-            .playback-controls {
-                gap: 0.5rem;
-            }
-            .volume-slider {
-                width: 44px;
-            }
-            .volume-wrap i {
-                font-size: 0.8rem;
-            }
-
-            .now-playing-strip .np-title {
-                font-size: 0.7rem;
-                max-width: 100px;
-            }
-            .now-playing-strip .np-label {
-                font-size: 0.55rem;
-            }
-            .now-playing-strip {
-                padding: 0.3rem 0.6rem;
-                gap: 0.4rem;
-                border-radius: 40px;
-            }
-
-            .playlist-item {
-                padding: 0.5rem 0.6rem;
-                gap: 0.4rem;
-                min-height: 40px;
-            }
-            .playlist-item .pl-title {
-                font-size: 0.75rem;
-            }
-            .playlist-item .pl-artist {
-                font-size: 0.6rem;
-            }
-            .playlist-item .pl-duration {
-                font-size: 0.6rem;
-                min-width: 30px;
-            }
-            .playlist-item .idx {
-                font-size: 0.6rem;
-                min-width: 18px;
-            }
-            .playlist-item .pl-play-icon {
-                font-size: 0.7rem;
-                min-width: 16px;
-            }
-            .playlist {
-                max-height: 160px;
-                gap: 0.2rem;
-            }
-            .playlist-header h3 {
-                font-size: 0.7rem;
-            }
-            .playlist-header .count {
-                font-size: 0.6rem;
-                padding: 0.1rem 0.5rem;
-            }
-            .playlist-section {
-                padding-top: 1rem;
-                margin-top: 0.5rem;
-            }
-
-            .card-summary img {
-                width: 40px;
-                height: 40px;
-                border-radius: 8px;
-            }
-            .card-summary {
-                padding: 0.5rem 0.7rem;
-                gap: 0.6rem;
-            }
-            .card-summary .info h4 {
-                font-size: 0.8rem;
-            }
-            .card-summary .info p {
-                font-size: 0.65rem;
-            }
-            .card-summary .badge {
-                font-size: 0.45rem;
-                padding: 0.1rem 0.4rem;
-            }
-            .card-summary .expand-icon {
-                font-size: 0.7rem;
-            }
-            .card-details {
-                padding: 0 0.7rem;
-            }
-            .announcement-card.expanded .card-details {
-                padding: 0 0.7rem 0.8rem 0.7rem;
-            }
-            .card-details .detail-label {
-                min-width: 50px;
-                font-size: 0.55rem;
-            }
-            .card-details .detail-value {
-                font-size: 0.7rem;
-            }
-            .card-details .detail-row {
-                gap: 0.4rem;
-                padding: 0.3rem 0;
-            }
-            .page-header {
-                margin-bottom: 1rem;
-            }
-            .page-header h2 {
-                font-size: 0.9rem;
-            }
-            .page-header .count {
-                font-size: 0.55rem;
-                padding: 0.1rem 0.5rem;
-            }
-            .section-spacer {
-                height: 1rem;
-            }
-            .progress-area {
-                gap: 0.4rem;
-            }
-            .time-label {
-                font-size: 0.6rem;
-                min-width: 30px;
-            }
-            .progress-track {
-                height: 2px;
-                min-height: 16px;
-            }
-            .progress-track:hover {
-                height: 3px;
-            }
-            .np-indicator .dot {
-                width: 3px;
-                height: 3px;
-            }
-            .hub-footer {
-                gap: 0.5rem;
-                margin-top: 1.2rem;
-                padding-top: 0.8rem;
-            }
-            .hub-footer .footer-theme .theme-dot {
-                width: 18px;
-                height: 18px;
-            }
-            .hub-footer .footer-copy {
-                font-size: 0.6rem;
-                gap: 0.2rem;
-            }
-            .social-btn {
-                width: 28px;
-                height: 28px;
-                font-size: 0.7rem;
-            }
-            .social-btn i {
-                font-size: 0.75rem;
-            }
-            .progress-fill::after {
-                width: 14px;
-                height: 14px;
-                right: -7px;
-            }
-
-            .top-nav {
-                padding: 0.2rem 0.5rem;
-                gap: 0.2rem;
-                min-width: 140px;
-                border-radius: 30px;
-                top: 4px;
-            }
-            .top-nav .nav-btn {
-                padding: 0.2rem 0.4rem;
-                font-size: 0.55rem;
-                gap: 0.2rem;
-                min-height: 28px;
-            }
-            .top-nav .nav-btn i {
-                font-size: 0.55rem;
-            }
-            .top-nav .nav-brand {
-                font-size: 0.6rem;
-                gap: 0.2rem;
-            }
-            .top-nav .nav-brand i {
-                font-size: 0.7rem;
-            }
-            .nav-trigger-zone {
-                height: 40px;
-            }
+            body { padding-top: 4rem; padding-left: 0.3rem; padding-right: 0.3rem; }
+            .page-slide { padding: 1.2rem 0.8rem; border-radius: 1.5rem; }
+            .page-slider { border-radius: 1.5rem; }
+            .brand h1 { font-size: 1.1rem; }
+            .brand-icon { font-size: 1.2rem; }
+            .cover-wrapper { flex: 0 0 140px; width: 140px; height: 140px; border-radius: 18px; }
+            .cover-fallback { font-size: 3rem; }
+            .track-info .track-name { font-size: 1rem; }
+            .track-info .track-artist { font-size: 0.75rem; }
+            .play-btn { width: 48px; height: 48px; font-size: 1.2rem; }
+            .secondary-btn { font-size: 0.95rem; padding: 0.3rem; min-width: 34px; min-height: 34px; }
+            .playback-controls { gap: 0.5rem; }
+            .volume-slider { width: 44px; }
+            .volume-wrap i { font-size: 0.8rem; }
+            .now-playing-strip .np-title { font-size: 0.7rem; max-width: 100px; }
+            .now-playing-strip .np-label { font-size: 0.55rem; }
+            .now-playing-strip { padding: 0.3rem 0.6rem; gap: 0.4rem; border-radius: 40px; }
+            .playlist-item { padding: 0.5rem 0.6rem; gap: 0.4rem; min-height: 40px; }
+            .playlist-item .pl-title { font-size: 0.75rem; }
+            .playlist-item .pl-artist { font-size: 0.6rem; }
+            .playlist-item .pl-duration { font-size: 0.6rem; min-width: 30px; }
+            .playlist-item .idx { font-size: 0.6rem; min-width: 18px; }
+            .playlist-item .pl-play-icon { font-size: 0.7rem; min-width: 16px; }
+            .playlist { max-height: 160px; gap: 0.2rem; }
+            .playlist-header h3 { font-size: 0.7rem; }
+            .playlist-header .count { font-size: 0.6rem; padding: 0.1rem 0.5rem; }
+            .playlist-section { padding-top: 1rem; margin-top: 0.5rem; }
+            .card-summary img { width: 40px; height: 40px; border-radius: 8px; }
+            .card-summary { padding: 0.5rem 0.7rem; gap: 0.6rem; }
+            .card-summary .info h4 { font-size: 0.8rem; }
+            .card-summary .info p { font-size: 0.65rem; }
+            .card-summary .badge { font-size: 0.45rem; padding: 0.1rem 0.4rem; }
+            .card-summary .expand-icon { font-size: 0.7rem; }
+            .card-details { padding: 0 0.7rem; }
+            .announcement-card.expanded .card-details { padding: 0 0.7rem 0.8rem 0.7rem; }
+            .card-details .detail-label { min-width: 50px; font-size: 0.55rem; }
+            .card-details .detail-value { font-size: 0.7rem; }
+            .card-details .detail-row { gap: 0.4rem; padding: 0.3rem 0; }
+            .page-header { margin-bottom: 1rem; }
+            .page-header h2 { font-size: 0.9rem; }
+            .page-header .count { font-size: 0.55rem; padding: 0.1rem 0.5rem; }
+            .section-spacer { height: 1rem; }
+            .progress-area { gap: 0.4rem; }
+            .time-label { font-size: 0.6rem; min-width: 30px; }
+            .progress-track { height: 2px; min-height: 16px; }
+            .progress-track:hover { height: 3px; }
+            .np-indicator .dot { width: 3px; height: 3px; }
+            .hub-footer { gap: 0.5rem; margin-top: 1.2rem; padding-top: 0.8rem; }
+            .hub-footer .footer-theme .theme-dot { width: 18px; height: 18px; }
+            .hub-footer .footer-copy { font-size: 0.6rem; gap: 0.2rem; }
+            .social-btn { width: 28px; height: 28px; font-size: 0.7rem; }
+            .social-btn i { font-size: 0.75rem; }
+            .progress-fill::after { width: 14px; height: 14px; right: -7px; }
+            .top-nav { padding: 0.2rem 0.5rem; gap: 0.2rem; min-width: 140px; border-radius: 30px; top: 4px; }
+            .top-nav .nav-btn { padding: 0.2rem 0.4rem; font-size: 0.55rem; gap: 0.2rem; min-height: 28px; }
+            .top-nav .nav-btn i { font-size: 0.55rem; }
+            .nav-trigger-zone { display: none; }
         }
 
         @media (max-height: 500px) and (orientation: landscape) {
-            body {
-                padding-top: 3.5rem;
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
-            }
-            .page-slide {
-                padding: 0.8rem 1rem;
-                border-radius: 1.25rem;
-            }
-            .page-slider {
-                border-radius: 1.25rem;
-                max-height: calc(100vh - 3.5rem - 1rem);
-            }
-            .hub-header {
-                margin-bottom: 0.6rem;
-                gap: 0.3rem;
-            }
-            .brand h1 {
-                font-size: 1rem;
-            }
-            .brand-icon {
-                font-size: 1.1rem;
-            }
-            .cover-wrapper {
-                flex: 0 0 80px;
-                width: 80px;
-                height: 80px;
-                border-radius: 12px;
-            }
-            .cover-fallback {
-                font-size: 2rem;
-            }
-            .player-top {
-                flex-direction: row;
-                gap: 0.8rem;
-                align-items: center;
-            }
-            .controls-col {
-                gap: 0.3rem;
-            }
-            .track-info .track-name {
-                font-size: 0.9rem;
-            }
-            .track-info .track-artist {
-                font-size: 0.65rem;
-            }
-            .play-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 0.95rem;
-            }
-            .secondary-btn {
-                font-size: 0.75rem;
-                min-width: 28px;
-                min-height: 28px;
-                padding: 0.2rem;
-            }
-            .playback-controls {
-                gap: 0.4rem;
-            }
-            .volume-slider {
-                width: 36px;
-                height: 3px;
-            }
-            .volume-wrap i {
-                font-size: 0.65rem;
-            }
-            .volume-wrap {
-                gap: 0.3rem;
-            }
-
-            .hub-footer .footer-theme .theme-dot {
-                width: 16px;
-                height: 16px;
-            }
-
-            .now-playing-strip {
-                padding: 0.2rem 0.5rem;
-                min-height: 26px;
-                gap: 0.4rem;
-                border-radius: 30px;
-            }
-            .now-playing-strip .np-label {
-                font-size: 0.5rem;
-            }
-            .now-playing-strip .np-title {
-                font-size: 0.6rem;
-                max-width: 100px;
-            }
-            .playlist {
-                max-height: 100px;
-                gap: 0.15rem;
-            }
-            .playlist-item {
-                padding: 0.25rem 0.5rem;
-                min-height: 30px;
-                gap: 0.4rem;
-            }
-            .playlist-item .pl-title {
-                font-size: 0.65rem;
-            }
-            .playlist-item .pl-artist {
-                font-size: 0.5rem;
-            }
-            .playlist-item .pl-duration {
-                font-size: 0.55rem;
-                min-width: 28px;
-            }
-            .playlist-item .idx {
-                font-size: 0.55rem;
-                min-width: 16px;
-            }
-            .playlist-item .pl-play-icon {
-                font-size: 0.6rem;
-                min-width: 14px;
-            }
-            .playlist-section {
-                padding-top: 0.4rem;
-                margin-top: 0.2rem;
-            }
-            .playlist-header h3 {
-                font-size: 0.6rem;
-            }
-            .playlist-header .count {
-                font-size: 0.5rem;
-                padding: 0.1rem 0.4rem;
-            }
-            .progress-area {
-                gap: 0.3rem;
-            }
-            .time-label {
-                font-size: 0.55rem;
-                min-width: 26px;
-            }
-            .progress-track {
-                height: 2px;
-                min-height: 14px;
-            }
-            .progress-track:hover {
-                height: 3px;
-            }
-            .tagline {
-                font-size: 0.5rem;
-                padding: 0.15rem 0.4rem;
-            }
-            .social-btn {
-                width: 24px;
-                height: 24px;
-                font-size: 0.6rem;
-            }
-            .social-btn i {
-                font-size: 0.6rem;
-            }
-            .hub-footer {
-                margin-top: 0.5rem;
-                padding-top: 0.5rem;
-                gap: 0.3rem;
-            }
-            .hub-footer .footer-copy {
-                font-size: 0.5rem;
-            }
-            .np-indicator .dot {
-                width: 3px;
-                height: 3px;
-            }
-            .section-spacer {
-                height: 0.5rem;
-            }
-            .progress-fill::after {
-                width: 14px;
-                height: 14px;
-                right: -7px;
-            }
-            .top-nav {
-                padding: 0.15rem 0.5rem;
-                gap: 0.2rem;
-                min-width: 120px;
-                border-radius: 30px;
-                top: 4px;
-            }
-            .top-nav .nav-btn {
-                padding: 0.15rem 0.5rem;
-                font-size: 0.55rem;
-                min-height: 24px;
-            }
-            .top-nav .nav-btn i {
-                font-size: 0.55rem;
-            }
-            .top-nav .nav-brand {
-                font-size: 0.6rem;
-            }
-            .nav-trigger-zone {
-                height: 35px;
-            }
-            .volume-wrap .vol-icon-btn {
-                width: 24px;
-                height: 24px;
-                font-size: 0.8rem;
-            }
+            body { padding-top: 3.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+            .page-slide { padding: 0.8rem 1rem; border-radius: 1.25rem; }
+            .page-slider { border-radius: 1.25rem; }
+            .hub-header { margin-bottom: 0.6rem; gap: 0.3rem; }
+            .brand h1 { font-size: 1rem; }
+            .brand-icon { font-size: 1.1rem; }
+            .cover-wrapper { flex: 0 0 80px; width: 80px; height: 80px; border-radius: 12px; }
+            .cover-fallback { font-size: 2rem; }
+            .player-top { flex-direction: row; gap: 0.8rem; align-items: center; }
+            .controls-col { gap: 0.3rem; }
+            .track-info .track-name { font-size: 0.9rem; }
+            .track-info .track-artist { font-size: 0.65rem; }
+            .play-btn { width: 38px; height: 38px; font-size: 0.95rem; }
+            .secondary-btn { font-size: 0.75rem; min-width: 28px; min-height: 28px; padding: 0.2rem; }
+            .playback-controls { gap: 0.4rem; }
+            .volume-slider { width: 36px; height: 3px; }
+            .volume-wrap i { font-size: 0.65rem; }
+            .volume-wrap { gap: 0.3rem; }
+            .hub-footer .footer-theme .theme-dot { width: 16px; height: 16px; }
+            .now-playing-strip { padding: 0.2rem 0.5rem; min-height: 26px; gap: 0.4rem; border-radius: 30px; }
+            .now-playing-strip .np-label { font-size: 0.5rem; }
+            .now-playing-strip .np-title { font-size: 0.6rem; max-width: 100px; }
+            .playlist { max-height: 100px; gap: 0.15rem; }
+            .playlist-item { padding: 0.25rem 0.5rem; min-height: 30px; gap: 0.4rem; }
+            .playlist-item .pl-title { font-size: 0.65rem; }
+            .playlist-item .pl-artist { font-size: 0.5rem; }
+            .playlist-item .pl-duration { font-size: 0.55rem; min-width: 28px; }
+            .playlist-item .idx { font-size: 0.55rem; min-width: 16px; }
+            .playlist-item .pl-play-icon { font-size: 0.6rem; min-width: 14px; }
+            .playlist-section { padding-top: 0.4rem; margin-top: 0.2rem; }
+            .playlist-header h3 { font-size: 0.6rem; }
+            .playlist-header .count { font-size: 0.5rem; padding: 0.1rem 0.4rem; }
+            .progress-area { gap: 0.3rem; }
+            .time-label { font-size: 0.55rem; min-width: 26px; }
+            .progress-track { height: 2px; min-height: 14px; }
+            .progress-track:hover { height: 3px; }
+            .tagline { font-size: 0.5rem; padding: 0.15rem 0.4rem; }
+            .social-btn { width: 24px; height: 24px; font-size: 0.6rem; }
+            .social-btn i { font-size: 0.6rem; }
+            .hub-footer { margin-top: 0.5rem; padding-top: 0.5rem; gap: 0.3rem; }
+            .hub-footer .footer-copy { font-size: 0.5rem; }
+            .np-indicator .dot { width: 3px; height: 3px; }
+            .section-spacer { height: 0.5rem; }
+            .progress-fill::after { width: 14px; height: 14px; right: -7px; }
+            .top-nav { padding: 0.15rem 0.5rem; gap: 0.2rem; min-width: 120px; border-radius: 30px; top: 4px; }
+            .top-nav .nav-btn { padding: 0.15rem 0.5rem; font-size: 0.55rem; min-height: 24px; }
+            .top-nav .nav-btn i { font-size: 0.55rem; }
+            .nav-trigger-zone { display: none; }
+            .volume-wrap .vol-icon-btn { width: 24px; height: 24px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -3142,11 +2931,8 @@
     <!-- ─── NAV TRIGGER ZONE ─── -->
     <div class="nav-trigger-zone" id="navTriggerZone"></div>
 
-    <!-- ─── TOP NAVBAR (floating, slides from top) ─── -->
+    <!-- ─── TOP NAVBAR (floating) ─── -->
     <nav class="top-nav" id="topNav" aria-label="Main navigation">
-        <div class="nav-brand">
-
-        </div>
         <div class="nav-links">
             <button class="nav-btn active" data-page="hub">
                 <i class="fas fa-compact-disc"></i>
@@ -3156,9 +2942,6 @@
                 <i class="fas fa-bullhorn"></i>
                 <span>Announcements</span>
             </button>
-        </div>
-        <div class="nav-actions">
-            <!-- theme toggle removed from navbar -->
         </div>
     </nav>
 
@@ -3175,7 +2958,6 @@
                         <h1>SBPebbles Music Hub</h1>
                     </div>
 
-                    <!-- ─── SOCIAL LINKS ─── -->
                     <div class="social-links" aria-label="Social media links">
                         <a href="https://music.youtube.com/channel/UCeQVW-kjGwlDklf77UMk94g" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube Music">
                             <i class="fab fa-youtube"></i>
@@ -3216,7 +2998,6 @@
                 <!-- ─── PLAYER ─── -->
                 <section class="player-section">
                     <div class="player-top">
-                        <!-- Cover -->
                         <div class="cover-wrapper" id="coverWrapper">
                             <div class="cover-fallback" id="coverFallback">
                                 <i class="fas fa-music"></i>
@@ -3225,7 +3006,6 @@
                             <div class="visualizer-ring"></div>
                         </div>
 
-                        <!-- Controls -->
                         <div class="controls-col">
                             <div class="track-info">
                                 <span class="track-name" id="trackName">—</span>
@@ -3236,15 +3016,12 @@
                                 <button class="secondary-btn" id="prevBtn" aria-label="Previous track">
                                     <i class="fas fa-backward-step"></i>
                                 </button>
-
                                 <button class="play-btn" id="playBtn" aria-label="Play / Pause">
                                     <i class="fas fa-play" id="playIcon"></i>
                                 </button>
-
                                 <button class="secondary-btn" id="nextBtn" aria-label="Next track">
                                     <i class="fas fa-forward-step"></i>
                                 </button>
-
                                 <div class="volume-wrap">
                                     <button class="vol-icon-btn" id="volIconBtn" aria-label="Toggle mute">
                                         <i class="fas fa-volume-high" id="volIcon"></i>
@@ -3253,7 +3030,6 @@
                                 </div>
                             </div>
 
-                            <!-- Progress -->
                             <div class="progress-area">
                                 <span class="time-label" id="currentTime">0:00</span>
                                 <div class="progress-track" id="progressTrack" role="slider" aria-label="Seek">
@@ -3276,22 +3052,25 @@
                     </div>
                 </section>
 
-                <!-- ─── FOOTER with theme switcher (centered) ─── -->
+                <!-- ─── FOOTER with theme switcher ─── -->
                 <footer class="hub-footer">
                     <div class="footer-theme" role="group" aria-label="Theme selector">
                         <span class="ft-label">Theme</span>
-                        <button class="theme-dot active" data-theme="dark" aria-label="AMOLED Dark theme" title="AMOLED Dark"></button>
-                        <button class="theme-dot" data-theme="light" aria-label="Light theme" title="Light"></button>
-                        <button class="theme-dot" data-theme="turquoise" aria-label="Turquoise theme" title="Turquoise"></button>
-                        <button class="theme-dot" data-theme="red" aria-label="Red theme" title="Red"></button>
-                        <button class="theme-dot" data-theme="purple" aria-label="Purple theme" title="Purple"></button>
-                        <button class="theme-dot" data-theme="green" aria-label="Green theme" title="Green"></button>
-                        <button class="theme-dot" data-theme="ocean" aria-label="Ocean theme" title="Ocean"></button>
-                        <button class="theme-dot" data-theme="sunset" aria-label="Sunset theme" title="Sunset"></button>
-                        <button class="theme-dot" data-theme="rainbow" aria-label="Rainbow theme" title="Rainbow"></button>
+                        <button class="theme-dot active" data-theme="dark" aria-label="AMOLED Dark" title="Dark"></button>
+                        <button class="theme-dot" data-theme="light" aria-label="Light" title="Light"></button>
+                        <button class="theme-dot" data-theme="turquoise" aria-label="Turquoise" title="Turquoise"></button>
+                        <button class="theme-dot" data-theme="red" aria-label="Red" title="Red"></button>
+                        <button class="theme-dot" data-theme="purple" aria-label="Purple" title="Purple"></button>
+                        <button class="theme-dot" data-theme="green" aria-label="Green" title="Green"></button>
+                        <button class="theme-dot" data-theme="ocean" aria-label="Ocean" title="Ocean"></button>
+                        <button class="theme-dot" data-theme="sunset" aria-label="Sunset" title="Sunset"></button>
+                        <button class="theme-dot" data-theme="rainbow" aria-label="Rainbow" title="Rainbow"></button>
+                        <button class="theme-dot" data-theme="candy" aria-label="Candy" title="Candy"></button>
+                        <button class="theme-dot" data-theme="forest" aria-label="Forest" title="Forest"></button>
+                        <button class="theme-dot" data-theme="neon" aria-label="Neon" title="Neon"></button>
                     </div>
                     <div class="footer-copy">
-                        <span style="color:var(--text-muted);">© 2026 SBPebbles</span>
+                        <span>© 2026 SBPebbles</span>
                     </div>
                 </footer>
             </div>
@@ -3308,22 +3087,24 @@
                     <!-- dynamically populated -->
                 </div>
 
-                <!-- Footer with theme switcher (centered) also on announcements -->
                 <footer class="hub-footer" style="margin-top:2rem;">
                     <div class="footer-theme" role="group" aria-label="Theme selector">
                         <span class="ft-label">Theme</span>
-                        <button class="theme-dot active" data-theme="dark" aria-label="AMOLED Dark theme" title="AMOLED Dark"></button>
-                        <button class="theme-dot" data-theme="light" aria-label="Light theme" title="Light"></button>
-                        <button class="theme-dot" data-theme="turquoise" aria-label="Turquoise theme" title="Turquoise"></button>
-                        <button class="theme-dot" data-theme="red" aria-label="Red theme" title="Red"></button>
-                        <button class="theme-dot" data-theme="purple" aria-label="Purple theme" title="Purple"></button>
-                        <button class="theme-dot" data-theme="green" aria-label="Green theme" title="Green"></button>
-                        <button class="theme-dot" data-theme="ocean" aria-label="Ocean theme" title="Ocean"></button>
-                        <button class="theme-dot" data-theme="sunset" aria-label="Sunset theme" title="Sunset"></button>
-                        <button class="theme-dot" data-theme="rainbow" aria-label="Rainbow theme" title="Rainbow"></button>
+                        <button class="theme-dot active" data-theme="dark" aria-label="AMOLED Dark" title="Dark"></button>
+                        <button class="theme-dot" data-theme="light" aria-label="Light" title="Light"></button>
+                        <button class="theme-dot" data-theme="turquoise" aria-label="Turquoise" title="Turquoise"></button>
+                        <button class="theme-dot" data-theme="red" aria-label="Red" title="Red"></button>
+                        <button class="theme-dot" data-theme="purple" aria-label="Purple" title="Purple"></button>
+                        <button class="theme-dot" data-theme="green" aria-label="Green" title="Green"></button>
+                        <button class="theme-dot" data-theme="ocean" aria-label="Ocean" title="Ocean"></button>
+                        <button class="theme-dot" data-theme="sunset" aria-label="Sunset" title="Sunset"></button>
+                        <button class="theme-dot" data-theme="rainbow" aria-label="Rainbow" title="Rainbow"></button>
+                        <button class="theme-dot" data-theme="candy" aria-label="Candy" title="Candy"></button>
+                        <button class="theme-dot" data-theme="forest" aria-label="Forest" title="Forest"></button>
+                        <button class="theme-dot" data-theme="neon" aria-label="Neon" title="Neon"></button>
                     </div>
                     <div class="footer-copy">
-                        <span style="color:var(--text-muted);">© 2026 SBPebbles</span>
+                        <span>© 2026 SBPebbles</span>
                     </div>
                 </footer>
             </div>
@@ -3346,7 +3127,7 @@
                 artist: 'Kam Pebbles',
                 src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3',
                 cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
-                duration: '3:27'
+                duration: '3:28'
             }, {
                 id: 1,
                 title: 'Blue-Raz Lemonade',
@@ -3481,7 +3262,6 @@
             const topNav = document.getElementById('topNav');
 
             // ─── THEME ────────────────────────────────────────────────────
-            // Theme dots are now in the footer — we need to select all theme dots on the page
             const themeDots = document.querySelectorAll('.theme-dot');
             const STORAGE_KEY = 'sbpebbles-theme';
             const themeNames = {
@@ -3493,7 +3273,10 @@
                 green: 'Green',
                 ocean: 'Ocean',
                 sunset: 'Sunset',
-                rainbow: 'Rainbow'
+                rainbow: 'Rainbow',
+                candy: 'Candy',
+                forest: 'Forest',
+                neon: 'Neon'
             };
 
             function setTheme(theme) {
@@ -3517,7 +3300,9 @@
                     const stored = localStorage.getItem(STORAGE_KEY);
                     if (stored) theme = stored;
                 } catch (_) { /* ignore */ }
-                const valid = ['dark', 'light', 'turquoise', 'red', 'purple', 'green', 'ocean', 'sunset', 'rainbow'];
+                const valid = ['dark', 'light', 'turquoise', 'red', 'purple', 'green', 'ocean', 'sunset', 'rainbow', 'candy',
+                    'forest', 'neon'
+                ];
                 if (!valid.includes(theme)) theme = 'dark';
                 setTheme(theme);
             }
@@ -3534,7 +3319,7 @@
                 });
             });
 
-            // ─── NAVBAR SLIDE FROM TOP ──────────────────────────────────
+            // ─── NAVBAR PROXIMITY ──────────────────────────────────────────
             let navVisible = false;
             let navTimeout = null;
 
@@ -3552,8 +3337,12 @@
                 navTriggerZone.classList.remove('active');
             }
 
-            // mouse proximity detection
+            function isMobile() {
+                return window.innerWidth <= 720;
+            }
+
             document.addEventListener('mousemove', (e) => {
+                if (isMobile()) return;
                 if (e.clientY < 80) {
                     showNav();
                     clearTimeout(navTimeout);
@@ -3572,6 +3361,7 @@
 
             let touchStartY = 0;
             document.addEventListener('touchstart', (e) => {
+                if (isMobile()) return;
                 touchStartY = e.touches[0].clientY;
                 if (touchStartY < 80) {
                     showNav();
@@ -3579,6 +3369,7 @@
             }, { passive: true });
 
             document.addEventListener('touchmove', (e) => {
+                if (isMobile()) return;
                 const y = e.touches[0].clientY;
                 if (y < 80) {
                     showNav();
@@ -3589,6 +3380,7 @@
             }, { passive: true });
 
             document.addEventListener('click', (e) => {
+                if (isMobile()) return;
                 if (navVisible && !topNav.contains(e.target) && !navTriggerZone.contains(e.target)) {
                     if (e.clientY > 80) {
                         clearTimeout(navTimeout);
@@ -3665,7 +3457,7 @@
                 announcementCount.textContent = `${ANNOUNCEMENTS.length} new`;
             }
 
-            // ─── PAGE SWITCHING (slide transition) ──────────────────────
+            // ─── PAGE SWITCHING ──────────────────────────────────────────
             let currentPage = 'hub';
 
             function switchPage(pageId) {
@@ -3683,7 +3475,6 @@
                 }
 
                 currentPage = pageId;
-
                 if (pageId === 'hub') {
                     updateNowPlayingIndicator();
                 }
@@ -3787,7 +3578,6 @@
                 updateCoverPlayState();
             }
 
-            // ─── COVER PLAY STATE ────────────────────────────────────────
             function updateCoverPlayState() {
                 if (isPlaying && audio.src && audio.src !== '') {
                     coverWrapper.classList.add('is-playing');
@@ -3796,7 +3586,6 @@
                 }
             }
 
-            // ─── NOW PLAYING INDICATOR ──────────────────────────────────
             function updateNowPlayingIndicator() {
                 if (isPlaying && audio.src && audio.src !== '') {
                     npIndicator.className = 'np-indicator';
@@ -3806,7 +3595,6 @@
                 updateCoverPlayState();
             }
 
-            // ─── PLAY / PAUSE ────────────────────────────────────────────
             function togglePlay() {
                 if (audio.paused) {
                     play();
@@ -3856,7 +3644,6 @@
                 });
             }
 
-            // ─── SEEK ─────────────────────────────────────────────────────
             function updateProgress() {
                 if (isDragging) return;
                 if (audio.duration && !isNaN(audio.duration)) {
@@ -3874,7 +3661,6 @@
                 return `${m}:${s.toString().padStart(2, '0')}`;
             }
 
-            // ─── VOLUME ──────────────────────────────────────────────────
             function updateVolumeIcon() {
                 const val = parseFloat(volumeSlider.value);
                 if (val === 0) {
@@ -3902,13 +3688,11 @@
                 }
             }
 
-            // ─── TRACK COUNT ─────────────────────────────────────────────
             function updateTrackCount() {
                 const validTracks = TRACKS.filter(t => t.src && t.src !== 'https://s3.amazonaws.com');
                 trackCount.textContent = `${validTracks.length} tracks`;
             }
 
-            // ─── NAVIGATION ──────────────────────────────────────────────
             function nextTrack() {
                 const next = (currentIndex + 1) % TRACKS.length;
                 currentIndex = next;
@@ -3933,7 +3717,6 @@
 
             // ─── EVENT LISTENERS ──────────────────────────────────────────
             function setupEventListeners() {
-
                 document.querySelectorAll('.nav-btn').forEach(btn => {
                     btn.addEventListener('click', () => {
                         const page = btn.dataset.page;
@@ -3950,9 +3733,7 @@
                 audio.addEventListener('loadedmetadata', () => {
                     totalTimeLabel.textContent = formatTime(audio.duration);
                 });
-                audio.addEventListener('ended', () => {
-                    nextTrack();
-                });
+                audio.addEventListener('ended', nextTrack);
                 audio.addEventListener('play', () => {
                     isPlaying = true;
                     updatePlayButton();
@@ -4040,7 +3821,6 @@
                 });
             }
 
-            // ─── SEEK HELPERS ────────────────────────────────────────────
             function seekFromMouse(e) {
                 const rect = progressTrack.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width;
@@ -4080,10 +3860,15 @@
                 document.querySelectorAll('.nav-btn').forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.page === 'hub');
                 });
-                setTimeout(() => {
-                    showNav();
-                    setTimeout(hideNav, 1800);
-                }, 400);
+
+                if (!isMobile()) {
+                    setTimeout(() => {
+                        showNav();
+                        setTimeout(hideNav, 1800);
+                    }, 400);
+                } else {
+                    topNav.classList.add('visible');
+                }
             }
 
             if (document.readyState === 'complete') {
