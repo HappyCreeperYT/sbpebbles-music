@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>SBPebbles · music hub</title>
+    <title>SBPebbles · Music Hub</title>
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
@@ -18,7 +18,6 @@
         }
         
         :root {
-            /* Default dark theme */
             --bg-base: #0f0d11;
             --bg-surface: rgba(22, 20, 26, 0.78);
             --bg-elevated: rgba(255, 255, 255, 0.04);
@@ -44,7 +43,6 @@
             --warning: #f59e0b;
         }
 
-        /* ── Theme Variations ── */
         [data-theme="light"] {
             --bg-base: #f0ebe6;
             --bg-surface: rgba(255, 255, 255, 0.9);
@@ -198,7 +196,6 @@
             transition: background 0.5s;
         }
 
-        /* ── floating top nav ── */
         .top-nav {
             position: fixed;
             top: 12px;
@@ -271,32 +268,6 @@
             pointer-events: none;
         }
 
-        /* ── Admin Button ── */
-        .admin-entry-btn {
-            background: var(--accent);
-            border: none;
-            color: #0f0d11;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 0.75rem;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.25s;
-            cursor: pointer;
-            letter-spacing: 0.01em;
-            margin-left: 0.5rem;
-            opacity: 0.5;
-        }
-        
-        .admin-entry-btn:hover {
-            opacity: 1;
-            box-shadow: 0 4px 20px var(--accent-glow);
-        }
-
-        /* ── Mobile adjustments ── */
         @media (max-width: 720px) {
             .top-nav {
                 transform: translateX(-50%) translateY(0) !important;
@@ -323,15 +294,8 @@
                 font-size: 0.7rem;
                 padding: 0.25rem 0.6rem;
             }
-            
-            .admin-entry-btn {
-                font-size: 0.65rem;
-                padding: 0.25rem 0.6rem;
-                margin-left: 0.2rem;
-            }
         }
 
-        /* ── slider container ── */
         .page-slider {
             width: 100%;
             max-width: 1100px;
@@ -345,28 +309,23 @@
         
         .page-slider-inner {
             display: flex;
-            width: 300%;
+            width: 200%;
             transform: translateX(0%);
             transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
         
         .page-slider-inner.slide-announcements {
-            transform: translateX(-33.333%);
-        }
-        
-        .page-slider-inner.slide-admin {
-            transform: translateX(-66.667%);
+            transform: translateX(-50%);
         }
         
         .page-slide {
-            width: 33.333%;
+            width: 50%;
             flex-shrink: 0;
             padding: 2.8rem 2.8rem 2.2rem;
             min-height: 520px;
             position: relative;
         }
 
-        /* ── hub header ── */
         .hub-header {
             display: flex;
             flex-wrap: wrap;
@@ -444,7 +403,6 @@
             font-size: 0.65rem;
         }
 
-        /* ── now playing strip ── */
         .now-playing-strip {
             display: flex;
             align-items: center;
@@ -519,7 +477,6 @@
             }
         }
 
-        /* ── player grid ── */
         .player-grid {
             display: flex;
             flex-wrap: wrap;
@@ -731,7 +688,7 @@
         .progress-track {
             flex: 1;
             height: 4px;
-            border-radius: 8px;
+            border-radius: 20px;
             background: #2f292e;
             cursor: pointer;
             position: relative;
@@ -748,25 +705,13 @@
         .progress-fill {
             height: 100%;
             width: 0%;
-            border-radius: 8px;
+            border-radius: 20px;
             background: linear-gradient(90deg, var(--accent), #dba07a);
             transition: width 0.08s linear;
             pointer-events: none;
         }
         
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            right: -8px;
-            top: 50%;
-            transform: translateY(-50%) scale(0);
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--accent);
-            opacity: 0;
-            transition: 0.2s;
-            box-shadow: 0 0 20px var(--accent-glow);
+
         }
         
         .progress-track:hover .progress-fill::after {
@@ -774,7 +719,6 @@
             transform: translateY(-50%) scale(1);
         }
 
-        /* ── playlist ── */
         .playlist-section {
             margin-top: 1.8rem;
             border-top: 1px solid var(--border-subtle);
@@ -905,7 +849,6 @@
             }
         }
 
-        /* ── announcements ── */
         .page-header {
             display: flex;
             justify-content: space-between;
@@ -1065,214 +1008,6 @@
             margin-right: 0.2rem;
         }
 
-        /* ── Admin Panel ── */
-        .admin-login-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 3000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s;
-        }
-        
-        .admin-login-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .admin-login-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-card);
-            padding: 3rem;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-        }
-        
-        .admin-login-card h2 {
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .admin-login-card input {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        
-        .admin-login-card button {
-            width: 100%;
-            padding: 1rem;
-            background: var(--accent);
-            color: #0f0d11;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        
-        .admin-login-card button:hover {
-            box-shadow: 0 8px 28px var(--accent-glow);
-        }
-        
-        .admin-login-card .error-msg {
-            color: var(--danger);
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            display: none;
-        }
-        
-        .admin-login-card .error-msg.show {
-            display: block;
-        }
-
-        /* Admin Panel Content */
-        .admin-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-        }
-        
-        .admin-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            color: var(--accent);
-        }
-        
-        .admin-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .admin-form input,
-        .admin-form textarea,
-        .admin-form select {
-            width: 100%;
-            padding: 0.8rem;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            font-family: inherit;
-            resize: vertical;
-        }
-        
-        .admin-form textarea {
-            min-height: 100px;
-        }
-        
-        .admin-form button {
-            padding: 0.8rem 1.5rem;
-            background: var(--accent);
-            color: #0f0d11;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        
-        .admin-form button:hover {
-            box-shadow: 0 4px 20px var(--accent-glow);
-        }
-        
-        .admin-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.8rem;
-            margin-bottom: 0.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-        }
-        
-        .admin-item .delete-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 0.4rem 0.8rem;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        
-        .admin-item .delete-btn:hover {
-            opacity: 0.9;
-        }
-        
-        .admin-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .admin-actions button {
-            flex: 1;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        
-        .admin-actions .save-btn {
-            background: var(--accent);
-            color: #0f0d11;
-        }
-        
-        .admin-actions .cancel-btn {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
-            border: 1px solid var(--border-subtle);
-        }
-        
-        .admin-actions .reset-btn {
-            background: var(--warning);
-            color: #0f0d11;
-        }
-        
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .admin-header h2 {
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-        
-        .logout-btn {
-            padding: 0.5rem 1rem;
-            background: var(--danger);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        /* ── footer theme ── */
         .hub-footer {
             margin-top: 2.6rem;
             text-align: center;
@@ -1335,7 +1070,6 @@
             color: var(--text-muted);
         }
 
-        /* ── responsive ── */
         @media (max-width: 820px) {
             .page-slide {
                 padding: 1.8rem 1.6rem;
@@ -1347,9 +1081,6 @@
             }
             .player-grid {
                 gap: 1.4rem;
-            }
-            .admin-login-card {
-                padding: 2rem;
             }
         }
         
@@ -1381,9 +1112,6 @@
                 font-size: 0.7rem;
                 padding: 0.25rem 0.8rem;
             }
-            .admin-section {
-                padding: 1rem;
-            }
         }
         
         @media (max-width: 430px) {
@@ -1401,14 +1129,8 @@
             .playlist-item {
                 padding: 0.4rem 0.4rem;
             }
-            .admin-item {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
         }
 
-        /* ── utility ── */
         .section-spacer {
             height: 0.8rem;
         }
@@ -1419,30 +1141,13 @@
 </head>
 <body>
 
-    <!-- nav trigger -->
     <div class="nav-trigger-zone" id="navTriggerZone"></div>
 
-    <!-- top nav -->
     <nav class="top-nav" id="topNav">
         <button class="nav-btn active" data-page="hub"><i class="fas fa-compact-disc"></i><span>Hub</span></button>
         <button class="nav-btn" data-page="announcements"><i class="fas fa-bullhorn"></i><span>News</span></button>
-        <button class="admin-entry-btn" id="adminEntryBtn" title="Admin Panel">
-            <i class="fas fa-lock"></i><span>Admin</span>
-        </button>
     </nav>
 
-    <!-- Admin Login Overlay -->
-    <div class="admin-login-overlay hidden" id="adminLoginOverlay">
-        <div class="admin-login-card">
-            <h2><i class="fas fa-lock"></i> Admin Access</h2>
-            <input type="password" id="adminPasswordInput" placeholder="Enter admin password" autocomplete="off" />
-            <button id="adminLoginBtn">Login</button>
-            <p class="error-msg" id="adminLoginError">Invalid password</p>
-            <button style="margin-top: 1rem; background: transparent; color: var(--text-secondary); border: 1px solid var(--border-subtle);" id="adminCancelBtn">Cancel</button>
-        </div>
-    </div>
-
-    <!-- slider -->
     <div class="page-slider">
         <div class="page-slider-inner" id="pageSlider">
 
@@ -1463,7 +1168,6 @@
                     <div class="tagline"><i class="fas fa-headphones-simple"></i><span>Better with Headphones</span></div>
                 </header>
 
-                <!-- now playing -->
                 <div class="now-playing-strip" id="nowPlayingStrip">
                     <span class="np-label"><i class="fas fa-play"></i> now</span>
                     <span class="np-title" id="npTitle">Select a track</span>
@@ -1472,7 +1176,6 @@
                     </span>
                 </div>
 
-                <!-- player -->
                 <div class="player-grid">
                     <div class="cover-wrapper" id="coverWrapper">
                         <div class="cover-fallback" id="coverFallback"><i class="fas fa-music"></i></div>
@@ -1491,6 +1194,7 @@
                             <button class="play-btn" id="playBtn"><i class="fas fa-play" id="playIcon"></i></button>
                             <button class="secondary-btn" id="nextBtn"><i class="fas fa-forward-step"></i></button>
                             <div class="volume-wrap">
+                                <button class="secondary-btn" id="copyLinkBtn" title="Copy song link"><i class="fas fa-link"></i></button>
                                 <button class="vol-icon-btn" id="volIconBtn"><i class="fas fa-volume-high" id="volIcon"></i></button>
                                 <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.02" value="0.8" />
                             </div>
@@ -1504,7 +1208,6 @@
                     </div>
                 </div>
 
-                <!-- playlist -->
                 <div class="playlist-section">
                     <div class="playlist-header">
                         <h3><i class="fas fa-list-ul" style="margin-right:0.3rem;"></i>Playlist</h3>
@@ -1513,7 +1216,6 @@
                     <div class="playlist" id="playlistContainer"></div>
                 </div>
 
-                <!-- footer -->
                 <footer class="hub-footer">
                     <div class="footer-theme">
                         <span class="ft-label">Theme</span>
@@ -1560,51 +1262,6 @@
                     <div class="footer-copy">© 2026 SBPebbles</div>
                 </footer>
             </div>
-
-            <!-- ADMIN PANEL SLIDE -->
-            <div class="page-slide" id="adminSlide">
-                <div class="admin-header">
-                    <h2><i class="fas fa-cogs"></i> Admin Panel</h2>
-                    <button class="logout-btn" id="adminLogoutBtn">Logout</button>
-                </div>
-                
-                <!-- Tracks Management -->
-                <div class="admin-section">
-                    <h3><i class="fas fa-music"></i> Tracks</h3>
-                    <div class="admin-form" id="addTrackForm">
-                        <input type="text" id="trackTitleInput" placeholder="Track Title" />
-                        <input type="text" id="trackArtistInput" placeholder="Artist" />
-                        <input type="url" id="trackSrcInput" placeholder="Audio URL" />
-                        <input type="url" id="trackCoverInput" placeholder="Cover Image URL" />
-                        <input type="text" id="trackDurationInput" placeholder="Duration (e.g., 3:28)" />
-                        <button id="addTrackBtn">Add Track</button>
-                    </div>
-                    <div id="adminTrackList" style="margin-top: 1rem; max-height: 300px; overflow-y: auto;"></div>
-                </div>
-
-                <!-- Announcements Management -->
-                <div class="admin-section">
-                    <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
-                    <div class="admin-form" id="addAnnouncementForm">
-                        <input type="text" id="annTitleInput" placeholder="Title" />
-                        <input type="text" id="annDescInput" placeholder="Short Description" />
-                        <input type="url" id="annCoverInput" placeholder="Cover Image URL" />
-                        <textarea id="annFullDescInput" placeholder="Full Description"></textarea>
-                        <input type="text" id="annDateInput" placeholder="Release/Date (e.g., August 20th, 2026)" />
-                        <input type="text" id="annLinksInput" placeholder="Links (label|url, label|url)" />
-                        <input type="text" id="annTagsInput" placeholder="Tags (comma-separated)" />
-                        <button id="addAnnouncementBtn">Add Announcement</button>
-                    </div>
-                    <div id="adminAnnouncementList" style="margin-top: 1rem; max-height: 300px; overflow-y: auto;"></div>
-                </div>
-
-                <!-- Actions -->
-                <div class="admin-actions">
-                    <button class="save-btn" id="saveChangesBtn">Save Changes</button>
-                    <button class="reset-btn" id="resetDefaultsBtn">Reset to Defaults</button>
-                    <button class="cancel-btn" id="exitAdminBtn">Exit Admin</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1614,23 +1271,8 @@
         (function() {
             'use strict';
 
-            // ─── SECURITY CONFIG ──────────────────────────────────────
-
-            const ADMIN_PASSWORD_HASH = 'f2376b3214c62651f4839b6235ccb869b46f51c6489553575ffd8b900e7d9c78';
-            const STORAGE_KEY_DATA = 'sbpebbles-data';
             const STORAGE_KEY_THEME = 'sbpebbles-theme';
-            const STORAGE_KEY_AUTH = 'sbpebbles-auth';
 
-            // ─── HASH FUNCTION (SHA-256) ────────────────────────────
-            async function sha256(message) {
-                const msgBuffer = new TextEncoder().encode(message);
-                const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-                const hashArray = Array.from(new Uint8Array(hashBuffer));
-                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-                return hashHex;
-            }
-
-            // ─── DEFAULT DATA ────────────────────────────────────────
             const DEFAULT_TRACKS = [
                 { id: 0, title: 'Lost You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3', cover: 'https://i.imgur.com/2UMG2Pg.jpeg', duration: '3:28' },
                 { id: 1, title: 'Blue-Raz Lemonade', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3', cover: 'https://i.imgur.com/RnwJuvu.jpeg', duration: '2:17' },
@@ -1649,70 +1291,9 @@
                 { title: 'Grape Smarties', description: 'New release!', cover: 'https://i.imgur.com/aTWPtqq.jpeg', fullDescription: '"Grape Smarties" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] }
             ];
 
-            // ─── DATA MANAGEMENT ─────────────────────────────────────
             let tracks = [...DEFAULT_TRACKS];
             let announcements = [...DEFAULT_ANNOUNCEMENTS];
 
-            function loadData() {
-                try {
-                    const stored = localStorage.getItem(STORAGE_KEY_DATA);
-                    if (stored) {
-                        const data = JSON.parse(stored);
-                        if (data.tracks && Array.isArray(data.tracks)) tracks = data.tracks;
-                        if (data.announcements && Array.isArray(data.announcements)) announcements = data.announcements;
-                    }
-                } catch (e) {
-                    console.warn('Failed to load data, using defaults');
-                }
-            }
-
-            function saveData() {
-                try {
-                    const data = { tracks, announcements };
-                    localStorage.setItem(STORAGE_KEY_DATA, JSON.stringify(data));
-                    return true;
-                } catch (e) {
-                    console.error('Failed to save data');
-                    return false;
-                }
-            }
-
-            function resetToDefaults() {
-                tracks = [...DEFAULT_TRACKS];
-                announcements = [...DEFAULT_ANNOUNCEMENTS];
-                saveData();
-                refreshAllViews();
-            }
-
-            // ─── AUTHENTICATION ──────────────────────────────────────
-            let isAuthenticated = false;
-
-            function checkAuth() {
-                try {
-                    const auth = sessionStorage.getItem(STORAGE_KEY_AUTH);
-                    if (auth === 'authenticated') {
-                        isAuthenticated = true;
-                        return true;
-                    }
-                } catch (e) {}
-                return false;
-            }
-
-            function setAuth() {
-                try {
-                    sessionStorage.setItem(STORAGE_KEY_AUTH, 'authenticated');
-                    isAuthenticated = true;
-                } catch (e) {}
-            }
-
-            function clearAuth() {
-                try {
-                    sessionStorage.removeItem(STORAGE_KEY_AUTH);
-                    isAuthenticated = false;
-                } catch (e) {}
-            }
-
-            // ─── DOM refs ──────────────────────────────────────────────
             const audio = document.getElementById('audioPlayer');
             const playBtn = document.getElementById('playBtn');
             const playIcon = document.getElementById('playIcon');
@@ -1738,18 +1319,8 @@
             const announcementCount = document.getElementById('announcementCount');
             const pageSlider = document.getElementById('pageSlider');
             const topNav = document.getElementById('topNav');
-            const adminLoginOverlay = document.getElementById('adminLoginOverlay');
-            const adminPasswordInput = document.getElementById('adminPasswordInput');
-            const adminLoginBtn = document.getElementById('adminLoginBtn');
-            const adminLoginError = document.getElementById('adminLoginError');
-            const adminCancelBtn = document.getElementById('adminCancelBtn');
-            const adminEntryBtn = document.getElementById('adminEntryBtn');
-            const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-            const saveChangesBtn = document.getElementById('saveChangesBtn');
-            const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
-            const exitAdminBtn = document.getElementById('exitAdminBtn');
+            const copyLinkBtn = document.getElementById('copyLinkBtn');
 
-            // ─── THEME ──────────────────────────────────────────────────
             const themeDots = document.querySelectorAll('.theme-dot');
 
             function setTheme(theme) {
@@ -1768,14 +1339,11 @@
 
             themeDots.forEach(d => d.addEventListener('click', () => setTheme(d.dataset.theme)));
 
-            // ─── NAV ──────────────────────────────────────────────────
             let navVisible = false;
             let navTimeout = null;
 
             function showNav() { if (!navVisible) { navVisible = true; topNav.classList.add('visible'); } }
-
             function hideNav() { if (navVisible) { navVisible = false; topNav.classList.remove('visible'); } }
-
             function isMobile() { return window.innerWidth <= 720; }
 
             document.addEventListener('mousemove', (e) => {
@@ -1795,200 +1363,17 @@
                 topNav.classList.add('visible');
             }
 
-            // ─── PAGE SWITCH ──────────────────────────────────────────
             let currentPage = 'hub';
-
             function switchPage(pageId) {
-                if (pageId === 'admin' && !isAuthenticated) {
-                    showAdminLogin();
-                    return;
-                }
                 if (pageId === currentPage) return;
-                document.querySelectorAll('.nav-btn:not(.admin-entry-btn)').forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
-                if (pageId === 'hub') pageSlider.classList.remove('slide-announcements', 'slide-admin');
-                else if (pageId === 'announcements') {
-                    pageSlider.classList.add('slide-announcements');
-                    pageSlider.classList.remove('slide-admin');
-                } else if (pageId === 'admin') {
-                    pageSlider.classList.add('slide-admin');
-                    pageSlider.classList.remove('slide-announcements');
-                }
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
+                if (pageId === 'hub') pageSlider.classList.remove('slide-announcements');
+                else if (pageId === 'announcements') pageSlider.classList.add('slide-announcements');
                 currentPage = pageId;
-                if (pageId === 'admin') refreshAdminPanel();
             }
 
-            document.querySelectorAll('.nav-btn:not(.admin-entry-btn)').forEach(b => b.addEventListener('click', () => switchPage(b.dataset.page)));
+            document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', () => switchPage(b.dataset.page)));
 
-            // ─── ADMIN PANEL ──────────────────────────────────────────
-            function showAdminLogin() {
-                adminLoginOverlay.classList.remove('hidden');
-                adminPasswordInput.value = '';
-                adminLoginError.classList.remove('show');
-                setTimeout(() => adminPasswordInput.focus(), 100);
-            }
-
-            function hideAdminLogin() {
-                adminLoginOverlay.classList.add('hidden');
-            }
-
-            async function handleAdminLogin() {
-                const password = adminPasswordInput.value;
-                if (!password) return;
-                
-                // Hash the entered password and compare
-                const hash = await sha256(password);
-                // For demo: accept any password that hashes to match
-                // In production, compare with ADMIN_PASSWORD_HASH
-                // For now, let's use a simple check (change this!)
-                if (hash === await sha256('SBPebbles2026!')) {
-                    setAuth();
-                    hideAdminLogin();
-                    switchPage('admin');
-                } else {
-                    adminLoginError.classList.add('show');
-                    adminPasswordInput.value = '';
-                }
-            }
-
-            function handleAdminLogout() {
-                clearAuth();
-                switchPage('hub');
-                hideAdminLogin();
-            }
-
-            function refreshAdminPanel() {
-                if (!isAuthenticated) return;
-                renderAdminTracks();
-                renderAdminAnnouncements();
-            }
-
-            function renderAdminTracks() {
-                const container = document.getElementById('adminTrackList');
-                container.innerHTML = tracks.map((track, idx) => `
-                    <div class="admin-item">
-                        <span>${track.title} - ${track.artist}</span>
-                        <button class="delete-btn" onclick="window._deleteTrack(${idx})">Delete</button>
-                    </div>
-                `).join('');
-            }
-
-            function renderAdminAnnouncements() {
-                const container = document.getElementById('adminAnnouncementList');
-                container.innerHTML = announcements.map((ann, idx) => `
-                    <div class="admin-item">
-                        <span>${ann.title}</span>
-                        <button class="delete-btn" onclick="window._deleteAnnouncement(${idx})">Delete</button>
-                    </div>
-                `).join('');
-            }
-
-            // Global functions for admin actions
-            window._deleteTrack = function(idx) {
-                if (confirm('Delete this track?')) {
-                    tracks.splice(idx, 1);
-                    refreshAllViews();
-                }
-            };
-
-            window._deleteAnnouncement = function(idx) {
-                if (confirm('Delete this announcement?')) {
-                    announcements.splice(idx, 1);
-                    refreshAllViews();
-                }
-            };
-
-            function addTrack() {
-                const title = document.getElementById('trackTitleInput').value.trim();
-                const artist = document.getElementById('trackArtistInput').value.trim();
-                const src = document.getElementById('trackSrcInput').value.trim();
-                const cover = document.getElementById('trackCoverInput').value.trim();
-                const duration = document.getElementById('trackDurationInput').value.trim();
-
-                if (!title || !src) {
-                    alert('Title and Audio URL are required');
-                    return;
-                }
-
-                const newTrack = {
-                    id: Date.now(),
-                    title,
-                    artist: artist || 'Unknown',
-                    src,
-                    cover: cover || '',
-                    duration: duration || '0:00'
-                };
-
-                tracks.push(newTrack);
-                clearTrackForm();
-                refreshAllViews();
-            }
-
-            function addAnnouncement() {
-                const title = document.getElementById('annTitleInput').value.trim();
-                const description = document.getElementById('annDescInput').value.trim();
-                const cover = document.getElementById('annCoverInput').value.trim();
-                const fullDescription = document.getElementById('annFullDescInput').value.trim();
-                const releaseDate = document.getElementById('annDateInput').value.trim();
-                const linksStr = document.getElementById('annLinksInput').value.trim();
-                const tagsStr = document.getElementById('annTagsInput').value.trim();
-
-                if (!title) {
-                    alert('Title is required');
-                    return;
-                }
-
-                const links = linksStr ? linksStr.split(',').map(l => {
-                    const parts = l.trim().split('|');
-                    return { label: parts[0]?.trim() || 'Link', url: parts[1]?.trim() || '#' };
-                }) : [];
-
-                const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()) : [];
-
-                const newAnnouncement = {
-                    title,
-                    description,
-                    cover: cover || 'https://i.imgur.com/ycLlohS.png',
-                    fullDescription,
-                    releaseDate,
-                    links,
-                    tags
-                };
-
-                announcements.push(newAnnouncement);
-                clearAnnouncementForm();
-                refreshAllViews();
-            }
-
-            function clearTrackForm() {
-                document.getElementById('trackTitleInput').value = '';
-                document.getElementById('trackArtistInput').value = '';
-                document.getElementById('trackSrcInput').value = '';
-                document.getElementById('trackCoverInput').value = '';
-                document.getElementById('trackDurationInput').value = '';
-            }
-
-            function clearAnnouncementForm() {
-                document.getElementById('annTitleInput').value = '';
-                document.getElementById('annDescInput').value = '';
-                document.getElementById('annCoverInput').value = '';
-                document.getElementById('annFullDescInput').value = '';
-                document.getElementById('annDateInput').value = '';
-                document.getElementById('annLinksInput').value = '';
-                document.getElementById('annTagsInput').value = '';
-            }
-
-            function refreshAllViews() {
-                renderPlaylist();
-                renderAnnouncements();
-                loadTrack(currentIndex);
-                if (isAuthenticated) {
-                    renderAdminTracks();
-                    renderAdminAnnouncements();
-                }
-                saveData();
-            }
-
-            // ─── RENDER ANNOUNCEMENTS ────────────────────────────────
             function renderAnnouncements() {
                 announcementsContainer.innerHTML = '';
                 announcements.forEach((ann) => {
@@ -1996,19 +1381,12 @@
                     card.className = 'announcement-card';
                     card.setAttribute('role', 'button');
                     card.setAttribute('tabindex', '0');
-
                     const tagsHtml = ann.tags ? ann.tags.map(t => `<span class="tag">${t}</span>`).join(' ') : '';
-                    const linksHtml = ann.links ? ann.links.map(l =>
-                        `<a href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${l.label}</a>`
-                    ).join(' · ') : '';
-
+                    const linksHtml = ann.links ? ann.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${l.label}</a>`).join(' · ') : '';
                     card.innerHTML = `
                         <div class="card-summary">
                             <img src="${ann.cover}" alt="${ann.title}" loading="lazy" />
-                            <div class="info">
-                                <h4>${ann.title}</h4>
-                                <p>${ann.description}</p>
-                            </div>
+                            <div class="info"><h4>${ann.title}</h4><p>${ann.description}</p></div>
                             <span class="badge">New</span>
                             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
                         </div>
@@ -2019,10 +1397,7 @@
                             ${linksHtml ? `<div class="detail-row"><span class="detail-label">Links</span><span class="detail-value">${linksHtml}</span></div>` : ''}
                         </div>
                     `;
-                    const toggle = (e) => {
-                        if (e.target.closest('a')) return;
-                        card.classList.toggle('expanded');
-                    };
+                    const toggle = (e) => { if (e.target.closest('a')) return; card.classList.toggle('expanded'); };
                     card.addEventListener('click', toggle);
                     card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); } });
                     announcementsContainer.appendChild(card);
@@ -2030,12 +1405,35 @@
                 announcementCount.textContent = `${announcements.length} new`;
             }
 
-            // ─── RENDER PLAYLIST ──────────────────────────────────────
             let currentIndex = 0,
                 isPlaying = false,
                 isDragging = false,
                 wasPlayingBeforeDrag = false,
                 previousVolume = 0.8;
+
+            function getSlug(title) {
+                return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+            }
+
+            function updateHashForTrack(index) {
+                const track = tracks[index];
+                if (track && track.title) {
+                    window.location.hash = getSlug(track.title);
+                } else {
+                    window.location.hash = '';
+                }
+            }
+
+            function copyCurrentLink() {
+                const track = tracks[currentIndex];
+                if (!track) return;
+                const url = window.location.href.split('#')[0] + '#' + getSlug(track.title);
+                navigator.clipboard.writeText(url).then(() => {
+                    const original = copyLinkBtn.innerHTML;
+                    copyLinkBtn.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => { copyLinkBtn.innerHTML = original; }, 1500);
+                }).catch(() => alert('Could not copy link'));
+            }
 
             function renderPlaylist() {
                 playlistContainer.innerHTML = '';
@@ -2054,6 +1452,7 @@
                     `;
                     const handle = () => {
                         if (idx === currentIndex) { togglePlay(); } else { currentIndex = idx; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
+                        updateHashForTrack(currentIndex);
                     };
                     item.addEventListener('click', handle);
                     item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handle(); } });
@@ -2062,9 +1461,7 @@
                 updateTrackCount();
             }
 
-            function updateTrackCount() {
-                trackCount.textContent = `${tracks.length} tracks`;
-            }
+            function updateTrackCount() { trackCount.textContent = `${tracks.length} tracks`; }
 
             function loadTrack(index) {
                 const track = tracks[index];
@@ -2095,9 +1492,7 @@
             }
 
             function play() { audio.play().catch(() => {}); isPlaying = true; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator'; updateCoverPlayState(); }
-
             function pause() { audio.pause(); isPlaying = false; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator paused'; updateCoverPlayState(); }
-
             function togglePlay() { audio.paused ? play() : pause(); }
 
             function updatePlayButton() {
@@ -2141,15 +1536,34 @@
                 if (v > 0) { previousVolume = v; volumeSlider.value = 0; audio.volume = 0; updateVolumeIcon(); } else { volumeSlider.value = previousVolume || 0.8; audio.volume = parseFloat(volumeSlider.value); updateVolumeIcon(); }
             }
 
-            function nextTrack() { const n = (currentIndex + 1) % tracks.length; currentIndex = n; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
+            function nextTrack() { const n = (currentIndex + 1) % tracks.length; currentIndex = n; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); updateHashForTrack(currentIndex); }
+            function prevTrack() { const p = (currentIndex - 1 + tracks.length) % tracks.length; currentIndex = p; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); updateHashForTrack(currentIndex); }
 
-            function prevTrack() { const p = (currentIndex - 1 + tracks.length) % tracks.length; currentIndex = p; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
+            function findTrackBySlug(slug) {
+                if (!slug) return -1;
+                const idx = tracks.findIndex(t => getSlug(t.title) === slug);
+                return idx >= 0 ? idx : -1;
+            }
 
-            // ─── EVENT LISTENERS ──────────────────────────────────────
+            function handleHashChange() {
+                const hash = window.location.hash.substring(1);
+                if (!hash) return;
+                const idx = findTrackBySlug(hash);
+                if (idx >= 0 && idx !== currentIndex) {
+                    currentIndex = idx;
+                    loadTrack(currentIndex);
+                    if (isPlaying) audio.play().catch(() => {});
+                    renderPlaylist();
+                }
+            }
+
+            window.addEventListener('hashchange', handleHashChange);
+
             playBtn.addEventListener('click', togglePlay);
             prevBtn.addEventListener('click', prevTrack);
             nextBtn.addEventListener('click', nextTrack);
             volIconBtn.addEventListener('click', toggleMute);
+            copyLinkBtn.addEventListener('click', copyCurrentLink);
             audio.addEventListener('timeupdate', updateProgress);
             audio.addEventListener('loadedmetadata', () => { totalTimeLabel.textContent = formatTime(audio.duration); });
             audio.addEventListener('ended', nextTrack);
@@ -2166,7 +1580,6 @@
             progressTrack.addEventListener('touchend', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag) audio.play().catch(() => {}); } }, { passive: true });
 
             function seekFromMouse(e) { const rect = progressTrack.getBoundingClientRect(); const x = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio.currentTime = x * audio.duration; progressFill.style.width = `${x*100}%`; currentTimeLabel.textContent = formatTime(audio.currentTime); } }
-
             function seekFromTouch(e) { const touch = e.touches[0]; const rect = progressTrack.getBoundingClientRect(); const x = Math.min(Math.max((touch.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio.currentTime = x * audio.duration; progressFill.style.width = `${x*100}%`; currentTimeLabel.textContent = formatTime(audio.currentTime); } }
 
             document.addEventListener('keydown', (e) => {
@@ -2177,58 +1590,24 @@
                 if (e.key === 'm') { e.preventDefault(); toggleMute(); }
             });
 
-            // Admin button events
-            adminEntryBtn.addEventListener('click', () => {
-                if (isAuthenticated) switchPage('admin');
-                else showAdminLogin();
-            });
-
-            adminLoginBtn.addEventListener('click', handleAdminLogin);
-            
-            adminPasswordInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') handleAdminLogin();
-            });
-
-            adminCancelBtn.addEventListener('click', hideAdminLogin);
-            adminLogoutBtn.addEventListener('click', handleAdminLogout);
-
-            document.getElementById('addTrackBtn').addEventListener('click', addTrack);
-            document.getElementById('addAnnouncementBtn').addEventListener('click', addAnnouncement);
-
-            saveChangesBtn.addEventListener('click', () => {
-                if (saveData()) {
-                    refreshAllViews();
-                    alert('Changes saved successfully!');
-                } else {
-                    alert('Failed to save changes');
-                }
-            });
-
-            resetDefaultsBtn.addEventListener('click', () => {
-                if (confirm('Reset all content to defaults? This cannot be undone.')) {
-                    resetToDefaults();
-                    alert('Content reset to defaults');
-                }
-            });
-
-            exitAdminBtn.addEventListener('click', () => switchPage('hub'));
-
-            // ─── INIT ──────────────────────────────────────────────────
-            loadData();
             loadTheme();
             renderPlaylist();
             renderAnnouncements();
-            loadTrack(0);
+
+            const initialHash = window.location.hash.substring(1);
+            const startIndex = initialHash ? Math.max(findTrackBySlug(initialHash), 0) : 0;
+            currentIndex = startIndex;
+            loadTrack(currentIndex);
+            if (initialHash && findTrackBySlug(initialHash) >= 0) {
+                updateHashForTrack(currentIndex);
+            }
+
             audio.volume = parseFloat(volumeSlider.value);
             updateVolumeIcon();
             npIndicator.className = 'np-indicator paused';
             currentPage = 'hub';
-            pageSlider.classList.remove('slide-announcements', 'slide-admin');
-            document.querySelectorAll('.nav-btn:not(.admin-entry-btn)').forEach(b => b.classList.toggle('active', b.dataset.page === 'hub'));
-
-            if (checkAuth()) {
-                console.log('Admin session active');
-            }
+            pageSlider.classList.remove('slide-announcements');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.page === 'hub'));
 
         })();
     </script>
