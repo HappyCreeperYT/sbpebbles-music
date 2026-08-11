@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
@@ -16,7 +16,9 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
         :root {
+            /* Default dark theme */
             --bg-base: #0f0d11;
             --bg-surface: rgba(22, 20, 26, 0.78);
             --bg-elevated: rgba(255, 255, 255, 0.04);
@@ -32,7 +34,146 @@
             --radius-card: 32px;
             --radius-sm: 20px;
             --radius-full: 60px;
+            --bg-gradient: radial-gradient(circle at 20% 20%, #2a2228 0%, #0b090d 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(232, 180, 140, 0.06), transparent 60%);
+            --nav-bg: rgba(18, 16, 22, 0.82);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --danger: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
         }
+
+        /* ── Theme Variations ── */
+        [data-theme="light"] {
+            --bg-base: #f0ebe6;
+            --bg-surface: rgba(255, 255, 255, 0.9);
+            --bg-elevated: rgba(0, 0, 0, 0.04);
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #8a8a8a;
+            --accent: #d97706;
+            --accent-glow: rgba(217, 119, 6, 0.25);
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-strong: rgba(0, 0, 0, 0.15);
+            --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.1);
+            --bg-gradient: linear-gradient(135deg, #f0ebe6 0%, #e5dcd4 100%);
+            --bg-glow: none;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --input-bg: rgba(0, 0, 0, 0.04);
+            --input-border: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="turquoise"] {
+            --bg-base: #0a1628;
+            --accent: #5fc8c8;
+            --accent-glow: rgba(95, 200, 200, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a3a 0%, #0a1628 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(95, 200, 200, 0.08), transparent 60%);
+            --border-subtle: rgba(95, 200, 200, 0.08);
+            --border-strong: rgba(95, 200, 200, 0.15);
+            --nav-bg: rgba(10, 22, 40, 0.85);
+        }
+
+        [data-theme="red"] {
+            --bg-base: #1a0a0a;
+            --accent: #ef4444;
+            --accent-glow: rgba(239, 68, 68, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1a1a 0%, #1a0a0a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(239, 68, 68, 0.08), transparent 60%);
+            --border-subtle: rgba(239, 68, 68, 0.08);
+            --border-strong: rgba(239, 68, 68, 0.15);
+            --nav-bg: rgba(26, 10, 10, 0.85);
+        }
+
+        [data-theme="purple"] {
+            --bg-base: #0f0a1a;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1f1a2a 0%, #0f0a1a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(139, 92, 246, 0.08), transparent 60%);
+            --border-subtle: rgba(139, 92, 246, 0.08);
+            --border-strong: rgba(139, 92, 246, 0.15);
+            --nav-bg: rgba(15, 10, 26, 0.85);
+        }
+
+        [data-theme="green"] {
+            --bg-base: #0a1a0a;
+            --accent: #34d399;
+            --accent-glow: rgba(52, 211, 153, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a1a 0%, #0a1a0a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(52, 211, 153, 0.08), transparent 60%);
+            --border-subtle: rgba(52, 211, 153, 0.08);
+            --border-strong: rgba(52, 211, 153, 0.15);
+            --nav-bg: rgba(10, 26, 10, 0.85);
+        }
+
+        [data-theme="ocean"] {
+            --bg-base: #0a1628;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2540 0%, #0a1628 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(59, 130, 246, 0.08), transparent 60%);
+            --border-subtle: rgba(59, 130, 246, 0.08);
+            --border-strong: rgba(59, 130, 246, 0.15);
+            --nav-bg: rgba(10, 22, 40, 0.85);
+        }
+
+        [data-theme="sunset"] {
+            --bg-base: #1a1008;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1f14 0%, #1a1008 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(245, 158, 11, 0.08), transparent 60%);
+            --border-subtle: rgba(245, 158, 11, 0.08);
+            --border-strong: rgba(245, 158, 11, 0.15);
+            --nav-bg: rgba(26, 16, 8, 0.85);
+        }
+
+        [data-theme="rainbow"] {
+            --bg-base: #0f0d11;
+            --accent: #ff6b6b;
+            --accent-glow: rgba(255, 107, 107, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #ff6b6b15, #0f0d11 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(255, 107, 107, 0.08), transparent 60%);
+            --border-subtle: rgba(255, 107, 107, 0.08);
+            --border-strong: rgba(255, 107, 107, 0.15);
+            --nav-bg: rgba(15, 13, 17, 0.85);
+        }
+
+        [data-theme="candy"] {
+            --bg-base: #1a0a1a;
+            --accent: #ff6b9d;
+            --accent-glow: rgba(255, 107, 157, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1a2a 0%, #1a0a1a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(255, 107, 157, 0.08), transparent 60%);
+            --border-subtle: rgba(255, 107, 157, 0.08);
+            --border-strong: rgba(255, 107, 157, 0.15);
+            --nav-bg: rgba(26, 10, 26, 0.85);
+        }
+
+        [data-theme="forest"] {
+            --bg-base: #0a1a0f;
+            --accent: #4ade80;
+            --accent-glow: rgba(74, 222, 128, 0.3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a1f 0%, #0a1a0f 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(74, 222, 128, 0.08), transparent 60%);
+            --border-subtle: rgba(74, 222, 128, 0.08);
+            --border-strong: rgba(74, 222, 128, 0.15);
+            --nav-bg: rgba(10, 26, 15, 0.85);
+        }
+
+        [data-theme="neon"] {
+            --bg-base: #080c16;
+            --accent: #00f5ff;
+            --accent-glow: rgba(0, 245, 255, 0.4);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a1a2a 0%, #080c16 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(0, 245, 255, 0.1), transparent 60%);
+            --border-subtle: rgba(0, 245, 255, 0.1);
+            --border-strong: rgba(0, 245, 255, 0.2);
+            --nav-bg: rgba(8, 12, 22, 0.9);
+        }
+
         body {
             font-family: "Inter", system-ui, -apple-system, sans-serif;
             background: var(--bg-base);
@@ -43,16 +184,18 @@
             justify-content: center;
             padding: 1.5rem;
             padding-top: 5.5rem;
-            background-image: radial-gradient(circle at 20% 20%, #2a2228 0%, #0b090d 80%);
+            background-image: var(--bg-gradient);
             background-attachment: fixed;
-            transition: background 0.3s;
+            transition: background 0.5s, color 0.3s;
         }
+        
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             pointer-events: none;
-            background: radial-gradient(ellipse at 60% 10%, rgba(232, 180, 140, 0.06), transparent 60%);
+            background: var(--bg-glow);
+            transition: background 0.5s;
         }
 
         /* ── floating top nav ── */
@@ -62,23 +205,25 @@
             left: 50%;
             transform: translateX(-50%) translateY(-150%);
             z-index: 2000;
-            background: rgba(18, 16, 22, 0.82);
+            background: var(--nav-bg);
             backdrop-filter: var(--glass-backdrop);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-full);
             padding: 0.5rem 1.4rem;
             display: flex;
             gap: 0.3rem;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s, background 0.5s, border-color 0.5s;
             opacity: 0;
             pointer-events: none;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
+        
         .top-nav.visible {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
             pointer-events: auto;
         }
+        
         .top-nav .nav-btn {
             background: transparent;
             border: none;
@@ -95,22 +240,27 @@
             cursor: pointer;
             letter-spacing: 0.01em;
         }
+        
         .top-nav .nav-btn i {
             font-size: 0.8rem;
             transition: transform 0.2s;
         }
+        
         .top-nav .nav-btn:hover {
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
         }
+        
         .top-nav .nav-btn.active {
             background: var(--accent);
             color: #0f0d11;
             box-shadow: 0 4px 20px var(--accent-glow);
         }
+        
         .top-nav .nav-btn.active i {
             color: #0f0d11;
         }
+        
         .nav-trigger-zone {
             position: fixed;
             top: 0;
@@ -120,6 +270,33 @@
             z-index: 1999;
             pointer-events: none;
         }
+
+        /* ── Admin Button ── */
+        .admin-entry-btn {
+            background: var(--accent);
+            border: none;
+            color: #0f0d11;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.25s;
+            cursor: pointer;
+            letter-spacing: 0.01em;
+            margin-left: 0.5rem;
+            opacity: 0.5;
+        }
+        
+        .admin-entry-btn:hover {
+            opacity: 1;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        /* ── Mobile adjustments ── */
         @media (max-width: 720px) {
             .top-nav {
                 transform: translateX(-50%) translateY(0) !important;
@@ -127,12 +304,30 @@
                 pointer-events: auto !important;
                 padding: 0.3rem 1rem;
                 top: 6px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.2rem;
             }
+            
             .nav-trigger-zone {
                 display: none;
             }
+            
             body {
                 padding-top: 4.5rem;
+                padding: 1rem;
+                padding-top: 4.5rem;
+            }
+            
+            .top-nav .nav-btn {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+            }
+            
+            .admin-entry-btn {
+                font-size: 0.65rem;
+                padding: 0.25rem 0.6rem;
+                margin-left: 0.2rem;
             }
         }
 
@@ -145,29 +340,30 @@
             box-shadow: var(--shadow-card), 0 0 0 1px var(--border-subtle);
             background: var(--bg-surface);
             backdrop-filter: var(--glass-backdrop);
-            transition: box-shadow 0.3s;
+            transition: box-shadow 0.3s, background 0.5s;
         }
+        
         .page-slider-inner {
             display: flex;
-            width: 200%;
+            width: 300%;
             transform: translateX(0%);
             transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
+        
         .page-slider-inner.slide-announcements {
-            transform: translateX(-50%);
+            transform: translateX(-33.333%);
         }
+        
+        .page-slider-inner.slide-admin {
+            transform: translateX(-66.667%);
+        }
+        
         .page-slide {
-            width: 50%;
+            width: 33.333%;
             flex-shrink: 0;
             padding: 2.8rem 2.8rem 2.2rem;
             min-height: 520px;
             position: relative;
-        }
-        .page-slide:first-child {
-            border-radius: var(--radius-card) 0 0 var(--radius-card);
-        }
-        .page-slide:last-child {
-            border-radius: 0 var(--radius-card) var(--radius-card) 0;
         }
 
         /* ── hub header ── */
@@ -179,16 +375,19 @@
             margin-bottom: 2rem;
             gap: 0.8rem 1.2rem;
         }
+        
         .brand {
             display: flex;
             align-items: center;
             gap: 0.6rem;
         }
+        
         .brand-icon {
             font-size: 2.2rem;
             color: var(--accent);
             filter: drop-shadow(0 0 14px var(--accent-glow));
         }
+        
         .brand h1 {
             font-size: 1.9rem;
             font-weight: 600;
@@ -198,11 +397,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
         .social-links {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
         }
+        
         .social-btn {
             width: 40px;
             height: 40px;
@@ -217,6 +418,7 @@
             transition: all 0.25s;
             text-decoration: none;
         }
+        
         .social-btn:hover {
             background: rgba(255, 255, 255, 0.08);
             transform: translateY(-3px) scale(1.05);
@@ -224,6 +426,7 @@
             color: #fff;
             box-shadow: 0 8px 24px var(--accent-glow);
         }
+        
         .tagline {
             font-size: 0.75rem;
             background: rgba(255, 255, 255, 0.04);
@@ -235,6 +438,7 @@
             align-items: center;
             gap: 0.4rem;
         }
+        
         .tagline i {
             color: var(--accent);
             font-size: 0.65rem;
@@ -251,8 +455,9 @@
             border: 1px solid var(--border-subtle);
             backdrop-filter: blur(6px);
             margin-bottom: 1.6rem;
-            transition: 0.2s;
+            transition: 0.3s;
         }
+        
         .now-playing-strip .np-label {
             font-size: 0.6rem;
             text-transform: uppercase;
@@ -260,10 +465,12 @@
             color: var(--text-muted);
             font-weight: 500;
         }
+        
         .now-playing-strip .np-label i {
             margin-right: 0.2rem;
             color: var(--accent);
         }
+        
         .np-title {
             font-weight: 500;
             font-size: 0.9rem;
@@ -272,10 +479,12 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
         .np-indicator {
             display: flex;
             gap: 0.2rem;
         }
+        
         .np-indicator .dot {
             width: 5px;
             height: 5px;
@@ -284,16 +493,20 @@
             display: inline-block;
             animation: pulseDot 1.2s ease-in-out infinite;
         }
+        
         .np-indicator .dot:nth-child(2) {
             animation-delay: 0.2s;
         }
+        
         .np-indicator .dot:nth-child(3) {
             animation-delay: 0.4s;
         }
+        
         .np-indicator.paused .dot {
             animation: none;
             opacity: 0.25;
         }
+        
         @keyframes pulseDot {
             0%,
             100% {
@@ -313,6 +526,7 @@
             gap: 2.2rem;
             align-items: flex-start;
         }
+        
         .cover-wrapper {
             flex: 0 0 180px;
             width: 180px;
@@ -324,16 +538,19 @@
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s;
         }
+        
         .cover-wrapper:hover {
             transform: scale(1.02) translateY(-4px);
             box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.8);
         }
+        
         .cover-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
+        
         .cover-fallback {
             width: 100%;
             height: 100%;
@@ -345,6 +562,7 @@
             font-size: 3.6rem;
             opacity: 0.5;
         }
+        
         .cover-wrapper .visualizer-ring {
             position: absolute;
             inset: -4px;
@@ -353,10 +571,12 @@
             transition: 0.4s;
             pointer-events: none;
         }
+        
         .cover-wrapper.is-playing .visualizer-ring {
             border-color: var(--accent);
             animation: ringPulse 1.6s ease-in-out infinite;
         }
+        
         @keyframes ringPulse {
             0%,
             100% {
@@ -376,12 +596,14 @@
             flex-direction: column;
             gap: 1rem;
         }
+        
         .track-info .track-name {
             font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: -0.01em;
             line-height: 1.2;
         }
+        
         .track-info .track-artist {
             font-size: 0.95rem;
             color: var(--text-secondary);
@@ -392,6 +614,7 @@
             align-items: center;
             gap: 1rem;
         }
+        
         .play-btn {
             width: 56px;
             height: 56px;
@@ -407,13 +630,16 @@
             transition: all 0.25s;
             box-shadow: 0 8px 28px var(--accent-glow);
         }
+        
         .play-btn:hover {
             transform: scale(1.06) translateY(-2px);
             box-shadow: 0 12px 36px var(--accent-glow);
         }
+        
         .play-btn:active {
             transform: scale(0.92);
         }
+        
         .secondary-btn {
             background: transparent;
             border: none;
@@ -426,6 +652,7 @@
             transition: 0.2s;
             cursor: pointer;
         }
+        
         .secondary-btn:hover {
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
@@ -437,6 +664,7 @@
             gap: 0.4rem;
             margin-left: auto;
         }
+        
         .volume-wrap .vol-icon-btn {
             background: transparent;
             border: none;
@@ -449,10 +677,12 @@
             cursor: pointer;
             transition: 0.2s;
         }
+        
         .volume-wrap .vol-icon-btn:hover {
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
         }
+        
         .volume-slider {
             -webkit-appearance: none;
             appearance: none;
@@ -464,6 +694,7 @@
             transition: 0.2s;
             cursor: pointer;
         }
+        
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -474,6 +705,7 @@
             box-shadow: 0 0 16px var(--accent-glow);
             cursor: pointer;
         }
+        
         .volume-slider::-moz-range-thumb {
             width: 14px;
             height: 14px;
@@ -488,12 +720,14 @@
             align-items: center;
             gap: 0.8rem;
         }
+        
         .time-label {
             font-size: 0.75rem;
             color: var(--text-secondary);
             min-width: 40px;
             font-variant-numeric: tabular-nums;
         }
+        
         .progress-track {
             flex: 1;
             height: 4px;
@@ -506,9 +740,11 @@
             display: flex;
             align-items: center;
         }
+        
         .progress-track:hover {
             height: 7px;
         }
+        
         .progress-fill {
             height: 100%;
             width: 0%;
@@ -517,6 +753,7 @@
             transition: width 0.08s linear;
             pointer-events: none;
         }
+        
         .progress-fill::after {
             content: '';
             position: absolute;
@@ -531,6 +768,7 @@
             transition: 0.2s;
             box-shadow: 0 0 20px var(--accent-glow);
         }
+        
         .progress-track:hover .progress-fill::after {
             opacity: 1;
             transform: translateY(-50%) scale(1);
@@ -542,11 +780,13 @@
             border-top: 1px solid var(--border-subtle);
             padding-top: 1.6rem;
         }
+        
         .playlist-header {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.8rem;
         }
+        
         .playlist-header h3 {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -554,6 +794,7 @@
             color: var(--text-secondary);
             font-weight: 500;
         }
+        
         .playlist-header .count {
             font-size: 0.7rem;
             background: rgba(255, 255, 255, 0.04);
@@ -561,6 +802,7 @@
             border-radius: 30px;
             color: var(--text-muted);
         }
+        
         .playlist {
             display: flex;
             flex-direction: column;
@@ -569,13 +811,16 @@
             overflow-y: auto;
             padding-right: 4px;
         }
+        
         .playlist::-webkit-scrollbar {
             width: 4px;
         }
+        
         .playlist::-webkit-scrollbar-thumb {
             background: #3d353b;
             border-radius: 8px;
         }
+        
         .playlist-item {
             display: flex;
             align-items: center;
@@ -586,25 +831,30 @@
             cursor: pointer;
             border: 1px solid transparent;
         }
+        
         .playlist-item:hover {
             background: rgba(255, 255, 255, 0.03);
             border-color: var(--border-subtle);
             transform: scale(0.98);
         }
+        
         .playlist-item.active {
             background: rgba(232, 180, 140, 0.08);
             border-color: rgba(232, 180, 140, 0.15);
         }
+        
         .playlist-item .idx {
             font-size: 0.7rem;
             color: var(--text-muted);
             min-width: 24px;
             text-align: center;
         }
+        
         .playlist-item .pl-info {
             flex: 1;
             overflow: hidden;
         }
+        
         .playlist-item .pl-title {
             font-weight: 500;
             font-size: 0.9rem;
@@ -612,6 +862,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
         .playlist-item .pl-artist {
             font-size: 0.7rem;
             color: var(--text-secondary);
@@ -619,26 +870,31 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
         .playlist-item .pl-duration {
             font-size: 0.75rem;
             color: var(--text-muted);
             min-width: 40px;
             text-align: right;
         }
+        
         .playlist-item .pl-play-icon {
             color: var(--accent);
             font-size: 0.8rem;
             opacity: 0;
             transition: 0.2s;
         }
+        
         .playlist-item.active .pl-play-icon,
         .playlist-item:hover .pl-play-icon {
             opacity: 1;
         }
+        
         .playlist-item .pl-play-icon.playing {
             opacity: 1;
             animation: pulseIcon 1s infinite;
         }
+        
         @keyframes pulseIcon {
             0%,
             100% {
@@ -656,6 +912,7 @@
             align-items: center;
             margin-bottom: 1.8rem;
         }
+        
         .page-header h2 {
             font-size: 1.3rem;
             font-weight: 600;
@@ -663,9 +920,11 @@
             align-items: center;
             gap: 0.6rem;
         }
+        
         .page-header h2 i {
             color: var(--accent);
         }
+        
         .page-header .count {
             font-size: 0.7rem;
             background: rgba(255, 255, 255, 0.04);
@@ -673,11 +932,13 @@
             border-radius: 30px;
             color: var(--text-muted);
         }
+        
         .announcements-list {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
+        
         .announcement-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-subtle);
@@ -686,19 +947,23 @@
             transition: 0.25s;
             cursor: pointer;
         }
+        
         .announcement-card:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: var(--border-strong);
         }
+        
         .announcement-card.expanded {
             background: rgba(255, 255, 255, 0.05);
             border-color: var(--accent);
         }
+        
         .card-summary {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
+        
         .card-summary img {
             width: 56px;
             height: 56px;
@@ -707,17 +972,21 @@
             background: #1e1a1f;
             flex-shrink: 0;
         }
+        
         .card-summary .info {
             flex: 1;
         }
+        
         .card-summary .info h4 {
             font-weight: 600;
             font-size: 1rem;
         }
+        
         .card-summary .info p {
             font-size: 0.8rem;
             color: var(--text-secondary);
         }
+        
         .card-summary .badge {
             font-size: 0.55rem;
             text-transform: uppercase;
@@ -727,33 +996,40 @@
             border-radius: 30px;
             font-weight: 600;
         }
+        
         .card-summary .expand-icon {
             color: var(--text-muted);
             transition: 0.3s;
         }
+        
         .announcement-card.expanded .expand-icon {
             transform: rotate(180deg);
             color: var(--accent);
         }
+        
         .card-details {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease, padding 0.3s;
             padding: 0 0.2rem;
         }
+        
         .announcement-card.expanded .card-details {
             max-height: 400px;
             padding: 1rem 0.2rem 0.2rem;
         }
+        
         .detail-row {
             display: flex;
             gap: 1rem;
             padding: 0.3rem 0;
             border-top: 1px solid var(--border-subtle);
         }
+        
         .detail-row:first-child {
             border-top: none;
         }
+        
         .detail-label {
             font-size: 0.7rem;
             font-weight: 500;
@@ -762,19 +1038,23 @@
             text-transform: uppercase;
             letter-spacing: 0.04em;
         }
+        
         .detail-value {
             font-size: 0.9rem;
             color: var(--text-primary);
         }
+        
         .detail-value a {
             color: var(--accent);
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: 0.2s;
         }
+        
         .detail-value a:hover {
             border-bottom-color: var(--accent);
         }
+        
         .detail-value .tag {
             display: inline-block;
             font-size: 0.65rem;
@@ -783,6 +1063,213 @@
             padding: 0.05rem 0.6rem;
             border-radius: 30px;
             margin-right: 0.2rem;
+        }
+
+        /* ── Admin Panel ── */
+        .admin-login-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+        
+        .admin-login-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .admin-login-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-card);
+            padding: 3rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .admin-login-card h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .admin-login-card input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .admin-login-card button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: #0f0d11;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .admin-login-card button:hover {
+            box-shadow: 0 8px 28px var(--accent-glow);
+        }
+        
+        .admin-login-card .error-msg {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .admin-login-card .error-msg.show {
+            display: block;
+        }
+
+        /* Admin Panel Content */
+        .admin-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+        }
+        
+        .admin-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+        
+        .admin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .admin-form input,
+        .admin-form textarea,
+        .admin-form select {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            resize: vertical;
+        }
+        
+        .admin-form textarea {
+            min-height: 100px;
+        }
+        
+        .admin-form button {
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: #0f0d11;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .admin-form button:hover {
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        
+        .admin-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+        }
+        
+        .admin-item .delete-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .admin-item .delete-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .admin-actions button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .admin-actions .save-btn {
+            background: var(--accent);
+            color: #0f0d11;
+        }
+        
+        .admin-actions .cancel-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .admin-actions .reset-btn {
+            background: var(--warning);
+            color: #0f0d11;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-header h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
         /* ── footer theme ── */
@@ -796,12 +1283,14 @@
             align-items: center;
             gap: 0.8rem;
         }
+        
         .footer-theme {
             display: flex;
             gap: 0.35rem;
             flex-wrap: wrap;
             justify-content: center;
         }
+        
         .footer-theme .ft-label {
             font-size: 0.55rem;
             text-transform: uppercase;
@@ -810,6 +1299,7 @@
             margin-right: 0.2rem;
             align-self: center;
         }
+        
         .theme-dot {
             width: 26px;
             height: 26px;
@@ -820,47 +1310,26 @@
             background: var(--bg-base);
             flex-shrink: 0;
         }
+        
         .theme-dot.active {
             border-color: var(--text-primary);
             transform: scale(1.1);
             box-shadow: 0 0 20px var(--accent-glow);
         }
-        .theme-dot[data-theme="dark"] {
-            background: #0f0d11;
-        }
-        .theme-dot[data-theme="light"] {
-            background: #f0ebe6;
-        }
-        .theme-dot[data-theme="turquoise"] {
-            background: #5fc8c8;
-        }
-        .theme-dot[data-theme="red"] {
-            background: #d45a5a;
-        }
-        .theme-dot[data-theme="purple"] {
-            background: #8b5cf6;
-        }
-        .theme-dot[data-theme="green"] {
-            background: #34d399;
-        }
-        .theme-dot[data-theme="ocean"] {
-            background: #3b82f6;
-        }
-        .theme-dot[data-theme="sunset"] {
-            background: #f59e0b;
-        }
-        .theme-dot[data-theme="rainbow"] {
-            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #9b59b6);
-        }
-        .theme-dot[data-theme="candy"] {
-            background: #ff6b9d;
-        }
-        .theme-dot[data-theme="forest"] {
-            background: #4ade80;
-        }
-        .theme-dot[data-theme="neon"] {
-            background: #00f5ff;
-        }
+        
+        .theme-dot[data-theme="dark"] { background: #0f0d11; }
+        .theme-dot[data-theme="light"] { background: #f0ebe6; }
+        .theme-dot[data-theme="turquoise"] { background: #5fc8c8; }
+        .theme-dot[data-theme="red"] { background: #d45a5a; }
+        .theme-dot[data-theme="purple"] { background: #8b5cf6; }
+        .theme-dot[data-theme="green"] { background: #34d399; }
+        .theme-dot[data-theme="ocean"] { background: #3b82f6; }
+        .theme-dot[data-theme="sunset"] { background: #f59e0b; }
+        .theme-dot[data-theme="rainbow"] { background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #9b59b6); }
+        .theme-dot[data-theme="candy"] { background: #ff6b9d; }
+        .theme-dot[data-theme="forest"] { background: #4ade80; }
+        .theme-dot[data-theme="neon"] { background: #00f5ff; }
+        
         .footer-copy {
             font-size: 0.7rem;
             color: var(--text-muted);
@@ -879,7 +1348,11 @@
             .player-grid {
                 gap: 1.4rem;
             }
+            .admin-login-card {
+                padding: 2rem;
+            }
         }
+        
         @media (max-width: 600px) {
             .page-slide {
                 padding: 1.2rem 1rem;
@@ -908,7 +1381,11 @@
                 font-size: 0.7rem;
                 padding: 0.25rem 0.8rem;
             }
+            .admin-section {
+                padding: 1rem;
+            }
         }
+        
         @media (max-width: 430px) {
             .page-slide {
                 padding: 1rem 0.6rem;
@@ -923,6 +1400,11 @@
             }
             .playlist-item {
                 padding: 0.4rem 0.4rem;
+            }
+            .admin-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
             }
         }
 
@@ -943,8 +1425,22 @@
     <!-- top nav -->
     <nav class="top-nav" id="topNav">
         <button class="nav-btn active" data-page="hub"><i class="fas fa-compact-disc"></i><span>Hub</span></button>
-        <button class="nav-btn" data-page="announcements"><i class="fas fa-bullhorn"></i><span>Announcements</span></button>
+        <button class="nav-btn" data-page="announcements"><i class="fas fa-bullhorn"></i><span>News</span></button>
+        <button class="admin-entry-btn" id="adminEntryBtn" title="Admin Panel">
+            <i class="fas fa-lock"></i><span>Admin</span>
+        </button>
     </nav>
+
+    <!-- Admin Login Overlay -->
+    <div class="admin-login-overlay hidden" id="adminLoginOverlay">
+        <div class="admin-login-card">
+            <h2><i class="fas fa-lock"></i> Admin Access</h2>
+            <input type="password" id="adminPasswordInput" placeholder="Enter admin password" autocomplete="off" />
+            <button id="adminLoginBtn">Login</button>
+            <p class="error-msg" id="adminLoginError">Invalid password</p>
+            <button style="margin-top: 1rem; background: transparent; color: var(--text-secondary); border: 1px solid var(--border-subtle);" id="adminCancelBtn">Cancel</button>
+        </div>
+    </div>
 
     <!-- slider -->
     <div class="page-slider">
@@ -1064,6 +1560,51 @@
                     <div class="footer-copy">© 2026 SBPebbles</div>
                 </footer>
             </div>
+
+            <!-- ADMIN PANEL SLIDE -->
+            <div class="page-slide" id="adminSlide">
+                <div class="admin-header">
+                    <h2><i class="fas fa-cogs"></i> Admin Panel</h2>
+                    <button class="logout-btn" id="adminLogoutBtn">Logout</button>
+                </div>
+                
+                <!-- Tracks Management -->
+                <div class="admin-section">
+                    <h3><i class="fas fa-music"></i> Tracks</h3>
+                    <div class="admin-form" id="addTrackForm">
+                        <input type="text" id="trackTitleInput" placeholder="Track Title" />
+                        <input type="text" id="trackArtistInput" placeholder="Artist" />
+                        <input type="url" id="trackSrcInput" placeholder="Audio URL" />
+                        <input type="url" id="trackCoverInput" placeholder="Cover Image URL" />
+                        <input type="text" id="trackDurationInput" placeholder="Duration (e.g., 3:28)" />
+                        <button id="addTrackBtn">Add Track</button>
+                    </div>
+                    <div id="adminTrackList" style="margin-top: 1rem; max-height: 300px; overflow-y: auto;"></div>
+                </div>
+
+                <!-- Announcements Management -->
+                <div class="admin-section">
+                    <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+                    <div class="admin-form" id="addAnnouncementForm">
+                        <input type="text" id="annTitleInput" placeholder="Title" />
+                        <input type="text" id="annDescInput" placeholder="Short Description" />
+                        <input type="url" id="annCoverInput" placeholder="Cover Image URL" />
+                        <textarea id="annFullDescInput" placeholder="Full Description"></textarea>
+                        <input type="text" id="annDateInput" placeholder="Release/Date (e.g., August 20th, 2026)" />
+                        <input type="text" id="annLinksInput" placeholder="Links (label|url, label|url)" />
+                        <input type="text" id="annTagsInput" placeholder="Tags (comma-separated)" />
+                        <button id="addAnnouncementBtn">Add Announcement</button>
+                    </div>
+                    <div id="adminAnnouncementList" style="margin-top: 1rem; max-height: 300px; overflow-y: auto;"></div>
+                </div>
+
+                <!-- Actions -->
+                <div class="admin-actions">
+                    <button class="save-btn" id="saveChangesBtn">Save Changes</button>
+                    <button class="reset-btn" id="resetDefaultsBtn">Reset to Defaults</button>
+                    <button class="cancel-btn" id="exitAdminBtn">Exit Admin</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1073,118 +1614,103 @@
         (function() {
             'use strict';
 
-            // ─── TRACKS ──────────────────────────────────────────────────
-            const TRACKS = [{
-                id: 0,
-                title: 'Lost You',
-                artist: 'Kam Pebbles',
-                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3',
-                cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
-                duration: '3:28'
-            }, {
-                id: 1,
-                title: 'Blue-Raz Lemonade',
-                artist: 'Kam Pebbles',
-                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3',
-                cover: 'https://i.imgur.com/RnwJuvu.jpeg',
-                duration: '2:17'
-            }, {
-                id: 2,
-                title: 'Grape Smarties',
-                artist: 'Kam Pebbles',
-                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-ADBAFF10-C666-4BCC-9C58C882B4571017.mp3',
-                cover: 'https://i.imgur.com/aTWPtqq.jpeg',
-                duration: '4:05'
-            }, {
-                id: 3,
-                title: 'Miss You',
-                artist: 'Kam Pebbles',
-                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-E2CA9933-F0A3-4C0B-B97C9145582A51E7.mp3',
-                cover: 'https://i.imgur.com/XqGkllR.jpeg',
-                duration: '4:07'
-            }, {
-                id: 4,
-                title: '219_UNTITLED_EARLY_PREVIEW_UNMIXED',
-                artist: 'Kam Pebbles',
-                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-D174AE0B-181F-4796-91BCF7952ED9E433.mp3',
-                cover: 'https://i.imgur.com/ycLlohS.png',
-                duration: '3:44'
-            }, {
-                id: 5,
-                title: '144_Tension_EARLY_PREVIEW_UNFINISHED_UNMIXED',
-                artist: 'Kam Pebbles',
-                src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-89D71B31-DB81-4893-B96E768CE44EC085.mp3',
-                cover: 'https://i.imgur.com/ycLlohS.png',
-                duration: '3:13'
-            }];
+            // ─── SECURITY CONFIG ──────────────────────────────────────
 
-            // ─── ANNOUNCEMENTS (updated links + date) ────────────────
-            const ANNOUNCEMENTS = [{
-                title: 'YouTube Music Updates',
-                description: 'Official page is now merged with ',
-                cover: 'https://i.imgur.com/HmOhOgb.jpeg',
-                fullDescription: 'My user and creator account have been merged. You can find my music much easier now!',
-                releaseDate: 'August 5th, 2026',
-                links: [{ label: 'Official YouTube Page', url: 'https://music.youtube.com/ninow' }]
-            }, {
-                title: 'A new track is on its way!',
-                description: '',
-                cover: 'https://i.imgur.com/VetT42C.png',
-                fullDescription: 'This song will be officially released on YouTube Music, Spotify, and Tidal.',
-                releaseDate: 'Coming August 20th, 2026', // updated
-                links: [
-                    { label: 'Stream on Spotify', url: 'https://open.spotify.com/track/notlinkedhereyet' },
-                    { label: 'Listen on YouTube', url: 'https://music.youtube.com/watch?v=notlinkedhereyet' }
-                ],
-                tags: ['Single', 'Indie']
-            }, {
-                title: 'Lost You',
-                description: 'New release!',
-                cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
-                fullDescription: '"Lost You" is out now! This track is released officially on YouTube Music and Spotify.',
-                releaseDate: 'August 1, 2026',
-                links: [
-                    { label: 'Stream on Spotify', url: 'https://open.spotify.com/track/notlinkedhereyet' },
-                    { label: 'Listen on YouTube', url: 'https://music.youtube.com/watch?v=notlinkedhereyet' }
-                ],
-                tags: ['Single', 'Indie']
-            }, {
-                title: 'Blue-Raz Lemonade',
-                description: 'New release!',
-                cover: 'https://i.imgur.com/RnwJuvu.jpeg',
-                fullDescription: '"Blue-Raz Lemonade" is out now! This track is released officially on BandCamp, YouTube Music and Spotify.',
-                releaseDate: 'August 1, 2026',
-                links: [
-                    { label: 'Stream on Spotify', url: 'https://open.spotify.com/track/notlinkedhereyet' },
-                    { label: 'Listen on YouTube', url: 'https://music.youtube.com/watch?v=notlinkedhereyet' },
-                    { label: 'Listen on BandCamp', url: 'https://kampebbles.bandcamp.com/track/notlinkedhereyet' }
-                ],
-                tags: ['Single', 'Indie']
-            }, {
-                title: 'Miss You',
-                description: 'New release!',
-                cover: 'https://i.imgur.com/XqGkllR.jpeg',
-                fullDescription: '"Miss You" is out now! This track is released officially on BandCamp, YouTube Music and Spotify.',
-                releaseDate: 'August 1, 2026',
-                links: [
-                    { label: 'Stream on Spotify', url: 'https://open.spotify.com/track/notlinkedhereyet' },
-                    { label: 'Listen on YouTube', url: 'https://music.youtube.com/watch?v=notlinkedhereyet' },
-                    { label: 'Listen on BandCamp', url: 'https://kampebbles.bandcamp.com/track/notlinkedhereyet' }
-                ],
-                tags: ['Single', 'Indie']
-            }, {
-                title: 'Grape Smarties',
-                description: 'New release!',
-                cover: 'https://i.imgur.com/aTWPtqq.jpeg',
-                fullDescription: '"Grape Smarties" is out now! This track is released officially on BandCamp, YouTube Music and Spotify.',
-                releaseDate: 'August 1, 2026',
-                links: [
-                    { label: 'Stream on Spotify', url: 'https://open.spotify.com/track/notlinkedhereyet' },
-                    { label: 'Listen on YouTube', url: 'https://music.youtube.com/watch?v=notlinkedhereyet' },
-                    { label: 'Listen on BandCamp', url: 'https://kampebbles.bandcamp.com/track/notlinkedhereyet' }
-                ],
-                tags: ['Single', 'Indie']
-            }];
+            const ADMIN_PASSWORD_HASH = 'f2376b3214c62651f4839b6235ccb869b46f51c6489553575ffd8b900e7d9c78';
+            const STORAGE_KEY_DATA = 'sbpebbles-data';
+            const STORAGE_KEY_THEME = 'sbpebbles-theme';
+            const STORAGE_KEY_AUTH = 'sbpebbles-auth';
+
+            // ─── HASH FUNCTION (SHA-256) ────────────────────────────
+            async function sha256(message) {
+                const msgBuffer = new TextEncoder().encode(message);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                return hashHex;
+            }
+
+            // ─── DEFAULT DATA ────────────────────────────────────────
+            const DEFAULT_TRACKS = [
+                { id: 0, title: 'Lost You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3', cover: 'https://i.imgur.com/2UMG2Pg.jpeg', duration: '3:28' },
+                { id: 1, title: 'Blue-Raz Lemonade', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3', cover: 'https://i.imgur.com/RnwJuvu.jpeg', duration: '2:17' },
+                { id: 2, title: 'Grape Smarties', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-ADBAFF10-C666-4BCC-9C58C882B4571017.mp3', cover: 'https://i.imgur.com/aTWPtqq.jpeg', duration: '4:05' },
+                { id: 3, title: 'Miss You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-E2CA9933-F0A3-4C0B-B97C9145582A51E7.mp3', cover: 'https://i.imgur.com/XqGkllR.jpeg', duration: '4:07' },
+                { id: 4, title: '219_UNTITLED_EARLY_PREVIEW_UNMIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-D174AE0B-181F-4796-91BCF7952ED9E433.mp3', cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:44' },
+                { id: 5, title: '144_Tension_EARLY_PREVIEW_UNFINISHED_UNMIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-89D71B31-DB81-4893-B96E768CE44EC085.mp3', cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:13' }
+            ];
+
+            const DEFAULT_ANNOUNCEMENTS = [
+                { title: 'YouTube Music Updates', description: 'Official page is now merged', cover: 'https://i.imgur.com/HmOhOgb.jpeg', fullDescription: 'My user and creator account have been merged. You can find my music much easier now!', releaseDate: 'August 5th, 2026', links: [{ label: 'Official YouTube Page', url: 'https://music.youtube.com/ninow' }], tags: ['Update'] },
+                { title: 'A new track is on its way!', description: 'Coming soon...', cover: 'https://i.imgur.com/VetT42C.png', fullDescription: 'This song will be officially released on YouTube Music, Spotify, and Tidal.', releaseDate: 'Coming August 20th, 2026', links: [], tags: ['Single', 'Indie'] },
+                { title: 'Lost You', description: 'New release!', cover: 'https://i.imgur.com/2UMG2Pg.jpeg', fullDescription: '"Lost You" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] },
+                { title: 'Blue-Raz Lemonade', description: 'New release!', cover: 'https://i.imgur.com/RnwJuvu.jpeg', fullDescription: '"Blue-Raz Lemonade" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] },
+                { title: 'Miss You', description: 'New release!', cover: 'https://i.imgur.com/XqGkllR.jpeg', fullDescription: '"Miss You" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] },
+                { title: 'Grape Smarties', description: 'New release!', cover: 'https://i.imgur.com/aTWPtqq.jpeg', fullDescription: '"Grape Smarties" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] }
+            ];
+
+            // ─── DATA MANAGEMENT ─────────────────────────────────────
+            let tracks = [...DEFAULT_TRACKS];
+            let announcements = [...DEFAULT_ANNOUNCEMENTS];
+
+            function loadData() {
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY_DATA);
+                    if (stored) {
+                        const data = JSON.parse(stored);
+                        if (data.tracks && Array.isArray(data.tracks)) tracks = data.tracks;
+                        if (data.announcements && Array.isArray(data.announcements)) announcements = data.announcements;
+                    }
+                } catch (e) {
+                    console.warn('Failed to load data, using defaults');
+                }
+            }
+
+            function saveData() {
+                try {
+                    const data = { tracks, announcements };
+                    localStorage.setItem(STORAGE_KEY_DATA, JSON.stringify(data));
+                    return true;
+                } catch (e) {
+                    console.error('Failed to save data');
+                    return false;
+                }
+            }
+
+            function resetToDefaults() {
+                tracks = [...DEFAULT_TRACKS];
+                announcements = [...DEFAULT_ANNOUNCEMENTS];
+                saveData();
+                refreshAllViews();
+            }
+
+            // ─── AUTHENTICATION ──────────────────────────────────────
+            let isAuthenticated = false;
+
+            function checkAuth() {
+                try {
+                    const auth = sessionStorage.getItem(STORAGE_KEY_AUTH);
+                    if (auth === 'authenticated') {
+                        isAuthenticated = true;
+                        return true;
+                    }
+                } catch (e) {}
+                return false;
+            }
+
+            function setAuth() {
+                try {
+                    sessionStorage.setItem(STORAGE_KEY_AUTH, 'authenticated');
+                    isAuthenticated = true;
+                } catch (e) {}
+            }
+
+            function clearAuth() {
+                try {
+                    sessionStorage.removeItem(STORAGE_KEY_AUTH);
+                    isAuthenticated = false;
+                } catch (e) {}
+            }
 
             // ─── DOM refs ──────────────────────────────────────────────
             const audio = document.getElementById('audioPlayer');
@@ -1212,59 +1738,59 @@
             const announcementCount = document.getElementById('announcementCount');
             const pageSlider = document.getElementById('pageSlider');
             const topNav = document.getElementById('topNav');
+            const adminLoginOverlay = document.getElementById('adminLoginOverlay');
+            const adminPasswordInput = document.getElementById('adminPasswordInput');
+            const adminLoginBtn = document.getElementById('adminLoginBtn');
+            const adminLoginError = document.getElementById('adminLoginError');
+            const adminCancelBtn = document.getElementById('adminCancelBtn');
+            const adminEntryBtn = document.getElementById('adminEntryBtn');
+            const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+            const saveChangesBtn = document.getElementById('saveChangesBtn');
+            const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
+            const exitAdminBtn = document.getElementById('exitAdminBtn');
 
             // ─── THEME ──────────────────────────────────────────────────
             const themeDots = document.querySelectorAll('.theme-dot');
-            const STORAGE_KEY = 'sbpebbles-theme';
+
             function setTheme(theme) {
                 document.documentElement.setAttribute('data-theme', theme);
                 themeDots.forEach(d => d.classList.toggle('active', d.dataset.theme === theme));
-                try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) {}
+                try { localStorage.setItem(STORAGE_KEY_THEME, theme); } catch (_) {}
             }
+
             function loadTheme() {
                 let theme = 'dark';
-                try { const s = localStorage.getItem(STORAGE_KEY); if (s) theme = s; } catch (_) {}
-                const valid = ['dark', 'light', 'turquoise', 'red', 'purple', 'green', 'ocean', 'sunset', 'rainbow', 'candy',
-                    'forest', 'neon'
-                ];
+                try { const s = localStorage.getItem(STORAGE_KEY_THEME); if (s) theme = s; } catch (_) {}
+                const valid = ['dark', 'light', 'turquoise', 'red', 'purple', 'green', 'ocean', 'sunset', 'rainbow', 'candy', 'forest', 'neon'];
                 if (!valid.includes(theme)) theme = 'dark';
                 setTheme(theme);
             }
+
             themeDots.forEach(d => d.addEventListener('click', () => setTheme(d.dataset.theme)));
 
             // ─── NAV ──────────────────────────────────────────────────
             let navVisible = false;
             let navTimeout = null;
 
-            function showNav() { if (!navVisible) { navVisible = true;
-                    topNav.classList.add('visible'); } }
+            function showNav() { if (!navVisible) { navVisible = true; topNav.classList.add('visible'); } }
 
-            function hideNav() { if (navVisible) { navVisible = false;
-                    topNav.classList.remove('visible'); } }
+            function hideNav() { if (navVisible) { navVisible = false; topNav.classList.remove('visible'); } }
 
             function isMobile() { return window.innerWidth <= 720; }
+
             document.addEventListener('mousemove', (e) => {
                 if (isMobile()) return;
-                if (e.clientY < 80) { showNav();
-                    clearTimeout(navTimeout); } else if (navVisible) {
+                if (e.clientY < 80) { showNav(); clearTimeout(navTimeout); } else if (navVisible) {
                     clearTimeout(navTimeout);
                     navTimeout = setTimeout(() => {
                         const r = topNav.getBoundingClientRect();
-                        if (!(e.clientY >= r.top && e.clientY <= r.bottom && e.clientX >= r.left && e.clientX <= r
-                                .right)) hideNav();
+                        if (!(e.clientY >= r.top && e.clientY <= r.bottom && e.clientX >= r.left && e.clientX <= r.right)) hideNav();
                     }, 400);
                 }
             });
-            document.addEventListener('click', (e) => {
-                if (isMobile()) return;
-                if (navVisible && !topNav.contains(e.target) && e.clientY > 80) {
-                    clearTimeout(navTimeout);
-                    navTimeout = setTimeout(hideNav, 300);
-                }
-            });
+
             if (!isMobile()) {
-                setTimeout(() => { showNav();
-                    setTimeout(hideNav, 1800); }, 400);
+                setTimeout(() => { showNav(); setTimeout(hideNav, 1800); }, 400);
             } else {
                 topNav.classList.add('visible');
             }
@@ -1273,17 +1799,199 @@
             let currentPage = 'hub';
 
             function switchPage(pageId) {
+                if (pageId === 'admin' && !isAuthenticated) {
+                    showAdminLogin();
+                    return;
+                }
                 if (pageId === currentPage) return;
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
-                pageSlider.classList.toggle('slide-announcements', pageId === 'announcements');
+                document.querySelectorAll('.nav-btn:not(.admin-entry-btn)').forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
+                if (pageId === 'hub') pageSlider.classList.remove('slide-announcements', 'slide-admin');
+                else if (pageId === 'announcements') {
+                    pageSlider.classList.add('slide-announcements');
+                    pageSlider.classList.remove('slide-admin');
+                } else if (pageId === 'admin') {
+                    pageSlider.classList.add('slide-admin');
+                    pageSlider.classList.remove('slide-announcements');
+                }
                 currentPage = pageId;
+                if (pageId === 'admin') refreshAdminPanel();
             }
-            document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', () => switchPage(b.dataset.page)));
+
+            document.querySelectorAll('.nav-btn:not(.admin-entry-btn)').forEach(b => b.addEventListener('click', () => switchPage(b.dataset.page)));
+
+            // ─── ADMIN PANEL ──────────────────────────────────────────
+            function showAdminLogin() {
+                adminLoginOverlay.classList.remove('hidden');
+                adminPasswordInput.value = '';
+                adminLoginError.classList.remove('show');
+                setTimeout(() => adminPasswordInput.focus(), 100);
+            }
+
+            function hideAdminLogin() {
+                adminLoginOverlay.classList.add('hidden');
+            }
+
+            async function handleAdminLogin() {
+                const password = adminPasswordInput.value;
+                if (!password) return;
+                
+                // Hash the entered password and compare
+                const hash = await sha256(password);
+                // For demo: accept any password that hashes to match
+                // In production, compare with ADMIN_PASSWORD_HASH
+                // For now, let's use a simple check (change this!)
+                if (hash === await sha256('SBPebbles2026!')) {
+                    setAuth();
+                    hideAdminLogin();
+                    switchPage('admin');
+                } else {
+                    adminLoginError.classList.add('show');
+                    adminPasswordInput.value = '';
+                }
+            }
+
+            function handleAdminLogout() {
+                clearAuth();
+                switchPage('hub');
+                hideAdminLogin();
+            }
+
+            function refreshAdminPanel() {
+                if (!isAuthenticated) return;
+                renderAdminTracks();
+                renderAdminAnnouncements();
+            }
+
+            function renderAdminTracks() {
+                const container = document.getElementById('adminTrackList');
+                container.innerHTML = tracks.map((track, idx) => `
+                    <div class="admin-item">
+                        <span>${track.title} - ${track.artist}</span>
+                        <button class="delete-btn" onclick="window._deleteTrack(${idx})">Delete</button>
+                    </div>
+                `).join('');
+            }
+
+            function renderAdminAnnouncements() {
+                const container = document.getElementById('adminAnnouncementList');
+                container.innerHTML = announcements.map((ann, idx) => `
+                    <div class="admin-item">
+                        <span>${ann.title}</span>
+                        <button class="delete-btn" onclick="window._deleteAnnouncement(${idx})">Delete</button>
+                    </div>
+                `).join('');
+            }
+
+            // Global functions for admin actions
+            window._deleteTrack = function(idx) {
+                if (confirm('Delete this track?')) {
+                    tracks.splice(idx, 1);
+                    refreshAllViews();
+                }
+            };
+
+            window._deleteAnnouncement = function(idx) {
+                if (confirm('Delete this announcement?')) {
+                    announcements.splice(idx, 1);
+                    refreshAllViews();
+                }
+            };
+
+            function addTrack() {
+                const title = document.getElementById('trackTitleInput').value.trim();
+                const artist = document.getElementById('trackArtistInput').value.trim();
+                const src = document.getElementById('trackSrcInput').value.trim();
+                const cover = document.getElementById('trackCoverInput').value.trim();
+                const duration = document.getElementById('trackDurationInput').value.trim();
+
+                if (!title || !src) {
+                    alert('Title and Audio URL are required');
+                    return;
+                }
+
+                const newTrack = {
+                    id: Date.now(),
+                    title,
+                    artist: artist || 'Unknown',
+                    src,
+                    cover: cover || '',
+                    duration: duration || '0:00'
+                };
+
+                tracks.push(newTrack);
+                clearTrackForm();
+                refreshAllViews();
+            }
+
+            function addAnnouncement() {
+                const title = document.getElementById('annTitleInput').value.trim();
+                const description = document.getElementById('annDescInput').value.trim();
+                const cover = document.getElementById('annCoverInput').value.trim();
+                const fullDescription = document.getElementById('annFullDescInput').value.trim();
+                const releaseDate = document.getElementById('annDateInput').value.trim();
+                const linksStr = document.getElementById('annLinksInput').value.trim();
+                const tagsStr = document.getElementById('annTagsInput').value.trim();
+
+                if (!title) {
+                    alert('Title is required');
+                    return;
+                }
+
+                const links = linksStr ? linksStr.split(',').map(l => {
+                    const parts = l.trim().split('|');
+                    return { label: parts[0]?.trim() || 'Link', url: parts[1]?.trim() || '#' };
+                }) : [];
+
+                const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()) : [];
+
+                const newAnnouncement = {
+                    title,
+                    description,
+                    cover: cover || 'https://i.imgur.com/ycLlohS.png',
+                    fullDescription,
+                    releaseDate,
+                    links,
+                    tags
+                };
+
+                announcements.push(newAnnouncement);
+                clearAnnouncementForm();
+                refreshAllViews();
+            }
+
+            function clearTrackForm() {
+                document.getElementById('trackTitleInput').value = '';
+                document.getElementById('trackArtistInput').value = '';
+                document.getElementById('trackSrcInput').value = '';
+                document.getElementById('trackCoverInput').value = '';
+                document.getElementById('trackDurationInput').value = '';
+            }
+
+            function clearAnnouncementForm() {
+                document.getElementById('annTitleInput').value = '';
+                document.getElementById('annDescInput').value = '';
+                document.getElementById('annCoverInput').value = '';
+                document.getElementById('annFullDescInput').value = '';
+                document.getElementById('annDateInput').value = '';
+                document.getElementById('annLinksInput').value = '';
+                document.getElementById('annTagsInput').value = '';
+            }
+
+            function refreshAllViews() {
+                renderPlaylist();
+                renderAnnouncements();
+                loadTrack(currentIndex);
+                if (isAuthenticated) {
+                    renderAdminTracks();
+                    renderAdminAnnouncements();
+                }
+                saveData();
+            }
 
             // ─── RENDER ANNOUNCEMENTS ────────────────────────────────
             function renderAnnouncements() {
                 announcementsContainer.innerHTML = '';
-                ANNOUNCEMENTS.forEach((ann) => {
+                announcements.forEach((ann) => {
                     const card = document.createElement('div');
                     card.className = 'announcement-card';
                     card.setAttribute('role', 'button');
@@ -1316,12 +2024,10 @@
                         card.classList.toggle('expanded');
                     };
                     card.addEventListener('click', toggle);
-                    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e
-                            .preventDefault();
-                            toggle(e); } });
+                    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); } });
                     announcementsContainer.appendChild(card);
                 });
-                announcementCount.textContent = `${ANNOUNCEMENTS.length} new`;
+                announcementCount.textContent = `${announcements.length} new`;
             }
 
             // ─── RENDER PLAYLIST ──────────────────────────────────────
@@ -1333,7 +2039,7 @@
 
             function renderPlaylist() {
                 playlistContainer.innerHTML = '';
-                TRACKS.forEach((track, idx) => {
+                tracks.forEach((track, idx) => {
                     const item = document.createElement('div');
                     item.className = `playlist-item ${idx === currentIndex ? 'active' : ''}`;
                     item.dataset.index = idx;
@@ -1347,33 +2053,26 @@
                         <span class="pl-play-icon ${isActive && isPlaying ? 'playing' : ''}"><i class="fas ${isActive && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i></span>
                     `;
                     const handle = () => {
-                        if (idx === currentIndex) { togglePlay(); } else { currentIndex = idx;
-                            loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
+                        if (idx === currentIndex) { togglePlay(); } else { currentIndex = idx; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
                     };
                     item.addEventListener('click', handle);
-                    item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e
-                            .preventDefault();
-                            handle(); } });
+                    item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handle(); } });
                     playlistContainer.appendChild(item);
                 });
                 updateTrackCount();
             }
 
             function updateTrackCount() {
-                const valid = TRACKS.filter(t => t.src && t.src !== 'https://s3.amazonaws.com');
-                trackCount.textContent = `${valid.length} tracks`;
+                trackCount.textContent = `${tracks.length} tracks`;
             }
 
             function loadTrack(index) {
-                const track = TRACKS[index];
+                const track = tracks[index];
                 if (!track) return;
                 trackName.textContent = track.title;
                 trackArtist.textContent = track.artist;
                 npTitle.textContent = track.title;
-                if (track.cover) { coverImg.src = track.cover;
-                    coverImg.style.display = 'block';
-                    coverFallback.style.display = 'none'; } else { coverImg.style.display = 'none';
-                    coverFallback.style.display = 'flex'; }
+                if (track.cover) { coverImg.src = track.cover; coverImg.style.display = 'block'; coverFallback.style.display = 'none'; } else { coverImg.style.display = 'none'; coverFallback.style.display = 'flex'; }
                 audio.src = track.src;
                 audio.load();
                 progressFill.style.width = '0%';
@@ -1395,17 +2094,9 @@
                 coverWrapper.classList.toggle('is-playing', isPlaying && audio.src && audio.src !== '');
             }
 
-            function play() { audio.play().catch(() => {}); isPlaying = true;
-                updatePlayButton();
-                updatePlaylistIcons();
-                npIndicator.className = 'np-indicator';
-                updateCoverPlayState(); }
+            function play() { audio.play().catch(() => {}); isPlaying = true; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator'; updateCoverPlayState(); }
 
-            function pause() { audio.pause(); isPlaying = false;
-                updatePlayButton();
-                updatePlaylistIcons();
-                npIndicator.className = 'np-indicator paused';
-                updateCoverPlayState(); }
+            function pause() { audio.pause(); isPlaying = false; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator paused'; updateCoverPlayState(); }
 
             function togglePlay() { audio.paused ? play() : pause(); }
 
@@ -1425,8 +2116,7 @@
                 });
             }
 
-            function formatTime(sec) { if (!sec || isNaN(sec)) return '0:00'; const m = Math.floor(sec / 60),
-                    s = Math.floor(sec % 60); return `${m}:${s.toString().padStart(2,'0')}`; }
+            function formatTime(sec) { if (!sec || isNaN(sec)) return '0:00'; const m = Math.floor(sec / 60), s = Math.floor(sec % 60); return `${m}:${s.toString().padStart(2,'0')}`; }
 
             function updateProgress() {
                 if (isDragging) return;
@@ -1448,21 +2138,12 @@
 
             function toggleMute() {
                 const v = parseFloat(volumeSlider.value);
-                if (v > 0) { previousVolume = v;
-                    volumeSlider.value = 0;
-                    audio.volume = 0;
-                    updateVolumeIcon(); } else { volumeSlider.value = previousVolume || 0.8;
-                    audio.volume = parseFloat(volumeSlider.value);
-                    updateVolumeIcon(); }
+                if (v > 0) { previousVolume = v; volumeSlider.value = 0; audio.volume = 0; updateVolumeIcon(); } else { volumeSlider.value = previousVolume || 0.8; audio.volume = parseFloat(volumeSlider.value); updateVolumeIcon(); }
             }
 
-            function nextTrack() { const n = (currentIndex + 1) % TRACKS.length;
-                currentIndex = n;
-                loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
+            function nextTrack() { const n = (currentIndex + 1) % tracks.length; currentIndex = n; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
 
-            function prevTrack() { const p = (currentIndex - 1 + TRACKS.length) % TRACKS.length;
-                currentIndex = p;
-                loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
+            function prevTrack() { const p = (currentIndex - 1 + tracks.length) % tracks.length; currentIndex = p; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
 
             // ─── EVENT LISTENERS ──────────────────────────────────────
             playBtn.addEventListener('click', togglePlay);
@@ -1472,62 +2153,68 @@
             audio.addEventListener('timeupdate', updateProgress);
             audio.addEventListener('loadedmetadata', () => { totalTimeLabel.textContent = formatTime(audio.duration); });
             audio.addEventListener('ended', nextTrack);
-            audio.addEventListener('play', () => { isPlaying = true;
-                updatePlayButton();
-                updatePlaylistIcons();
-                npIndicator.className = 'np-indicator';
-                updateCoverPlayState(); });
-            audio.addEventListener('pause', () => { isPlaying = false;
-                updatePlayButton();
-                updatePlaylistIcons();
-                npIndicator.className = 'np-indicator paused';
-                updateCoverPlayState(); });
+            audio.addEventListener('play', () => { isPlaying = true; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator'; updateCoverPlayState(); });
+            audio.addEventListener('pause', () => { isPlaying = false; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator paused'; updateCoverPlayState(); });
 
-            volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value);
-                updateVolumeIcon(); });
+            volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value); updateVolumeIcon(); });
 
-            progressTrack.addEventListener('mousedown', (e) => { if (!audio.duration) return;
-                isDragging = true;
-                wasPlayingBeforeDrag = !audio.paused;
-                audio.pause();
-                seekFromMouse(e); });
+            progressTrack.addEventListener('mousedown', (e) => { if (!audio.duration) return; isDragging = true; wasPlayingBeforeDrag = !audio.paused; audio.pause(); seekFromMouse(e); });
             document.addEventListener('mousemove', (e) => { if (isDragging) seekFromMouse(e); });
-            document.addEventListener('mouseup', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag)
-                        audio.play().catch(() => {}); } });
-            progressTrack.addEventListener('touchstart', (e) => { if (!audio.duration) return;
-                isDragging = true;
-                wasPlayingBeforeDrag = !audio.paused;
-                audio.pause();
-                seekFromTouch(e); }, { passive: true });
+            document.addEventListener('mouseup', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag) audio.play().catch(() => {}); } });
+            progressTrack.addEventListener('touchstart', (e) => { if (!audio.duration) return; isDragging = true; wasPlayingBeforeDrag = !audio.paused; audio.pause(); seekFromTouch(e); }, { passive: true });
             progressTrack.addEventListener('touchmove', (e) => { if (isDragging) seekFromTouch(e); }, { passive: true });
-            progressTrack.addEventListener('touchend', () => { if (isDragging) { isDragging = false; if (
-                        wasPlayingBeforeDrag) audio.play().catch(() => {}); } }, { passive: true });
+            progressTrack.addEventListener('touchend', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag) audio.play().catch(() => {}); } }, { passive: true });
 
-            function seekFromMouse(e) { const rect = progressTrack.getBoundingClientRect();
-                const x = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio
-                        .currentTime = x * audio.duration;
-                    progressFill.style.width = `${x*100}%`;
-                    currentTimeLabel.textContent = formatTime(audio.currentTime); } }
+            function seekFromMouse(e) { const rect = progressTrack.getBoundingClientRect(); const x = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio.currentTime = x * audio.duration; progressFill.style.width = `${x*100}%`; currentTimeLabel.textContent = formatTime(audio.currentTime); } }
 
-            function seekFromTouch(e) { const touch = e.touches[0]; const rect = progressTrack.getBoundingClientRect();
-                const x = Math.min(Math.max((touch.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio
-                        .currentTime = x * audio.duration;
-                    progressFill.style.width = `${x*100}%`;
-                    currentTimeLabel.textContent = formatTime(audio.currentTime); } }
+            function seekFromTouch(e) { const touch = e.touches[0]; const rect = progressTrack.getBoundingClientRect(); const x = Math.min(Math.max((touch.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio.currentTime = x * audio.duration; progressFill.style.width = `${x*100}%`; currentTimeLabel.textContent = formatTime(audio.currentTime); } }
 
             document.addEventListener('keydown', (e) => {
-                if (e.target.tagName === 'INPUT') return;
-                if (e.code === 'Space') { e.preventDefault();
-                    togglePlay(); }
-                if (e.code === 'ArrowRight') { e.preventDefault();
-                    nextTrack(); }
-                if (e.code === 'ArrowLeft') { e.preventDefault();
-                    prevTrack(); }
-                if (e.key === 'm') { e.preventDefault();
-                    toggleMute(); }
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+                if (e.code === 'ArrowRight') { e.preventDefault(); nextTrack(); }
+                if (e.code === 'ArrowLeft') { e.preventDefault(); prevTrack(); }
+                if (e.key === 'm') { e.preventDefault(); toggleMute(); }
             });
 
+            // Admin button events
+            adminEntryBtn.addEventListener('click', () => {
+                if (isAuthenticated) switchPage('admin');
+                else showAdminLogin();
+            });
+
+            adminLoginBtn.addEventListener('click', handleAdminLogin);
+            
+            adminPasswordInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') handleAdminLogin();
+            });
+
+            adminCancelBtn.addEventListener('click', hideAdminLogin);
+            adminLogoutBtn.addEventListener('click', handleAdminLogout);
+
+            document.getElementById('addTrackBtn').addEventListener('click', addTrack);
+            document.getElementById('addAnnouncementBtn').addEventListener('click', addAnnouncement);
+
+            saveChangesBtn.addEventListener('click', () => {
+                if (saveData()) {
+                    refreshAllViews();
+                    alert('Changes saved successfully!');
+                } else {
+                    alert('Failed to save changes');
+                }
+            });
+
+            resetDefaultsBtn.addEventListener('click', () => {
+                if (confirm('Reset all content to defaults? This cannot be undone.')) {
+                    resetToDefaults();
+                    alert('Content reset to defaults');
+                }
+            });
+
+            exitAdminBtn.addEventListener('click', () => switchPage('hub'));
+
             // ─── INIT ──────────────────────────────────────────────────
+            loadData();
             loadTheme();
             renderPlaylist();
             renderAnnouncements();
@@ -1535,10 +2222,13 @@
             audio.volume = parseFloat(volumeSlider.value);
             updateVolumeIcon();
             npIndicator.className = 'np-indicator paused';
-            // set initial page
             currentPage = 'hub';
-            pageSlider.classList.remove('slide-announcements');
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.page === 'hub'));
+            pageSlider.classList.remove('slide-announcements', 'slide-admin');
+            document.querySelectorAll('.nav-btn:not(.admin-entry-btn)').forEach(b => b.classList.toggle('active', b.dataset.page === 'hub'));
+
+            if (checkAuth()) {
+                console.log('Admin session active');
+            }
 
         })();
     </script>
