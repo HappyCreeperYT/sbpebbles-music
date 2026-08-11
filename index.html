@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>SBPebbles · Music Hub</title>
-    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
     <style>
-        /* ── reset & base ── */
+        /* ── reset & vars ── */
         *,
         *::before,
         *::after {
@@ -16,186 +15,177 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
         :root {
             --bg-base: #0f0d11;
-            --bg-surface: rgba(22, 20, 26, 0.78);
-            --bg-elevated: rgba(255, 255, 255, 0.04);
+            --bg-surface: rgba(22, 20, 26, .78);
+            --bg-elevated: rgba(255, 255, 255, .04);
             --text-primary: #f2ede8;
             --text-secondary: #b4a89c;
             --text-muted: #73695f;
             --accent: #e8b48c;
-            --accent-glow: rgba(232, 180, 140, 0.25);
-            --border-subtle: rgba(255, 215, 185, 0.06);
-            --border-strong: rgba(255, 215, 185, 0.14);
-            --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.8);
-            --glass-backdrop: blur(18px);
+            --accent-glow: rgba(232, 180, 140, .25);
+            --border-subtle: rgba(255, 215, 185, .06);
+            --border-strong: rgba(255, 215, 185, .14);
+            --shadow-card: 0 20px 60px rgba(0, 0, 0, .8);
+            --glass: blur(18px);
             --radius-card: 32px;
             --radius-sm: 20px;
             --radius-full: 60px;
             --bg-gradient: radial-gradient(circle at 20% 20%, #2a2228 0%, #0b090d 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(232, 180, 140, 0.06), transparent 60%);
-            --nav-bg: rgba(18, 16, 22, 0.82);
-            --input-bg: rgba(255, 255, 255, 0.05);
-            --input-border: rgba(255, 255, 255, 0.1);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(232, 180, 140, .06), transparent 60%);
+            --nav-bg: rgba(18, 16, 22, .82);
+            --input-bg: rgba(255, 255, 255, .05);
+            --input-border: rgba(255, 255, 255, .1);
             --danger: #ef4444;
             --success: #10b981;
             --warning: #f59e0b;
         }
-
         [data-theme="light"] {
             --bg-base: #f0ebe6;
-            --bg-surface: rgba(255, 255, 255, 0.9);
-            --bg-elevated: rgba(0, 0, 0, 0.04);
+            --bg-surface: rgba(255, 255, 255, .9);
+            --bg-elevated: rgba(0, 0, 0, .04);
             --text-primary: #1a1a1a;
             --text-secondary: #4a4a4a;
             --text-muted: #8a8a8a;
             --accent: #d97706;
-            --accent-glow: rgba(217, 119, 6, 0.25);
-            --border-subtle: rgba(0, 0, 0, 0.08);
-            --border-strong: rgba(0, 0, 0, 0.15);
-            --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.1);
-            --bg-gradient: linear-gradient(135deg, #f0ebe6 0%, #e5dcd4 100%);
+            --accent-glow: rgba(217, 119, 6, .25);
+            --border-subtle: rgba(0, 0, 0, .08);
+            --border-strong: rgba(0, 0, 0, .15);
+            --shadow-card: 0 20px 60px rgba(0, 0, 0, .1);
+            --bg-gradient: linear-gradient(135deg, #f0ebe6, #e5dcd4);
             --bg-glow: none;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --input-bg: rgba(0, 0, 0, 0.04);
-            --input-border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, .9);
+            --input-bg: rgba(0, 0, 0, .04);
+            --input-border: rgba(0, 0, 0, .1);
         }
-
         [data-theme="turquoise"] {
             --bg-base: #0a1628;
             --accent: #5fc8c8;
-            --accent-glow: rgba(95, 200, 200, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a3a 0%, #0a1628 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(95, 200, 200, 0.08), transparent 60%);
-            --border-subtle: rgba(95, 200, 200, 0.08);
-            --border-strong: rgba(95, 200, 200, 0.15);
-            --nav-bg: rgba(10, 22, 40, 0.85);
+            --accent-glow: rgba(95, 200, 200, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a3a, #0a1628 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(95, 200, 200, .08), transparent 60%);
+            --border-subtle: rgba(95, 200, 200, .08);
+            --border-strong: rgba(95, 200, 200, .15);
+            --nav-bg: rgba(10, 22, 40, .85);
         }
-
         [data-theme="red"] {
             --bg-base: #1a0a0a;
             --accent: #ef4444;
-            --accent-glow: rgba(239, 68, 68, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1a1a 0%, #1a0a0a 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(239, 68, 68, 0.08), transparent 60%);
-            --border-subtle: rgba(239, 68, 68, 0.08);
-            --border-strong: rgba(239, 68, 68, 0.15);
-            --nav-bg: rgba(26, 10, 10, 0.85);
+            --accent-glow: rgba(239, 68, 68, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1a1a, #1a0a0a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(239, 68, 68, .08), transparent 60%);
+            --border-subtle: rgba(239, 68, 68, .08);
+            --border-strong: rgba(239, 68, 68, .15);
+            --nav-bg: rgba(26, 10, 10, .85);
         }
-
         [data-theme="purple"] {
             --bg-base: #0f0a1a;
             --accent: #8b5cf6;
-            --accent-glow: rgba(139, 92, 246, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #1f1a2a 0%, #0f0a1a 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(139, 92, 246, 0.08), transparent 60%);
-            --border-subtle: rgba(139, 92, 246, 0.08);
-            --border-strong: rgba(139, 92, 246, 0.15);
-            --nav-bg: rgba(15, 10, 26, 0.85);
+            --accent-glow: rgba(139, 92, 246, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1f1a2a, #0f0a1a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(139, 92, 246, .08), transparent 60%);
+            --border-subtle: rgba(139, 92, 246, .08);
+            --border-strong: rgba(139, 92, 246, .15);
+            --nav-bg: rgba(15, 10, 26, .85);
         }
-
         [data-theme="green"] {
             --bg-base: #0a1a0a;
             --accent: #34d399;
-            --accent-glow: rgba(52, 211, 153, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a1a 0%, #0a1a0a 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(52, 211, 153, 0.08), transparent 60%);
-            --border-subtle: rgba(52, 211, 153, 0.08);
-            --border-strong: rgba(52, 211, 153, 0.15);
-            --nav-bg: rgba(10, 26, 10, 0.85);
+            --accent-glow: rgba(52, 211, 153, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a1a, #0a1a0a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(52, 211, 153, .08), transparent 60%);
+            --border-subtle: rgba(52, 211, 153, .08);
+            --border-strong: rgba(52, 211, 153, .15);
+            --nav-bg: rgba(10, 26, 10, .85);
         }
-
         [data-theme="ocean"] {
             --bg-base: #0a1628;
             --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2540 0%, #0a1628 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(59, 130, 246, 0.08), transparent 60%);
-            --border-subtle: rgba(59, 130, 246, 0.08);
-            --border-strong: rgba(59, 130, 246, 0.15);
-            --nav-bg: rgba(10, 22, 40, 0.85);
+            --accent-glow: rgba(59, 130, 246, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2540, #0a1628 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(59, 130, 246, .08), transparent 60%);
+            --border-subtle: rgba(59, 130, 246, .08);
+            --border-strong: rgba(59, 130, 246, .15);
+            --nav-bg: rgba(10, 22, 40, .85);
         }
-
         [data-theme="sunset"] {
             --bg-base: #1a1008;
             --accent: #f59e0b;
-            --accent-glow: rgba(245, 158, 11, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1f14 0%, #1a1008 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(245, 158, 11, 0.08), transparent 60%);
-            --border-subtle: rgba(245, 158, 11, 0.08);
-            --border-strong: rgba(245, 158, 11, 0.15);
-            --nav-bg: rgba(26, 16, 8, 0.85);
+            --accent-glow: rgba(245, 158, 11, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1f14, #1a1008 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(245, 158, 11, .08), transparent 60%);
+            --border-subtle: rgba(245, 158, 11, .08);
+            --border-strong: rgba(245, 158, 11, .15);
+            --nav-bg: rgba(26, 16, 8, .85);
         }
-
         [data-theme="rainbow"] {
             --bg-base: #0f0d11;
             --accent: #ff6b6b;
-            --accent-glow: rgba(255, 107, 107, 0.3);
+            --accent-glow: rgba(255, 107, 107, .3);
             --bg-gradient: radial-gradient(circle at 20% 20%, #ff6b6b15, #0f0d11 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(255, 107, 107, 0.08), transparent 60%);
-            --border-subtle: rgba(255, 107, 107, 0.08);
-            --border-strong: rgba(255, 107, 107, 0.15);
-            --nav-bg: rgba(15, 13, 17, 0.85);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(255, 107, 107, .08), transparent 60%);
+            --border-subtle: rgba(255, 107, 107, .08);
+            --border-strong: rgba(255, 107, 107, .15);
+            --nav-bg: rgba(15, 13, 17, .85);
         }
-
         [data-theme="candy"] {
             --bg-base: #1a0a1a;
             --accent: #ff6b9d;
-            --accent-glow: rgba(255, 107, 157, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1a2a 0%, #1a0a1a 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(255, 107, 157, 0.08), transparent 60%);
-            --border-subtle: rgba(255, 107, 157, 0.08);
-            --border-strong: rgba(255, 107, 157, 0.15);
-            --nav-bg: rgba(26, 10, 26, 0.85);
+            --accent-glow: rgba(255, 107, 157, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #2a1a2a, #1a0a1a 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(255, 107, 157, .08), transparent 60%);
+            --border-subtle: rgba(255, 107, 157, .08);
+            --border-strong: rgba(255, 107, 157, .15);
+            --nav-bg: rgba(26, 10, 26, .85);
         }
-
         [data-theme="forest"] {
             --bg-base: #0a1a0f;
             --accent: #4ade80;
-            --accent-glow: rgba(74, 222, 128, 0.3);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a1f 0%, #0a1a0f 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(74, 222, 128, 0.08), transparent 60%);
-            --border-subtle: rgba(74, 222, 128, 0.08);
-            --border-strong: rgba(74, 222, 128, 0.15);
-            --nav-bg: rgba(10, 26, 15, 0.85);
+            --accent-glow: rgba(74, 222, 128, .3);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a2a1f, #0a1a0f 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(74, 222, 128, .08), transparent 60%);
+            --border-subtle: rgba(74, 222, 128, .08);
+            --border-strong: rgba(74, 222, 128, .15);
+            --nav-bg: rgba(10, 26, 15, .85);
         }
-
         [data-theme="neon"] {
             --bg-base: #080c16;
             --accent: #00f5ff;
-            --accent-glow: rgba(0, 245, 255, 0.4);
-            --bg-gradient: radial-gradient(circle at 20% 20%, #1a1a2a 0%, #080c16 80%);
-            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(0, 245, 255, 0.1), transparent 60%);
-            --border-subtle: rgba(0, 245, 255, 0.1);
-            --border-strong: rgba(0, 245, 255, 0.2);
-            --nav-bg: rgba(8, 12, 22, 0.9);
+            --accent-glow: rgba(0, 245, 255, .4);
+            --bg-gradient: radial-gradient(circle at 20% 20%, #1a1a2a, #080c16 80%);
+            --bg-glow: radial-gradient(ellipse at 60% 10%, rgba(0, 245, 255, .1), transparent 60%);
+            --border-subtle: rgba(0, 245, 255, .1);
+            --border-strong: rgba(0, 245, 255, .2);
+            --nav-bg: rgba(8, 12, 22, .9);
         }
 
-        body {
+        /* ── base ── */
+        html {
             font-family: "Inter", system-ui, -apple-system, sans-serif;
             background: var(--bg-base);
             color: var(--text-primary);
+            transition: background .5s, color .3s;
+        }
+        body {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
             padding-top: 5.5rem;
-            background-image: var(--bg-gradient);
+            background: var(--bg-gradient);
             background-attachment: fixed;
-            transition: background 0.5s, color 0.3s;
         }
-        
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             pointer-events: none;
             background: var(--bg-glow);
-            transition: background 0.5s;
+            transition: background .5s;
         }
 
+        /* ── nav ── */
         .top-nav {
             position: fixed;
             top: 12px;
@@ -203,61 +193,54 @@
             transform: translateX(-50%) translateY(-150%);
             z-index: 2000;
             background: var(--nav-bg);
-            backdrop-filter: var(--glass-backdrop);
+            backdrop-filter: var(--glass);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-full);
-            padding: 0.5rem 1.4rem;
+            padding: .5rem 1.4rem;
             display: flex;
-            gap: 0.3rem;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s, background 0.5s, border-color 0.5s;
+            gap: .3rem;
+            transition: transform .5s cubic-bezier(.22, 1, .36, 1), opacity .3s, background .5s, border-color .5s;
             opacity: 0;
             pointer-events: none;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .6);
         }
-        
         .top-nav.visible {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
             pointer-events: auto;
         }
-        
         .top-nav .nav-btn {
             background: transparent;
             border: none;
             color: var(--text-secondary);
             font-family: inherit;
             font-weight: 500;
-            font-size: 0.8rem;
-            padding: 0.4rem 1.2rem;
+            font-size: .8rem;
+            padding: .4rem 1.2rem;
             border-radius: 40px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.25s;
+            gap: .5rem;
+            transition: all .25s;
             cursor: pointer;
-            letter-spacing: 0.01em;
+            letter-spacing: .01em;
         }
-        
         .top-nav .nav-btn i {
-            font-size: 0.8rem;
-            transition: transform 0.2s;
+            font-size: .8rem;
+            transition: transform .2s;
         }
-        
         .top-nav .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, .05);
             color: #fff;
         }
-        
         .top-nav .nav-btn.active {
             background: var(--accent);
             color: #0f0d11;
             box-shadow: 0 4px 20px var(--accent-glow);
         }
-        
         .top-nav .nav-btn.active i {
             color: #0f0d11;
         }
-        
         .nav-trigger-zone {
             position: fixed;
             top: 0;
@@ -268,34 +251,7 @@
             pointer-events: none;
         }
 
-        @media (max-width: 720px) {
-            .top-nav {
-                transform: translateX(-50%) translateY(0) !important;
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                padding: 0.3rem 1rem;
-                top: 6px;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.2rem;
-            }
-            
-            .nav-trigger-zone {
-                display: none;
-            }
-            
-            body {
-                padding-top: 4.5rem;
-                padding: 1rem;
-                padding-top: 4.5rem;
-            }
-            
-            .top-nav .nav-btn {
-                font-size: 0.7rem;
-                padding: 0.25rem 0.6rem;
-            }
-        }
-
+        /* ── slider ── */
         .page-slider {
             width: 100%;
             max-width: 1100px;
@@ -303,21 +259,18 @@
             overflow: hidden;
             box-shadow: var(--shadow-card), 0 0 0 1px var(--border-subtle);
             background: var(--bg-surface);
-            backdrop-filter: var(--glass-backdrop);
-            transition: box-shadow 0.3s, background 0.5s;
+            backdrop-filter: var(--glass);
+            transition: box-shadow .3s, background .5s;
         }
-        
         .page-slider-inner {
             display: flex;
             width: 200%;
-            transform: translateX(0%);
-            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateX(0);
+            transition: transform .7s cubic-bezier(.22, 1, .36, 1);
         }
-        
         .page-slider-inner.slide-announcements {
             transform: translateX(-50%);
         }
-        
         .page-slide {
             width: 50%;
             flex-shrink: 0;
@@ -326,123 +279,112 @@
             position: relative;
         }
 
+        /* ── hub header ── */
         .hub-header {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 2rem;
-            gap: 0.8rem 1.2rem;
+            gap: .8rem 1.2rem;
         }
-        
         .brand {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: .6rem;
         }
-        
         .brand-icon {
             font-size: 2.2rem;
             color: var(--accent);
             filter: drop-shadow(0 0 14px var(--accent-glow));
         }
-        
         .brand h1 {
             font-size: 1.9rem;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -.02em;
             background: linear-gradient(135deg, #fff 30%, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .social-links {
             display: flex;
-            gap: 0.5rem;
+            gap: .5rem;
             flex-wrap: wrap;
         }
-        
         .social-btn {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, .04);
             border: 1px solid var(--border-subtle);
             color: var(--text-secondary);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1rem;
-            transition: all 0.25s;
+            transition: all .25s;
             text-decoration: none;
         }
-        
         .social-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, .08);
             transform: translateY(-3px) scale(1.05);
             border-color: var(--accent);
             color: #fff;
             box-shadow: 0 8px 24px var(--accent-glow);
         }
-        
         .tagline {
-            font-size: 0.75rem;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.3rem 1rem;
+            font-size: .75rem;
+            background: rgba(255, 255, 255, .04);
+            padding: .3rem 1rem;
             border-radius: var(--radius-full);
             border: 1px solid var(--border-subtle);
             color: var(--text-secondary);
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: .4rem;
         }
-        
         .tagline i {
             color: var(--accent);
-            font-size: 0.65rem;
+            font-size: .65rem;
         }
 
+        /* ── now playing strip ── */
         .now-playing-strip {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 0.4rem 1.2rem 0.4rem 1rem;
+            gap: .8rem;
+            background: rgba(255, 255, 255, .03);
+            padding: .4rem 1.2rem .4rem 1rem;
             border-radius: var(--radius-full);
             border: 1px solid var(--border-subtle);
             backdrop-filter: blur(6px);
             margin-bottom: 1.6rem;
-            transition: 0.3s;
+            transition: .3s;
         }
-        
         .now-playing-strip .np-label {
-            font-size: 0.6rem;
+            font-size: .6rem;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: .08em;
             color: var(--text-muted);
             font-weight: 500;
         }
-        
         .now-playing-strip .np-label i {
-            margin-right: 0.2rem;
+            margin-right: .2rem;
             color: var(--accent);
         }
-        
         .np-title {
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: .9rem;
             flex: 1;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
         .np-indicator {
             display: flex;
-            gap: 0.2rem;
+            gap: .2rem;
         }
-        
         .np-indicator .dot {
             width: 5px;
             height: 5px;
@@ -451,25 +393,21 @@
             display: inline-block;
             animation: pulseDot 1.2s ease-in-out infinite;
         }
-        
         .np-indicator .dot:nth-child(2) {
-            animation-delay: 0.2s;
+            animation-delay: .2s;
         }
-        
         .np-indicator .dot:nth-child(3) {
-            animation-delay: 0.4s;
+            animation-delay: .4s;
         }
-        
         .np-indicator.paused .dot {
             animation: none;
-            opacity: 0.25;
+            opacity: .25;
         }
-        
         @keyframes pulseDot {
             0%,
             100% {
-                transform: scale(0.6);
-                opacity: 0.3;
+                transform: scale(.6);
+                opacity: .3;
             }
             50% {
                 transform: scale(1.3);
@@ -477,37 +415,34 @@
             }
         }
 
+        /* ── player grid ── */
         .player-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 2.2rem;
             align-items: flex-start;
         }
-        
         .cover-wrapper {
             flex: 0 0 180px;
             width: 180px;
             height: 180px;
             border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, .7);
             background: #1e1a1f;
             position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s;
+            transition: transform .3s ease, box-shadow .3s;
         }
-        
         .cover-wrapper:hover {
             transform: scale(1.02) translateY(-4px);
-            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, .8);
         }
-        
         .cover-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-        
         .cover-fallback {
             width: 100%;
             height: 100%;
@@ -517,64 +452,61 @@
             background: #1e1a1f;
             color: var(--accent);
             font-size: 3.6rem;
-            opacity: 0.5;
+            opacity: .5;
         }
-        
         .cover-wrapper .visualizer-ring {
             position: absolute;
             inset: -4px;
             border-radius: 32px;
             border: 2px solid transparent;
-            transition: 0.4s;
+            transition: .4s;
             pointer-events: none;
         }
-        
         .cover-wrapper.is-playing .visualizer-ring {
             border-color: var(--accent);
             animation: ringPulse 1.6s ease-in-out infinite;
         }
-        
         @keyframes ringPulse {
             0%,
             100% {
                 transform: scale(1);
-                opacity: 0.3;
+                opacity: .3;
             }
             50% {
                 transform: scale(1.04);
-                opacity: 0.7;
+                opacity: .7;
             }
         }
 
+        /* ── controls ── */
         .controls-col {
             flex: 1;
-            min-width: 220px;
+            min-width: 200px;
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-        
         .track-info .track-name {
             font-size: 1.5rem;
             font-weight: 600;
-            letter-spacing: -0.01em;
+            letter-spacing: -.01em;
             line-height: 1.2;
         }
-        
         .track-info .track-artist {
-            font-size: 0.95rem;
+            font-size: .95rem;
             color: var(--text-secondary);
         }
-
         .playback-controls {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: .75rem;
+            flex-wrap: wrap;
         }
-        
         .play-btn {
             width: 56px;
             height: 56px;
+            min-width: 56px;
+            min-height: 56px;
             border-radius: 50%;
             border: none;
             background: var(--accent);
@@ -584,74 +516,85 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.25s;
+            transition: all .25s;
             box-shadow: 0 8px 28px var(--accent-glow);
+            flex-shrink: 0;
+            aspect-ratio: 1/1;
         }
-        
         .play-btn:hover {
             transform: scale(1.06) translateY(-2px);
             box-shadow: 0 12px 36px var(--accent-glow);
         }
-        
         .play-btn:active {
-            transform: scale(0.92);
+            transform: scale(.92);
         }
-        
         .secondary-btn {
             background: transparent;
             border: none;
             color: var(--text-secondary);
             font-size: 1.1rem;
-            padding: 0.4rem;
+            padding: .4rem;
             border-radius: 50%;
             width: 44px;
             height: 44px;
-            transition: 0.2s;
+            min-width: 44px;
+            min-height: 44px;
+            transition: .2s;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
-        
         .secondary-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, .05);
             color: #fff;
         }
 
         .volume-wrap {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: .4rem;
             margin-left: auto;
+            flex-shrink: 1;
+            min-width: 0;
         }
-        
         .volume-wrap .vol-icon-btn {
             background: transparent;
             border: none;
             color: var(--text-secondary);
             font-size: 1rem;
-            padding: 0.2rem;
+            padding: .2rem;
             border-radius: 50%;
             width: 32px;
             height: 32px;
+            min-width: 32px;
+            min-height: 32px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
-        
         .volume-wrap .vol-icon-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, .05);
             color: #fff;
         }
-        
         .volume-slider {
             -webkit-appearance: none;
             appearance: none;
-            width: 70px;
+            width: 80px;
+            max-width: 80px;
+            min-width: 40px;
             height: 4px;
             border-radius: 4px;
             background: #2f292e;
             outline: none;
-            transition: 0.2s;
+            transition: .2s;
             cursor: pointer;
+            flex-shrink: 1;
         }
-        
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -662,7 +605,6 @@
             box-shadow: 0 0 16px var(--accent-glow);
             cursor: pointer;
         }
-        
         .volume-slider::-moz-range-thumb {
             width: 14px;
             height: 14px;
@@ -672,19 +614,19 @@
             box-shadow: 0 0 16px var(--accent-glow);
         }
 
+        /* ── progress ── */
         .progress-area {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: .8rem;
         }
-        
         .time-label {
-            font-size: 0.75rem;
+            font-size: .75rem;
             color: var(--text-secondary);
             min-width: 40px;
             font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
         }
-        
         .progress-track {
             flex: 1;
             height: 4px;
@@ -692,153 +634,132 @@
             background: #2f292e;
             cursor: pointer;
             position: relative;
-            transition: height 0.2s;
+            transition: height .2s;
             min-height: 28px;
             display: flex;
             align-items: center;
         }
-        
         .progress-track:hover {
             height: 7px;
         }
-        
         .progress-fill {
             height: 100%;
-            width: 0%;
+            width: 0;
             border-radius: 20px;
             background: linear-gradient(90deg, var(--accent), #dba07a);
-            transition: width 0.08s linear;
+            transition: width .08s linear;
             pointer-events: none;
         }
-        
 
-        }
-        
-        .progress-track:hover .progress-fill::after {
-            opacity: 1;
-            transform: translateY(-50%) scale(1);
-        }
-
+        /* ── playlist ── */
         .playlist-section {
             margin-top: 1.8rem;
             border-top: 1px solid var(--border-subtle);
             padding-top: 1.6rem;
         }
-        
         .playlist-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.8rem;
+            margin-bottom: .8rem;
         }
-        
         .playlist-header h3 {
-            font-size: 0.8rem;
+            font-size: .8rem;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: .06em;
             color: var(--text-secondary);
             font-weight: 500;
         }
-        
         .playlist-header .count {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.2rem 0.8rem;
+            font-size: .7rem;
+            background: rgba(255, 255, 255, .04);
+            padding: .2rem .8rem;
             border-radius: 30px;
             color: var(--text-muted);
         }
-        
         .playlist {
             display: flex;
             flex-direction: column;
-            gap: 0.2rem;
+            gap: .2rem;
             max-height: 260px;
             overflow-y: auto;
             padding-right: 4px;
         }
-        
         .playlist::-webkit-scrollbar {
             width: 4px;
         }
-        
         .playlist::-webkit-scrollbar-thumb {
             background: #3d353b;
             border-radius: 8px;
         }
-        
         .playlist-item {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            padding: 0.6rem 0.8rem;
+            gap: .8rem;
+            padding: .6rem .8rem;
             border-radius: 16px;
-            transition: all 0.2s;
+            transition: all .2s;
             cursor: pointer;
             border: 1px solid transparent;
         }
-        
         .playlist-item:hover {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, .03);
             border-color: var(--border-subtle);
-            transform: scale(0.98);
+            transform: scale(.98);
         }
-        
         .playlist-item.active {
-            background: rgba(232, 180, 140, 0.08);
-            border-color: rgba(232, 180, 140, 0.15);
+            background: rgba(232, 180, 140, .08);
+            border-color: rgba(232, 180, 140, .15);
         }
-        
         .playlist-item .idx {
-            font-size: 0.7rem;
+            font-size: .7rem;
             color: var(--text-muted);
             min-width: 24px;
             text-align: center;
+            flex-shrink: 0;
         }
-        
         .playlist-item .pl-info {
             flex: 1;
             overflow: hidden;
+            min-width: 0;
         }
-        
         .playlist-item .pl-title {
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: .9rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
         .playlist-item .pl-artist {
-            font-size: 0.7rem;
+            font-size: .7rem;
             color: var(--text-secondary);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
         .playlist-item .pl-duration {
-            font-size: 0.75rem;
+            font-size: .75rem;
             color: var(--text-muted);
             min-width: 40px;
             text-align: right;
+            flex-shrink: 0;
         }
-        
         .playlist-item .pl-play-icon {
             color: var(--accent);
-            font-size: 0.8rem;
+            font-size: .8rem;
             opacity: 0;
-            transition: 0.2s;
+            transition: .2s;
+            flex-shrink: 0;
+            width: 20px;
+            text-align: center;
         }
-        
         .playlist-item.active .pl-play-icon,
         .playlist-item:hover .pl-play-icon {
             opacity: 1;
         }
-        
         .playlist-item .pl-play-icon.playing {
             opacity: 1;
             animation: pulseIcon 1s infinite;
         }
-        
         @keyframes pulseIcon {
             0%,
             100% {
@@ -849,64 +770,56 @@
             }
         }
 
+        /* ── announcements ── */
         .page-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.8rem;
         }
-        
         .page-header h2 {
             font-size: 1.3rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: .6rem;
         }
-        
         .page-header h2 i {
             color: var(--accent);
         }
-        
         .page-header .count {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.2rem 0.9rem;
+            font-size: .7rem;
+            background: rgba(255, 255, 255, .04);
+            padding: .2rem .9rem;
             border-radius: 30px;
             color: var(--text-muted);
         }
-        
         .announcements-list {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-        
         .announcement-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, .02);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm);
             padding: 1rem 1.4rem;
-            transition: 0.25s;
+            transition: .25s;
             cursor: pointer;
         }
-        
         .announcement-card:hover {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, .04);
             border-color: var(--border-strong);
         }
-        
         .announcement-card.expanded {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, .05);
             border-color: var(--accent);
         }
-        
         .card-summary {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-        
         .card-summary img {
             width: 56px;
             height: 56px;
@@ -915,99 +828,90 @@
             background: #1e1a1f;
             flex-shrink: 0;
         }
-        
         .card-summary .info {
             flex: 1;
+            min-width: 0;
         }
-        
         .card-summary .info h4 {
             font-weight: 600;
             font-size: 1rem;
         }
-        
         .card-summary .info p {
-            font-size: 0.8rem;
+            font-size: .8rem;
             color: var(--text-secondary);
         }
-        
         .card-summary .badge {
-            font-size: 0.55rem;
+            font-size: .55rem;
             text-transform: uppercase;
             background: var(--accent);
             color: #0f0d11;
-            padding: 0.15rem 0.7rem;
+            padding: .15rem .7rem;
             border-radius: 30px;
             font-weight: 600;
+            flex-shrink: 0;
         }
-        
         .card-summary .expand-icon {
             color: var(--text-muted);
-            transition: 0.3s;
+            transition: .3s;
+            flex-shrink: 0;
         }
-        
         .announcement-card.expanded .expand-icon {
             transform: rotate(180deg);
             color: var(--accent);
         }
-        
         .card-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s;
-            padding: 0 0.2rem;
+            transition: max-height .4s ease, padding .3s;
+            padding: 0 .2rem;
         }
-        
         .announcement-card.expanded .card-details {
             max-height: 400px;
-            padding: 1rem 0.2rem 0.2rem;
+            padding: 1rem .2rem .2rem;
         }
-        
         .detail-row {
             display: flex;
             gap: 1rem;
-            padding: 0.3rem 0;
+            padding: .3rem 0;
             border-top: 1px solid var(--border-subtle);
         }
-        
         .detail-row:first-child {
             border-top: none;
         }
-        
         .detail-label {
-            font-size: 0.7rem;
+            font-size: .7rem;
             font-weight: 500;
             color: var(--text-muted);
             min-width: 70px;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: .04em;
+            flex-shrink: 0;
         }
-        
         .detail-value {
-            font-size: 0.9rem;
+            font-size: .9rem;
             color: var(--text-primary);
+            word-break: break-word;
         }
-        
         .detail-value a {
             color: var(--accent);
             text-decoration: none;
             border-bottom: 1px solid transparent;
-            transition: 0.2s;
+            transition: .2s;
         }
-        
         .detail-value a:hover {
             border-bottom-color: var(--accent);
         }
-        
         .detail-value .tag {
             display: inline-block;
-            font-size: 0.65rem;
-            background: rgba(232, 180, 140, 0.12);
+            font-size: .65rem;
+            background: rgba(232, 180, 140, .12);
             color: var(--accent);
-            padding: 0.05rem 0.6rem;
+            padding: .05rem .6rem;
             border-radius: 30px;
-            margin-right: 0.2rem;
+            margin-right: .2rem;
         }
 
+        /* ── footer ── */
         .hub-footer {
             margin-top: 2.6rem;
             text-align: center;
@@ -1016,61 +920,80 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
+            gap: .8rem;
         }
-        
         .footer-theme {
             display: flex;
-            gap: 0.35rem;
+            gap: .35rem;
             flex-wrap: wrap;
             justify-content: center;
         }
-        
         .footer-theme .ft-label {
-            font-size: 0.55rem;
+            font-size: .55rem;
             text-transform: uppercase;
             color: var(--text-muted);
-            letter-spacing: 0.06em;
-            margin-right: 0.2rem;
+            letter-spacing: .06em;
+            margin-right: .2rem;
             align-self: center;
         }
-        
         .theme-dot {
             width: 26px;
             height: 26px;
             border-radius: 50%;
             border: 2px solid transparent;
             cursor: pointer;
-            transition: 0.25s;
+            transition: .25s;
             background: var(--bg-base);
             flex-shrink: 0;
         }
-        
         .theme-dot.active {
             border-color: var(--text-primary);
             transform: scale(1.1);
             box-shadow: 0 0 20px var(--accent-glow);
         }
-        
-        .theme-dot[data-theme="dark"] { background: #0f0d11; }
-        .theme-dot[data-theme="light"] { background: #f0ebe6; }
-        .theme-dot[data-theme="turquoise"] { background: #5fc8c8; }
-        .theme-dot[data-theme="red"] { background: #d45a5a; }
-        .theme-dot[data-theme="purple"] { background: #8b5cf6; }
-        .theme-dot[data-theme="green"] { background: #34d399; }
-        .theme-dot[data-theme="ocean"] { background: #3b82f6; }
-        .theme-dot[data-theme="sunset"] { background: #f59e0b; }
-        .theme-dot[data-theme="rainbow"] { background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #9b59b6); }
-        .theme-dot[data-theme="candy"] { background: #ff6b9d; }
-        .theme-dot[data-theme="forest"] { background: #4ade80; }
-        .theme-dot[data-theme="neon"] { background: #00f5ff; }
-        
+        .theme-dot[data-theme="dark"] {
+            background: #0f0d11;
+        }
+        .theme-dot[data-theme="light"] {
+            background: #f0ebe6;
+        }
+        .theme-dot[data-theme="turquoise"] {
+            background: #5fc8c8;
+        }
+        .theme-dot[data-theme="red"] {
+            background: #d45a5a;
+        }
+        .theme-dot[data-theme="purple"] {
+            background: #8b5cf6;
+        }
+        .theme-dot[data-theme="green"] {
+            background: #34d399;
+        }
+        .theme-dot[data-theme="ocean"] {
+            background: #3b82f6;
+        }
+        .theme-dot[data-theme="sunset"] {
+            background: #f59e0b;
+        }
+        .theme-dot[data-theme="rainbow"] {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #9b59b6);
+        }
+        .theme-dot[data-theme="candy"] {
+            background: #ff6b9d;
+        }
+        .theme-dot[data-theme="forest"] {
+            background: #4ade80;
+        }
+        .theme-dot[data-theme="neon"] {
+            background: #00f5ff;
+        }
         .footer-copy {
-            font-size: 0.7rem;
+            font-size: .7rem;
             color: var(--text-muted);
         }
 
-        @media (max-width: 820px) {
+        /* ── responsive ── */
+        @media(max-width:820px) {
             .page-slide {
                 padding: 1.8rem 1.6rem;
             }
@@ -1082,9 +1005,66 @@
             .player-grid {
                 gap: 1.4rem;
             }
+            .volume-slider {
+                width: 60px;
+                max-width: 60px;
+                min-width: 30px;
+            }
         }
-        
-        @media (max-width: 600px) {
+        @media(max-width:720px) {
+            .top-nav {
+                transform: translateX(-50%) translateY(0) !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                padding: .3rem 1rem;
+                top: 6px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: .2rem;
+            }
+            .nav-trigger-zone {
+                display: none;
+            }
+            body {
+                padding-top: 4.5rem;
+                padding: 1rem;
+                padding-top: 4.5rem;
+            }
+            .top-nav .nav-btn {
+                font-size: .7rem;
+                padding: .25rem .6rem;
+            }
+            .playback-controls {
+                gap: .5rem;
+            }
+            .play-btn {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                min-height: 48px;
+                font-size: 1.2rem;
+            }
+            .secondary-btn {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                min-height: 38px;
+                font-size: 1rem;
+            }
+            .volume-slider {
+                width: 50px;
+                max-width: 50px;
+                min-width: 24px;
+            }
+            .volume-wrap .vol-icon-btn {
+                width: 28px;
+                height: 28px;
+                min-width: 28px;
+                min-height: 28px;
+                font-size: .85rem;
+            }
+        }
+        @media(max-width:600px) {
             .page-slide {
                 padding: 1.2rem 1rem;
             }
@@ -1096,46 +1076,136 @@
                 width: 120px;
                 height: 120px;
             }
-            .play-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.2rem;
-            }
-            .volume-slider {
-                width: 50px;
-            }
             .card-summary img {
                 width: 44px;
                 height: 44px;
             }
-            .top-nav .nav-btn {
-                font-size: 0.7rem;
-                padding: 0.25rem 0.8rem;
+            .track-info .track-name {
+                font-size: 1.2rem;
+            }
+            .now-playing-strip {
+                padding: .3rem .8rem .3rem .6rem;
+            }
+            .np-title {
+                font-size: .75rem;
+            }
+            .playlist-item {
+                padding: .4rem .4rem;
+                gap: .4rem;
+            }
+            .playlist-item .pl-title {
+                font-size: .8rem;
+            }
+            .playlist-item .pl-duration {
+                font-size: .65rem;
+                min-width: 32px;
+            }
+            .volume-slider {
+                width: 40px;
+                max-width: 40px;
+                min-width: 20px;
+            }
+            .playback-controls {
+                gap: .35rem;
+            }
+            .controls-col {
+                min-width: 160px;
+                gap: .7rem;
+            }
+            .player-grid {
+                gap: 1rem;
             }
         }
-        
-        @media (max-width: 430px) {
+        @media(max-width:430px) {
             .page-slide {
-                padding: 1rem 0.6rem;
+                padding: .8rem .5rem;
             }
             .brand h1 {
                 font-size: 1.1rem;
             }
+            .brand-icon {
+                font-size: 1.6rem;
+            }
             .social-btn {
                 width: 32px;
                 height: 32px;
-                font-size: 0.8rem;
+                font-size: .8rem;
             }
-            .playlist-item {
-                padding: 0.4rem 0.4rem;
+            .play-btn {
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
+                min-height: 42px;
+                font-size: 1rem;
             }
-        }
-
-        .section-spacer {
-            height: 0.8rem;
+            .secondary-btn {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                min-height: 32px;
+                font-size: .85rem;
+            }
+            .volume-slider {
+                width: 30px;
+                max-width: 30px;
+                min-width: 16px;
+            }
+            .volume-wrap .vol-icon-btn {
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                min-height: 24px;
+                font-size: .7rem;
+            }
+            .cover-wrapper {
+                flex: 0 0 90px;
+                width: 90px;
+                height: 90px;
+                border-radius: 20px;
+            }
+            .cover-wrapper .visualizer-ring {
+                border-radius: 24px;
+                inset: -3px;
+            }
+            .track-info .track-name {
+                font-size: 1rem;
+            }
+            .track-info .track-artist {
+                font-size: .8rem;
+            }
+            .time-label {
+                font-size: .65rem;
+                min-width: 32px;
+            }
+            .progress-area {
+                gap: .4rem;
+            }
+            .card-summary .info h4 {
+                font-size: .85rem;
+            }
+            .card-summary .info p {
+                font-size: .7rem;
+            }
+            .announcement-card {
+                padding: .7rem .8rem;
+            }
+            .card-summary {
+                gap: .6rem;
+            }
+            .hub-footer {
+                margin-top: 1.8rem;
+                padding-top: 1rem;
+            }
+            .theme-dot {
+                width: 22px;
+                height: 22px;
+            }
         }
         .hidden {
             display: none !important;
+        }
+        .section-spacer {
+            height: .8rem;
         }
     </style>
 </head>
@@ -1151,7 +1221,7 @@
     <div class="page-slider">
         <div class="page-slider-inner" id="pageSlider">
 
-            <!-- HUB SLIDE -->
+            <!-- HUB -->
             <div class="page-slide" id="hubSlide">
                 <header class="hub-header">
                     <div class="brand">
@@ -1196,7 +1266,7 @@
                             <div class="volume-wrap">
                                 <button class="secondary-btn" id="copyLinkBtn" title="Copy song link"><i class="fas fa-link"></i></button>
                                 <button class="vol-icon-btn" id="volIconBtn"><i class="fas fa-volume-high" id="volIcon"></i></button>
-                                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.02" value="0.8" />
+                                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step=".02" value=".8" />
                             </div>
                         </div>
 
@@ -1210,7 +1280,7 @@
 
                 <div class="playlist-section">
                     <div class="playlist-header">
-                        <h3><i class="fas fa-list-ul" style="margin-right:0.3rem;"></i>Playlist</h3>
+                        <h3><i class="fas fa-list-ul" style="margin-right:.3rem;"></i>Playlist</h3>
                         <span class="count" id="trackCount">3 tracks</span>
                     </div>
                     <div class="playlist" id="playlistContainer"></div>
@@ -1236,7 +1306,7 @@
                 </footer>
             </div>
 
-            <!-- ANNOUNCEMENTS SLIDE -->
+            <!-- ANNOUNCEMENTS -->
             <div class="page-slide" id="announcementsSlide">
                 <div class="page-header">
                     <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
@@ -1270,57 +1340,73 @@
     <script>
         (function() {
             'use strict';
-
             const STORAGE_KEY_THEME = 'sbpebbles-theme';
-
             const DEFAULT_TRACKS = [
-                { id: 0, title: 'Lost You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3', cover: 'https://i.imgur.com/2UMG2Pg.jpeg', duration: '3:28' },
-                { id: 1, title: 'Blue-Raz Lemonade', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3', cover: 'https://i.imgur.com/RnwJuvu.jpeg', duration: '2:17' },
-                { id: 2, title: 'Grape Smarties', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-ADBAFF10-C666-4BCC-9C58C882B4571017.mp3', cover: 'https://i.imgur.com/aTWPtqq.jpeg', duration: '4:05' },
-                { id: 3, title: 'Miss You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-E2CA9933-F0A3-4C0B-B97C9145582A51E7.mp3', cover: 'https://i.imgur.com/XqGkllR.jpeg', duration: '4:07' },
-                { id: 4, title: '219_UNTITLED_EARLY_PREVIEW_UNMIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-D174AE0B-181F-4796-91BCF7952ED9E433.mp3', cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:44' },
-                { id: 5, title: '144_Tension_EARLY_PREVIEW_UNFINISHED_UNMIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-89D71B31-DB81-4893-B96E768CE44EC085.mp3', cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:13' }
+                { id: 0, title: 'Lost You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3',
+                    cover: 'https://i.imgur.com/2UMG2Pg.jpeg', duration: '3:28' },
+                { id: 1, title: 'Blue-Raz Lemonade', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3',
+                    cover: 'https://i.imgur.com/RnwJuvu.jpeg', duration: '2:17' },
+                { id: 2, title: 'Grape Smarties', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-ADBAFF10-C666-4BCC-9C58C882B4571017.mp3',
+                    cover: 'https://i.imgur.com/aTWPtqq.jpeg', duration: '4:05' },
+                { id: 3, title: 'Miss You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-E2CA9933-F0A3-4C0B-B97C9145582A51E7.mp3',
+                    cover: 'https://i.imgur.com/XqGkllR.jpeg', duration: '4:07' },
+                { id: 4, title: '219_UNTITLED_EARLY_PREVIEW_UNMIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-D174AE0B-181F-4796-91BCF7952ED9E433.mp3',
+                    cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:44' },
+                { id: 5, title: '144_Tension_EARLY_PREVIEW_UNFINISHED_UNMIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-89D71B31-DB81-4893-B96E768CE44EC085.mp3',
+                    cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:13' }
             ];
-
             const DEFAULT_ANNOUNCEMENTS = [
-                { title: 'YouTube Music Updates', description: 'Official page is now merged', cover: 'https://i.imgur.com/HmOhOgb.jpeg', fullDescription: 'My user and creator account have been merged. You can find my music much easier now!', releaseDate: 'August 5th, 2026', links: [{ label: 'Official YouTube Page', url: 'https://music.youtube.com/ninow' }], tags: ['Update'] },
-                { title: 'A new track is on its way!', description: 'Coming soon...', cover: 'https://i.imgur.com/VetT42C.png', fullDescription: 'This song will be officially released on YouTube Music, Spotify, and Tidal.', releaseDate: 'Coming August 20th, 2026', links: [], tags: ['Single', 'Indie'] },
-                { title: 'Lost You', description: 'New release!', cover: 'https://i.imgur.com/2UMG2Pg.jpeg', fullDescription: '"Lost You" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] },
-                { title: 'Blue-Raz Lemonade', description: 'New release!', cover: 'https://i.imgur.com/RnwJuvu.jpeg', fullDescription: '"Blue-Raz Lemonade" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] },
-                { title: 'Miss You', description: 'New release!', cover: 'https://i.imgur.com/XqGkllR.jpeg', fullDescription: '"Miss You" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] },
-                { title: 'Grape Smarties', description: 'New release!', cover: 'https://i.imgur.com/aTWPtqq.jpeg', fullDescription: '"Grape Smarties" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single', 'Indie'] }
+                { title: 'YouTube Music Updates', description: 'Official page is now merged', cover: 'https://i.imgur.com/HmOhOgb.jpeg',
+                    fullDescription: 'My user and creator account have been merged. You can find my music much easier now!',
+                    releaseDate: 'August 5th, 2026', links: [{ label: 'Official YouTube Page', url: 'https://music.youtube.com/ninow' }],
+                    tags: ['Update'] },
+                { title: 'A new track is on its way!', description: 'Coming soon...', cover: 'https://i.imgur.com/VetT42C.png',
+                    fullDescription: 'This song will be officially released on YouTube Music, Spotify, and Tidal.',
+                    releaseDate: 'Coming August 20th, 2026', links: [], tags: ['Single', 'Indie'] },
+                { title: 'Lost You', description: 'New release!', cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
+                    fullDescription: '"Lost You" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single',
+                        'Indie'
+                    ] },
+                { title: 'Blue-Raz Lemonade', description: 'New release!', cover: 'https://i.imgur.com/RnwJuvu.jpeg',
+                    fullDescription: '"Blue-Raz Lemonade" is out now!', releaseDate: 'August 1, 2026', links: [],
+                    tags: ['Single', 'Indie'] },
+                { title: 'Miss You', description: 'New release!', cover: 'https://i.imgur.com/XqGkllR.jpeg',
+                    fullDescription: '"Miss You" is out now!', releaseDate: 'August 1, 2026', links: [], tags: ['Single',
+                        'Indie'
+                    ] },
+                { title: 'Grape Smarties', description: 'New release!', cover: 'https://i.imgur.com/aTWPtqq.jpeg',
+                    fullDescription: '"Grape Smarties" is out now!', releaseDate: 'August 1, 2026', links: [],
+                    tags: ['Single', 'Indie'] }
             ];
 
-            let tracks = [...DEFAULT_TRACKS];
-            let announcements = [...DEFAULT_ANNOUNCEMENTS];
-
-            const audio = document.getElementById('audioPlayer');
-            const playBtn = document.getElementById('playBtn');
-            const playIcon = document.getElementById('playIcon');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const progressFill = document.getElementById('progressFill');
-            const progressTrack = document.getElementById('progressTrack');
-            const currentTimeLabel = document.getElementById('currentTime');
-            const totalTimeLabel = document.getElementById('totalTime');
-            const volumeSlider = document.getElementById('volumeSlider');
-            const volIcon = document.getElementById('volIcon');
-            const volIconBtn = document.getElementById('volIconBtn');
-            const trackName = document.getElementById('trackName');
-            const trackArtist = document.getElementById('trackArtist');
-            const npTitle = document.getElementById('npTitle');
-            const npIndicator = document.getElementById('npIndicator');
-            const coverImg = document.getElementById('coverImg');
-            const coverFallback = document.getElementById('coverFallback');
-            const coverWrapper = document.getElementById('coverWrapper');
-            const playlistContainer = document.getElementById('playlistContainer');
-            const trackCount = document.getElementById('trackCount');
-            const announcementsContainer = document.getElementById('announcementsContainer');
-            const announcementCount = document.getElementById('announcementCount');
-            const pageSlider = document.getElementById('pageSlider');
-            const topNav = document.getElementById('topNav');
-            const copyLinkBtn = document.getElementById('copyLinkBtn');
-
+            let tracks = [...DEFAULT_TRACKS],
+                announcements = [...DEFAULT_ANNOUNCEMENTS];
+            const audio = document.getElementById('audioPlayer'),
+                playBtn = document.getElementById('playBtn'),
+                playIcon = document.getElementById('playIcon'),
+                prevBtn = document.getElementById('prevBtn'),
+                nextBtn = document.getElementById('nextBtn'),
+                progressFill = document.getElementById('progressFill'),
+                progressTrack = document.getElementById('progressTrack'),
+                currentTimeLabel = document.getElementById('currentTime'),
+                totalTimeLabel = document.getElementById('totalTime'),
+                volumeSlider = document.getElementById('volumeSlider'),
+                volIcon = document.getElementById('volIcon'),
+                volIconBtn = document.getElementById('volIconBtn'),
+                trackName = document.getElementById('trackName'),
+                trackArtist = document.getElementById('trackArtist'),
+                npTitle = document.getElementById('npTitle'),
+                npIndicator = document.getElementById('npIndicator'),
+                coverImg = document.getElementById('coverImg'),
+                coverFallback = document.getElementById('coverFallback'),
+                coverWrapper = document.getElementById('coverWrapper'),
+                playlistContainer = document.getElementById('playlistContainer'),
+                trackCount = document.getElementById('trackCount'),
+                announcementsContainer = document.getElementById('announcementsContainer'),
+                announcementCount = document.getElementById('announcementCount'),
+                pageSlider = document.getElementById('pageSlider'),
+                topNav = document.getElementById('topNav'),
+                copyLinkBtn = document.getElementById('copyLinkBtn');
             const themeDots = document.querySelectorAll('.theme-dot');
 
             function setTheme(theme) {
@@ -1332,38 +1418,41 @@
             function loadTheme() {
                 let theme = 'dark';
                 try { const s = localStorage.getItem(STORAGE_KEY_THEME); if (s) theme = s; } catch (_) {}
-                const valid = ['dark', 'light', 'turquoise', 'red', 'purple', 'green', 'ocean', 'sunset', 'rainbow', 'candy', 'forest', 'neon'];
+                const valid = ['dark', 'light', 'turquoise', 'red', 'purple', 'green', 'ocean', 'sunset', 'rainbow', 'candy',
+                    'forest', 'neon'
+                ];
                 if (!valid.includes(theme)) theme = 'dark';
                 setTheme(theme);
             }
-
             themeDots.forEach(d => d.addEventListener('click', () => setTheme(d.dataset.theme)));
 
-            let navVisible = false;
-            let navTimeout = null;
+            let navVisible = false,
+                navTimeout = null;
 
-            function showNav() { if (!navVisible) { navVisible = true; topNav.classList.add('visible'); } }
-            function hideNav() { if (navVisible) { navVisible = false; topNav.classList.remove('visible'); } }
+            function showNav() { if (!navVisible) { navVisible = true;
+                    topNav.classList.add('visible'); } }
+
+            function hideNav() { if (navVisible) { navVisible = false;
+                    topNav.classList.remove('visible'); } }
+
             function isMobile() { return window.innerWidth <= 720; }
-
             document.addEventListener('mousemove', (e) => {
                 if (isMobile()) return;
-                if (e.clientY < 80) { showNav(); clearTimeout(navTimeout); } else if (navVisible) {
+                if (e.clientY < 80) { showNav();
+                    clearTimeout(navTimeout); } else if (navVisible) {
                     clearTimeout(navTimeout);
                     navTimeout = setTimeout(() => {
                         const r = topNav.getBoundingClientRect();
-                        if (!(e.clientY >= r.top && e.clientY <= r.bottom && e.clientX >= r.left && e.clientX <= r.right)) hideNav();
+                        if (!(e.clientY >= r.top && e.clientY <= r.bottom && e.clientX >= r.left && e.clientX <= r
+                            .right)) hideNav();
                     }, 400);
                 }
             });
-
-            if (!isMobile()) {
-                setTimeout(() => { showNav(); setTimeout(hideNav, 1800); }, 400);
-            } else {
-                topNav.classList.add('visible');
-            }
+            if (!isMobile()) { setTimeout(() => { showNav();
+                    setTimeout(hideNav, 1800); }, 400); } else { topNav.classList.add('visible'); }
 
             let currentPage = 'hub';
+
             function switchPage(pageId) {
                 if (pageId === currentPage) return;
                 document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.page === pageId));
@@ -1371,7 +1460,6 @@
                 else if (pageId === 'announcements') pageSlider.classList.add('slide-announcements');
                 currentPage = pageId;
             }
-
             document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', () => switchPage(b.dataset.page)));
 
             function renderAnnouncements() {
@@ -1382,7 +1470,9 @@
                     card.setAttribute('role', 'button');
                     card.setAttribute('tabindex', '0');
                     const tagsHtml = ann.tags ? ann.tags.map(t => `<span class="tag">${t}</span>`).join(' ') : '';
-                    const linksHtml = ann.links ? ann.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${l.label}</a>`).join(' · ') : '';
+                    const linksHtml = ann.links ? ann.links.map(l =>
+                        `<a href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${l.label}</a>`
+                        ).join(' · ') : '';
                     card.innerHTML = `
                         <div class="card-summary">
                             <img src="${ann.cover}" alt="${ann.title}" loading="lazy" />
@@ -1397,9 +1487,11 @@
                             ${linksHtml ? `<div class="detail-row"><span class="detail-label">Links</span><span class="detail-value">${linksHtml}</span></div>` : ''}
                         </div>
                     `;
-                    const toggle = (e) => { if (e.target.closest('a')) return; card.classList.toggle('expanded'); };
+                    const toggle = (e) => { if (e.target.closest('a')) return;
+                        card.classList.toggle('expanded'); };
                     card.addEventListener('click', toggle);
-                    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); } });
+                    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
+                            toggle(e); } });
                     announcementsContainer.appendChild(card);
                 });
                 announcementCount.textContent = `${announcements.length} new`;
@@ -1409,19 +1501,13 @@
                 isPlaying = false,
                 isDragging = false,
                 wasPlayingBeforeDrag = false,
-                previousVolume = 0.8;
+                previousVolume = .8;
 
-            function getSlug(title) {
-                return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-            }
+            function getSlug(title) { return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
 
             function updateHashForTrack(index) {
                 const track = tracks[index];
-                if (track && track.title) {
-                    window.location.hash = getSlug(track.title);
-                } else {
-                    window.location.hash = '';
-                }
+                window.location.hash = track && track.title ? getSlug(track.title) : '';
             }
 
             function copyCurrentLink() {
@@ -1451,11 +1537,13 @@
                         <span class="pl-play-icon ${isActive && isPlaying ? 'playing' : ''}"><i class="fas ${isActive && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i></span>
                     `;
                     const handle = () => {
-                        if (idx === currentIndex) { togglePlay(); } else { currentIndex = idx; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
+                        if (idx === currentIndex) { togglePlay(); } else { currentIndex = idx;
+                            loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); }
                         updateHashForTrack(currentIndex);
                     };
                     item.addEventListener('click', handle);
-                    item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handle(); } });
+                    item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
+                            handle(); } });
                     playlistContainer.appendChild(item);
                 });
                 updateTrackCount();
@@ -1469,7 +1557,10 @@
                 trackName.textContent = track.title;
                 trackArtist.textContent = track.artist;
                 npTitle.textContent = track.title;
-                if (track.cover) { coverImg.src = track.cover; coverImg.style.display = 'block'; coverFallback.style.display = 'none'; } else { coverImg.style.display = 'none'; coverFallback.style.display = 'flex'; }
+                if (track.cover) { coverImg.src = track.cover;
+                    coverImg.style.display = 'block';
+                    coverFallback.style.display = 'none'; } else { coverImg.style.display = 'none';
+                    coverFallback.style.display = 'flex'; }
                 audio.src = track.src;
                 audio.load();
                 progressFill.style.width = '0%';
@@ -1487,12 +1578,23 @@
                 npIndicator.className = isPlaying ? 'np-indicator' : 'np-indicator paused';
             }
 
-            function updateCoverPlayState() {
-                coverWrapper.classList.toggle('is-playing', isPlaying && audio.src && audio.src !== '');
-            }
+            function updateCoverPlayState() { coverWrapper.classList.toggle('is-playing', isPlaying && audio.src && audio.src !==
+                    ''); }
 
-            function play() { audio.play().catch(() => {}); isPlaying = true; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator'; updateCoverPlayState(); }
-            function pause() { audio.pause(); isPlaying = false; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator paused'; updateCoverPlayState(); }
+            function play() { audio.play().catch(() => {});
+                isPlaying = true;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-indicator';
+                updateCoverPlayState(); }
+
+            function pause() { audio.pause();
+                isPlaying = false;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-indicator paused';
+                updateCoverPlayState(); }
+
             function togglePlay() { audio.paused ? play() : pause(); }
 
             function updatePlayButton() {
@@ -1511,7 +1613,8 @@
                 });
             }
 
-            function formatTime(sec) { if (!sec || isNaN(sec)) return '0:00'; const m = Math.floor(sec / 60), s = Math.floor(sec % 60); return `${m}:${s.toString().padStart(2,'0')}`; }
+            function formatTime(sec) { if (!sec || isNaN(sec)) return '0:00'; const m = Math.floor(sec / 60),
+                    s = Math.floor(sec % 60); return `${m}:${s.toString().padStart(2,'0')}`; }
 
             function updateProgress() {
                 if (isDragging) return;
@@ -1526,18 +1629,30 @@
             function updateVolumeIcon() {
                 const v = parseFloat(volumeSlider.value);
                 if (v === 0) volIcon.className = 'fas fa-volume-xmark';
-                else if (v < 0.4) volIcon.className = 'fas fa-volume-low';
-                else if (v < 0.7) volIcon.className = 'fas fa-volume-low';
+                else if (v < .4) volIcon.className = 'fas fa-volume-low';
+                else if (v < .7) volIcon.className = 'fas fa-volume-low';
                 else volIcon.className = 'fas fa-volume-high';
             }
 
             function toggleMute() {
                 const v = parseFloat(volumeSlider.value);
-                if (v > 0) { previousVolume = v; volumeSlider.value = 0; audio.volume = 0; updateVolumeIcon(); } else { volumeSlider.value = previousVolume || 0.8; audio.volume = parseFloat(volumeSlider.value); updateVolumeIcon(); }
+                if (v > 0) { previousVolume = v;
+                    volumeSlider.value = 0;
+                    audio.volume = 0;
+                    updateVolumeIcon(); } else { volumeSlider.value = previousVolume || .8;
+                    audio.volume = parseFloat(volumeSlider.value);
+                    updateVolumeIcon(); }
             }
 
-            function nextTrack() { const n = (currentIndex + 1) % tracks.length; currentIndex = n; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); updateHashForTrack(currentIndex); }
-            function prevTrack() { const p = (currentIndex - 1 + tracks.length) % tracks.length; currentIndex = p; loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play(); updateHashForTrack(currentIndex); }
+            function nextTrack() { const n = (currentIndex + 1) % tracks.length;
+                currentIndex = n;
+                loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play();
+                updateHashForTrack(currentIndex); }
+
+            function prevTrack() { const p = (currentIndex - 1 + tracks.length) % tracks.length;
+                currentIndex = p;
+                loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play();
+                updateHashForTrack(currentIndex); }
 
             function findTrackBySlug(slug) {
                 if (!slug) return -1;
@@ -1556,7 +1671,6 @@
                     renderPlaylist();
                 }
             }
-
             window.addEventListener('hashchange', handleHashChange);
 
             playBtn.addEventListener('click', togglePlay);
@@ -1567,27 +1681,59 @@
             audio.addEventListener('timeupdate', updateProgress);
             audio.addEventListener('loadedmetadata', () => { totalTimeLabel.textContent = formatTime(audio.duration); });
             audio.addEventListener('ended', nextTrack);
-            audio.addEventListener('play', () => { isPlaying = true; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator'; updateCoverPlayState(); });
-            audio.addEventListener('pause', () => { isPlaying = false; updatePlayButton(); updatePlaylistIcons(); npIndicator.className = 'np-indicator paused'; updateCoverPlayState(); });
+            audio.addEventListener('play', () => { isPlaying = true;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-indicator';
+                updateCoverPlayState(); });
+            audio.addEventListener('pause', () => { isPlaying = false;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-indicator paused';
+                updateCoverPlayState(); });
+            volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value);
+                updateVolumeIcon(); });
 
-            volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value); updateVolumeIcon(); });
-
-            progressTrack.addEventListener('mousedown', (e) => { if (!audio.duration) return; isDragging = true; wasPlayingBeforeDrag = !audio.paused; audio.pause(); seekFromMouse(e); });
+            progressTrack.addEventListener('mousedown', (e) => { if (!audio.duration) return;
+                isDragging = true;
+                wasPlayingBeforeDrag = !audio.paused;
+                audio.pause();
+                seekFromMouse(e); });
             document.addEventListener('mousemove', (e) => { if (isDragging) seekFromMouse(e); });
-            document.addEventListener('mouseup', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag) audio.play().catch(() => {}); } });
-            progressTrack.addEventListener('touchstart', (e) => { if (!audio.duration) return; isDragging = true; wasPlayingBeforeDrag = !audio.paused; audio.pause(); seekFromTouch(e); }, { passive: true });
+            document.addEventListener('mouseup', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag) audio
+                        .play().catch(() => {}); } });
+            progressTrack.addEventListener('touchstart', (e) => { if (!audio.duration) return;
+                isDragging = true;
+                wasPlayingBeforeDrag = !audio.paused;
+                audio.pause();
+                seekFromTouch(e); }, { passive: true });
             progressTrack.addEventListener('touchmove', (e) => { if (isDragging) seekFromTouch(e); }, { passive: true });
-            progressTrack.addEventListener('touchend', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag) audio.play().catch(() => {}); } }, { passive: true });
+            progressTrack.addEventListener('touchend', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag)
+                        audio.play().catch(() => {}); } }, { passive: true });
 
-            function seekFromMouse(e) { const rect = progressTrack.getBoundingClientRect(); const x = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio.currentTime = x * audio.duration; progressFill.style.width = `${x*100}%`; currentTimeLabel.textContent = formatTime(audio.currentTime); } }
-            function seekFromTouch(e) { const touch = e.touches[0]; const rect = progressTrack.getBoundingClientRect(); const x = Math.min(Math.max((touch.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio.currentTime = x * audio.duration; progressFill.style.width = `${x*100}%`; currentTimeLabel.textContent = formatTime(audio.currentTime); } }
+            function seekFromMouse(e) { const rect = progressTrack.getBoundingClientRect();
+                const x = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio
+                        .currentTime = x * audio.duration;
+                    progressFill.style.width = `${x*100}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime); } }
+
+            function seekFromTouch(e) { const touch = e.touches[0];
+                const rect = progressTrack.getBoundingClientRect();
+                const x = Math.min(Math.max((touch.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio
+                        .currentTime = x * audio.duration;
+                    progressFill.style.width = `${x*100}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime); } }
 
             document.addEventListener('keydown', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-                if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
-                if (e.code === 'ArrowRight') { e.preventDefault(); nextTrack(); }
-                if (e.code === 'ArrowLeft') { e.preventDefault(); prevTrack(); }
-                if (e.key === 'm') { e.preventDefault(); toggleMute(); }
+                if (e.code === 'Space') { e.preventDefault();
+                    togglePlay(); }
+                if (e.code === 'ArrowRight') { e.preventDefault();
+                    nextTrack(); }
+                if (e.code === 'ArrowLeft') { e.preventDefault();
+                    prevTrack(); }
+                if (e.key === 'm') { e.preventDefault();
+                    toggleMute(); }
             });
 
             loadTheme();
@@ -1598,9 +1744,7 @@
             const startIndex = initialHash ? Math.max(findTrackBySlug(initialHash), 0) : 0;
             currentIndex = startIndex;
             loadTrack(currentIndex);
-            if (initialHash && findTrackBySlug(initialHash) >= 0) {
-                updateHashForTrack(currentIndex);
-            }
+            if (initialHash && findTrackBySlug(initialHash) >= 0) updateHashForTrack(currentIndex);
 
             audio.volume = parseFloat(volumeSlider.value);
             updateVolumeIcon();
@@ -1608,7 +1752,6 @@
             currentPage = 'hub';
             pageSlider.classList.remove('slide-announcements');
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.page === 'hub'));
-
         })();
     </script>
 </body>
