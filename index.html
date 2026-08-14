@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-theme="midnight">
 <head>
     <meta charset="utf-8">
@@ -49,9 +49,7 @@
             padding: 0 16px;
         }
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+            to { opacity: 1; }
         }
         button,
         a {
@@ -66,9 +64,37 @@
             outline: 2px solid var(--primary);
             outline-offset: 2px;
         }
+        /* Global interactive element animation */
+        button,
+        .pl-item,
+        .news-summary,
+        .other-item,
+        .link-item a,
+        .nav-btn,
+        .social-btn,
+        .contact-btn,
+        .ctrl-btn,
+        .play-btn,
+        .theme-dot,
+        .link-item {
+            transition: transform .25s var(--ease), background .3s var(--ease), box-shadow .25s var(--ease),
+                        border-color .25s var(--ease), color .25s var(--ease), opacity .25s var(--ease);
+        }
+        button:active,
+        .pl-item:active,
+        .news-summary:active,
+        .other-item:active,
+        .nav-btn:active,
+        .social-btn:active,
+        .contact-btn:active,
+        .ctrl-btn:active,
+        .play-btn:active,
+        .theme-dot:active {
+            transform: scale(0.97) !important;
+        }
 
         /* ═══════════════════════════════════════════════════
-           THEMES (4)
+           THEMES (8)
            ═══════════════════════════════════════════════════ */
         [data-theme="midnight"] {
             --primary: #5b7cfa;
@@ -118,6 +144,54 @@
             --shadow: 0 8px 32px rgba(0, 0, 0, .6);
             --glow: 0 0 20px rgba(178, 139, 255, .15);
         }
+        [data-theme="ocean"] {
+            --primary: #38bdf8;
+            --primary-dim: #1e5a7a;
+            --bg: #0a1a2a;
+            --surface: #12283a;
+            --surface-2: #1a3448;
+            --text: #e0f2fe;
+            --text-muted: #7aa8c0;
+            --border: #1e3e55;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .6);
+            --glow: 0 0 20px rgba(56, 189, 248, .15);
+        }
+        [data-theme="crimson"] {
+            --primary: #f87171;
+            --primary-dim: #7f1d1d;
+            --bg: #1a0a0a;
+            --surface: #2a1212;
+            --surface-2: #3a1a1a;
+            --text: #fee2e2;
+            --text-muted: #c98a8a;
+            --border: #5a2a2a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .6);
+            --glow: 0 0 20px rgba(248, 113, 113, .15);
+        }
+        [data-theme="mint"] {
+            --primary: #34d399;
+            --primary-dim: #166534;
+            --bg: #0a1a14;
+            --surface: #12281e;
+            --surface-2: #1a382a;
+            --text: #e6f5ec;
+            --text-muted: #8ab5a0;
+            --border: #2a4a38;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .6);
+            --glow: 0 0 20px rgba(52, 211, 153, .15);
+        }
+        [data-theme="sunrise"] {
+            --primary: #fbbf24;
+            --primary-dim: #92400e;
+            --bg: #1a120a;
+            --surface: #2a1e12;
+            --surface-2: #3a2a1a;
+            --text: #fef3c7;
+            --text-muted: #c9a875;
+            --border: #5a422a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .6);
+            --glow: 0 0 20px rgba(251, 191, 36, .15);
+        }
 
         /* ═══════════════════════════════════════════════════
            LAYOUT
@@ -149,6 +223,10 @@
             font-weight: 700;
             font-size: 22px;
             letter-spacing: -0.02em;
+            transition: transform var(--transition-spring);
+        }
+        .logo:hover {
+            transform: translateY(-2px);
         }
         .logo i {
             font-size: 26px;
@@ -178,13 +256,12 @@
             color: var(--text-muted);
             display: grid;
             place-items: center;
-            transition: all var(--transition);
             border: 1px solid transparent;
         }
         .social-btn:hover {
             background: var(--primary);
             color: var(--bg);
-            transform: translateY(-3px) scale(1.04);
+            transform: translateY(-2px);
             box-shadow: var(--glow);
             border-color: var(--primary);
         }
@@ -196,13 +273,12 @@
             font-weight: 600;
             font-size: 12px;
             letter-spacing: .06em;
-            transition: all var(--transition-spring);
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
         .contact-btn:hover {
-            transform: translateY(-2px) scale(1.03);
+            transform: translateY(-2px);
             box-shadow: var(--glow);
         }
 
@@ -226,30 +302,29 @@
             font-weight: 600;
             font-size: 14px;
             color: var(--text-muted);
-            transition: all var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             background: transparent;
-            border: none;
-            cursor: pointer;
+            transition: color .2s, background .2s, transform .2s;
         }
         .nav-btn i {
             font-size: 18px;
-            transition: transform var(--transition-spring);
+            transition: transform .2s;
         }
         .nav-btn:hover {
             color: var(--text);
             background: var(--surface-2);
+            transform: translateY(-1px);
         }
         .nav-btn.active {
             background: var(--primary);
             color: var(--bg);
-            box-shadow: 0 4px 16px rgba(var(--primary), .3);
+            box-shadow: 0 2px 8px rgba(var(--primary), .25);
         }
         .nav-btn.active i {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
         .nav-btn .badge {
             background: var(--bg);
@@ -265,23 +340,26 @@
             color: var(--primary);
         }
 
-        /* ── Panels ── */
+        /* ── Panels with slide effect ── */
         .panel {
             display: none;
-            animation: slideUp .5s var(--ease) both;
         }
         .panel.active {
             display: block;
         }
-        @keyframes slideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(24px) scale(.97);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        .panel.active.slide-right {
+            animation: slidePanelRight .45s var(--ease) both;
+        }
+        .panel.active.slide-left {
+            animation: slidePanelLeft .45s var(--ease) both;
+        }
+        @keyframes slidePanelRight {
+            0% { opacity: 0; transform: translateX(48px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slidePanelLeft {
+            0% { opacity: 0; transform: translateX(-48px); }
+            100% { opacity: 1; transform: translateX(0); }
         }
 
         /* ═══════════════════════════════════════════════════
@@ -297,7 +375,6 @@
             border: 1px solid var(--border);
             margin-bottom: 24px;
             box-shadow: var(--shadow);
-            transition: all var(--transition);
         }
         .now-playing-strip:hover {
             border-color: var(--primary);
@@ -330,7 +407,7 @@
             border-radius: 50%;
             background: var(--primary);
             display: inline-block;
-            transition: all var(--transition);
+            transition: all .3s;
         }
         .np-dots.paused span {
             opacity: .2;
@@ -347,15 +424,8 @@
             animation-delay: .4s;
         }
         @keyframes dotBounce {
-            0%,
-            100% {
-                transform: scale(.6);
-                opacity: .3;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
+            0%, 100% { transform: scale(.6); opacity: .3; }
+            50% { transform: scale(1.2); opacity: 1; }
         }
 
         .player-card {
@@ -364,7 +434,6 @@
             padding: 24px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
-            transition: all var(--transition);
         }
         .player-grid {
             display: grid;
@@ -381,10 +450,9 @@
             box-shadow: var(--shadow);
             background: var(--surface-2);
             flex-shrink: 0;
-            transition: transform var(--transition-spring);
         }
         .cover-wrapper:hover {
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
         .cover-wrapper img {
             width: 100%;
@@ -406,22 +474,15 @@
             border-radius: var(--radius-md);
             border: 2.5px solid transparent;
             pointer-events: none;
-            transition: all var(--transition);
+            transition: all .3s;
         }
         .cover-wrapper.playing .ring {
             border-color: var(--primary);
             animation: ringPulse 2s infinite;
         }
         @keyframes ringPulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: .3;
-            }
-            50% {
-                transform: scale(1.07);
-                opacity: .8;
-            }
+            0%, 100% { transform: scale(1); opacity: .3; }
+            50% { transform: scale(1.07); opacity: .8; }
         }
 
         .track-info {
@@ -454,7 +515,6 @@
             color: var(--text);
             display: grid;
             place-items: center;
-            transition: all var(--transition);
             border: 1px solid transparent;
         }
         .ctrl-btn:hover {
@@ -473,15 +533,11 @@
             font-size: 20px;
             display: grid;
             place-items: center;
-            transition: all var(--transition-spring);
             box-shadow: 0 4px 20px rgba(var(--primary), .3);
         }
         .play-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.04);
             box-shadow: 0 6px 28px rgba(var(--primary), .4);
-        }
-        .play-btn:active {
-            transform: scale(.94);
         }
 
         .volume-group {
@@ -495,11 +551,11 @@
             appearance: none;
             width: 80px;
             height: 4px;
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             background: var(--border);
             outline: none;
-            transition: background var(--transition);
             cursor: pointer;
+            transition: background .2s;
         }
         .volume-group input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -510,7 +566,7 @@
             background: var(--primary);
             box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
             cursor: pointer;
-            transition: transform var(--transition-spring);
+            transition: transform .2s;
         }
         .volume-group input[type="range"]::-webkit-slider-thumb:hover {
             transform: scale(1.2);
@@ -537,10 +593,9 @@
         .progress-track {
             height: 6px;
             background: var(--border);
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             position: relative;
-            transition: height var(--transition);
             min-height: 30px;
             display: flex;
             align-items: center;
@@ -572,14 +627,13 @@
             padding: 10px 14px;
             border-radius: var(--radius-sm);
             background: transparent;
-            transition: all var(--transition);
             cursor: pointer;
             border: 1px solid transparent;
         }
         .pl-item:hover {
             background: var(--surface-2);
             border-color: var(--border);
-            transform: translateX(4px);
+            transform: translateX(2px);
         }
         .pl-item.active {
             background: var(--primary-dim);
@@ -608,7 +662,7 @@
             text-align: center;
             color: var(--primary);
             opacity: 0;
-            transition: all var(--transition);
+            transition: opacity .2s, transform .2s;
         }
         .pl-item:hover .pl-icon,
         .pl-item.active .pl-icon {
@@ -619,13 +673,8 @@
             animation: iconPulse 1s infinite;
         }
         @keyframes iconPulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         /* ═══════════════════════════════════════════════════
@@ -652,7 +701,7 @@
             color: var(--text-muted);
             background: var(--surface);
             padding: 4px 16px;
-            border-radius: 30px;
+            border-radius: var(--radius-lg);
             border: 1px solid var(--border);
         }
 
@@ -666,39 +715,9 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: all var(--transition);
-            animation: slideUp .5s var(--ease) both;
-        }
-        .news-card:nth-child(1) {
-            animation-delay: .04s;
-        }
-        .news-card:nth-child(2) {
-            animation-delay: .08s;
-        }
-        .news-card:nth-child(3) {
-            animation-delay: .12s;
-        }
-        .news-card:nth-child(4) {
-            animation-delay: .16s;
-        }
-        .news-card:nth-child(5) {
-            animation-delay: .20s;
-        }
-        .news-card:nth-child(6) {
-            animation-delay: .24s;
-        }
-        .news-card:nth-child(7) {
-            animation-delay: .28s;
-        }
-        .news-card:nth-child(8) {
-            animation-delay: .32s;
-        }
-        .news-card:nth-child(9) {
-            animation-delay: .36s;
         }
         .news-card:hover {
             border-color: var(--primary);
-            box-shadow: var(--shadow);
         }
         .news-card.open {
             border-color: var(--primary);
@@ -711,7 +730,6 @@
             align-items: center;
             padding: 14px 18px;
             cursor: pointer;
-            transition: background var(--transition);
         }
         .news-summary:hover {
             background: var(--surface-2);
@@ -747,30 +765,24 @@
         }
         .news-summary .chevron {
             color: var(--text-muted);
-            transition: transform var(--transition-spring);
+            transition: transform .3s;
         }
         .news-card.open .news-summary .chevron {
             transform: rotate(90deg);
             color: var(--primary);
         }
         .news-details {
-            display: none;
-            padding: 0 18px 18px 112px;
-            border-top: 1px solid var(--border);
-            animation: slideDown .3s var(--ease);
-        }
-        @keyframes slideDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 18px;
+            border-top: 0px solid var(--border);
+            transition: max-height .4s ease, padding .4s ease, border-width .4s ease;
+            background: var(--surface);
         }
         .news-card.open .news-details {
-            display: block;
+            max-height: 500px; /* large enough for content */
+            padding: 0 18px 18px 112px;
+            border-top-width: 1px;
         }
         .news-details .row {
             display: flex;
@@ -807,7 +819,7 @@
         .news-details .row .value a {
             color: var(--primary);
             border-bottom: 1px solid transparent;
-            transition: border-color var(--transition);
+            transition: border-color .2s;
         }
         .news-details .row .value a:hover {
             border-bottom-color: var(--primary);
@@ -829,18 +841,17 @@
             background: var(--surface);
             position: relative;
             cursor: pointer;
-            transition: all .5s var(--ease);
             box-shadow: var(--shadow);
         }
         .other-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform .6s var(--ease);
+            transition: transform .4s var(--ease);
             display: block;
         }
         .other-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         .other-item .fallback {
             width: 100%;
@@ -858,7 +869,7 @@
             background: linear-gradient(transparent, rgba(0, 0, 0, .8));
             color: #fff;
             transform: translateY(100%);
-            transition: transform .4s var(--ease);
+            transition: transform .3s var(--ease);
         }
         .other-item:hover .other-overlay {
             transform: translateY(0);
@@ -887,9 +898,6 @@
         .other-item.expanded .other-overlay {
             transform: translateY(0);
         }
-        .other-item.expanded img {
-            transform: scale(1);
-        }
         .other-close {
             display: none;
             position: absolute;
@@ -903,28 +911,17 @@
             border: 1px solid rgba(255, 255, 255, .2);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            transition: all var(--transition);
             place-items: center;
             font-size: 14px;
             z-index: 5;
+            transition: background .2s, transform .2s;
         }
         .other-close:hover {
             background: rgba(255, 255, 255, .2);
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
         .other-item.expanded .other-close {
             display: grid;
-        }
-        .backdrop {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .7);
-            z-index: 150;
-            animation: fadeIn .4s var(--ease);
-        }
-        .backdrop.show {
-            display: block;
         }
 
         /* ═══════════════════════════════════════════════════
@@ -945,7 +942,7 @@
             gap: 18px;
             padding: 16px 20px;
             border-bottom: 1px solid var(--border);
-            transition: all var(--transition);
+            transition: background .2s;
         }
         .link-item:last-child {
             border-bottom: none;
@@ -957,25 +954,25 @@
             width: 100%;
             font-weight: 600;
             font-size: 18px;
-            transition: all var(--transition);
             color: var(--text);
+            transition: color .2s, transform .2s;
         }
         .link-item a i {
             width: 30px;
             text-align: center;
             color: var(--primary);
             font-size: 24px;
-            transition: transform var(--transition-spring);
+            transition: transform .2s;
         }
         .link-item:hover {
             background: var(--surface-2);
         }
         .link-item:hover a {
             color: var(--primary);
-            transform: translateX(8px);
+            transform: translateX(4px);
         }
         .link-item:hover a i {
-            transform: rotate(-8deg) scale(1.1);
+            transform: rotate(-8deg) scale(1.05);
         }
 
         /* ═══════════════════════════════════════════════════
@@ -1005,41 +1002,62 @@
             font-weight: 600;
         }
         .theme-dot {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            transition: all var(--transition-spring);
-            cursor: pointer;
+            width: 44px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--border);
             position: relative;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+            cursor: pointer;
+            box-shadow: inset 0 1px 4px rgba(255, 255, 255, .1), 0 4px 10px rgba(0, 0, 0, .25);
+            transition: transform .2s, border-color .2s, box-shadow .2s;
         }
         .theme-dot::after {
-            content: '';
+            content: '✓';
             position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
             opacity: 0;
-            transition: opacity var(--transition);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+            transition: opacity .2s;
         }
         .theme-dot.selected::after {
             opacity: 1;
         }
         .theme-dot:hover {
-            transform: scale(1.15);
+            transform: translateY(-1px);
+            border-color: var(--primary);
+        }
+        .theme-dot.selected {
+            border-color: var(--text);
+            box-shadow: 0 0 0 2px var(--primary), 0 6px 16px rgba(0, 0, 0, .35);
         }
         .theme-dot[data-theme="midnight"] {
-            background: linear-gradient(135deg, #0b1120, #1a2a5a);
+            background: linear-gradient(135deg, #0b1120, #5b7cfa);
         }
         .theme-dot[data-theme="sunset"] {
-            background: linear-gradient(135deg, #1e120e, #b84c2a);
+            background: linear-gradient(135deg, #1e120e, #ff8a5c);
         }
         .theme-dot[data-theme="forest"] {
-            background: linear-gradient(135deg, #0c1810, #2a6a48);
+            background: linear-gradient(135deg, #0c1810, #5fbf8a);
         }
         .theme-dot[data-theme="lavender"] {
-            background: linear-gradient(135deg, #14101e, #5a3f9a);
+            background: linear-gradient(135deg, #14101e, #b28bff);
+        }
+        .theme-dot[data-theme="ocean"] {
+            background: linear-gradient(135deg, #0a1a2a, #38bdf8);
+        }
+        .theme-dot[data-theme="crimson"] {
+            background: linear-gradient(135deg, #1a0a0a, #f87171);
+        }
+        .theme-dot[data-theme="mint"] {
+            background: linear-gradient(135deg, #0a1a14, #34d399);
+        }
+        .theme-dot[data-theme="sunrise"] {
+            background: linear-gradient(135deg, #1a120a, #fbbf24);
         }
         .footer-copy {
             font-size: 13px;
@@ -1116,7 +1134,7 @@
                 width: 60px;
                 height: 48px;
             }
-            .news-details {
+            .news-card.open .news-details {
                 padding-left: 16px;
                 padding-right: 12px;
             }
@@ -1143,6 +1161,10 @@
             }
             .theme-group {
                 justify-content: center;
+            }
+            .theme-dot {
+                width: 40px;
+                height: 28px;
             }
             .footer-copy {
                 text-align: center;
@@ -1219,6 +1241,10 @@
                 padding-left: 12px;
                 padding-right: 8px;
             }
+            .news-card.open .news-details {
+                padding-left: 12px;
+                padding-right: 8px;
+            }
             .news-details .row .value {
                 font-size: 13px;
             }
@@ -1249,7 +1275,7 @@
                 width: 20px;
             }
             .theme-dot {
-                width: 24px;
+                width: 36px;
                 height: 24px;
             }
         }
@@ -1359,7 +1385,7 @@
                     <div class="link-item"><a href="https://music.youtube.com/channel/UCeQVW-kjGwlDklf77UMk94g" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube Music</a></div>
                     <div class="link-item"><a href="https://kampebbles.bandcamp.com/community" target="_blank" rel="noopener"><i class="fab fa-bandcamp"></i> Bandcamp</a></div>
                     <div class="link-item"><a href="https://open.spotify.com/artist/0IwRW7bQ8mD6riQJckWVG4" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Spotify</a></div>
-                    <div class="link-item"><a href="#" target="_blank" rel="noopener"><i class="fab fa-tidal"></i> Tidal</a></div>
+                    <div class="link-item"><a href="#" target="_blank" rel="noopener"><i class="fas fa-water"></i> Tidal</a></div>
                     <div class="link-item"><a href="#" target="_blank" rel="noopener"><i class="fab fa-apple"></i> Apple Music</a></div>
                     <div class="link-item"><a href="#" target="_blank" rel="noopener"><i class="fab fa-amazon"></i> Amazon Music</a></div>
                     <div class="link-item"><a href="https://www.tiktok.com/@kampebbles" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i> TikTok</a></div>
@@ -1369,9 +1395,6 @@
 
         </main>
 
-        <!-- ═══════════ BACKDROP FOR OTHER EXPAND ═══════════ -->
-        <div class="backdrop" id="backdrop"></div>
-
         <!-- ═══════════ FOOTER / THEME ═══════════ -->
         <footer class="footer">
             <div class="theme-group">
@@ -1380,22 +1403,23 @@
                 <button class="theme-dot" data-theme="sunset" title="Sunset"></button>
                 <button class="theme-dot" data-theme="forest" title="Forest"></button>
                 <button class="theme-dot" data-theme="lavender" title="Lavender"></button>
+                <button class="theme-dot" data-theme="ocean" title="Ocean"></button>
+                <button class="theme-dot" data-theme="crimson" title="Crimson"></button>
+                <button class="theme-dot" data-theme="mint" title="Mint"></button>
+                <button class="theme-dot" data-theme="sunrise" title="Sunrise"></button>
             </div>
             <div class="footer-copy">© 2026 SBPebbles</div>
         </footer>
 
     </div>
 
-    <!-- ════════════════════════════════════════════════════════════
-    SCRIPT
-    ════════════════════════════════════════════════════════════ -->
     <script>
         (function() {
             'use strict';
 
             /* ── CONSTANTS ── */
             const STORAGE_KEY = 'sbpebbles-theme';
-            const THEMES = ['midnight', 'sunset', 'forest', 'lavender'];
+            const THEMES = ['midnight', 'sunset', 'forest', 'lavender', 'ocean', 'crimson', 'mint', 'sunrise'];
 
             const TRACKS = [
                 { id: 0, title: 'Lost You', artist: 'Kam Pebbles',
@@ -1555,7 +1579,6 @@
             const otherGrid = document.getElementById('otherGrid');
             const otherCount = document.getElementById('otherCount');
             const copyLinkBtn = document.getElementById('copyLinkBtn');
-            const backdrop = document.getElementById('backdrop');
             const navBtns = document.querySelectorAll('.nav-btn');
             const panels = {
                 hub: document.getElementById('hubPanel'),
@@ -1586,11 +1609,23 @@
             }
             themeDots.forEach(d => d.addEventListener('click', () => setTheme(d.dataset.theme)));
 
-            /* ── NAVIGATION ── */
+            /* ── NAVIGATION WITH SLIDE EFFECT ── */
+            const PAGE_ORDER = ['hub', 'news', 'other', 'links'];
+
             function switchPage(pageId) {
                 if (pageId === currentPage) return;
+                const oldIdx = PAGE_ORDER.indexOf(currentPage);
+                const newIdx = PAGE_ORDER.indexOf(pageId);
+                const direction = newIdx > oldIdx ? 'right' : 'left';
+
                 navBtns.forEach(b => b.classList.toggle('active', b.dataset.panel === pageId));
-                Object.keys(panels).forEach(k => panels[k].classList.toggle('active', k === pageId));
+                Object.keys(panels).forEach(k => {
+                    panels[k].classList.toggle('active', k === pageId);
+                    panels[k].classList.remove('slide-left', 'slide-right');
+                });
+
+                const activePanel = panels[pageId];
+                activePanel.classList.add(direction === 'right' ? 'slide-right' : 'slide-left');
                 currentPage = pageId;
             }
             navBtns.forEach(b => b.addEventListener('click', () => switchPage(b.dataset.panel)));
@@ -1601,7 +1636,6 @@
                 ANNOUNCEMENTS.forEach((ann, idx) => {
                     const card = document.createElement('div');
                     card.className = 'news-card';
-                    card.style.animationDelay = (idx * 0.04) + 's';
                     const tagsHtml = ann.tags ? ann.tags.map(t => `<span class="chip">${esc(t)}</span>`).join(' ') :
                         '';
                     const linksHtml = ann.links && ann.links.length ? ann.links.map(l =>
@@ -1641,7 +1675,6 @@
                 OTHER_ITEMS.forEach((item, idx) => {
                     const div = document.createElement('div');
                     div.className = 'other-item';
-                    div.style.animationDelay = (0.06 + idx * 0.04) + 's';
 
                     const hasImage = item.image && item.image.trim() !== '';
                     const imgHtml = hasImage ?
@@ -1665,13 +1698,11 @@
                         document.querySelectorAll('.other-item.expanded').forEach(el => { if (el !== div) el
                                 .classList.remove('expanded'); });
                         div.classList.toggle('expanded', !was);
-                        backdrop.classList.toggle('show', div.classList.contains('expanded'));
                         document.body.style.overflow = div.classList.contains('expanded') ? 'hidden' : '';
                     };
                     const collapse = e => {
                         e.stopPropagation();
                         div.classList.remove('expanded');
-                        backdrop.classList.remove('show');
                         document.body.style.overflow = '';
                     };
                     div.addEventListener('click', expand);
@@ -1684,23 +1715,6 @@
                     otherGrid.appendChild(div);
                 });
                 otherCount.textContent = OTHER_ITEMS.length + ' items';
-
-                backdrop.addEventListener('click', () => {
-                    document.querySelectorAll('.other-item.expanded').forEach(el => {
-                        el.classList.remove('expanded');
-                        document.body.style.overflow = '';
-                    });
-                    backdrop.classList.remove('show');
-                });
-                document.addEventListener('keydown', e => {
-                    if (e.key === 'Escape') {
-                        document.querySelectorAll('.other-item.expanded').forEach(el => {
-                            el.classList.remove('expanded');
-                            document.body.style.overflow = '';
-                        });
-                        backdrop.classList.remove('show');
-                    }
-                });
             }
 
             /* ── PLAYER CORE ── */
@@ -1854,7 +1868,6 @@
                 const v = parseFloat(volumeSlider.value);
                 if (v === 0) volIcon.className = 'fas fa-volume-xmark';
                 else if (v < 0.4) volIcon.className = 'fas fa-volume-low';
-                else if (v < 0.7) volIcon.className = 'fas fa-volume-low';
                 else volIcon.className = 'fas fa-volume-high';
             }
 
@@ -1975,7 +1988,6 @@
                         el.classList.remove('expanded');
                         document.body.style.overflow = '';
                     });
-                    backdrop.classList.remove('show');
                 }
             });
 
