@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>SBPebbles · Music Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+    <style>
+        /* ============================================================
+           MATERIAL 3 TOKENS
+           ============================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --font: "Inter", system-ui, -apple-system, sans-serif;
+            --m3-radius-sm: 8px;
+            --m3-radius-md: 16px;
+            --m3-radius-lg: 28px;
+            --m3-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+            --m3-elevation-2: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.10);
+            --m3-elevation-3: 0 6px 16px rgba(0, 0, 0, 0.18), 0 4px 8px rgba(0, 0, 0, 0.12);
+            --m3-elevation-4: 0 12px 32px rgba(0, 0, 0, 0.22), 0 6px 16px rgba(0, 0, 0, 0.14);
+            --m3-transition: 0.28s cubic-bezier(0.2, 0, 0, 1);
+            --m3-transition-slow: 0.45s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        /* ---- LIGHT ---- */
+        [data-theme="light"] {
+            --md-sys-color-primary: #8a5a3a;
+            --md-sys-color-on-primary: #ffffff;
+            --md-sys-color-primary-container: #f6e3d4;
+            --md-sys-color-on-primary-container: #3b1f0e;
+            --md-sys-color-secondary: #7a5a4a;
+            --md-sys-color-on-secondary: #ffffff;
+            --md-sys-color-secondary-container: #f5e2d8;
+            --md-sys-color-on-secondary-container: #2f1e14;
+            --md-sys-color-tertiary: #6a7a5a;
+            --md-sys-color-on-tertiary: #ffffff;
+            --md-sys-color-tertiary-container: #e8f0de;
+            --md-sys-color-on-tertiary-container: #1e2a14;
+            --md-sys-color-surface: #fcf8f5;
+            --md-sys-color-on-surface: #1c1a18;
+            --md-sys-color-surface-variant: #efe8e0;
+            --md-sys-color-on-surface-variant: #4f4a44;
+            --md-sys-color-background: #f5f2ee;
+            --md-sys-color-on-background: #1c1a18;
+            --md-sys-color-outline: #b0a89e;
+            --md-sys-color-outline-variant: #d5ccc4;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.08);
+            --md-sys-color-surface-tint: #8a5a3a;
+            --md-sys-color-inverse-surface: #2e2a26;
+            --md-sys-color-inverse-on-surface: #f5f0eb;
+        }
+
+        /* ---- DARK ---- */
+        [data-theme="dark"] {
+            --md-sys-color-primary: #e8b48c;
+            --md-sys-color-on-primary: #402a1a;
+            --md-sys-color-primary-container: #5a3e2a;
+            --md-sys-color-on-primary-container: #f6e3d4;
+            --md-sys-color-secondary: #c8b0a0;
+            --md-sys-color-on-secondary: #3a2a20;
+            --md-sys-color-secondary-container: #524038;
+            --md-sys-color-on-secondary-container: #f5e2d8;
+            --md-sys-color-tertiary: #b0c8a0;
+            --md-sys-color-on-tertiary: #24301a;
+            --md-sys-color-tertiary-container: #3a4a30;
+            --md-sys-color-on-tertiary-container: #e8f0de;
+            --md-sys-color-surface: #18141a;
+            --md-sys-color-on-surface: #eeeae6;
+            --md-sys-color-surface-variant: #2a2428;
+            --md-sys-color-on-surface-variant: #b0a69c;
+            --md-sys-color-background: #121016;
+            --md-sys-color-on-background: #eeeae6;
+            --md-sys-color-outline: #6f665c;
+            --md-sys-color-outline-variant: #3f3840;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #e8b48c;
+            --md-sys-color-inverse-surface: #eeeae6;
+            --md-sys-color-inverse-on-surface: #1c1a18;
+        }
+
+        /* ---- TURQUOISE ---- */
+        [data-theme="turquoise"] {
+            --md-sys-color-primary: #5fc8c8;
+            --md-sys-color-on-primary: #103030;
+            --md-sys-color-primary-container: #2a5a5a;
+            --md-sys-color-on-primary-container: #d0f0f0;
+            --md-sys-color-secondary: #8eb8b8;
+            --md-sys-color-on-secondary: #1a3838;
+            --md-sys-color-secondary-container: #385858;
+            --md-sys-color-on-secondary-container: #d8f0f0;
+            --md-sys-color-tertiary: #7ac8a0;
+            --md-sys-color-on-tertiary: #103028;
+            --md-sys-color-tertiary-container: #2a5848;
+            --md-sys-color-on-tertiary-container: #d8f8ea;
+            --md-sys-color-surface: #0e1a1f;
+            --md-sys-color-on-surface: #e6f0ee;
+            --md-sys-color-surface-variant: #1a2f38;
+            --md-sys-color-on-surface-variant: #8eb8b8;
+            --md-sys-color-background: #0e1a1f;
+            --md-sys-color-on-background: #e6f0ee;
+            --md-sys-color-outline: #5a8282;
+            --md-sys-color-outline-variant: #1f3840;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #5fc8c8;
+            --md-sys-color-inverse-surface: #e6f0ee;
+            --md-sys-color-inverse-on-surface: #0e1a1f;
+        }
+
+        /* ---- RED ---- */
+        [data-theme="red"] {
+            --md-sys-color-primary: #ef4444;
+            --md-sys-color-on-primary: #401010;
+            --md-sys-color-primary-container: #6a2222;
+            --md-sys-color-on-primary-container: #fcd8d8;
+            --md-sys-color-secondary: #c09898;
+            --md-sys-color-on-secondary: #3a2020;
+            --md-sys-color-secondary-container: #5a3838;
+            --md-sys-color-on-secondary-container: #f0d8d8;
+            --md-sys-color-tertiary: #d4a070;
+            --md-sys-color-on-tertiary: #382818;
+            --md-sys-color-tertiary-container: #5a3e28;
+            --md-sys-color-on-tertiary-container: #f8ead8;
+            --md-sys-color-surface: #1a0e0e;
+            --md-sys-color-on-surface: #f0e6e6;
+            --md-sys-color-surface-variant: #2a1e1e;
+            --md-sys-color-on-surface-variant: #c09898;
+            --md-sys-color-background: #1a0e0e;
+            --md-sys-color-on-background: #f0e6e6;
+            --md-sys-color-outline: #7a5a5a;
+            --md-sys-color-outline-variant: #3a2222;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #ef4444;
+            --md-sys-color-inverse-surface: #f0e6e6;
+            --md-sys-color-inverse-on-surface: #1a0e0e;
+        }
+
+        /* ---- PURPLE ---- */
+        [data-theme="purple"] {
+            --md-sys-color-primary: #8b5cf6;
+            --md-sys-color-on-primary: #2a1050;
+            --md-sys-color-primary-container: #4a2a7a;
+            --md-sys-color-on-primary-container: #e8d8fc;
+            --md-sys-color-secondary: #b09ac0;
+            --md-sys-color-on-secondary: #28203a;
+            --md-sys-color-secondary-container: #4a3a5a;
+            --md-sys-color-on-secondary-container: #e8d8f0;
+            --md-sys-color-tertiary: #c098d0;
+            --md-sys-color-on-tertiary: #30203a;
+            --md-sys-color-tertiary-container: #523a5a;
+            --md-sys-color-on-tertiary-container: #f0d8f8;
+            --md-sys-color-surface: #120e1a;
+            --md-sys-color-on-surface: #eee6f0;
+            --md-sys-color-surface-variant: #1e1626;
+            --md-sys-color-on-surface-variant: #b09ac0;
+            --md-sys-color-background: #120e1a;
+            --md-sys-color-on-background: #eee6f0;
+            --md-sys-color-outline: #725a82;
+            --md-sys-color-outline-variant: #2e2240;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #8b5cf6;
+            --md-sys-color-inverse-surface: #eee6f0;
+            --md-sys-color-inverse-on-surface: #120e1a;
+        }
+
+        /* ---- GREEN ---- */
+        [data-theme="green"] {
+            --md-sys-color-primary: #34d399;
+            --md-sys-color-on-primary: #103028;
+            --md-sys-color-primary-container: #205a48;
+            --md-sys-color-on-primary-container: #d8f8ea;
+            --md-sys-color-secondary: #8eb88e;
+            --md-sys-color-on-secondary: #1a381a;
+            --md-sys-color-secondary-container: #385838;
+            --md-sys-color-on-secondary-container: #d8f0d8;
+            --md-sys-color-tertiary: #6ac8a0;
+            --md-sys-color-on-tertiary: #103028;
+            --md-sys-color-tertiary-container: #285848;
+            --md-sys-color-on-tertiary-container: #d8f8ea;
+            --md-sys-color-surface: #0e1a0e;
+            --md-sys-color-on-surface: #e6f0e6;
+            --md-sys-color-surface-variant: #1a2e1a;
+            --md-sys-color-on-surface-variant: #8eb88e;
+            --md-sys-color-background: #0e1a0e;
+            --md-sys-color-on-background: #e6f0e6;
+            --md-sys-color-outline: #5a825a;
+            --md-sys-color-outline-variant: #1f381f;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #34d399;
+            --md-sys-color-inverse-surface: #e6f0e6;
+            --md-sys-color-inverse-on-surface: #0e1a0e;
+        }
+
+        /* ---- OCEAN ---- */
+        [data-theme="ocean"] {
+            --md-sys-color-primary: #3b82f6;
+            --md-sys-color-on-primary: #10204a;
+            --md-sys-color-primary-container: #1a3a7a;
+            --md-sys-color-on-primary-container: #d8e4fc;
+            --md-sys-color-secondary: #8ea0c0;
+            --md-sys-color-on-secondary: #1a2a3a;
+            --md-sys-color-secondary-container: #384a5a;
+            --md-sys-color-on-secondary-container: #d8e4f0;
+            --md-sys-color-tertiary: #60b8d4;
+            --md-sys-color-on-tertiary: #102a38;
+            --md-sys-color-tertiary-container: #284a5a;
+            --md-sys-color-on-tertiary-container: #d8f0f8;
+            --md-sys-color-surface: #0e121a;
+            --md-sys-color-on-surface: #e6eaf0;
+            --md-sys-color-surface-variant: #1a2230;
+            --md-sys-color-on-surface-variant: #8ea0c0;
+            --md-sys-color-background: #0e121a;
+            --md-sys-color-on-background: #e6eaf0;
+            --md-sys-color-outline: #5a6a82;
+            --md-sys-color-outline-variant: #1f2a40;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #3b82f6;
+            --md-sys-color-inverse-surface: #e6eaf0;
+            --md-sys-color-inverse-on-surface: #0e121a;
+        }
+
+        /* ---- SUNSET ---- */
+        [data-theme="sunset"] {
+            --md-sys-color-primary: #f59e0b;
+            --md-sys-color-on-primary: #402810;
+            --md-sys-color-primary-container: #6a421a;
+            --md-sys-color-on-primary-container: #fcead0;
+            --md-sys-color-secondary: #c0b098;
+            --md-sys-color-on-secondary: #3a2e1a;
+            --md-sys-color-secondary-container: #5a4a30;
+            --md-sys-color-on-secondary-container: #f0e8d8;
+            --md-sys-color-tertiary: #d4a870;
+            --md-sys-color-on-tertiary: #382818;
+            --md-sys-color-tertiary-container: #5a3e28;
+            --md-sys-color-on-tertiary-container: #f8ead8;
+            --md-sys-color-surface: #1a140e;
+            --md-sys-color-on-surface: #f0ece6;
+            --md-sys-color-surface-variant: #2a2218;
+            --md-sys-color-on-surface-variant: #c0b098;
+            --md-sys-color-background: #1a140e;
+            --md-sys-color-on-background: #f0ece6;
+            --md-sys-color-outline: #8a765a;
+            --md-sys-color-outline-variant: #3a2e1f;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #f59e0b;
+            --md-sys-color-inverse-surface: #f0ece6;
+            --md-sys-color-inverse-on-surface: #1a140e;
+        }
+
+        /* ---- RAINBOW ---- */
+        [data-theme="rainbow"] {
+            --md-sys-color-primary: #ff6b6b;
+            --md-sys-color-on-primary: #401010;
+            --md-sys-color-primary-container: #6a2222;
+            --md-sys-color-on-primary-container: #fcd8d8;
+            --md-sys-color-secondary: #c0aac0;
+            --md-sys-color-on-secondary: #3a2a3a;
+            --md-sys-color-secondary-container: #5a4a5a;
+            --md-sys-color-on-secondary-container: #f0e0f0;
+            --md-sys-color-tertiary: #d4a0d4;
+            --md-sys-color-on-tertiary: #382838;
+            --md-sys-color-tertiary-container: #5a425a;
+            --md-sys-color-on-tertiary-container: #f8e0f8;
+            --md-sys-color-surface: #120e12;
+            --md-sys-color-on-surface: #f0eaf0;
+            --md-sys-color-surface-variant: #1e1a20;
+            --md-sys-color-on-surface-variant: #c0aac0;
+            --md-sys-color-background: #120e12;
+            --md-sys-color-on-background: #f0eaf0;
+            --md-sys-color-outline: #7a5a7a;
+            --md-sys-color-outline-variant: #382a3a;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #ff6b6b;
+            --md-sys-color-inverse-surface: #f0eaf0;
+            --md-sys-color-inverse-on-surface: #120e12;
+        }
+
+        /* ---- CANDY ---- */
+        [data-theme="candy"] {
+            --md-sys-color-primary: #ff6b9d;
+            --md-sys-color-on-primary: #401028;
+            --md-sys-color-primary-container: #6a2250;
+            --md-sys-color-on-primary-container: #fcd8e8;
+            --md-sys-color-secondary: #c098c0;
+            --md-sys-color-on-secondary: #3a203a;
+            --md-sys-color-secondary-container: #5a385a;
+            --md-sys-color-on-secondary-container: #f0d8f0;
+            --md-sys-color-tertiary: #d4a0b0;
+            --md-sys-color-on-tertiary: #38282a;
+            --md-sys-color-tertiary-container: #5a3e48;
+            --md-sys-color-on-tertiary-container: #f8dce4;
+            --md-sys-color-surface: #1a0e1a;
+            --md-sys-color-on-surface: #f0e6f0;
+            --md-sys-color-surface-variant: #2a1a2a;
+            --md-sys-color-on-surface-variant: #c098c0;
+            --md-sys-color-background: #1a0e1a;
+            --md-sys-color-on-background: #f0e6f0;
+            --md-sys-color-outline: #7a5a7a;
+            --md-sys-color-outline-variant: #3a223a;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #ff6b9d;
+            --md-sys-color-inverse-surface: #f0e6f0;
+            --md-sys-color-inverse-on-surface: #1a0e1a;
+        }
+
+        /* ---- FOREST ---- */
+        [data-theme="forest"] {
+            --md-sys-color-primary: #4ade80;
+            --md-sys-color-on-primary: #103028;
+            --md-sys-color-primary-container: #1a5a3a;
+            --md-sys-color-on-primary-container: #d8f8e0;
+            --md-sys-color-secondary: #8eb8a0;
+            --md-sys-color-on-secondary: #1a3828;
+            --md-sys-color-secondary-container: #385848;
+            --md-sys-color-on-secondary-container: #d8f0e0;
+            --md-sys-color-tertiary: #6ac8a0;
+            --md-sys-color-on-tertiary: #103028;
+            --md-sys-color-tertiary-container: #285848;
+            --md-sys-color-on-tertiary-container: #d8f8ea;
+            --md-sys-color-surface: #0e1a0f;
+            --md-sys-color-on-surface: #e6f0e8;
+            --md-sys-color-surface-variant: #1a2e20;
+            --md-sys-color-on-surface-variant: #8eb8a0;
+            --md-sys-color-background: #0e1a0f;
+            --md-sys-color-on-background: #e6f0e8;
+            --md-sys-color-outline: #5a8270;
+            --md-sys-color-outline-variant: #1f3828;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.5);
+            --md-sys-color-surface-tint: #4ade80;
+            --md-sys-color-inverse-surface: #e6f0e8;
+            --md-sys-color-inverse-on-surface: #0e1a0f;
+        }
+
+        /* ---- NEON ---- */
+        [data-theme="neon"] {
+            --md-sys-color-primary: #00f5ff;
+            --md-sys-color-on-primary: #003038;
+            --md-sys-color-primary-container: #005a6a;
+            --md-sys-color-on-primary-container: #c0f8ff;
+            --md-sys-color-secondary: #8ab8d0;
+            --md-sys-color-on-secondary: #1a2a38;
+            --md-sys-color-secondary-container: #384a5a;
+            --md-sys-color-on-secondary-container: #d8eaf0;
+            --md-sys-color-tertiary: #60d4e0;
+            --md-sys-color-on-tertiary: #102a30;
+            --md-sys-color-tertiary-container: #284a52;
+            --md-sys-color-on-tertiary-container: #d8f8fc;
+            --md-sys-color-surface: #080c16;
+            --md-sys-color-on-surface: #e6f0f5;
+            --md-sys-color-surface-variant: #141c30;
+            --md-sys-color-on-surface-variant: #8ab8d0;
+            --md-sys-color-background: #080c16;
+            --md-sys-color-on-background: #e6f0f5;
+            --md-sys-color-outline: #4a788a;
+            --md-sys-color-outline-variant: #1a2838;
+            --md-sys-color-shadow: rgba(0, 0, 0, 0.6);
+            --md-sys-color-surface-tint: #00f5ff;
+            --md-sys-color-inverse-surface: #e6f0f5;
+            --md-sys-color-inverse-on-surface: #080c16;
+        }
+
+        /* ============================================================
+           BASE
+           ============================================================ */
+        html {
+            font-family: var(--font);
+            background: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            transition: background var(--m3-transition-slow), color var(--m3-transition);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--md-sys-color-background);
+            transition: background var(--m3-transition-slow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ============================================================
+           TOP APP BAR
+           ============================================================ */
+        .top-app-bar {
+            width: 100%;
+            max-width: 1120px;
+            padding: 10px 20px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            background: var(--md-sys-color-surface);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            transition: background var(--m3-transition), border-color var(--m3-transition);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .top-app-bar .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--md-sys-color-on-surface);
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .top-app-bar .brand i {
+            font-size: 1.6rem;
+            color: var(--md-sys-color-primary);
+            transition: color var(--m3-transition);
+        }
+
+        .top-app-bar .brand span {
+            background: linear-gradient(135deg, var(--md-sys-color-on-surface) 40%, var(--md-sys-color-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .top-app-bar .social-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .top-app-bar .social-links a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all var(--m3-transition);
+            border: none;
+        }
+
+        .top-app-bar .social-links a:hover {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--m3-elevation-2);
+        }
+
+        /* ============================================================
+           NAV TABS (top nav)
+           ============================================================ */
+        .nav-tabs {
+            width: 100%;
+            max-width: 1120px;
+            padding: 0 20px;
+            display: flex;
+            gap: 0;
+            background: var(--md-sys-color-surface);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            transition: background var(--m3-transition), border-color var(--m3-transition);
+            position: sticky;
+            top: 60px;
+            z-index: 19;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .nav-tabs .tab {
+            flex: 0 0 auto;
+            padding: 12px 24px;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
+            transition: all var(--m3-transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.01em;
+            position: relative;
+        }
+
+        .nav-tabs .tab i {
+            font-size: 0.9rem;
+        }
+
+        .nav-tabs .tab:hover {
+            color: var(--md-sys-color-on-surface);
+            background: var(--md-sys-color-surface-variant);
+        }
+
+        .nav-tabs .tab.active {
+            color: var(--md-sys-color-primary);
+            border-bottom-color: var(--md-sys-color-primary);
+        }
+
+        .nav-tabs .tab .badge {
+            font-size: 0.5rem;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            padding: 1px 8px;
+            border-radius: 100px;
+            font-weight: 600;
+            margin-left: 2px;
+        }
+
+        /* ============================================================
+           MAIN CONTENT
+           ============================================================ */
+        .main-content {
+            width: 100%;
+            max-width: 1120px;
+            padding: 20px 20px 12px;
+            flex: 1;
+        }
+
+        /* ---- tab panels ---- */
+        .tab-panel {
+            display: none;
+            animation: fadeUp 0.35s ease forwards;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================================
+           HUB – NOW PLAYING CARD
+           ============================================================ */
+        .hub-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px 12px;
+            margin-bottom: 16px;
+        }
+
+        .hub-top .tagline {
+            font-size: 0.7rem;
+            background: var(--md-sys-color-surface-variant);
+            padding: 4px 14px;
+            border-radius: 100px;
+            color: var(--md-sys-color-on-surface-variant);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            transition: background var(--m3-transition), border-color var(--m3-transition);
+        }
+
+        .hub-top .tagline i {
+            color: var(--md-sys-color-primary);
+            font-size: 0.6rem;
+        }
+
+        /* ---- now playing strip ---- */
+        .np-strip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--md-sys-color-surface-variant);
+            padding: 6px 16px 6px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            margin-bottom: 20px;
+            transition: background var(--m3-transition), border-color var(--m3-transition);
+        }
+
+        .np-strip .np-label {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 600;
+        }
+
+        .np-strip .np-label i {
+            margin-right: 4px;
+            color: var(--md-sys-color-primary);
+        }
+
+        .np-strip .np-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .np-strip .np-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .np-strip .np-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--md-sys-color-primary);
+            display: inline-block;
+            animation: dotPulse 1.2s ease-in-out infinite;
+        }
+
+        .np-strip .np-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .np-strip .np-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .np-strip .np-dots.paused span {
+            animation: none;
+            opacity: 0.2;
+        }
+
+        @keyframes dotPulse {
+            0%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.25;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* ---- player grid ---- */
+        .player-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 32px;
+            align-items: flex-start;
+        }
+
+        .cover-box {
+            flex: 0 0 180px;
+            width: 180px;
+            height: 180px;
+            border-radius: var(--m3-radius-md);
+            overflow: hidden;
+            box-shadow: var(--m3-elevation-3);
+            background: var(--md-sys-color-surface-variant);
+            position: relative;
+            transition: transform var(--m3-transition), box-shadow var(--m3-transition);
+            flex-shrink: 0;
+        }
+
+        .cover-box:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: var(--m3-elevation-4);
+        }
+
+        .cover-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cover-box .cover-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-primary);
+            font-size: 3.6rem;
+            opacity: 0.4;
+        }
+
+        .cover-box .ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: calc(var(--m3-radius-md) + 4px);
+            border: 2.5px solid transparent;
+            transition: border-color var(--m3-transition), transform var(--m3-transition);
+            pointer-events: none;
+        }
+
+        .cover-box.is-playing .ring {
+            border-color: var(--md-sys-color-primary);
+            animation: ringPulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes ringPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.06);
+                opacity: 0.8;
+            }
+        }
+
+        .controls-col {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .track-info .track-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .track-info .track-artist {
+            font-size: 0.9rem;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .playback-btns {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .playback-btns .play-btn {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            min-height: 56px;
+            border-radius: 50%;
+            border: none;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--m3-transition);
+            box-shadow: var(--m3-elevation-2);
+            flex-shrink: 0;
+        }
+
+        .playback-btns .play-btn:hover {
+            transform: scale(1.06);
+            box-shadow: var(--m3-elevation-3);
+        }
+
+        .playback-btns .play-btn:active {
+            transform: scale(0.92);
+        }
+
+        .playback-btns .sec-btn {
+            background: transparent;
+            border: none;
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 1.1rem;
+            padding: 4px;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            min-height: 42px;
+            transition: all var(--m3-transition);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .playback-btns .sec-btn:hover {
+            background: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .vol-wrap {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .vol-wrap .vol-btn {
+            background: transparent;
+            border: none;
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 0.95rem;
+            padding: 2px;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            min-height: 32px;
+            cursor: pointer;
+            transition: all var(--m3-transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .vol-wrap .vol-btn:hover {
+            background: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .vol-wrap input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 80px;
+            max-width: 80px;
+            min-width: 40px;
+            height: 4px;
+            border-radius: 4px;
+            background: var(--md-sys-color-outline-variant);
+            outline: none;
+            transition: background var(--m3-transition);
+            cursor: pointer;
+            flex-shrink: 1;
+        }
+
+        .vol-wrap input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--md-sys-color-primary);
+            box-shadow: var(--m3-elevation-1);
+            cursor: pointer;
+            transition: transform var(--m3-transition);
+        }
+
+        .vol-wrap input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.12);
+        }
+
+        .vol-wrap input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--md-sys-color-primary);
+            border: none;
+            box-shadow: var(--m3-elevation-1);
+            cursor: pointer;
+        }
+
+        /* progress */
+        .progress-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-area .time-label {
+            font-size: 0.7rem;
+            color: var(--md-sys-color-on-surface-variant);
+            min-width: 36px;
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+
+        .progress-area .track {
+            flex: 1;
+            height: 4px;
+            border-radius: 20px;
+            background: var(--md-sys-color-outline-variant);
+            cursor: pointer;
+            position: relative;
+            transition: height var(--m3-transition);
+            min-height: 28px;
+            display: flex;
+            align-items: center;
+        }
+
+        .progress-area .track:hover {
+            height: 7px;
+        }
+
+        .progress-area .track .fill {
+            height: 100%;
+            width: 0;
+            border-radius: 20px;
+            background: var(--md-sys-color-primary);
+            transition: width 0.08s linear;
+            pointer-events: none;
+        }
+
+        /* ============================================================
+           PLAYLIST – FULLY EXPANDING
+           ============================================================ */
+        .pl-section {
+            margin-top: 24px;
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            padding-top: 18px;
+            transition: border-color var(--m3-transition);
+        }
+
+        .pl-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .pl-header h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pl-header .count {
+            font-size: 0.65rem;
+            background: var(--md-sys-color-surface-variant);
+            padding: 2px 14px;
+            border-radius: 100px;
+            color: var(--md-sys-color-on-surface-variant);
+            transition: background var(--m3-transition);
+            font-weight: 500;
+        }
+
+        .pl-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            /* NO max-height – expands freely */
+            padding-right: 4px;
+        }
+
+        .pl-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: var(--m3-radius-sm);
+            transition: all var(--m3-transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .pl-item:hover {
+            background: var(--md-sys-color-surface-variant);
+            border-color: var(--md-sys-color-outline-variant);
+        }
+
+        .pl-item.active {
+            background: var(--md-sys-color-surface-variant);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .pl-item .idx {
+            font-size: 0.65rem;
+            color: var(--md-sys-color-on-surface-variant);
+            min-width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+
+        .pl-item .info {
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .pl-item .info .title {
+            font-weight: 500;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .pl-item .info .artist {
+            font-size: 0.65rem;
+            color: var(--md-sys-color-on-surface-variant);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pl-item .dur {
+            font-size: 0.7rem;
+            color: var(--md-sys-color-on-surface-variant);
+            min-width: 36px;
+            text-align: right;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+
+        .pl-item .pl-icon {
+            color: var(--md-sys-color-primary);
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: opacity var(--m3-transition);
+            flex-shrink: 0;
+            width: 20px;
+            text-align: center;
+        }
+
+        .pl-item.active .pl-icon,
+        .pl-item:hover .pl-icon {
+            opacity: 1;
+        }
+
+        .pl-item .pl-icon.playing {
+            opacity: 1;
+            animation: iconPulse 1s infinite;
+        }
+
+        @keyframes iconPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* ============================================================
+           ANNOUNCEMENTS
+           ============================================================ */
+        .announce-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .announce-header h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .announce-header h2 i {
+            color: var(--md-sys-color-primary);
+        }
+
+        .announce-header .count {
+            font-size: 0.65rem;
+            background: var(--md-sys-color-surface-variant);
+            padding: 2px 14px;
+            border-radius: 100px;
+            color: var(--md-sys-color-on-surface-variant);
+            transition: background var(--m3-transition);
+            font-weight: 500;
+        }
+
+        .announce-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .announce-card {
+            background: var(--md-sys-color-surface-variant);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--m3-radius-md);
+            padding: 12px 16px;
+            transition: all var(--m3-transition);
+            cursor: pointer;
+            animation: fadeUp 0.4s ease forwards;
+            opacity: 0;
+        }
+
+        .announce-card:nth-child(1) {
+            animation-delay: 0.02s;
+        }
+        .announce-card:nth-child(2) {
+            animation-delay: 0.06s;
+        }
+        .announce-card:nth-child(3) {
+            animation-delay: 0.10s;
+        }
+        .announce-card:nth-child(4) {
+            animation-delay: 0.14s;
+        }
+        .announce-card:nth-child(5) {
+            animation-delay: 0.18s;
+        }
+        .announce-card:nth-child(6) {
+            animation-delay: 0.22s;
+        }
+        .announce-card:nth-child(7) {
+            animation-delay: 0.26s;
+        }
+        .announce-card:nth-child(8) {
+            animation-delay: 0.30s;
+        }
+        .announce-card:nth-child(9) {
+            animation-delay: 0.34s;
+        }
+        .announce-card:nth-child(10) {
+            animation-delay: 0.38s;
+        }
+
+        .announce-card:hover {
+            border-color: var(--md-sys-color-outline);
+            box-shadow: var(--m3-elevation-1);
+        }
+
+        .announce-card.expanded {
+            border-color: var(--md-sys-color-primary);
+            box-shadow: var(--m3-elevation-3);
+        }
+
+        .announce-card .summary {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .announce-card .summary img {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--m3-radius-sm);
+            object-fit: cover;
+            background: var(--md-sys-color-surface);
+            flex-shrink: 0;
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .announce-card .summary .info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .announce-card .summary .info h4 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .announce-card .summary .info p {
+            font-size: 0.8rem;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .announce-card .summary .badge {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .announce-card .summary .expand-icon {
+            color: var(--md-sys-color-on-surface-variant);
+            transition: transform var(--m3-transition), color var(--m3-transition);
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+
+        .announce-card.expanded .summary .expand-icon {
+            transform: rotate(180deg);
+            color: var(--md-sys-color-primary);
+        }
+
+        .announce-card .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s;
+            padding: 0 2px;
+        }
+
+        .announce-card.expanded .details {
+            max-height: 500px;
+            padding: 12px 2px 2px;
+        }
+
+        .announce-card .details .row {
+            display: flex;
+            gap: 12px;
+            padding: 6px 0;
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .announce-card .details .row:first-child {
+            border-top: none;
+        }
+
+        .announce-card .details .row .label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--md-sys-color-on-surface-variant);
+            min-width: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            flex-shrink: 0;
+        }
+
+        .announce-card .details .row .value {
+            font-size: 0.85rem;
+            color: var(--md-sys-color-on-surface);
+            word-break: break-word;
+        }
+
+        .announce-card .details .row .value a {
+            color: var(--md-sys-color-primary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--m3-transition);
+        }
+
+        .announce-card .details .row .value a:hover {
+            border-bottom-color: var(--md-sys-color-primary);
+        }
+
+        .announce-card .details .row .value .tag {
+            display: inline-block;
+            font-size: 0.6rem;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 1px 10px;
+            border-radius: 100px;
+            margin-right: 4px;
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           FOOTER / THEME PICKER
+           ============================================================ */
+        .site-footer {
+            margin-top: 28px;
+            padding: 16px 0 4px;
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: border-color var(--m3-transition);
+            width: 100%;
+            max-width: 1120px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .site-footer .theme-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .site-footer .theme-row .label {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            color: var(--md-sys-color-on-surface-variant);
+            letter-spacing: 0.06em;
+            margin-right: 4px;
+            align-self: center;
+            font-weight: 600;
+        }
+
+        .site-footer .theme-row .dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--m3-transition);
+            background: var(--md-sys-color-surface-variant);
+            flex-shrink: 0;
+            box-shadow: var(--m3-elevation-1);
+        }
+
+        .site-footer .theme-row .dot.active {
+            border-color: var(--md-sys-color-primary);
+            transform: scale(1.12);
+            box-shadow: var(--m3-elevation-3);
+        }
+
+        .site-footer .theme-row .dot:hover {
+            transform: scale(1.08);
+        }
+
+        .site-footer .theme-row .dot[data-theme="dark"] {
+            background: #121016;
+        }
+        .site-footer .theme-row .dot[data-theme="light"] {
+            background: #f5f2ee;
+        }
+        .site-footer .theme-row .dot[data-theme="turquoise"] {
+            background: #5fc8c8;
+        }
+        .site-footer .theme-row .dot[data-theme="red"] {
+            background: #d45a5a;
+        }
+        .site-footer .theme-row .dot[data-theme="purple"] {
+            background: #8b5cf6;
+        }
+        .site-footer .theme-row .dot[data-theme="green"] {
+            background: #34d399;
+        }
+        .site-footer .theme-row .dot[data-theme="ocean"] {
+            background: #3b82f6;
+        }
+        .site-footer .theme-row .dot[data-theme="sunset"] {
+            background: #f59e0b;
+        }
+        .site-footer .theme-row .dot[data-theme="rainbow"] {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #9b59b6);
+        }
+        .site-footer .theme-row .dot[data-theme="candy"] {
+            background: #ff6b9d;
+        }
+        .site-footer .theme-row .dot[data-theme="forest"] {
+            background: #4ade80;
+        }
+        .site-footer .theme-row .dot[data-theme="neon"] {
+            background: #00f5ff;
+        }
+
+        .site-footer .copy {
+            font-size: 0.6rem;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 820px) {
+            .cover-box {
+                flex: 0 0 150px;
+                width: 150px;
+                height: 150px;
+            }
+            .player-grid {
+                gap: 18px;
+            }
+            .vol-wrap input[type="range"] {
+                width: 60px;
+                max-width: 60px;
+                min-width: 30px;
+            }
+            .top-app-bar .brand {
+                font-size: 1.1rem;
+            }
+            .nav-tabs .tab {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .main-content {
+                padding: 12px 12px 0;
+            }
+            .top-app-bar {
+                padding: 8px 12px 4px;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
+            .top-app-bar .social-links {
+                justify-content: center;
+            }
+            .nav-tabs {
+                padding: 0 12px;
+                top: 56px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+            .nav-tabs .tab {
+                padding: 10px 14px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+                flex: 0 0 auto;
+            }
+            .cover-box {
+                flex: 0 0 120px;
+                width: 120px;
+                height: 120px;
+                border-radius: var(--m3-radius-sm);
+            }
+            .playback-btns .play-btn {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                min-height: 48px;
+                font-size: 1.2rem;
+            }
+            .playback-btns .sec-btn {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+                min-height: 36px;
+                font-size: 0.95rem;
+            }
+            .vol-wrap input[type="range"] {
+                width: 50px;
+                max-width: 50px;
+                min-width: 24px;
+            }
+            .vol-wrap .vol-btn {
+                width: 28px;
+                height: 28px;
+                min-width: 28px;
+                min-height: 28px;
+                font-size: 0.8rem;
+            }
+            .track-info .track-name {
+                font-size: 1.2rem;
+            }
+            .np-strip .np-title {
+                font-size: 0.8rem;
+            }
+            .pl-item .info .title {
+                font-size: 0.8rem;
+            }
+            .announce-card .summary img {
+                width: 40px;
+                height: 40px;
+            }
+            .announce-card .summary .info h4 {
+                font-size: 0.85rem;
+            }
+            .site-footer .theme-row .dot {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 8px 8px 0;
+            }
+            .top-app-bar .brand {
+                font-size: 0.95rem;
+            }
+            .top-app-bar .brand i {
+                font-size: 1.3rem;
+            }
+            .top-app-bar .social-links a {
+                width: 32px;
+                height: 32px;
+                font-size: 0.75rem;
+            }
+            .nav-tabs {
+                top: 52px;
+                padding: 0 8px;
+            }
+            .nav-tabs .tab {
+                padding: 8px 10px;
+                font-size: 0.7rem;
+                gap: 4px;
+            }
+            .nav-tabs .tab i {
+                font-size: 0.75rem;
+            }
+            .cover-box {
+                flex: 0 0 90px;
+                width: 90px;
+                height: 90px;
+                border-radius: var(--m3-radius-sm);
+            }
+            .cover-box .ring {
+                border-radius: calc(var(--m3-radius-sm) + 4px);
+                inset: -3px;
+            }
+            .player-grid {
+                gap: 12px;
+            }
+            .controls-col {
+                gap: 6px;
+                min-width: 140px;
+            }
+            .track-info .track-name {
+                font-size: 1rem;
+            }
+            .track-info .track-artist {
+                font-size: 0.75rem;
+            }
+            .playback-btns .play-btn {
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
+                min-height: 42px;
+                font-size: 1rem;
+            }
+            .playback-btns .sec-btn {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                min-height: 32px;
+                font-size: 0.8rem;
+            }
+            .vol-wrap input[type="range"] {
+                width: 30px;
+                max-width: 30px;
+                min-width: 16px;
+            }
+            .vol-wrap .vol-btn {
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                min-height: 24px;
+                font-size: 0.7rem;
+            }
+            .progress-area .time-label {
+                font-size: 0.6rem;
+                min-width: 28px;
+            }
+            .progress-area .track {
+                min-height: 22px;
+            }
+            .pl-item {
+                padding: 4px 6px;
+                gap: 6px;
+            }
+            .pl-item .info .title {
+                font-size: 0.75rem;
+            }
+            .pl-item .info .artist {
+                font-size: 0.6rem;
+            }
+            .pl-item .dur {
+                font-size: 0.6rem;
+                min-width: 30px;
+            }
+            .pl-item .idx {
+                font-size: 0.6rem;
+                min-width: 18px;
+            }
+            .pl-item .pl-icon {
+                font-size: 0.6rem;
+                width: 16px;
+            }
+            .np-strip {
+                padding: 4px 10px 4px 8px;
+                gap: 6px;
+            }
+            .np-strip .np-title {
+                font-size: 0.7rem;
+            }
+            .np-strip .np-label {
+                font-size: 0.45rem;
+            }
+            .announce-card {
+                padding: 8px 10px;
+            }
+            .announce-card .summary {
+                gap: 10px;
+            }
+            .announce-card .summary img {
+                width: 34px;
+                height: 34px;
+            }
+            .announce-card .summary .info h4 {
+                font-size: 0.8rem;
+            }
+            .announce-card .summary .info p {
+                font-size: 0.7rem;
+            }
+            .announce-card .details .row .value {
+                font-size: 0.75rem;
+            }
+            .announce-header h2 {
+                font-size: 1rem;
+            }
+            .pl-section {
+                margin-top: 14px;
+                padding-top: 12px;
+            }
+            .site-footer .theme-row .dot {
+                width: 20px;
+                height: 20px;
+            }
+            .site-footer .theme-row .label {
+                font-size: 0.45rem;
+            }
+            .hub-top .tagline {
+                font-size: 0.6rem;
+                padding: 2px 10px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    TOP APP BAR
+    ============================================================ -->
+    <header class="top-app-bar">
+        <a href="#" class="brand" onclick="return false;">
+            <i class="fas fa-compact-disc"></i>
+            <span>SBPebbles</span>
+        </a>
+        <div class="social-links">
+            <a href="https://music.youtube.com/channel/UCeQVW-kjGwlDklf77UMk94g" target="_blank" rel="noopener" aria-label="YouTube Music"><i class="fab fa-youtube"></i></a>
+            <a href="https://kampebbles.bandcamp.com/community" target="_blank" rel="noopener" aria-label="Bandcamp"><i class="fab fa-bandcamp"></i></a>
+            <a href="https://open.spotify.com/artist/0IwRW7bQ8mD6riQJckWVG4" target="_blank" rel="noopener" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+            <a href="https://www.tiktok.com/@kampebbles" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://discord.gg/JQ4W6F5unx" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    NAV TABS
+    ============================================================ -->
+    <nav class="nav-tabs" id="navTabs">
+        <button class="tab active" data-page="hub"><i class="fas fa-compact-disc"></i> Hub</button>
+        <button class="tab" data-page="announcements"><i class="fas fa-bullhorn"></i> News <span class="badge" id="newsBadge">9</span></button>
+    </nav>
+
+    <!-- ============================================================
+    MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content">
+
+        <!-- ═══ HUB PANEL ═══ -->
+        <section class="tab-panel active" id="hubPanel">
+            <div class="hub-top">
+                <div class="tagline"><i class="fas fa-headphones-simple"></i> Better with Headphones</div>
+            </div>
+
+            <!-- Now Playing strip -->
+            <div class="np-strip" id="nowPlayingStrip">
+                <span class="np-label"><i class="fas fa-play"></i> now</span>
+                <span class="np-title" id="npTitle">Select a track</span>
+                <span class="np-dots paused" id="npIndicator">
+                    <span></span><span></span><span></span>
+                </span>
+            </div>
+
+            <!-- Player -->
+            <div class="player-grid">
+                <div class="cover-box" id="coverWrapper">
+                    <div class="cover-fallback" id="coverFallback"><i class="fas fa-music"></i></div>
+                    <img id="coverImg" src="" alt="cover" style="display:none;" />
+                    <div class="ring"></div>
+                </div>
+
+                <div class="controls-col">
+                    <div class="track-info">
+                        <div class="track-name" id="trackName">—</div>
+                        <div class="track-artist" id="trackArtist">SBPebbles</div>
+                    </div>
+
+                    <div class="playback-btns">
+                        <button class="sec-btn" id="prevBtn" aria-label="Previous"><i class="fas fa-backward-step"></i></button>
+                        <button class="play-btn" id="playBtn" aria-label="Play/Pause"><i class="fas fa-play" id="playIcon"></i></button>
+                        <button class="sec-btn" id="nextBtn" aria-label="Next"><i class="fas fa-forward-step"></i></button>
+                        <div class="vol-wrap">
+                            <button class="sec-btn" id="copyLinkBtn" aria-label="Copy song link"><i class="fas fa-link"></i></button>
+                            <button class="vol-btn" id="volIconBtn" aria-label="Toggle mute"><i class="fas fa-volume-high" id="volIcon"></i></button>
+                            <input type="range" id="volumeSlider" min="0" max="1" step="0.02" value="0.8" aria-label="Volume" />
+                        </div>
+                    </div>
+
+                    <div class="progress-area">
+                        <span class="time-label" id="currentTime">0:00</span>
+                        <div class="track" id="progressTrack"><div class="fill" id="progressFill"></div></div>
+                        <span class="time-label" id="totalTime">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Playlist – expands vertically with content -->
+            <div class="pl-section">
+                <div class="pl-header">
+                    <h3><i class="fas fa-list-ul"></i> Playlist</h3>
+                    <span class="count" id="trackCount">3 tracks</span>
+                </div>
+                <div class="pl-list" id="playlistContainer"></div>
+            </div>
+        </section>
+
+        <!-- ═══ ANNOUNCEMENTS PANEL ═══ -->
+        <section class="tab-panel" id="announcementsPanel">
+            <div class="announce-header">
+                <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+                <span class="count" id="announcementCount">0 new</span>
+            </div>
+            <div class="announce-list" id="announcementsContainer"></div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+    FOOTER / THEME PICKER
+    ============================================================ -->
+    <footer class="site-footer">
+        <div class="theme-row">
+            <span class="label">Theme</span>
+            <button class="dot active" data-theme="dark" title="Dark"></button>
+            <button class="dot" data-theme="light" title="Light"></button>
+            <button class="dot" data-theme="turquoise" title="Turquoise"></button>
+            <button class="dot" data-theme="red" title="Red"></button>
+            <button class="dot" data-theme="purple" title="Purple"></button>
+            <button class="dot" data-theme="green" title="Green"></button>
+            <button class="dot" data-theme="ocean" title="Ocean"></button>
+            <button class="dot" data-theme="sunset" title="Sunset"></button>
+            <button class="dot" data-theme="rainbow" title="Rainbow"></button>
+            <button class="dot" data-theme="candy" title="Candy"></button>
+            <button class="dot" data-theme="forest" title="Forest"></button>
+            <button class="dot" data-theme="neon" title="Neon"></button>
+        </div>
+        <div class="copy">© 2026 SBPebbles</div>
+    </footer>
+
+    <audio id="audioPlayer" preload="metadata"></audio>
+
+    <!-- ============================================================
+    SCRIPT
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            const STORAGE_KEY_THEME = 'sbpebbles-theme';
+
+            const DEFAULT_TRACKS = [
+                { id: 0, title: 'Lost You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-B4330654-A8C2-4B6F-A7AE4EDAE8996866.mp3',
+                    cover: 'https://i.imgur.com/2UMG2Pg.jpeg', duration: '3:28' },
+                { id: 1, title: 'Blue-Raz Lemonade', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-7C5D43ED-B73F-4B24-B606F40F65E5595A.mp3',
+                    cover: 'https://i.imgur.com/RnwJuvu.jpeg', duration: '2:17' },
+                { id: 2, title: 'Grape Smarties', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-ADBAFF10-C666-4BCC-9C58C882B4571017.mp3',
+                    cover: 'https://i.imgur.com/aTWPtqq.jpeg', duration: '4:05' },
+                { id: 3, title: 'Miss You', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-E2CA9933-F0A3-4C0B-B97C9145582A51E7.mp3',
+                    cover: 'https://i.imgur.com/XqGkllR.jpeg', duration: '4:07' },
+                { id: 4, title: '219_EARLY_PREVIEW_MIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-36E6AEFF-74AD-4E86-87C1E35989942F9E.mp3',
+                    cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:44' },
+                { id: 5, title: '225_EARLY_PREVIEW_MIXED', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-C0508234-1489-4724-B12A73AA072E9F5E.mp3',
+                    cover: 'https://i.imgur.com/ycLlohS.png', duration: '3:13' },
+                { id: 6, title: 'How It Feels To Be Me', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-67E8EB1E-B9AE-48A0-BA8BC7CEFF14EFEC.mp3',
+                    cover: 'https://i.imgur.com/fd1kRok.png', duration: '2:48' },
+                { id: 7, title: 'Mint Coffee & Elevator Music', artist: 'Kam Pebbles', src: 'https://s3.amazonaws.com/audio.distrokid.com/hyperfollow/hyperfollow-generated-13357997-3D372B65-65B2-4969-9655B4DA397FC0E6.mp3',
+                    cover: 'https://i.imgur.com/tpa8nWN.png', duration: '2:28' }
+            ];
+
+            const DEFAULT_ANNOUNCEMENTS = [
+                { title: 'Mint Coffee', description: 'New Song! (short)', cover: 'https://i.imgur.com/tpa8nWN.png',
+                    fullDescription: '"Mint Coffee & Elevator Music" is released here only', releaseDate: 'August 14, 2026',
+                    links: [{ label: 'Listen Here', url: 'https://music.sbpebbles.online/#mint-coffee-elevator-music' }], tags: ['Single', 'Indie'] },
+                { title: 'New Release!', description: '"How it feels to be me"', cover: 'https://i.imgur.com/fd1kRok.png',
+                    fullDescription: 'My first attempt at following the Phonk genre of music! I hope its well recieved. I had a lot of fun making this. Still working on improving!',
+                    releaseDate: 'August 12th, 2026', links: [{ label: 'YT Music', url: 'https://music.youtube.com/@SBPebbles-t4r' },
+                        { label: 'Spotify', url: 'https://music.youtube.com/@SBPebbles-t4r' },
+                        { label: 'Tidal', url: 'https://music.youtube.com/@SBPebbles-t4r' },
+                        { label: 'Apple Music', url: 'https://music.youtube.com/@SBPebbles-t4r' }
+                    ], tags: ['Release', 'Instrumental', 'Indie', 'Phonk'] },
+                { title: 'YouTube Music Updates', description: 'Official page is now merged', cover: 'https://i.imgur.com/HmOhOgb.jpeg',
+                    fullDescription: 'My user and creator account have been merged. You can find my music much easier now!',
+                    releaseDate: 'August 5th, 2026', links: [{ label: 'Official YouTube Page', url: 'https://music.youtube.com/@SBPebbles-t4r' }],
+                    tags: ['Update'] },
+                { title: 'A new track is on its way!', description: 'Coming soon...', cover: 'https://i.imgur.com/VetT42C.png',
+                    fullDescription: 'This song will be officially released on YouTube Music, Spotify, and Tidal.',
+                    releaseDate: 'Coming August 20th, 2026', links: [], tags: ['Single', 'Indie'] },
+                { title: 'Lost You', description: 'New release!', cover: 'https://i.imgur.com/2UMG2Pg.jpeg',
+                    fullDescription: '"Lost You" is out now!', releaseDate: 'August 1, 2026', links: [
+                        { label: 'Spotify', url: 'https://open.spotify.com/album/2DtrzbUKTpaW47o1B1qCHH' },
+                        { label: 'YT Music', url: 'https://music.youtube.com/watch?v=uNsWns1Q-sI' }
+                    ], tags: ['Single', 'Indie'] },
+                { title: 'Blue-Raz Lemonade', description: 'New release!', cover: 'https://i.imgur.com/RnwJuvu.jpeg',
+                    fullDescription: '"Blue-Raz Lemonade" is out now!', releaseDate: 'August 1, 2026', links: [
+                        { label: 'Spotify', url: 'https://open.spotify.com/album/09lFYcF7o5KuLARWrqgAJo' },
+                        { label: 'YT Music', url: 'https://music.youtube.com/watch?v=NwtrwekuoHs' }
+                    ], tags: ['Single', 'Indie'] },
+                { title: 'Miss You', description: 'New release!', cover: 'https://i.imgur.com/XqGkllR.jpeg',
+                    fullDescription: '"Miss You" is out now!', releaseDate: 'August 1, 2026', links: [
+                        { label: 'Listen Here', url: 'https://music.sbpebbles.online/#miss-you' }
+                    ], tags: ['Single', 'Indie'] },
+                { title: 'Grape Smarties', description: 'New release!', cover: 'https://i.imgur.com/aTWPtqq.jpeg',
+                    fullDescription: '"Grape Smarties" is out now!', releaseDate: 'August 1, 2026', links: [
+                        { label: 'Spotify', url: 'https://open.spotify.com/track/5Fa8JN7lP3nb5XD0v7PnbB' },
+                        { label: 'YT Music', url: 'https://music.youtube.com/watch?v=7kla07C17ag' }
+                    ], tags: ['Single', 'Indie'] },
+                { title: 'White-Raspberry Smarties', description: 'New release!', cover: 'https://i.imgur.com/cAhBoDq.jpeg',
+                    fullDescription: '"White-Raspberry Smarties" is out now!', releaseDate: 'August 1, 2026', links: [
+                        { label: 'Spotify', url: 'https://open.spotify.com/track/1dKIYjjABgc8WEIcJHpe94' },
+                        { label: 'YT Music', url: 'https://music.youtube.com/watch?v=aCh0smdSEZk' }
+                    ], tags: ['Single', 'Indie'] }
+            ];
+
+            let tracks = [...DEFAULT_TRACKS],
+                announcements = [...DEFAULT_ANNOUNCEMENTS];
+
+            const audio = document.getElementById('audioPlayer');
+            const playBtn = document.getElementById('playBtn');
+            const playIcon = document.getElementById('playIcon');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressTrack = document.getElementById('progressTrack');
+            const currentTimeLabel = document.getElementById('currentTime');
+            const totalTimeLabel = document.getElementById('totalTime');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const volIcon = document.getElementById('volIcon');
+            const volIconBtn = document.getElementById('volIconBtn');
+            const trackName = document.getElementById('trackName');
+            const trackArtist = document.getElementById('trackArtist');
+            const npTitle = document.getElementById('npTitle');
+            const npIndicator = document.getElementById('npIndicator');
+            const coverImg = document.getElementById('coverImg');
+            const coverFallback = document.getElementById('coverFallback');
+            const coverWrapper = document.getElementById('coverWrapper');
+            const playlistContainer = document.getElementById('playlistContainer');
+            const trackCount = document.getElementById('trackCount');
+            const announcementsContainer = document.getElementById('announcementsContainer');
+            const announcementCount = document.getElementById('announcementCount');
+            const copyLinkBtn = document.getElementById('copyLinkBtn');
+            const tabs = document.querySelectorAll('#navTabs .tab');
+            const panels = {
+                hub: document.getElementById('hubPanel'),
+                announcements: document.getElementById('announcementsPanel')
+            };
+            const themeDots = document.querySelectorAll('.dot');
+            const newsBadge = document.getElementById('newsBadge');
+
+            // ── theme ──
+            function setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                themeDots.forEach(d => d.classList.toggle('active', d.dataset.theme === theme));
+                try { localStorage.setItem(STORAGE_KEY_THEME, theme); } catch (_) {}
+            }
+
+            function loadTheme() {
+                let theme = 'dark';
+                try { const s = localStorage.getItem(STORAGE_KEY_THEME); if (s) theme = s; } catch (_) {}
+                const valid = ['dark', 'light', 'turquoise', 'red', 'purple', 'green', 'ocean', 'sunset', 'rainbow', 'candy',
+                    'forest', 'neon'
+                ];
+                if (!valid.includes(theme)) theme = 'dark';
+                setTheme(theme);
+            }
+            themeDots.forEach(d => d.addEventListener('click', () => setTheme(d.dataset.theme)));
+
+            // ── tab switching ──
+            let currentPage = 'hub';
+
+            function switchPage(pageId) {
+                if (pageId === currentPage) return;
+                tabs.forEach(t => t.classList.toggle('active', t.dataset.page === pageId));
+                Object.keys(panels).forEach(key => {
+                    panels[key].classList.toggle('active', key === pageId);
+                });
+                currentPage = pageId;
+            }
+            tabs.forEach(t => t.addEventListener('click', () => switchPage(t.dataset.page)));
+
+            // ── announcements ──
+            function renderAnnouncements() {
+                announcementsContainer.innerHTML = '';
+                announcements.forEach((ann) => {
+                    const card = document.createElement('div');
+                    card.className = 'announce-card';
+                    card.setAttribute('role', 'button');
+                    card.setAttribute('tabindex', '0');
+                    const tagsHtml = ann.tags ? ann.tags.map(t => `<span class="tag">${t}</span>`).join(' ') : '';
+                    const linksHtml = ann.links ? ann.links.map(l =>
+                        `<a href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${l.label}</a>`
+                    ).join(' · ') : '';
+                    card.innerHTML = `
+                        <div class="summary">
+                            <img src="${ann.cover}" alt="${ann.title}" loading="lazy" />
+                            <div class="info"><h4>${ann.title}</h4><p>${ann.description}</p></div>
+                            <span class="badge">New</span>
+                            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="details">
+                            ${ann.fullDescription ? `<div class="row"><span class="label">About</span><span class="value">${ann.fullDescription}</span></div>` : ''}
+                            ${ann.releaseDate ? `<div class="row"><span class="label">Released</span><span class="value">${ann.releaseDate}</span></div>` : ''}
+                            ${tagsHtml ? `<div class="row"><span class="label">Tags</span><span class="value">${tagsHtml}</span></div>` : ''}
+                            ${linksHtml ? `<div class="row"><span class="label">Links</span><span class="value">${linksHtml}</span></div>` : ''}
+                        </div>
+                    `;
+                    const toggle = (e) => { if (e.target.closest('a')) return;
+                        card.classList.toggle('expanded'); };
+                    card.addEventListener('click', toggle);
+                    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
+                            toggle(e); } });
+                    announcementsContainer.appendChild(card);
+                });
+                announcementCount.textContent = `${announcements.length} new`;
+                newsBadge.textContent = `${announcements.length}`;
+            }
+
+            // ── player state ──
+            let currentIndex = 0,
+                isPlaying = false,
+                isDragging = false,
+                wasPlayingBeforeDrag = false,
+                previousVolume = 0.8;
+
+            function getSlug(title) { return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+
+            function updateHashForTrack(index) {
+                const track = tracks[index];
+                window.location.hash = track && track.title ? getSlug(track.title) : '';
+            }
+
+            function copyCurrentLink() {
+                const track = tracks[currentIndex];
+                if (!track) return;
+                const url = window.location.href.split('#')[0] + '#' + getSlug(track.title);
+                navigator.clipboard.writeText(url).then(() => {
+                    const original = copyLinkBtn.innerHTML;
+                    copyLinkBtn.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => { copyLinkBtn.innerHTML = original; }, 1500);
+                }).catch(() => alert('Could not copy link'));
+            }
+
+            function renderPlaylist() {
+                playlistContainer.innerHTML = '';
+                tracks.forEach((track, idx) => {
+                    const item = document.createElement('div');
+                    item.className = `pl-item ${idx === currentIndex ? 'active' : ''}`;
+                    item.dataset.index = idx;
+                    item.setAttribute('role', 'button');
+                    item.setAttribute('tabindex', '0');
+                    const isActive = idx === currentIndex;
+                    item.innerHTML = `
+                        <span class="idx">${String(idx+1).padStart(2,'0')}</span>
+                        <div class="info"><span class="title">${track.title}</span><span class="artist">${track.artist}</span></div>
+                        <span class="dur">${track.duration||'—'}</span>
+                        <span class="pl-icon ${isActive && isPlaying ? 'playing' : ''}"><i class="fas ${isActive && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i></span>
+                    `;
+                    const handle = () => {
+                        if (idx === currentIndex) { togglePlay(); } else { currentIndex = idx;
+                            loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play();
+                            updateHashForTrack(currentIndex); }
+                    };
+                    item.addEventListener('click', handle);
+                    item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
+                            handle(); } });
+                    playlistContainer.appendChild(item);
+                });
+                updateTrackCount();
+            }
+
+            function updateTrackCount() { trackCount.textContent = `${tracks.length} tracks`; }
+
+            function loadTrack(index) {
+                const track = tracks[index];
+                if (!track) return;
+                trackName.textContent = track.title;
+                trackArtist.textContent = track.artist;
+                npTitle.textContent = track.title;
+                if (track.cover) { coverImg.src = track.cover;
+                    coverImg.style.display = 'block';
+                    coverFallback.style.display = 'none'; } else { coverImg.style.display = 'none';
+                    coverFallback.style.display = 'flex'; }
+                audio.src = track.src;
+                audio.load();
+                progressFill.style.width = '0%';
+                currentTimeLabel.textContent = '0:00';
+                totalTimeLabel.textContent = track.duration || '0:00';
+                document.querySelectorAll('.pl-item').forEach((el, i) => {
+                    el.classList.toggle('active', i === index);
+                    const icon = el.querySelector('.pl-icon');
+                    if (icon) {
+                        icon.className = `pl-icon ${i === index && isPlaying ? 'playing' : ''}`;
+                        icon.innerHTML = `<i class="fas ${i === index && isPlaying ? 'fa-volume-high' : 'fa-play'}"></i>`;
+                    }
+                });
+                updateCoverPlayState();
+                npIndicator.className = isPlaying ? 'np-dots' : 'np-dots paused';
+            }
+
+            function updateCoverPlayState() { coverWrapper.classList.toggle('is-playing', isPlaying && audio.src && audio.src !==
+                    ''); }
+
+            function play() { audio.play().catch(() => {});
+                isPlaying = true;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-dots';
+                updateCoverPlayState(); }
+
+            function pause() { audio.pause();
+                isPlaying = false;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-dots paused';
+                updateCoverPlayState(); }
+
+            function togglePlay() { audio.paused ? play() : pause(); }
+
+            function updatePlayButton() {
+                playIcon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+            }
+
+            function updatePlaylistIcons() {
+                document.querySelectorAll('.pl-item').forEach((el, i) => {
+                    const icon = el.querySelector('.pl-icon');
+                    if (icon) {
+                        const active = i === currentIndex && isPlaying;
+                        icon.className = `pl-icon ${active ? 'playing' : ''}`;
+                        icon.innerHTML = `<i class="fas ${active ? 'fa-volume-high' : 'fa-play'}"></i>`;
+                    }
+                });
+            }
+
+            function formatTime(sec) { if (!sec || isNaN(sec)) return '0:00'; const m = Math.floor(sec / 60),
+                    s = Math.floor(sec % 60); return `${m}:${s.toString().padStart(2,'0')}`; }
+
+            function updateProgress() {
+                if (isDragging) return;
+                if (audio.duration && !isNaN(audio.duration)) {
+                    const p = (audio.currentTime / audio.duration) * 100;
+                    progressFill.style.width = `${Math.min(p,100)}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime);
+                    totalTimeLabel.textContent = formatTime(audio.duration);
+                }
+            }
+
+            function updateVolumeIcon() {
+                const v = parseFloat(volumeSlider.value);
+                if (v === 0) volIcon.className = 'fas fa-volume-xmark';
+                else if (v < 0.4) volIcon.className = 'fas fa-volume-low';
+                else if (v < 0.7) volIcon.className = 'fas fa-volume-low';
+                else volIcon.className = 'fas fa-volume-high';
+            }
+
+            function toggleMute() {
+                const v = parseFloat(volumeSlider.value);
+                if (v > 0) { previousVolume = v;
+                    volumeSlider.value = 0;
+                    audio.volume = 0;
+                    updateVolumeIcon(); } else { volumeSlider.value = previousVolume || 0.8;
+                    audio.volume = parseFloat(volumeSlider.value);
+                    updateVolumeIcon(); }
+            }
+
+            function nextTrack() { const n = (currentIndex + 1) % tracks.length;
+                currentIndex = n;
+                loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play();
+                updateHashForTrack(currentIndex); }
+
+            function prevTrack() { const p = (currentIndex - 1 + tracks.length) % tracks.length;
+                currentIndex = p;
+                loadTrack(currentIndex); if (isPlaying) audio.play().catch(() => {}); else play();
+                updateHashForTrack(currentIndex); }
+
+            function findTrackBySlug(slug) {
+                if (!slug) return -1;
+                const idx = tracks.findIndex(t => getSlug(t.title) === slug);
+                return idx >= 0 ? idx : -1;
+            }
+
+            function handleHashChange() {
+                const hash = window.location.hash.substring(1);
+                if (!hash) return;
+                const idx = findTrackBySlug(hash);
+                if (idx >= 0 && idx !== currentIndex) {
+                    currentIndex = idx;
+                    loadTrack(currentIndex);
+                    if (isPlaying) audio.play().catch(() => {});
+                    renderPlaylist();
+                }
+            }
+            window.addEventListener('hashchange', handleHashChange);
+
+            // ── event listeners ──
+            playBtn.addEventListener('click', togglePlay);
+            prevBtn.addEventListener('click', prevTrack);
+            nextBtn.addEventListener('click', nextTrack);
+            volIconBtn.addEventListener('click', toggleMute);
+            copyLinkBtn.addEventListener('click', copyCurrentLink);
+
+            audio.addEventListener('timeupdate', updateProgress);
+            audio.addEventListener('loadedmetadata', () => { totalTimeLabel.textContent = formatTime(audio.duration); });
+            audio.addEventListener('ended', nextTrack);
+            audio.addEventListener('play', () => { isPlaying = true;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-dots';
+                updateCoverPlayState(); });
+            audio.addEventListener('pause', () => { isPlaying = false;
+                updatePlayButton();
+                updatePlaylistIcons();
+                npIndicator.className = 'np-dots paused';
+                updateCoverPlayState(); });
+
+            volumeSlider.addEventListener('input', () => { audio.volume = parseFloat(volumeSlider.value);
+                updateVolumeIcon(); });
+
+            // progress seek
+            progressTrack.addEventListener('mousedown', (e) => { if (!audio.duration) return;
+                isDragging = true;
+                wasPlayingBeforeDrag = !audio.paused;
+                audio.pause();
+                seekFromMouse(e); });
+            document.addEventListener('mousemove', (e) => { if (isDragging) seekFromMouse(e); });
+            document.addEventListener('mouseup', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag) audio
+                        .play().catch(() => {}); } });
+            progressTrack.addEventListener('touchstart', (e) => { if (!audio.duration) return;
+                isDragging = true;
+                wasPlayingBeforeDrag = !audio.paused;
+                audio.pause();
+                seekFromTouch(e); }, { passive: true });
+            progressTrack.addEventListener('touchmove', (e) => { if (isDragging) seekFromTouch(e); }, { passive: true });
+            progressTrack.addEventListener('touchend', () => { if (isDragging) { isDragging = false; if (wasPlayingBeforeDrag)
+                        audio.play().catch(() => {}); } }, { passive: true });
+
+            function seekFromMouse(e) { const rect = progressTrack.getBoundingClientRect();
+                const x = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio
+                        .currentTime = x * audio.duration;
+                    progressFill.style.width = `${x*100}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime); } }
+
+            function seekFromTouch(e) { const touch = e.touches[0];
+                const rect = progressTrack.getBoundingClientRect();
+                const x = Math.min(Math.max((touch.clientX - rect.left) / rect.width, 0), 1); if (audio.duration) { audio
+                        .currentTime = x * audio.duration;
+                    progressFill.style.width = `${x*100}%`;
+                    currentTimeLabel.textContent = formatTime(audio.currentTime); } }
+
+            // keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                if (e.code === 'Space') { e.preventDefault();
+                    togglePlay(); }
+                if (e.code === 'ArrowRight') { e.preventDefault();
+                    nextTrack(); }
+                if (e.code === 'ArrowLeft') { e.preventDefault();
+                    prevTrack(); }
+                if (e.key === 'm') { e.preventDefault();
+                    toggleMute(); }
+            });
+
+            // ── init ──
+            loadTheme();
+            renderPlaylist();
+            renderAnnouncements();
+
+            const initialHash = window.location.hash.substring(1);
+            const startIndex = initialHash ? Math.max(findTrackBySlug(initialHash), 0) : 0;
+            currentIndex = startIndex;
+            loadTrack(currentIndex);
+            if (initialHash && findTrackBySlug(initialHash) >= 0) updateHashForTrack(currentIndex);
+
+            audio.volume = parseFloat(volumeSlider.value);
+            updateVolumeIcon();
+            npIndicator.className = 'np-dots paused';
+            currentPage = 'hub';
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.page === 'hub'));
+            Object.keys(panels).forEach(key => {
+                panels[key].classList.toggle('active', key === 'hub');
+            });
+
+        })();
+    </script>
+</body>
+</html>
