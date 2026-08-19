@@ -6,6 +6,11 @@
     <title>SBPebbles · Music Hub</title>
     <meta name="description" content="SBPebbles Music Hub – listen to Kam Pebbles">
     <meta name="theme-color" content="#0b1120">
+    <!-- Favicon using PEBBLES_LOGO.png -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/PEBBLES_LOGO.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/PEBBLES_LOGO.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/PEBBLES_LOGO.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
@@ -30,6 +35,11 @@
             --spring: cubic-bezier(.34, 1.56, .64, 1);
             --transition: .35s var(--ease);
             --transition-spring: .5s var(--spring);
+            /* defaults for special themes */
+            --secondary: var(--primary);
+            --secondary-dim: var(--primary-dim);
+            --accent: var(--primary);
+            --accent-dim: var(--primary-dim);
         }
         html {
             font: 100%/1.6 var(--font);
@@ -49,7 +59,9 @@
             padding: 0 16px;
         }
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
         button,
         a {
@@ -64,7 +76,7 @@
             outline: 2px solid var(--primary);
             outline-offset: 2px;
         }
-        /* Global interactive element animation */
+        /* Global interactive animations – optimized */
         button,
         .pl-item,
         .news-summary,
@@ -78,7 +90,8 @@
         .theme-dot,
         .link-item {
             transition: transform .25s var(--ease), background .3s var(--ease), box-shadow .25s var(--ease),
-                        border-color .25s var(--ease), color .25s var(--ease), opacity .25s var(--ease);
+                border-color .25s var(--ease), color .25s var(--ease), opacity .25s var(--ease);
+            will-change: transform;
         }
         button:active,
         .pl-item:active,
@@ -94,7 +107,7 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           THEMES (8)
+           THEMES (11 total: 8 original + 3 new)
            ═══════════════════════════════════════════════════ */
         [data-theme="midnight"] {
             --primary: #5b7cfa;
@@ -193,6 +206,130 @@
             --glow: 0 0 20px rgba(251, 191, 36, .15);
         }
 
+        /* ── NEW: Turquoise-Blue ── */
+        [data-theme="turquoise"] {
+            --primary: #2dd4bf;
+            --primary-dim: #1a6a5a;
+            --bg: #0a1a1a;
+            --surface: #122828;
+            --surface-2: #1a3838;
+            --text: #e0f5f5;
+            --text-muted: #7ab0b0;
+            --border: #2a4a4a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .6);
+            --glow: 0 0 20px rgba(45, 212, 191, .15);
+        }
+
+        /* ── SPECIAL: Galaxy (purple + teal + gold) ── */
+        [data-theme="galaxy"] {
+            --primary: #8b5cf6;
+            --primary-dim: #5a3a9a;
+            --secondary: #06b6d4;
+            --secondary-dim: #1a6a7a;
+            --accent: #f59e0b;
+            --accent-dim: #9a6a0a;
+            --bg: #0f0a1a;
+            --surface: #1a1428;
+            --surface-2: #2d1f3d;
+            --text: #f1e8ff;
+            --text-muted: #a78bcc;
+            --border: #3a2a5a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .7);
+            --glow: 0 0 20px rgba(139, 92, 246, .20);
+        }
+        /* Galaxy-specific overrides for multi-color elements */
+        [data-theme="galaxy"] .progress-fill {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        [data-theme="galaxy"] .cover-wrapper .ring {
+            border-color: var(--secondary);
+        }
+        [data-theme="galaxy"] .cover-wrapper.playing .ring {
+            border-color: var(--accent);
+        }
+        [data-theme="galaxy"] .pl-item.active {
+            background: var(--secondary-dim);
+            border-color: var(--secondary);
+        }
+        [data-theme="galaxy"] .nav-btn.active {
+            background: var(--secondary);
+        }
+        [data-theme="galaxy"] .now-playing-strip {
+            border-color: var(--secondary);
+        }
+        [data-theme="galaxy"] .play-btn {
+            background: var(--secondary);
+            box-shadow: 0 4px 20px rgba(6, 182, 212, .3);
+        }
+        [data-theme="galaxy"] .play-btn:hover {
+            box-shadow: 0 6px 28px rgba(6, 182, 212, .4);
+        }
+        [data-theme="galaxy"] .theme-dot.selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--primary), 0 6px 16px rgba(0, 0, 0, .35);
+        }
+
+        /* ── SPECIAL: Aurora (emerald + indigo + pink) ── */
+        [data-theme="aurora"] {
+            --primary: #34d399;
+            --primary-dim: #1a6a4a;
+            --secondary: #818cf8;
+            --secondary-dim: #4a4a9a;
+            --accent: #f472b6;
+            --accent-dim: #8a3a6a;
+            --bg: #0a0f1a;
+            --surface: #141f2e;
+            --surface-2: #1f3348;
+            --text: #e8f5f0;
+            --text-muted: #88b5a8;
+            --border: #2a3a4a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .7);
+            --glow: 0 0 20px rgba(52, 211, 153, .20);
+        }
+        [data-theme="aurora"] .progress-fill {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        [data-theme="aurora"] .cover-wrapper .ring {
+            border-color: var(--secondary);
+        }
+        [data-theme="aurora"] .cover-wrapper.playing .ring {
+            border-color: var(--accent);
+        }
+        [data-theme="aurora"] .pl-item.active {
+            background: var(--secondary-dim);
+            border-color: var(--secondary);
+        }
+        [data-theme="aurora"] .nav-btn.active {
+            background: var(--secondary);
+        }
+        [data-theme="aurora"] .now-playing-strip {
+            border-color: var(--secondary);
+        }
+        [data-theme="aurora"] .play-btn {
+            background: var(--secondary);
+            box-shadow: 0 4px 20px rgba(129, 140, 248, .3);
+        }
+        [data-theme="aurora"] .play-btn:hover {
+            box-shadow: 0 6px 28px rgba(129, 140, 248, .4);
+        }
+        [data-theme="aurora"] .theme-dot.selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--primary), 0 6px 16px rgba(0, 0, 0, .35);
+        }
+
+        /* fallback for special theme properties on regular themes */
+        [data-theme="midnight"] .progress-fill,
+        [data-theme="sunset"] .progress-fill,
+        [data-theme="forest"] .progress-fill,
+        [data-theme="lavender"] .progress-fill,
+        [data-theme="ocean"] .progress-fill,
+        [data-theme="crimson"] .progress-fill,
+        [data-theme="mint"] .progress-fill,
+        [data-theme="sunrise"] .progress-fill,
+        [data-theme="turquoise"] .progress-fill {
+            background: var(--primary);
+        }
+
         /* ═══════════════════════════════════════════════════
            LAYOUT
            ═══════════════════════════════════════════════════ */
@@ -224,23 +361,32 @@
             font-size: 22px;
             letter-spacing: -0.02em;
             transition: transform var(--transition-spring);
+            will-change: transform;
         }
         .logo:hover {
             transform: translateY(-2px);
         }
-        .logo i {
-            font-size: 26px;
-            color: var(--primary);
-            transition: transform var(--transition-spring);
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+            display: block;
+            border: 2px solid var(--primary);
+            transition: transform var(--transition-spring), border-color .3s;
+            will-change: transform;
+            flex-shrink: 0;
         }
-        .logo:hover i {
-            transform: rotate(-12deg) scale(1.1);
+        .logo:hover .logo-icon {
+            transform: rotate(-6deg) scale(1.05);
+            border-color: var(--text);
         }
         .logo span {
             background: linear-gradient(135deg, var(--primary), var(--text));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            transition: background .3s;
         }
         .header-actions {
             display: flex;
@@ -257,6 +403,7 @@
             display: grid;
             place-items: center;
             border: 1px solid transparent;
+            will-change: transform;
         }
         .social-btn:hover {
             background: var(--primary);
@@ -276,6 +423,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            will-change: transform;
         }
         .contact-btn:hover {
             transform: translateY(-2px);
@@ -308,10 +456,12 @@
             gap: 8px;
             background: transparent;
             transition: color .2s, background .2s, transform .2s;
+            will-change: transform;
         }
         .nav-btn i {
             font-size: 18px;
             transition: transform .2s;
+            will-change: transform;
         }
         .nav-btn:hover {
             color: var(--text);
@@ -354,12 +504,24 @@
             animation: slidePanelLeft .45s var(--ease) both;
         }
         @keyframes slidePanelRight {
-            0% { opacity: 0; transform: translateX(48px); }
-            100% { opacity: 1; transform: translateX(0); }
+            0% {
+                opacity: 0;
+                transform: translateX(48px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         @keyframes slidePanelLeft {
-            0% { opacity: 0; transform: translateX(-48px); }
-            100% { opacity: 1; transform: translateX(0); }
+            0% {
+                opacity: 0;
+                transform: translateX(-48px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* ═══════════════════════════════════════════════════
@@ -375,6 +537,7 @@
             border: 1px solid var(--border);
             margin-bottom: 24px;
             box-shadow: var(--shadow);
+            transition: border-color .3s var(--ease);
         }
         .now-playing-strip:hover {
             border-color: var(--primary);
@@ -408,6 +571,7 @@
             background: var(--primary);
             display: inline-block;
             transition: all .3s;
+            will-change: transform, opacity;
         }
         .np-dots.paused span {
             opacity: .2;
@@ -424,8 +588,15 @@
             animation-delay: .4s;
         }
         @keyframes dotBounce {
-            0%, 100% { transform: scale(.6); opacity: .3; }
-            50% { transform: scale(1.2); opacity: 1; }
+            0%,
+            100% {
+                transform: scale(.6);
+                opacity: .3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
         }
 
         .player-card {
@@ -450,6 +621,7 @@
             box-shadow: var(--shadow);
             background: var(--surface-2);
             flex-shrink: 0;
+            will-change: transform;
         }
         .cover-wrapper:hover {
             transform: scale(1.01);
@@ -481,8 +653,15 @@
             animation: ringPulse 2s infinite;
         }
         @keyframes ringPulse {
-            0%, 100% { transform: scale(1); opacity: .3; }
-            50% { transform: scale(1.07); opacity: .8; }
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: .3;
+            }
+            50% {
+                transform: scale(1.07);
+                opacity: .8;
+            }
         }
 
         .track-info {
@@ -516,6 +695,7 @@
             display: grid;
             place-items: center;
             border: 1px solid transparent;
+            will-change: transform;
         }
         .ctrl-btn:hover {
             background: var(--primary);
@@ -534,6 +714,8 @@
             display: grid;
             place-items: center;
             box-shadow: 0 4px 20px rgba(var(--primary), .3);
+            will-change: transform;
+            transition: transform .25s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
         }
         .play-btn:hover {
             transform: scale(1.04);
@@ -567,6 +749,7 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
             cursor: pointer;
             transition: transform .2s;
+            will-change: transform;
         }
         .volume-group input[type="range"]::-webkit-slider-thumb:hover {
             transform: scale(1.2);
@@ -599,6 +782,7 @@
             min-height: 30px;
             display: flex;
             align-items: center;
+            transition: height .2s;
         }
         .progress-track:hover {
             height: 8px;
@@ -606,10 +790,10 @@
         .progress-fill {
             height: 100%;
             width: 0%;
-            background: var(--primary);
             border-radius: inherit;
             pointer-events: none;
             transition: width .05s linear;
+            background: var(--primary);
         }
 
         /* ── Playlist ── */
@@ -629,6 +813,9 @@
             background: transparent;
             cursor: pointer;
             border: 1px solid transparent;
+            will-change: transform;
+            transition: transform .25s var(--ease), background .3s var(--ease), border-color .25s var(--ease),
+                box-shadow .25s var(--ease);
         }
         .pl-item:hover {
             background: var(--surface-2);
@@ -663,6 +850,7 @@
             color: var(--primary);
             opacity: 0;
             transition: opacity .2s, transform .2s;
+            will-change: transform, opacity;
         }
         .pl-item:hover .pl-icon,
         .pl-item.active .pl-icon {
@@ -673,8 +861,13 @@
             animation: iconPulse 1s infinite;
         }
         @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         /* ═══════════════════════════════════════════════════
@@ -715,6 +908,7 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
             overflow: hidden;
+            transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
         }
         .news-card:hover {
             border-color: var(--primary);
@@ -730,6 +924,7 @@
             align-items: center;
             padding: 14px 18px;
             cursor: pointer;
+            will-change: transform;
         }
         .news-summary:hover {
             background: var(--surface-2);
@@ -780,7 +975,7 @@
             background: var(--surface);
         }
         .news-card.open .news-details {
-            max-height: 500px; /* large enough for content */
+            max-height: 500px;
             padding: 0 18px 18px 112px;
             border-top-width: 1px;
         }
@@ -842,6 +1037,8 @@
             position: relative;
             cursor: pointer;
             box-shadow: var(--shadow);
+            will-change: transform;
+            transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
         }
         .other-item img {
             width: 100%;
@@ -849,6 +1046,7 @@
             object-fit: cover;
             transition: transform .4s var(--ease);
             display: block;
+            will-change: transform;
         }
         .other-item:hover img {
             transform: scale(1.03);
@@ -870,6 +1068,7 @@
             color: #fff;
             transform: translateY(100%);
             transition: transform .3s var(--ease);
+            will-change: transform;
         }
         .other-item:hover .other-overlay {
             transform: translateY(0);
@@ -915,6 +1114,7 @@
             font-size: 14px;
             z-index: 5;
             transition: background .2s, transform .2s;
+            will-change: transform;
         }
         .other-close:hover {
             background: rgba(255, 255, 255, .2);
@@ -956,6 +1156,7 @@
             font-size: 18px;
             color: var(--text);
             transition: color .2s, transform .2s;
+            will-change: transform;
         }
         .link-item a i {
             width: 30px;
@@ -963,6 +1164,7 @@
             color: var(--primary);
             font-size: 24px;
             transition: transform .2s;
+            will-change: transform;
         }
         .link-item:hover {
             background: var(--surface-2);
@@ -976,7 +1178,7 @@
         }
 
         /* ═══════════════════════════════════════════════════
-           FOOTER – THEME PICKER
+           FOOTER – THEME PICKER (solid colors, no gradients)
            ═══════════════════════════════════════════════════ */
         .footer {
             margin-top: 40px;
@@ -1008,8 +1210,11 @@
             border: 2px solid var(--border);
             position: relative;
             cursor: pointer;
-            box-shadow: inset 0 1px 4px rgba(255, 255, 255, .1), 0 4px 10px rgba(0, 0, 0, .25);
+            background: var(--surface-2);
             transition: transform .2s, border-color .2s, box-shadow .2s;
+            will-change: transform;
+            flex-shrink: 0;
+            /* solid colors set inline via data attributes */;
         }
         .theme-dot::after {
             content: '✓';
@@ -1035,30 +1240,20 @@
             border-color: var(--text);
             box-shadow: 0 0 0 2px var(--primary), 0 6px 16px rgba(0, 0, 0, .35);
         }
-        .theme-dot[data-theme="midnight"] {
-            background: linear-gradient(135deg, #0b1120, #5b7cfa);
+
+        /* Special theme dots get a subtle star indicator */
+        .theme-dot.special::before {
+            content: '✦';
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            font-size: 10px;
+            color: var(--accent, #fbbf24);
+            text-shadow: 0 0 6px rgba(0, 0, 0, .6);
+            opacity: .9;
+            z-index: 1;
         }
-        .theme-dot[data-theme="sunset"] {
-            background: linear-gradient(135deg, #1e120e, #ff8a5c);
-        }
-        .theme-dot[data-theme="forest"] {
-            background: linear-gradient(135deg, #0c1810, #5fbf8a);
-        }
-        .theme-dot[data-theme="lavender"] {
-            background: linear-gradient(135deg, #14101e, #b28bff);
-        }
-        .theme-dot[data-theme="ocean"] {
-            background: linear-gradient(135deg, #0a1a2a, #38bdf8);
-        }
-        .theme-dot[data-theme="crimson"] {
-            background: linear-gradient(135deg, #1a0a0a, #f87171);
-        }
-        .theme-dot[data-theme="mint"] {
-            background: linear-gradient(135deg, #0a1a14, #34d399);
-        }
-        .theme-dot[data-theme="sunrise"] {
-            background: linear-gradient(135deg, #1a120a, #fbbf24);
-        }
+
         .footer-copy {
             font-size: 13px;
             color: var(--text-muted);
@@ -1177,6 +1372,10 @@
             .logo {
                 font-size: 18px;
             }
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
             .social-btn {
                 width: 34px;
                 height: 34px;
@@ -1288,7 +1487,7 @@
         <!-- ═══════════ HEADER ═══════════ -->
         <header class="header">
             <a class="logo" href="#" onclick="return false;">
-                <i class="fas fa-compact-disc"></i>
+                <img src="/assets/images/PEBBLES_LOGO.png" alt="SBPebbles" class="logo-icon" />
                 <span>SBPebbles</span>
             </a>
             <div class="header-actions">
@@ -1399,14 +1598,17 @@
         <footer class="footer">
             <div class="theme-group">
                 <span class="theme-label">Theme</span>
-                <button class="theme-dot selected" data-theme="midnight" title="Midnight"></button>
-                <button class="theme-dot" data-theme="sunset" title="Sunset"></button>
-                <button class="theme-dot" data-theme="forest" title="Forest"></button>
-                <button class="theme-dot" data-theme="lavender" title="Lavender"></button>
-                <button class="theme-dot" data-theme="ocean" title="Ocean"></button>
-                <button class="theme-dot" data-theme="crimson" title="Crimson"></button>
-                <button class="theme-dot" data-theme="mint" title="Mint"></button>
-                <button class="theme-dot" data-theme="sunrise" title="Sunrise"></button>
+                <button class="theme-dot selected" data-theme="midnight" style="background:#5b7cfa;" title="Midnight"></button>
+                <button class="theme-dot" data-theme="sunset" style="background:#ff8a5c;" title="Sunset"></button>
+                <button class="theme-dot" data-theme="forest" style="background:#5fbf8a;" title="Forest"></button>
+                <button class="theme-dot" data-theme="lavender" style="background:#b28bff;" title="Lavender"></button>
+                <button class="theme-dot" data-theme="ocean" style="background:#38bdf8;" title="Ocean"></button>
+                <button class="theme-dot" data-theme="crimson" style="background:#f87171;" title="Crimson"></button>
+                <button class="theme-dot" data-theme="mint" style="background:#34d399;" title="Mint"></button>
+                <button class="theme-dot" data-theme="sunrise" style="background:#fbbf24;" title="Sunrise"></button>
+                <button class="theme-dot" data-theme="turquoise" style="background:#2dd4bf;" title="Turquoise Blue"></button>
+                <button class="theme-dot special" data-theme="galaxy" style="background:#8b5cf6;" title="Galaxy ✦"></button>
+                <button class="theme-dot special" data-theme="aurora" style="background:#34d399;" title="Aurora ✦"></button>
             </div>
             <div class="footer-copy">© 2026 SBPebbles</div>
         </footer>
@@ -1419,7 +1621,9 @@
 
             /* ── CONSTANTS ── */
             const STORAGE_KEY = 'sbpebbles-theme';
-            const THEMES = ['midnight', 'sunset', 'forest', 'lavender', 'ocean', 'crimson', 'mint', 'sunrise'];
+            const THEMES = ['midnight', 'sunset', 'forest', 'lavender', 'ocean', 'crimson', 'mint', 'sunrise', 'turquoise',
+                'galaxy', 'aurora'
+            ];
 
             const TRACKS = [
                 { id: 0, title: 'Lost You', artist: 'Kam Pebbles',
